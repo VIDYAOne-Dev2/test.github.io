@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Website Navbar</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth dropdown animation */
+    .dropdown-menu {
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.2s ease-out;
+    }
+    .group:hover .dropdown-menu {
+      transform: scaleY(1);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+
+        <!-- Logo -->
+        <a href="#" class="text-2xl font-bold tracking-wide">My School</a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+
+          <!-- Menu Item with Dropdown -->
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">About</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-52">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">About Us</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Message</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Branches</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Management & Staff</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Teaching Staff</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Non-Teaching Staff</a>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Academics</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-56">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Curriculum</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Syllabus</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Co-Curricular Activities</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Academic Calendar</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Uniform & Timings</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Prayer</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Alumni</a>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Campus Life</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-56">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Facilities</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Infrastructure</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Transport</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Campus Tour</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Events</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Initiatives</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Awards & Achievements</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Testimonials</a>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Gallery</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-48">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Image Gallery</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Media Gallery</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Video Gallery</a>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Admissions</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-52">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Admission Guidelines</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Fee Structure</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Payment Details</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Prospectus</a>
+            </div>
+          </div>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Resources</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-44">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Downloads</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">FAQ</a>
+            </div>
+          </div>
+
+          <a href="#" class="hover:text-yellow-300 transition-colors">Mandatory Disclosure</a>
+
+          <div class="relative group">
+            <button class="hover:text-yellow-300 transition-colors">Contact</button>
+            <div class="dropdown-menu absolute bg-white text-gray-800 rounded-md shadow-lg mt-2 w-44">
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">School Details</a>
+              <a href="#" class="block px-4 py-2 hover:bg-blue-50">Contact Form</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Button -->
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white text-gray-800 border-t border-gray-200">
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">About</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Academics</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Campus Life</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Gallery</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Admissions</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Resources</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Mandatory Disclosure</a>
+      <a href="#" class="block px-4 py-2 hover:bg-blue-50">Contact</a>
+    </div>
+  </nav>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
