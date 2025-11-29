@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started! Choose Pages for Your New Plan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom styles for scrollable area */
+        .dual-list-container {
+            max-height: 550px; /* Slightly taller for modern feel */
+            overflow-y: auto;
+            scrollbar-width: thin;
+            background-color: #ffffff; 
+            border: 1px solid #e5e7eb;
+        }
+        .page-item-row {
+            transition: all 0.2s;
+            cursor: default;
+            border-left: 4px solid transparent; /* Placeholder for active state border */
+        }
+        .page-item-row:hover {
+            background-color: #f7f9fb; /* Very soft hover effect */
+        }
+        /* Highlight active pages with a clean left border */
+        .page-item-row.active-page {
+            border-left-color: #10b981; /* Emerald Green */
+            background-color: #f0fdf4; /* Light Green background */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <script>
+        const MAX_PAGES = 10;
+        let allPages = [
+            { id: 'home', name: 'Home Page', type: 'Core', enabled: true, icon: '🏠' },
+            { id: 'about', name: 'About Us', type: 'Core', enabled: true, icon: 'ℹ️' },
+            { id: 'admissions', name: 'Admissions Info', type: 'Core', enabled: true, icon: '🎓' },
+            { id: 'faculty', name: 'Faculty Directory', type: 'Core', enabled: true, icon: '🧑‍🏫' },
+            { id: 'calendar', name: 'School Calendar', type: 'Core', enabled: true, icon: '🗓️' },
+            { id: 'news', name: 'Latest News', type: 'Extra', enabled: true, icon: '📰' },
+            { id: 'gallery', name: 'Photo Gallery', type: 'Extra', enabled: true, icon: '🖼️' },
+            { id: 'contact', name: 'Contact Us', type: 'Core', enabled: true, icon: '📞' },
+            { id: 'sports', name: 'Sports Programs', type: 'Extra', enabled: true, icon: '🏅' },
+            { id: 'alumni', name: 'Alumni Network', type: 'Extra', enabled: true, icon: '🤝' },
+            { id: 'portal', name: 'Student Portal', type: 'Auth', enabled: false, icon: '🔑' },
+            { id: 'history', name: 'School History', type: 'Extra', enabled: false, icon: '📜' },
+            { id: 'careers', name: 'Careers & Jobs', type: 'Extra', enabled: false, icon: '💼' },
+            { id: 'library', name: 'Library Resources', type: 'Extra', enabled: false, icon: '📚' },
+        ];
+    </script>
+
+    <div class="container mx-auto px-4 pt-12 pb-28 max-w-7xl">
+        
+        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mb-10 rounded-lg shadow-sm" role="alert">
+            <p class="font-bold text-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Awesome News! 🎉
+            </p>
+            <p class="mt-1">You are now setting up your website's <span class="font-bold ">10-page capacity</span>.</p>
+        </div>
+
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-extrabold text-gray-800 tracking-tight">
+                Get Started! Choose Pages for Your New Plan
+            </h1>
+            <p class="text-xl text-gray-500 mt-3 max-w-4xl mx-auto">
+                Great choice! Your new plan lets you show <span class="font-bold">10 pages</span> on your website. Pick the pages that matter most right now. You can swap them later!
+            </p>
+        </header>
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-8 p-6 bg-white rounded-xl shadow-xl border border-gray-200">
+            <div class="flex items-center space-x-4">
+                <div class="bg-blue-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M10 21l2-3 2 3M6 18V6l12-3v13" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold uppercase text-gray-500">Your Website Capacity</h3>
+                    <div class="text-2xl font-extrabold text-gray-800">
+                        <span id="counter" class="text-green-600">0 out of 10 Module used</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="limitAlert" class="inline-alert bg-red-100 border border-red-300 text-red-700 p-3 rounded-lg font-medium w-full sm:w-auto hidden transition-opacity duration-300">
+                🛑 <span class="font-bold"> All 10 Modules are full! </span> To show a new page, please 'Remove' an existing one first.
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-200 flex flex-col">
+                <h2 class="text-xl font-bold text-gray-800">All Pages Available 🌐</h2>
+                <p class="text-sm text-gray-500 mb-4">Everything we can build for your site. Use the 'Enable' button to make a page go live!</p>
+                
+                <input type="text" id="searchAll" placeholder="Find a page to show..." class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-inner" onkeyup="filterLists()">
+                
+                <div class="dual-list-container rounded-lg flex-grow">
+                    <ul id="allPagesList" class="divide-y divide-gray-100"></ul>
+                    <div id="emptyLeft" class="hidden text-center p-8 text-gray-500">
+                        Great job! All available pages are either live or hidden.
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-2xl border border-gray-200 flex flex-col">
+                <h2 class="text-xl font-bold text-gray-800">Pages Going Live (10 Slots) ✅</h2>
+                <p class="text-sm text-gray-500 mb-4">These are the pages visitors will see. To add a new page, remove one from this list first.</p>
+
+                <input type="text" id="searchEnabled" placeholder="Search your live pages..." class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-inner" onkeyup="filterLists()">
+
+                <div class="dual-list-container rounded-lg flex-grow">
+                    <ul id="enabledPagesList" class="divide-y divide-gray-100"></ul>
+                    <div id="emptyRight" class="hidden text-center p-8 text-gray-500">
+                        Nothing is live yet! Use the 'Show This Page' button on the left to activate your content.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="actionBar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-3xl p-4 flex justify-end gap-4 z-50">
+     
+        <button id="saveButton" class="px-6 py-3 text-white bg-green-600 rounded-xl hover:bg-green-700 font-bold transition duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            Set Pages & Go Live!
+        </button>
+    </div>
+
+    <script>
+        const allPagesList = document.getElementById('allPagesList');
+        const enabledPagesList = document.getElementById('enabledPagesList');
+        const counterSpan = document.getElementById('counter');
+        const limitAlert = document.getElementById('limitAlert');
+        const saveButton = document.getElementById('saveButton');
+        const emptyLeft = document.getElementById('emptyLeft');
+        const emptyRight = document.getElementById('emptyRight');
+
+        function getIcon(name) {
+            const icons = {
+                // Eye for Show (Activate)
+                show: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`,
+                // Trash for Hide (Deactivate)
+                hide: `<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>`,
+            };
+            return icons[name] || '';
+        }
+
+        function renderLists() {
+            allPagesList.innerHTML = '';
+            enabledPagesList.innerHTML = '';
+            
+            const currentCount = allPages.filter(p => p.enabled).length;
+            const isLimitReached = currentCount >= MAX_PAGES;
+            
+            let renderedLeftCount = 0;
+            let renderedRightCount = 0;
+
+            const searchAllQuery = document.getElementById('searchAll').value.toLowerCase();
+            const searchEnabledQuery = document.getElementById('searchEnabled').value.toLowerCase();
+
+            allPages.forEach(page => {
+                const pageNameLower = page.name.toLowerCase();
+
+                if (page.enabled) {
+                    // Right column: Enabled/Live Pages
+                    if (pageNameLower.includes(searchEnabledQuery)) {
+                        enabledPagesList.appendChild(createPageItem(page, 'hide', isLimitReached));
+                        renderedRightCount++;
+                    }
+                } else {
+                    // Left column: All/Available Pages
+                    if (pageNameLower.includes(searchAllQuery)) {
+                        allPagesList.appendChild(createPageItem(page, 'show', isLimitReached));
+                        renderedLeftCount++;
+                    }
+                }
+            });
+
+            // Handle Empty States
+            emptyLeft.classList.toggle('hidden', renderedLeftCount > 0);
+            emptyRight.classList.toggle('hidden', renderedRightCount > 0);
+
+            updateValidation(currentCount);
+        }
+
+        function createPageItem(page, actionType, isLimitReached) {
+            const li = document.createElement('li');
+            li.className = `page-item-row flex items-center justify-between px-5 py-3 ${page.enabled ? 'active-page' : ''}`;
+            li.setAttribute('data-id', page.id);
+            li.setAttribute('draggable', actionType === 'hide');
+
+            const actionButton = document.createElement('button');
+            actionButton.className = 'flex items-center space-x-1 px-3 py-2 text-sm rounded-lg font-medium transition duration-150 shadow-sm';
+            actionButton.setAttribute('data-id', page.id);
+
+            if (actionType === 'show') {
+                actionButton.innerHTML = getIcon('show') + '<span>Enable</span>';
+                actionButton.className += ' bg-blue-500 text-white hover:bg-blue-600';
+                actionButton.onclick = () => movePage(page.id, true);
+                
+                if (isLimitReached) {
+                    actionButton.disabled = true;
+                    actionButton.innerHTML = '<span>Limit Reached </span>';
+                    actionButton.className = 'px-3 py-2 text-sm rounded-lg font-medium bg-gray-300 text-gray-500 cursor-not-allowed';
+                }
+            } else { // 'hide'
+                actionButton.innerHTML = getIcon('hide') + '<span>Remove</span>';
+                actionButton.className += ' bg-red-100 text-red-600 hover:bg-red-200 hover:shadow-md';
+                actionButton.onclick = () => movePage(page.id, false);
+            }
+            
+            li.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <span class="text-lg">${page.icon}</span>
+                    <div class="text-base font-semibold text-gray-700">${page.name}</div>
+                    <span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full shadow-inner">${page.type}</span>
+                </div>
+            `;
+            li.appendChild(actionButton);
+            return li;
+        }
+
+        function movePage(id, enable) {
+            const pageIndex = allPages.findIndex(p => p.id === id);
+            if (pageIndex !== -1) {
+                const currentCount = allPages.filter(p => p.enabled).length;
+                if (enable && currentCount >= MAX_PAGES) {
+                    alert("Whoops! You're at the 10-page limit. Please 'Hide' a page first to open a slot.");
+                    return; 
+                }
+                
+                allPages[pageIndex].enabled = enable;
+                renderLists();
+            }
+        }
+
+        function updateValidation(count) {
+counterSpan.textContent = `${count} of ${MAX_PAGES} pages in use`;
+
+
+            
+            const isLimitReached = count >= MAX_PAGES;
+            
+            limitAlert.classList.toggle('hidden', !isLimitReached);
+
+            // Disable Save if count is 0
+            saveButton.disabled = count === 0 || count > MAX_PAGES;
+        }
+
+        function filterLists() {
+            renderLists();
+        }
+
+        // --- Drag and Drop Logic ---
+        function setupDragAndDrop() {
+            [allPagesList, enabledPagesList].forEach(list => {
+                list.addEventListener('dragover', (e) => {
+                    e.preventDefault(); 
+                    list.classList.add('ring-4', 'ring-blue-200', 'ring-offset-2');
+                });
+
+                list.addEventListener('dragleave', (e) => {
+                    list.classList.remove('ring-4', 'ring-blue-200', 'ring-offset-2');
+                });
+
+                list.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    list.classList.remove('ring-4', 'ring-blue-200', 'ring-offset-2');
+
+                    const id = e.dataTransfer.getData('text/plain');
+                    const enable = list.id === 'enabledPagesList';
+                    
+                    if (id) movePage(id, enable);
+                });
+            });
+        }
+        
+        // --- Initialization ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLists();
+            setupDragAndDrop();
+            
+            saveButton.addEventListener('click', () => {
+                const selected = allPages.filter(p => p.enabled).map(p => p.id);
+                if (selected.length > MAX_PAGES) {
+                     alert('Please fix the page count to 10 or less before saving.');
+                     return;
+                }
+                alert(`✅ Success! Your core pages are now ready for visitors. Live Pages: ${selected.join(', ')}`);
+            });
+
+            document.getElementById('cancelButton').addEventListener('click', () => {
+                alert('Action cancelled. You can return anytime to set your pages live.');
+            });
+        });
+    </script>
+</body>
+</html>
