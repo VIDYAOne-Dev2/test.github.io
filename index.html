@@ -17,10 +17,8 @@
         /* Custom style for the attractive header background */
         .attractive-header {
             background-color: #1a202c;
-            /* Dark base color */
             background-image: radial-gradient(at 0% 0%, #4f46e5 0%, transparent 50%),
                 radial-gradient(at 100% 100%, #3b82f6 0%, transparent 50%);
-            /* Subtle dark grid pattern for texture */
             background-size: 400% 400%;
             animation: gradient-animation 10s ease infinite;
         }
@@ -49,6 +47,7 @@
             <h1 class="text-5xl font-extrabold text-white sm:text-6xl lg:text-7xl tracking-tighter drop-shadow-lg">
                 Welcome to Ankit Maurya Github Pages
             </h1>
+
             <p class="mt-6 text-xl font-light text-indigo-200/90 sm:text-2xl drop-shadow">
                 A dynamic, organized index of all my deployed Pages & UI/UX Design.
             </p>
@@ -57,34 +56,34 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+
         <div id="index-container" class="space-y-10">
         </div>
     </main>
 
     <script>
-        // 1. YOUR DATA: Add your page names and URLs here
+        // 1. **CRITICAL FIX:** Define your repository name here.
+        // Make sure this matches your GitHub repo name exactly (e.g., '/my-repo-name').
+        const REPO_NAME = 'https://vidyaone-dev2.github.io/test.github.io/';
+
+        const BASE_PATH = 'https://vidyaone-dev2.github.io/test.github.io/';
+
+
+        // 2. YOUR DATA: Add your page names and URLs here
         const pages = [
             { name: "Navbar 1 Example", url: "/header1" },
-            { name: "Navbar 1 Example", url: "/header2"},
+            { name: "Navbar 1 Example", url: "/header2" },
             { name: "vWebiste Plane Downgrade", url: "/downgrade" },
-            // { name: "Another Project Idea", url: "/project-a" },
-            // { name: "About Me Section", url: "/about" },
-            // { name: "Z-Testing Suite", url: "/z-test" },
-            // { name: "Sidebar Layout Design", url: "/sidebar" },
-            // { name: "Responsive Grid Layout", url: "/grid-layout" },
-            // Add all your pages here!
+
         ];
 
-        /**
-         * 2. Sorting Function: Sorts the pages alphabetically by name.
-         */
+
+        // 3. **ADDED FUNCTION:** Sorting Function: Sorts the pages alphabetically by name.
         function sortPages(data) {
             return data.sort((a, b) => a.name.localeCompare(b.name));
         }
 
-        /**
-         * 3. Grouping Function: Groups the sorted pages by their starting letter.
-         */
+        // 4. **ADDED FUNCTION:** Grouping Function: Groups the sorted pages by their starting letter.
         function groupPagesByLetter(data) {
             const groups = {};
             data.forEach(page => {
@@ -98,13 +97,13 @@
         }
 
         /**
-         * 4. Rendering Function: Generates the HTML for the index page.
+         * 5. Rendering Function: Generates the HTML for the index page.
          */
         function renderIndex() {
             const container = document.getElementById('index-container');
             if (!container) return;
 
-            // Sort and group the pages
+            // These functions are now defined and will execute successfully
             const sortedPages = sortPages(pages);
             const groupedPages = groupPagesByLetter(sortedPages);
 
@@ -116,40 +115,38 @@
 
                 // Start of a new alphabetical section
                 htmlContent += `
-            <div class="mb-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">${letter}</h2>
-                <div class="card-container">
-        `;
+                    <div class="mb-6">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">${letter}</h2>
+                        <div class="card-container">
+                `;
 
                 // Create cards for the current group
                 group.forEach(page => {
-                    // Determine the full URL path for the redirect
-                    // If you're hosting at username.github.io/repo-name/
-                    // The url path should be handled carefully. Assuming a root-relative path:
-                    const fullUrl = page.url;
+                    // APPLICATION OF THE FIX: Prepend the BASE_PATH to the URL
+                    const fullUrl = BASE_PATH + page.url;
 
                     htmlContent += `
-                <a href="${fullUrl}" class="
-                    block p-6 rounded-lg 
-                    bg-white shadow-lg hover:shadow-xl transition duration-300 ease-in-out
-                    border-l-4 border-indigo-500 hover:border-indigo-700
-                    transform hover:scale-[1.02]
-                ">
-                    <h3 class="text-xl font-semibold text-gray-900 truncate">${page.name}</h3>
-                    <p class="mt-2 text-indigo-600 text-sm font-medium">
-                        <span class="font-mono text-gray-500">${page.url}</span>
-                    </p>
-                    <p class="mt-4 text-xs text-gray-400">Click to view page →</p>
-                </a>
-            `;
+                        <a href="${fullUrl}" class="
+                            block p-6 rounded-lg 
+                            bg-white shadow-lg hover:shadow-xl transition duration-300 ease-in-out
+                            border-l-4 border-indigo-500 hover:border-indigo-700
+                            transform hover:scale-[1.02]
+                        ">
+                            <h3 class="text-xl font-semibold text-gray-900 truncate">${page.name}</h3>
+                            <p class="mt-2 text-indigo-600 text-sm font-medium">
+                                <span class="font-mono text-gray-500">${page.url}</span>
+                            </p>
+                            <p class="mt-4 text-xs text-gray-400">Click to view page →</p>
+                        </a>
+                    `;
                 });
 
                 // End of the card container and add the beautiful divider
                 htmlContent += `
-                </div>
-                <hr class="mt-8 border-t-2 border-indigo-200">
-            </div>
-        `;
+                        </div>
+                        <hr class="mt-8 border-t-2 border-indigo-200">
+                    </div>
+                `;
             });
 
             container.innerHTML = htmlContent;
