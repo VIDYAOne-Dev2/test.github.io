@@ -2,415 +2,163 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home | VIDYAOne Demo School</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Custom CSS for dropdown animations and mobile menu */
-    .dropdown {
-      display: none;
-      opacity: 0;
-      transform-origin: top;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-      pointer-events: none;
-      /* Prevent interaction when hidden */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankit Maurya's GitHub Pages Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the card grid */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
 
-    .group:hover .dropdown,
-    .dropdown.active {
-      /* 'active' class for mobile */
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
+        /* Custom style for the attractive header background */
+        .attractive-header {
+            background-color: #1a202c;
+            /* Dark base color */
+            background-image: radial-gradient(at 0% 0%, #4f46e5 0%, transparent 50%),
+                radial-gradient(at 100% 100%, #3b82f6 0%, transparent 50%);
+            /* Subtle dark grid pattern for texture */
+            background-size: 400% 400%;
+            animation: gradient-animation 10s ease infinite;
+        }
 
-    /* Mobile menu button animation */
-    .hamburger-icon {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      padding: 0;
-      background: transparent;
-      border: none;
-    }
+        /* Keyframe animation for a subtle breathing effect */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
 
-    .hamburger-icon span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: #3B82F6;
-      /* Blue-600 */
-      border-radius: 9px;
-      transition: all 0.3s ease-in-out;
-    }
+            50% {
+                background-position: 100% 50%;
+            }
 
-    .hamburger-icon.open span:nth-child(1) {
-      transform: translateY(10px) rotate(45deg);
-    }
-
-    .hamburger-icon.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger-icon.open span:nth-child(3) {
-      transform: translateY(-10px) rotate(-45deg);
-    }
-  </style>
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50 min-h-screen">
 
-  <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-700 to-blue-900 shadow-xl border-b border-blue-800 text-white">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-
-      <!-- Left: Logo and School Info -->
-      <div class="flex items-center space-x-4">
-        <img src="https://cdn-vw.vidyaone.com/scl_demo/images/vidyaone-icon.png" alt="School Logo"
-          class="w-20 h-20 object-contain rounded-full border-2 border-white shadow-md p-1 bg-white">
-        <div>
-          <h1 class="text-3xl font-extrabold tracking-tight">VIDYAOne Public School</h1>
-          <p class="text-sm text-blue-100 mt-1">Affiliated to CBSE, New Delhi (Aff. No. 123456)</p>
-          <p class="text-xs text-blue-200">123, Green Park Road, Delhi - 110016</p>
+    <header class="attractive-header shadow-2xl py-20 mb-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl font-extrabold text-white sm:text-6xl lg:text-7xl tracking-tighter drop-shadow-lg">
+                Welcome to Ankit Maurya Github Pages
+            </h1>
+            <p class="mt-6 text-xl font-light text-indigo-200/90 sm:text-2xl drop-shadow">
+                A dynamic, organized index of all my deployed Pages & UI/UX Design.
+            </p>
+            <div class="mt-8 mx-auto w-24 h-1 bg-indigo-400 rounded-full"></div>
         </div>
-      </div>
+    </header>
 
-      <!-- Right: Buttons and Nav (Desktop) -->
-      <div class="hidden md:flex flex-col items-end space-y-3">
-
-        <!-- Top Buttons -->
-        <div class="flex space-x-3">
-          <a href="#"
-            class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold text-sm px-5 py-2 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-            Mandatory Disclosure
-          </a>
-          <a href="#"
-            class="bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-5 py-2 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
-            Pay Fee
-          </a>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div id="index-container" class="space-y-10">
         </div>
+    </main>
 
-        <!-- Navigation Menu -->
-        <nav>
-          <ul class="flex space-x-4 text-white font-base">
+    <script>
+        // 1. YOUR DATA: Add your page names and URLs here
+        const pages = [
+            { name: "Navbar 1 Example", url: "/header1" },
+            { name: "Navbar 1 Example", url: "/header2"},
+            { name: "vWebiste Plane Downgrade", url: "/downgrade" },
+            // { name: "Another Project Idea", url: "/project-a" },
+            // { name: "About Me Section", url: "/about" },
+            // { name: "Z-Testing Suite", url: "/z-test" },
+            // { name: "Sidebar Layout Design", url: "/sidebar" },
+            // { name: "Responsive Grid Layout", url: "/grid-layout" },
+            // Add all your pages here!
+        ];
 
-            <li><a href="#" class="hover:text-yellow-400 transition duration-200">Home</a></li>
-
-            <!-- About -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                About
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px] w-52 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">About Us</a>
-                </li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Message</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Management</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Teaching Staff</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">Non-Teaching
-                    Staff</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Our Branches</a></li>
-              </ul>
-            </li>
-
-            <!-- Academics -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                Academics
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px] w-56 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">Curriculum</a>
-                </li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Syllabus</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Co-Curricular
-                    Activities</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Academic Calendar</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">School Timings</a></li>
-                      <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">School Uniform</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">School Prayer</a></li>
-                   <li><a href="#"
-                    class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">Testimonials</a></li>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Campus Life -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                Campus Life
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px]  w-56 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">Facilities</a>
-                </li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Infrastructure</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Transport</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Campus Tour</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">School Events</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Initiatives</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Awards & Achievements</a>
-                </li>
-                 <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">School Alumni</a>
-            
-              </ul>
-            </li>
-
-            <!-- Gallery -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                Gallery
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px] w-48 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">Image
-                    Gallery</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Media Gallery</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">Video
-                    Gallery</a></li>
-              </ul>
-            </li>
-
-            <!-- Admissions -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                Admissions
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px] w-56 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">Admission
-                    Guidelines</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Fee Structure</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700">Payment Details</a></li>
-           <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">FAQ</a></li>
-              </ul>
-            </li>
-
-            <!-- Resources -->
-            <li class="relative group">
-              <button class="hover:text-yellow-400 transition duration-200 flex items-center">
-                Resources
-                <!-- <svg class="mt-[3px] w-4 h-4 transform group-hover:rotate-180 transition-transform duration-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> -->
-              </button>
-              <ul class="dropdown absolute bg-white shadow-xl rounded-lg mt-[1px] w-32 text-sm text-gray-800 z-10">
-                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-t-lg">Downloads</a>
-                </li>
-               
-                      <li><a href="#" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-700 rounded-b-lg">Prospectus</a>
-                </li>
-              </ul>
-            </li>
-
-            <li><a href="#" class="hover:text-yellow-400 transition duration-200">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center">
-        <button id="mobile-menu-button" class="hamburger-icon focus:outline-none">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile Navigation Menu (hidden by default) -->
-    <nav id="mobile-menu" class="md:hidden bg-blue-800 py-4 hidden">
-      <ul class="flex flex-col items-center space-y-4 text-white font-medium">
-        <li><a href="#" class="block px-4 py-2 hover:bg-blue-700 w-full text-center transition duration-200">Home</a>
-        </li>
-        <!-- About (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            About
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">About Us</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Message</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Management</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Teaching Staff</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Non-Teaching Staff</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Our Branches</a></li>
-          </ul>
-        </li>
-        <!-- Academics (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            Academics
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Curriculum</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Syllabus</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Co-Curricular Activities</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Academic Calendar</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Uniform & Timings</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Prayer</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Alumni</a></li>
-          </ul>
-        </li>
-        <!-- Campus Life (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            Campus Life
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Facilities</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Infrastructure</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Transport</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Campus Tour</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">School Events</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Initiatives</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Awards & Achievements</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Testimonials</a></li>
-          </ul>
-        </li>
-        <!-- Gallery (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            Gallery
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Image Gallery</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Media Gallery</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Video Gallery</a></li>
-          </ul>
-        </li>
-        <!-- Admissions (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            Admissions
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Admission Guidelines</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Fee Structure</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Payment Details</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Prospectus</a></li>
-          </ul>
-        </li>
-        <!-- Resources (Mobile) -->
-        <li class="w-full text-center relative">
-          <button class="flex items-center justify-center w-full px-4 py-2 hover:bg-blue-700"
-            onclick="toggleDropdown(event)">
-            Resources
-            <svg class="ml-1 w-4 h-4 transform transition-transform duration-200" fill="currentColor"
-              viewBox="0 0 20 20">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </button>
-          <ul class="dropdown bg-blue-700 text-sm text-white mt-2 w-full text-center">
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">Downloads</a></li>
-            <li><a href="#" class="block px-4 py-2 hover:bg-blue-600">FAQ</a></li>
-          </ul>
-        </li>
-
-        <li><a href="#" class="block px-4 py-2 hover:bg-blue-700 w-full text-center transition duration-200">Contact</a>
-        </li>
-
-        <!-- Mobile Buttons -->
-        <li class="flex flex-col space-y-3 pt-4 w-full items-center">
-          <a href="#"
-            class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-semibold text-sm px-5 py-2 rounded-full shadow-lg transition duration-300 ease-in-out w-4/5 text-center">
-            Mandatory Disclosure
-          </a>
-          <a href="#"
-            class="bg-green-500 hover:bg-green-600 text-white font-semibold text-sm px-5 py-2 rounded-full shadow-lg transition duration-300 ease-in-out w-4/5 text-center">
-            Pay Fee
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenuButton.classList.toggle('open'); // Add/remove 'open' class for hamburger animation
-    });
-
-    // Mobile dropdown toggle
-    function toggleDropdown(event) {
-      const button = event.currentTarget;
-      const dropdown = button.nextElementSibling; // The ul element
-      const svgIcon = button.querySelector('svg');
-
-      // Close other open dropdowns first, unless it's the current one
-      document.querySelectorAll('#mobile-menu .dropdown.active').forEach(openDropdown => {
-        if (openDropdown !== dropdown) {
-          openDropdown.classList.remove('active');
-          openDropdown.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+        /**
+         * 2. Sorting Function: Sorts the pages alphabetically by name.
+         */
+        function sortPages(data) {
+            return data.sort((a, b) => a.name.localeCompare(b.name));
         }
-      });
 
-      dropdown.classList.toggle('active');
-      svgIcon.classList.toggle('rotate-180');
-    }
-
-    // Close mobile menu when a link is clicked (optional, but good UX)
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (!link.parentElement.classList.contains('relative')) { // Don't close if it's a dropdown parent
-          mobileMenu.classList.add('hidden');
-          mobileMenuButton.classList.remove('open');
-          // Close any open dropdowns when menu is closed
-          document.querySelectorAll('#mobile-menu .dropdown.active').forEach(openDropdown => {
-            openDropdown.classList.remove('active');
-            openDropdown.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
-          });
+        /**
+         * 3. Grouping Function: Groups the sorted pages by their starting letter.
+         */
+        function groupPagesByLetter(data) {
+            const groups = {};
+            data.forEach(page => {
+                const firstLetter = page.name[0].toUpperCase();
+                if (!groups[firstLetter]) {
+                    groups[firstLetter] = [];
+                }
+                groups[firstLetter].push(page);
+            });
+            return groups;
         }
-      });
-    });
-  </script>
+
+        /**
+         * 4. Rendering Function: Generates the HTML for the index page.
+         */
+        function renderIndex() {
+            const container = document.getElementById('index-container');
+            if (!container) return;
+
+            // Sort and group the pages
+            const sortedPages = sortPages(pages);
+            const groupedPages = groupPagesByLetter(sortedPages);
+
+            let htmlContent = '';
+            const letters = Object.keys(groupedPages).sort();
+
+            letters.forEach(letter => {
+                const group = groupedPages[letter];
+
+                // Start of a new alphabetical section
+                htmlContent += `
+            <div class="mb-6">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">${letter}</h2>
+                <div class="card-container">
+        `;
+
+                // Create cards for the current group
+                group.forEach(page => {
+                    // Determine the full URL path for the redirect
+                    // If you're hosting at username.github.io/repo-name/
+                    // The url path should be handled carefully. Assuming a root-relative path:
+                    const fullUrl = page.url;
+
+                    htmlContent += `
+                <a href="${fullUrl}" class="
+                    block p-6 rounded-lg 
+                    bg-white shadow-lg hover:shadow-xl transition duration-300 ease-in-out
+                    border-l-4 border-indigo-500 hover:border-indigo-700
+                    transform hover:scale-[1.02]
+                ">
+                    <h3 class="text-xl font-semibold text-gray-900 truncate">${page.name}</h3>
+                    <p class="mt-2 text-indigo-600 text-sm font-medium">
+                        <span class="font-mono text-gray-500">${page.url}</span>
+                    </p>
+                    <p class="mt-4 text-xs text-gray-400">Click to view page →</p>
+                </a>
+            `;
+                });
+
+                // End of the card container and add the beautiful divider
+                htmlContent += `
+                </div>
+                <hr class="mt-8 border-t-2 border-indigo-200">
+            </div>
+        `;
+            });
+
+            container.innerHTML = htmlContent;
+        }
+
+        // Execute the rendering function when the script loads
+        document.addEventListener('DOMContentLoaded', renderIndex);
+    </script>
+
 </body>
 
 </html>
