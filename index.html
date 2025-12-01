@@ -211,13 +211,24 @@
 
     <!-- Main content -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
-        <div class="flex items-center justify-between mb-6">
-            <h2 class="text-xs sm:text-sm font-mono-custom text-slate-400">
-            </h2>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-72">
+                <input id="searchInput" type="text" placeholder="Search pages..."
+                    class="w-full bg-slate-900/70 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 font-mono-custom placeholder-slate-500 outline-none focus:border-cyan-400/80 transition" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-mono-custom">
+                    Ctrl+K
+                </span>
+            </div>
+
+            <!-- Info Text -->
             <div class="text-[11px] sm:text-xs font-mono-custom text-slate-500">
                 grouped by: <span class="text-cyan-300">first letter</span>
             </div>
+
         </div>
+
 
         <div id="index-container" class="space-y-10 sm:space-y-12"></div>
     </main>
@@ -331,6 +342,23 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
     </script>
+
+    <!-- Search Box Logic -->
+
+    <script>
+        document.getElementById("searchInput").addEventListener("input", function () {
+            const q = this.value.toLowerCase();
+
+            // All cards
+            const cards = document.querySelectorAll("#index-container a");
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(q) ? "block" : "none";
+            });
+        });
+    </script>
+
 
 </body>
 
