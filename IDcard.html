@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card Specs</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f3f5f9;
+        }
+
+        .title-accent::after {
+            content: "";
+            width: 60px;
+            height: 4px;
+            border-radius: 6px;
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            background: #4f46e5;
+        }
+
+        .card {
+            transition: all .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Premium Badge */
+        .premium-badge {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="max-w-7xl mx-auto p-6">
+
+        <!-- HEADER -->
+        <header class="mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 relative inline-block title-accent">
+                Digital ID Card Solution
+            </h1>
+            <p class="text-lg text-gray-600 mt-4 leading-relaxed">
+                A clean and simple student ID card system that delivers high clarity and consistent design.
+            </p>
+        </header>
+
+
+        <!-- MAIN GRID -->
+        <div class="grid lg:grid-cols-2 gap-12 mb-14">
+
+            <!-- LEFT : Premium Preview -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 relative title-accent">
+                    ID Card Preview
+                </h2>
+
+                <div class="relative bg-white shadow-lg rounded-2xl p-4 card overflow-hidden">
+
+                    <!-- Premium Label -->
+                    <div class="absolute top-4 left-4 px-3 py-1 rounded-full text-white text-sm font-semibold flex items-center gap-1 premium-badge shadow-md">
+                        <i data-lucide="star" class="w-4 h-4"></i>
+                        Premium Design
+                    </div>
+
+                    <!-- Image -->
+                    <img src="Image/School-ID-Card-Design.png" class="rounded-xl w-full h-auto object-cover">
+
+                    <!-- Bottom Bar -->
+                    <div class="mt-4 px-2 flex items-center justify-between">
+                        <div>
+                            <p class="text-md font-semibold text-gray-800">Premium ID Card</p>
+                            <p class="text-sm text-gray-500">High-quality layout + extra fields</p>
+                        </div>
+
+                        <!-- BUY NOW Button -->
+                        <button class="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-full shadow-md transition">
+                            Buy Now
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- RIGHT: Specifications -->
+            <section>
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 relative title-accent">
+                    ID Card Specifications
+                </h2>
+                <div id="id-specs" class="grid sm:grid-cols-2 gap-4"></div>
+            </section>
+
+        </div>
+
+
+        <!-- GENERAL SECTION -->
+        <section class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8 relative title-accent">
+                General Details
+            </h2>
+            <div id="general-specs" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+        </section>
+
+    </div>
+
+
+    <!-- EXISTING JS (same as yours) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            lucide.createIcons();
+
+            const COLORS = [
+                "text-indigo-600",
+                "text-blue-600",
+                "text-emerald-600",
+                "text-rose-600",
+                "text-amber-600"
+            ];
+            let i = 0;
+
+            const item = (icon, title, desc) => `
+        <div class="card bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex items-start gap-4">
+            <i data-lucide="${icon}" class="w-6 h-6 ${COLORS[i++ % COLORS.length]}"></i>
+            <div>
+                <p class="font-semibold text-gray-800">${title}</p>
+                <p class="text-gray-500 text-sm mt-1 leading-relaxed">${desc}</p>
+            </div>
+        </div>
+    `;
+
+            const idSpecs = [
+                ["layers", "Orientation", "Vertical (portrait)"],
+                ["ruler", "Card Size", "85 × 54 mm (CR80 standard)"],
+                ["palette", "Color Options", "Custom school theme or full-color design"],
+                ["camera", "Photo Area", "Recommended size 3.5 × 4.5 cm"],
+                ["list-checks", "Fields Included", "Name, Class, Roll No., Reg No., DOB, Contact, Guardian, Blood Group"],
+                ["plus-circle", "Extras", "Signature, QR code, Address, Emergency contact"]
+            ];
+
+            const general = [
+                ["printer", "Printer Support", "PVC card printers and commercial print houses"],
+                ["file-text", "Print Formats", "Single card, multiple card sheet, HD PDF"],
+                ["users", "Bulk Generation", "Generate for a class or entire school"],
+                ["server", "Data Source", "Secure system-based student records"]
+            ];
+
+            document.getElementById("id-specs").innerHTML = idSpecs.map(x => item(...x)).join("");
+            i = 0;
+            document.getElementById("general-specs").innerHTML = general.map(x => item(...x)).join("");
+
+            lucide.createIcons();
+        });
+    </script>
+
+</body>
+
+</html>
