@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Selection & Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+
+<div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+
+<header class="mb-10">
+    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        Website Template Manager
+    </h1>
+    <p class="mt-2 text-lg text-gray-500">
+        Manage your current school website design or select a new template.
+    </p>
+</header>
+
+<!-- ACTIVE / PREVIOUS -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+        <svg class="w-6 h-6 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
+        </svg>
+        Your Active & Previous Templates
+    </h2>
+
+    <!-- ACTIVE -->
+    <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-indigo-500 mb-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div>
+                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 mb-2">
+                    ACTIVE
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Modern School Website
+                </h3>
+                <p class="text-gray-500 text-sm">
+                    Currently live on your school domain. Active since: 01-Oct-2024
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0 space-x-3">
+                <button class="px-4 py-2 text-sm font-medium rounded-lg text-indigo-600 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 transition">
+                    Customize Design
+                </button>
+                <button class="px-4 py-2 text-sm font-medium rounded-lg text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 transition">
+                    Replace Template
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PREVIOUS -->
+    <div class="bg-white p-6 rounded-xl shadow border border-gray-200 opacity-70">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div>
+                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 mb-2">
+                    PREVIOUSLY USED
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-1">
+                    Classic School Design
+                </h3>
+                <p class="text-gray-500 text-sm">
+                    Used from 01-May-2024 to 30-Sep-2024
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <button class="px-4 py-2 text-sm font-medium rounded-lg text-gray-600 bg-gray-100 hover:bg-gray-200 transition">
+                    Revert to Template
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RECOMMENDED -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+        <svg class="w-6 h-6 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+        </svg>
+        Recommended Template for Your School
+    </h2>
+
+    <div class="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-green-500 flex flex-col lg:flex-row items-center space-y-6 lg:space-y-0 lg:space-x-8">
+        <div class="lg:w-1/3">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80"
+                 alt="School Website Design"
+                 class="w-full h-44 object-cover bg-gray-100">
+        </div>
+
+        <div class="lg:w-2/3">
+            <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800 mb-2">
+                SCHOOL DESIGN
+            </span>
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-2">
+                Smart School Pro
+            </h3>
+            <p class="text-gray-600 mb-4">
+                A fast and clean website template designed for Indian schools to showcase
+                admissions, notices, facilities and gallery.
+            </p>
+            <div class="space-x-4">
+                <button class="px-6 py-3 text-base font-medium rounded-lg shadow-md text-white bg-purple-600 hover:bg-purple-700 transition">
+                    Select & Review Cost
+                </button>
+                <a href="#" class="text-purple-600 hover:text-purple-800 font-medium inline-flex items-center">
+                    Live Preview
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- POPULAR -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+        Other Popular Designs
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="template-card">
+            <img src="https://images.unsplash.com/photo-1601582589907-f92af5ed9db8?auto=format&fit=crop&w=800&q=80"
+                 class="w-full h-40 object-cover rounded-t-xl">
+            <div class="p-4">
+                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800 mb-2">
+                    PREMIUM
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    School Corporate Design
+                </h3>
+                <button class="w-full py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700">
+                    Select Template
+                </button>
+            </div>
+        </div>
+
+        <div class="template-card">
+            <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=800&q=80"
+                 class="w-full h-40 object-cover rounded-t-xl">
+            <div class="p-4">
+                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 mb-2">
+                    FREE
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Basic School Website
+                </h3>
+                <button class="w-full py-2 text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700">
+                    Select Template
+                </button>
+            </div>
+        </div>
+
+        <div class="template-card">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80"
+                 class="w-full h-40 object-cover rounded-t-xl">
+            <div class="p-4">
+                <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800 mb-2">
+                    CUSTOMIZED
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Activity & Gallery Focus
+                </h3>
+                <button class="w-full py-2 text-sm font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700">
+                    Select Template
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="mt-10 text-center p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-blue-900">
+            🚀 Find Your Perfect Design
+        </h2>
+        <p class="mt-2 text-blue-700">
+            Can’t find what you need? Explore our complete gallery of 100+ school website templates.
+        </p>
+        <a href="/template-gallery"
+           class="mt-4 inline-flex items-center px-6 py-3 text-base font-medium rounded-full shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+            Explore All Templates
+        </a>
+    </div>
+</section>
+
+</div>
+
+<style>
+.template-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+.template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px rgba(0,0,0,0.12);
+}
+</style>
+
+</body>
+</html>

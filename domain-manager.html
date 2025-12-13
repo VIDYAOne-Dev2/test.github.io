@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain Setup & Website Launch</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .choice-card {
+            border: 2px solid #e2e8f0;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .choice-card:hover {
+            border-color: #2563eb;
+            background-color: #f8fafc;
+        }
+
+        .choice-active {
+            border-color: #2563eb;
+            background-color: #eff6ff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .support-card-tech {
+            background-color: #0f172a;
+            transition: all 0.2s ease;
+        }
+
+        .support-card-tech:hover {
+            background-color: #1e293b;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen py-14">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+        <header class="text-left mb-16 pt-4">
+
+            <h1 class="text-5xl font-extrabold text-slate-900 tracking-tighter">
+                Select Your Website Address
+            </h1>
+            <p class="mt-4 text-xl text-slate-500 max-w-3xl ">
+                Choose how your customers will find you online. You can switch or upgrade your domain later if needed.
+            </p>
+        </header>
+
+        <!-- Step 1 -->
+        <section class="mb-16">
+            <h2 class="text-xl font-semibold text-slate-800 mb-6 text-center">
+                Step 1: Choose Your Domain Type
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- Subdomain -->
+                <div id="option-subdomain" class="choice-card choice-active rounded-xl p-7"
+                    onclick="selectOption('subdomain')">
+
+                    <div class="flex gap-4">
+                        <svg class="w-8 h-8 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">
+                                Free Subdomain (Instant)
+                            </h3>
+                            <p class="text-sm text-slate-500">
+                                example.vidyaone.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-slate-600 text-sm">
+                        Best for quick launches, demos, or getting started without any setup.
+                    </p>
+                </div>
+
+                <!-- Custom Domain -->
+                <div id="option-custom" class="choice-card rounded-xl p-7" onclick="selectOption('custom')">
+
+                    <div class="flex gap-4">
+                        <svg class="w-8 h-8 text-slate-400 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900">
+                                Custom Domain (Professional)
+                            </h3>
+                            <p class="text-sm text-slate-500">
+                                yourschool.com
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="mt-4 text-slate-600 text-sm">
+                        Ideal for branding, SEO, and official school websites.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Step 2 -->
+        <section class="bg-white border border-slate-200 rounded-xl p-8 mb-20">
+
+            <!-- Subdomain View -->
+            <div id="subdomain-view">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">
+                    Step 2: Choose Your Subdomain Name
+                </h3>
+                <p class="text-sm text-slate-500 mb-5">
+                    This will be your temporary website address. You can connect a custom domain later.
+                </p>
+
+                <div class="flex">
+                    <input id="prefix-input" type="text" placeholder="yourschoolname"
+                        class="flex-1 px-4 py-3 border border-slate-300 rounded-l-lg focus:ring-blue-600 focus:border-blue-600 text-lg" />
+                    <span
+                        class="px-4 py-3 bg-slate-100 border border-l-0 border-slate-300 rounded-r-lg text-slate-600 font-medium">
+                        .vidyaone.com
+                    </span>
+                </div>
+
+                <button onclick="processSelection('subdomain')"
+                    class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg py-4 rounded-lg shadow">
+                    Launch Website with This Address
+                </button>
+            </div>
+
+            <!-- Custom Domain View -->
+            <div id="custom-domain-view" class="hidden">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">
+                    Step 2: Enter Your Domain Name
+                </h3>
+                <p class="text-sm text-slate-500 mb-5">
+                    Make sure the domain is already purchased or available for setup.
+                </p>
+
+                <input id="customDomain-input" type="text" placeholder="example.com"
+                    class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-green-600 focus:border-green-600 text-lg" />
+
+                <button onclick="processSelection('custom')"
+                    class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-semibold text-lg py-4 rounded-lg shadow">
+                    Save Domain & View DNS Instructions
+                </button>
+            </div>
+        </section>
+        <section class="mt-20 bg-white rounded-2xl p-10 lg:p-12 shadow-xl border border-gray-100">
+
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Need Help Setting Things Up?
+                </h2>
+                <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">
+                    Our dedicated support channels and resources are here to make your domain and website launch smooth
+                    and stress-free.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+
+                <a href="tel:[YOUR_SUPPORT_PHONE]"
+                    class="support-card-light text-center rounded-xl p-6 bg-gray-50 border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition duration-200 block">
+                    <svg class="w-8 h-8 mx-auto mb-3 text-blue-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.717 21 3 14.283 3 6V5z">
+                        </path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-slate-800">Call</h3>
+                    <p class="text-slate-500 text-xs mt-1">Immediate talk</p>
+                </a>
+
+                <a href="/support/live-chat"
+                    class="support-card-light text-center rounded-xl p-6 bg-gray-50 border border-gray-200 hover:border-cyan-500 hover:bg-cyan-50 transition duration-200 block">
+                    <svg class="w-8 h-8 mx-auto mb-3 text-cyan-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                        </path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-slate-800">Chat</h3>
+                    <p class="text-slate-500 text-xs mt-1">Technical team</p>
+                </a>
+
+                <a href="mailto:[YOUR_SUPPORT_EMAIL]"
+                    class="support-card-light text-center rounded-xl p-6 bg-gray-50 border border-gray-200 hover:border-yellow-500 hover:bg-yellow-50 transition duration-200 block">
+                    <svg class="w-8 h-8 mx-auto mb-3 text-yellow-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-17 4h18a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v6a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-slate-800">Mail</h3>
+                    <p class="text-slate-500 text-xs mt-1">General inquiries</p>
+                </a>
+
+                <a href="/support/book-meeting"
+                    class="support-card-light text-center rounded-xl p-6 bg-gray-50 border border-gray-200 hover:border-purple-500 hover:bg-purple-50 transition duration-200 block">
+                    <svg class="w-8 h-8 mx-auto mb-3 text-purple-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-slate-800">Meeting</h3>
+                    <p class="text-slate-500 text-xs mt-1">Guided setup call</p>
+                </a>
+
+                <a href="/support/tickets"
+                    class="support-card-light text-center rounded-xl p-6 bg-gray-50 border border-gray-200 hover:border-red-500 hover:bg-red-50 transition duration-200 block">
+                    <svg class="w-8 h-8 mx-auto mb-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                    <h3 class="text-lg font-bold text-slate-800">Tickets</h3>
+                    <p class="text-slate-500 text-xs mt-1">Track issues</p>
+                </a>
+
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-gray-200">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">
+                    Key Support Resources
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <a href="/support/dns-help"
+                        class="bg-gray-100 rounded-xl p-5 hover:bg-gray-200 transition duration-200 border border-gray-200 block">
+                        <h4 class="text-xl font-semibold text-slate-800">DNS Setup Guides</h4>
+                        <p class="text-slate-600 text-sm mt-1">Step-by-step guides for all major domain registrars.</p>
+                    </a>
+
+                    <a href="/support/domain-booking"
+                        class="bg-gray-100 rounded-xl p-5 hover:bg-gray-200 transition duration-200 border border-gray-200 block">
+                        <h4 class="text-xl font-semibold text-slate-800">Domain Purchase Assistance</h4>
+                        <p class="text-slate-600 text-sm mt-1">We’ll help you find, choose, and register your perfect
+                            domain.</p>
+                    </a>
+
+                    <a href="/support/faq"
+                        class="bg-gray-100 rounded-xl p-5 hover:bg-gray-200 transition duration-200 border border-gray-200 block">
+                        <h4 class="text-xl font-semibold text-slate-800">Knowledge Base & FAQs</h4>
+                        <p class="text-slate-600 text-sm mt-1">Browse common questions and solutions instantly.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 p-8 lg:p-12 rounded-2xl overflow-hidden shadow-xl"
+            style="background: linear-gradient(180deg, #f0f9ff 50%, #ffffff 50%);">
+
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-slate-900">
+                    Connect Your Domain Seamlessly
+                </h2>
+                <p class="mt-2 text-lg text-slate-600 max-w-xl mx-auto">
+                    Choose a provider to purchase your domain—we offer easy, pre-configured settings for all of them.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 relative z-10">
+
+                <a href="[AFFILIATE_LINK]" target="_blank"
+                    class="group bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col items-center transition hover:border-blue-500 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/godaddy.svg" alt="GoDaddy"
+                        class="h-9 grayscale group-hover:grayscale-0 transition" style="filter: invert(0.2);" />
+                    <span class="mt-2 text-base font-semibold text-slate-700">GoDaddy</span>
+                </a>
+
+                <a href="[AFFILIATE_LINK]" target="_blank"
+                    class="group bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col items-center transition hover:border-blue-500 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/namecheap.svg" alt="Namecheap"
+                        class="h-9 grayscale group-hover:grayscale-0 transition" style="filter: invert(0.2);" />
+                    <span class="mt-2 text-base font-semibold text-slate-700">Namecheap</span>
+                </a>
+
+                <a href="[AFFILIATE_LINK]" target="_blank"
+                    class="group bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col items-center transition hover:border-blue-500 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/cloudflare.svg" alt="Cloudflare"
+                        class="h-9 grayscale group-hover:grayscale-0 transition" />
+                    <span class="mt-2 text-base font-semibold text-slate-700">Cloudflare</span>
+                </a>
+
+                <a href="[AFFILIATE_LINK]" target="_blank"
+                    class="group bg-white rounded-xl border border-gray-200 shadow-md p-6 flex flex-col items-center transition hover:border-blue-500 hover:shadow-lg">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googledomains.svg"
+                        alt="Google Domains" class="h-9 grayscale group-hover:grayscale-0 transition" />
+                    <span class="mt-2 text-base font-semibold text-slate-700">Google Domains</span>
+                </a>
+
+            </div>
+
+            <p class="text-center text-sm text-slate-500 mt-10">
+                Note: You will receive the exact DNS records needed for configuration after selecting your domain option
+                above.
+            </p>
+        </section>
+
+
+    </div>
+
+    <script>
+        const cardSubdomain = document.getElementById('option-subdomain');
+        const cardCustom = document.getElementById('option-custom');
+        const viewSubdomain = document.getElementById('subdomain-view');
+        const viewCustom = document.getElementById('custom-domain-view');
+
+        function selectOption(type) {
+            const isCustom = type === 'custom';
+
+            cardSubdomain.classList.toggle('choice-active', !isCustom);
+            cardCustom.classList.toggle('choice-active', isCustom);
+
+            viewSubdomain.classList.toggle('hidden', isCustom);
+            viewCustom.classList.toggle('hidden', !isCustom);
+        }
+
+        function processSelection(type) {
+            if (type === 'subdomain') {
+                const value = prefixInput.value.trim();
+                if (!value) {
+                    alert('Please enter a subdomain name.');
+                    return;
+                }
+                alert(`Website will launch at ${value}.vidyaone.com`);
+            } else {
+                const value = customDomainInput.value.trim();
+                if (!value) {
+                    alert('Please enter a valid domain name.');
+                    return;
+                }
+                alert(`Domain saved: ${value}`);
+            }
+        }
+
+        selectOption('subdomain');
+    </script>
+
+</body>
+
+</html>
