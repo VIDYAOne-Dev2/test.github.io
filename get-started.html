@@ -4,230 +4,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Setup | Admin Panel</title>
+    <title>Website Setup | School Admin Panel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(at 0% 0%, rgba(240, 244, 255, 1) 0, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(245, 243, 255, 1) 0, transparent 50%);
+            background-color: #f8fafc;
+            background-image: radial-gradient(circle at 20% 20%, #eff6ff 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, #f5f3ff 0%, transparent 40%);
         }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        .accordion-item {
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.2, 1, 0.3, 1), padding 0.5s ease;
+            overflow: hidden;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+        .accordion-item.active .accordion-content {
+            grid-template-rows: 1fr;
+            padding-top: 2rem;
         }
 
-        .btn-primary:hover {
-            opacity: 0.9;
-            box-shadow: 0 15px 20px -3px rgba(79, 70, 229, 0.4);
+        .accordion-item.active {
+            background: white;
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.08);
+            transform: translateY(-2px);
+            border-color: #e2e8f0;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Fixed Toggle Switch Styling */
+        .toggle-checkbox:checked+.toggle-label {
+            background-color: #4f46e5;
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+        .toggle-checkbox:checked+.toggle-label .toggle-dot {
+            transform: translateX(100%);
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 min-h-screen">
+<body class="text-slate-900 min-h-screen">
 
-    <div class="max-w-7xl mx-auto px-6 py-12 lg:py-20 animate-fade-in">
+    <div class="max-w-6xl mx-auto px-6 py-16">
 
-        <!-- Header -->
-        <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-8">
-            <div>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 lg:text-5xl">
-                    Set Up Your Website
-                </h1>
-                <p class="text-slate-500 mt-3 text-lg font-medium">
-                    Manage your website settings easily. You can complete these steps anytime.
-                </p>
-            </div>
+        <header class="mb-16">
+            <nav class="text-xs font-bold text-slate-400 uppercase mb-3">
+                Admin Panel <i class="fas fa-chevron-right mx-1 text-[8px]"></i>
+                Website Setup
+            </nav>
 
-            <div class="glass-card px-6 py-4 rounded-3xl shadow-xl flex items-center gap-6 border-indigo-100">
-                <div class="text-right">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">
-                        Website Setup Progress
-                    </p>
-                    <p class="text-xl font-extrabold text-slate-800">2 / 3 Tasks</p>
-                </div>
-                <div class="relative h-14 w-14">
-                    <svg class="h-full w-full transform -rotate-90">
-                        <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="6" fill="transparent"
-                            class="text-slate-200" />
-                        <circle cx="28" cy="28" r="24" stroke="currentColor" stroke-width="6" fill="transparent"
-                            stroke-dasharray="150.8" stroke-dashoffset="50.2" stroke-linecap="round"
-                            class="text-indigo-600" />
-                    </svg>
-                    <div class="absolute inset-0 flex items-center justify-center text-xs font-black text-indigo-600">
-                        66%
-                    </div>
-                </div>
-            </div>
+            <h1 class="text-5xl font-extrabold tracking-tight">
+                Website Setup
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                    Dashboard
+                </span>
+            </h1>
+
+            <p class="mt-4 text-slate-600 max-w-2xl leading-relaxed">
+                Complete the steps below to publish and manage your school website. Changes reflect in real-time.
+            </p>
         </header>
 
-        <!-- Setup Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div class="space-y-6">
 
-            <!-- Template Selection -->
-            <a href="#" class="group glass-card p-10 rounded-[2.5rem] card-hover transition-all duration-300 relative">
-                <div
-                    class="h-16 w-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-palette text-2xl"></i>
-                </div>
-                <span
-                    class="absolute top-10 right-10 text-emerald-500 bg-emerald-50 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-emerald-100">
-                    <i class="fas fa-check-circle mr-1"></i> Completed
-                </span>
-                <h3 class="text-2xl font-bold text-slate-800 mb-3">
-                    Select Website Templates
-                </h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">
-                    Choose website templates that match your school or institute’s requirements.
-                </p>
-                <div
-                    class="pt-6 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm">
-                    Manage Templates <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-            </a>
-
-            <!-- Enable Pages -->
-            <a href="#"
-                class="group bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-indigo-200/50 border-2 border-indigo-600 card-hover transition-all duration-300 relative overflow-hidden">
-                <div class="absolute -right-4 -top-4 h-24 w-24 bg-indigo-50 rounded-full opacity-50"></div>
-                <div
-                    class="h-16 w-16 btn-primary text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg">
-                    <i class="fas fa-file-invoice text-2xl"></i>
-                </div>
-                <span
-                    class="absolute top-10 right-10 text-indigo-600 bg-indigo-50 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-indigo-100">
-                    <span class="flex h-2 w-2 rounded-full bg-indigo-600 inline-block mr-2 animate-pulse"></span> Active
-                </span>
-                <h3 class="text-2xl font-bold text-slate-800 mb-3">
-                    Enable Website Pages
-                </h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">
-                    Select and enable only the pages you want to display on your website.
-                </p>
-                <div
-                    class="pt-6 border-t border-slate-100 flex items-center justify-between text-indigo-600 font-bold text-sm">
-                    Configure Pages <i class="fas fa-arrow-right-long text-xs"></i>
-                </div>
-            </a>
-
-            <!-- Domain Configuration -->
-            <a href="#"
-                class="group glass-card p-10 rounded-[2.5rem] card-hover transition-all duration-300 border-dashed border-2 border-slate-200">
-                <div
-                    class="h-16 w-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
-                    <i class="fas fa-server text-2xl"></i>
-                </div>
-                <span
-                    class="absolute top-10 right-10 text-slate-400 bg-slate-50 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border border-slate-100">
-                    Pending
-                </span>
-                <h3 class="text-2xl font-bold text-slate-800 mb-3 text-balance">
-                    Domain Configuration
-                </h3>
-                <p class="text-slate-500 text-sm leading-relaxed mb-8">
-                    Set up your free sub-domain or connect your own custom domain.
-                </p>
-                <div
-                    class="pt-6 border-t border-slate-100 flex items-center justify-between text-slate-400 font-bold text-sm group-hover:text-indigo-600 transition-colors">
-                    Set Domain <i class="fas fa-chevron-right text-xs"></i>
-                </div>
-            </a>
-        </div>
-
-        <!-- Help & Support -->
-        <div class="mt-24 max-w-7xl mx-auto">
-            <div class="flex items-center gap-4 mb-10">
-                <h2 class="text-xl font-bold text-slate-800">Help & Support</h2>
-                <div class="h-px flex-1 bg-slate-200"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-                <a href="#"
-                    class="group p-8 rounded-[2rem] bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-50 transition-all duration-300">
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-book-open text-lg"></i>
+            <div class="accordion-item bg-white/60 backdrop-blur-md border rounded-[2.5rem] p-8 active">
+                <div class="flex justify-between items-center cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex gap-6 items-center">
+                        <div
+                            class="h-16 w-16 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center">
+                            <i class="fas fa-palette text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Website Template</h3>
+                            <p class="text-slate-500 font-medium">Choose a design layout for your school website</p>
+                        </div>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Help Guides</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Step-by-step guides to help you set up and manage your website easily.
-                    </p>
-                    <div class="mt-6 text-indigo-600 text-xs font-bold uppercase tracking-wider flex items-center">
-                        View Guides <i
-                            class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                    <div class="flex items-center gap-4">
+                        <span
+                            class="text-emerald-600 text-xs font-bold bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100 uppercase tracking-wide">Completed</span>
+                        <i class="fas fa-chevron-down text-slate-300 transition-transform duration-300 rotate-180"></i>
                     </div>
-                </a>
+                </div>
 
-                <a href="#"
-                    class="group p-8 rounded-[2rem] bg-white border border-slate-200 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-50 transition-all duration-300">
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-play text-lg"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-2">Video Tutorials</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">
-                        Learn how to manage your website with short and easy video tutorials.
-                    </p>
-                    <div class="mt-6 text-indigo-600 text-xs font-bold uppercase tracking-wider flex items-center">
-                        Watch Videos <i
-                            class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
-                    </div>
-                </a>
-
-                <div
-                    class="p-8 rounded-[2rem] bg-slate-900 text-white flex flex-col justify-between shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/20 blur-3xl rounded-full"></div>
-
-                    <div class="relative z-10">
-                        <h4 class="text-lg font-bold mb-2 text-white">
-                            Need One-to-One Support?
-                        </h4>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                            Speak with our support team for guided setup and personalised assistance.
+                <div class="accordion-content">
+                    <div class="min-h-[0px]">
+                        <p class="text-sm text-slate-500 mt-2 italic border-l-4 border-indigo-500 pl-4 py-1">
+                            Currently selected template: <strong class="text-slate-800">Modern Education</strong>
                         </p>
                     </div>
+                </div>
+            </div>
 
-                    <div class="relative z-10 flex flex-col sm:flex-row gap-3">
-                        <a href="#"
-                            class="flex-1 bg-white text-slate-900 text-center py-3 rounded-xl text-sm font-bold hover:bg-slate-100 transition-all active:scale-95">
-                            Book Live Demo
-                        </a>
-                        <a href="#"
-                            class="flex-1 bg-white/10 text-white text-center py-3 rounded-xl text-sm font-bold hover:bg-white/20 border border-white/10 transition-all">
-                            Contact Support
-                        </a>
+            <div class="accordion-item bg-white/60 backdrop-blur-md border rounded-[2.5rem] p-8">
+                <div class="flex justify-between items-center cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex gap-6 items-center">
+                        <div
+                            class="h-16 w-16 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center">
+                            <i class="fas fa-layer-group text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Page Visibility Settings</h3>
+                            <p class="text-slate-500 font-medium">Enable or disable pages on your website</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down text-slate-400 transition-transform duration-300"></i>
+                </div>
+
+                <div class="accordion-content">
+                    <div class="min-h-[0px]">
+                        <div class="grid md:grid-cols-3 gap-4 mt-2">
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">Home Page</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox" checked>
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">Contact Page</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox" checked>
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">Image Gallery</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox">
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">Admission Page </span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox">
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">About Us</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox">
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div
+                                class="flex justify-between items-center p-5 bg-white border border-slate-100 rounded-3xl shadow-sm">
+                                <span class="font-bold text-slate-700">Infrastructure Page </span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only toggle-checkbox">
+                                    <div class="w-10 h-6 bg-slate-200 rounded-full transition-colors toggle-label">
+                                        <div
+                                            class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform toggle-dot">
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-8">
+                            <button
+                                class="bg-indigo-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100">
+                                Save Page Settings
+                            </button>
+                            <a href="#" class="text-sm font-bold text-indigo-600 hover:underline">
+                                Open Advanced Page Manager <i class="fas fa-arrow-right ml-1 text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item bg-white/60 backdrop-blur-md border-dashed border-2 rounded-[2.5rem] p-8">
+                <div class="flex justify-between items-center cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex gap-6 items-center">
+                        <div class="h-16 w-16 bg-amber-50 text-amber-600 rounded-3xl flex items-center justify-center">
+                            <i class="fas fa-server text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold">Domain & Website Address</h3>
+                            <p class="text-slate-500 font-medium">Set your website address using subdomain or custom
+                                domain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span
+                            class="text-amber-600 bg-amber-50 px-3 py-1 rounded-lg font-bold text-xs uppercase tracking-wide">Pending</span>
+                        <i class="fas fa-chevron-down text-slate-300 transition-transform duration-300"></i>
+                    </div>
+                </div>
+
+                <div class="accordion-content">
+                    <div class="min-h-[0px]">
+                        <div class="grid md:grid-cols-2 gap-12 mt-4">
+                            <div class="space-y-4">
+                                <h4 class="text-lg font-extrabold">Free School Subdomain</h4>
+                                <p class="text-sm text-slate-500 leading-relaxed">
+                                    Use a free subdomain provided by us for quick website launch.
+                                </p>
+                                <div
+                                    class="flex bg-white border border-slate-200 rounded-2xl p-2 focus-within:border-indigo-500 transition-all">
+                                    <input type="text" placeholder="your-school-name"
+                                        class="flex-1 px-4 py-2 font-bold outline-none bg-transparent">
+                                    <span
+                                        class="px-4 py-2 bg-slate-100 rounded-xl font-bold text-slate-500 text-sm flex items-center">
+                                        .vidyaone.com
+                                    </span>
+                                </div>
+                                <button
+                                    class="w-full bg-slate-900 text-white py-3 rounded-2xl font-bold hover:bg-indigo-600 transition-all">
+                                    Save Subdomain
+                                </button>
+                            </div>
+
+                            <div class="border-l border-slate-100 pl-12 hidden md:block">
+                                <h4 class="text-lg font-extrabold mb-2">Use Your Own Domain</h4>
+                                <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                                    Connect a domain you already own (example: www.yourschool.com) for a professional
+                                    look.
+                                </p>
+                                <a href="#"
+                                    class="inline-flex items-center gap-2 text-indigo-600 font-bold text-sm hover:underline">
+                                    Go to Custom Domain Setup <i class="fas fa-external-link-alt text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-24 max-w-6xl mx-auto px-2">
+            <div class="flex items-center gap-6 mb-12">
+                <div class="flex items-center gap-3">
+                    <div class="h-2 w-2 rounded-full bg-indigo-600"></div>
+                    <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">
+                        Help & Support Resources
+                    </h2>
+                </div>
+                <div class="h-px flex-1 bg-gradient-to-r from-slate-200 to-transparent"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Help Articles -->
+                <a href="#"
+                    class="group relative p-8 rounded-[2.5rem] bg-white/60 backdrop-blur-md border border-slate-200 hover:border-indigo-300 hover:shadow-2xl hover:shadow-indigo-100/50 transition-all duration-500">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">
+                        Help Articles
+                    </h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+                        Step-by-step guides to help you manage templates, pages, and website settings.
+                    </p>
+                    <div class="flex items-center text-indigo-600 text-[11px] font-black uppercase tracking-[0.15em]">
+                        View Articles
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                </a>
+
+                <!-- Video Guides -->
+                <a href="#"
+                    class="group relative p-8 rounded-[2.5rem] bg-white/60 backdrop-blur-md border border-slate-200 hover:border-emerald-300 hover:shadow-2xl hover:shadow-emerald-100/50 transition-all duration-500">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-sm">
+                        <i class="fas fa-play text-lg"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">
+                        Video Guides
+                    </h4>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 font-medium">
+                        Short videos explaining website setup, domain linking, and page management.
+                    </p>
+                    <div class="flex items-center text-emerald-600 text-[11px] font-black uppercase tracking-[0.15em]">
+                        Watch Videos
+                        <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i>
+                    </div>
+                </a>
+
+                <!-- Priority Support -->
+                <div
+                    class="relative p-1 rounded-[2.6rem] bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 shadow-xl shadow-indigo-100">
+                    <div class="h-full w-full bg-white rounded-[2.5rem] p-8 flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-[10px] font-bold uppercase tracking-wider mb-6">
+                                <span class="relative flex h-2 w-2">
+                                    <span
+                                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                                </span>
+                                Priority Assistance
+                            </div>
+                            <h4 class="text-xl font-bold text-slate-900 mb-3">
+                                Need Personal Help?
+                            </h4>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-8 font-medium">
+                                Connect with our support team for one-to-one guidance on your website setup.
+                            </p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <a href="#"
+                                class="block w-full bg-slate-900 text-white text-center py-3.5 rounded-2xl text-sm font-bold hover:bg-indigo-600 shadow-lg shadow-slate-200 transition-all active:scale-95">
+                                Contact Support Team
+                            </a>
+
+                        </div>
                     </div>
                 </div>
 
@@ -236,6 +359,26 @@
 
     </div>
 
+    <script>
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // 1. Close all other accordions and reset their chevrons
+            document.querySelectorAll('.accordion-item').forEach(el => {
+                el.classList.remove('active');
+                const chevron = el.querySelector('.fa-chevron-down');
+                if (chevron) chevron.style.transform = 'rotate(0deg)';
+            });
+
+            // 2. If the clicked one wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+                const chevron = item.querySelector('.fa-chevron-down');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 
 </html>
