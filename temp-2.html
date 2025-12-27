@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .step-number {
+            -webkit-text-stroke: 1px #e2e8f0;
+            color: transparent;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .custom-shape-divider {
+            fill: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-[#f8fafc] overflow-x-hidden">
+
+<section class="relative py-24 px-6">
+    <div class="absolute top-0 -left-20 w-96 h-96 bg-purple-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob"></div>
+    <div class="absolute top-0 -right-20 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-[80px] opacity-50 animate-blob animation-delay-2000"></div>
+
+    <div class="max-w-7xl mx-auto relative">
+        
+        <div class="text-center mb-20 animate__animated animate__fadeInUp">
+            <span class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-purple-700 uppercase bg-purple-100 rounded-full">
+                Smooth Operations
+            </span>
+            <h2 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight">
+                VIDYAOne: A <span class="gradient-text">Hassle-Free</span> School Day
+            </h2>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                From morning attendance to final results, VIDYAOne quietly takes care of your daily school work without needing a single byte of internet.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <div class="group relative p-8 glass-card rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(99,102,241,0.15)] transition-all duration-500 animate__animated animate__fadeInLeft">
+                <div class="absolute -top-6 -right-4 step-number group-hover:text-purple-50 transition-colors duration-500">01</div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-bolt-lightning text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">Fast-Paced Morning</h3>
+                    <p class="text-slate-500 leading-relaxed mb-4">
+                        Work starts moving fast as students arrive. Staff generate <strong>fee receipts</strong> instantly while records update in real-time.
+                    </p>
+                    <div class="h-1 w-12 bg-indigo-500 rounded-full group-hover:w-full transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <div class="group relative p-8 glass-card rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(168,85,247,0.15)] transition-all duration-500 animate__animated animate__fadeInUp">
+                <div class="absolute -top-6 -right-4 step-number group-hover:text-purple-50 transition-colors duration-500">02</div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-face-smile text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">No-Confusion Teaching</h3>
+                    <p class="text-slate-500 leading-relaxed mb-4">
+                        Teachers enter <strong>attendance and marks</strong> with zero friction. No paper trails, no errors—just focused academic work.
+                    </p>
+                    <div class="h-1 w-12 bg-purple-500 rounded-full group-hover:w-full transition-all duration-500"></div>
+                </div>
+            </div>
+
+            <div class="group relative p-8 glass-card rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(236,72,153,0.15)] transition-all duration-500 animate__animated animate__fadeInRight">
+                <div class="absolute -top-6 -right-4 step-number group-hover:text-pink-50 transition-colors duration-500">03</div>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:-rotate-12 transition-transform">
+                        <i class="fa-solid fa-magnifying-glass-chart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">Instant Intelligence</h3>
+                    <p class="text-slate-500 leading-relaxed mb-4">
+                        Stop searching through dusty files. <strong>Academic records</strong> are a click away, organized and ready for decision-making.
+                    </p>
+                    <div class="h-1 w-12 bg-pink-500 rounded-full group-hover:w-full transition-all duration-500"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-24 p-1 rounded-[3rem] bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 animate__animated animate__zoomIn">
+            <div class="bg-white rounded-[2.8rem] p-10 md:p-16 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex h-3 w-3 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span class="font-bold text-slate-800 tracking-widest text-sm uppercase">100% Local Privacy</span>
+                    </div>
+                    <h2 class="text-4xl font-black text-slate-900 mb-6">Your Data Stays <span class="text-indigo-600 underline decoration-indigo-200 underline-offset-8">Where It Belongs.</span></h2>
+                    <p class="text-slate-500 text-lg mb-8 leading-relaxed">
+                        VIDYAOne runs entirely on your Windows hardware. No internet dependency, no outside leaks. Everything stays organized, accurate, and safely inside your school computer.
+                    </p>
+                    <button class="bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-600 transition-colors flex items-center gap-3">
+                        Experience Local Power <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-inner">
+                        <div class="flex gap-2 mb-6">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="h-4 w-3/4 bg-slate-200 rounded animate-pulse"></div>
+                            <div class="h-4 w-1/2 bg-slate-200 rounded animate-pulse"></div>
+                            <div class="h-20 w-full bg-indigo-50 rounded-2xl border border-indigo-100 flex items-center justify-center">
+                                <i class="fa-solid fa-wifi-slash text-indigo-300 text-4xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Custom tailwind config for the animation
+    tailwind.config = {
+        theme: {
+            extend: {
+                animation: {
+                    blob: "blob 7s infinite",
+                },
+                keyframes: {
+                    blob: {
+                        "0%": { transform: "translate(0px, 0px) scale(1)" },
+                        "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                        "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                        "100%": { transform: "translate(0px, 0px) scale(1)" },
+                    },
+                },
+            },
+        },
+    }
+</script>
+
+</body>
+</html>
