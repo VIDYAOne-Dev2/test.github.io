@@ -50,13 +50,68 @@
                 radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 50%);
             z-index: -1;
         }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(10deg);
+            }
+
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
+
+        .group-hover\:animate-shake {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: #D1D5DB;
+            opacity: 1;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 32px;
+            border-radius: 4px;
+            background: #2563EB !important;
+        }
     </style>
+    <style>
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: #cbd5e1;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            width: 30px;
+            border-radius: 5px;
+            background: #2563eb !important;
+        }
+
+        .swiper-slide {
+            height: auto !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body class="overflow-x-hidden">
 
     <div class="aurora"></div>
 
+    <!-- Problem Solution -->
     <section class="relative py-20 lg:py-32 px-6 bg-[#F8FAFC] overflow-hidden">
         <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-rose-100/30 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-[120px]"></div>
@@ -73,22 +128,21 @@
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                     </span>
                     <span class="text-xs font-bold uppercase tracking-widest text-slate-600">
-                        Trusted by Schools for Daily Work
+                        Used Daily by Schools Across India
                     </span>
                 </div>
 
                 <h1 class="text-5xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.1] mb-8">
-                    Manage Your School
+                    Run Your School Smoothly
                     <span
                         class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-blue-600 to-emerald-500">
-                        Without Daily Struggle
+                        From One Simple Software
                     </span>
                 </h1>
 
                 <p class="text-xl text-slate-600 max-w-7xl font-medium leading-relaxed">
-                    VIDYAOne School Management Software replaces registers, Excel files, and repeated work with a
-                    simple,
-                    reliable system installed on your school computer.
+                    VIDYAOne replaces registers, Excel sheets, and manual work with one reliable school system.
+                    Installed on your school computer. Easy for staff to use from day one.
                 </p>
             </div>
 
@@ -97,7 +151,7 @@
                 <!-- Pain Points -->
                 <div class="lg:col-span-7 space-y-4">
                     <h2 class="text-sm font-black uppercase tracking-[0.2em] text-rose-500 mb-6">
-                        Daily Problems in Schools
+                        Problems Schools Face Every Day
                     </h2>
 
                     <div
@@ -112,10 +166,11 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                Registers and Excel Everywhere
+                                Too Many Registers and Excel Files
                             </h3>
                             <p class="text-slate-600 leading-relaxed font-medium">
-                                Multiple registers, Excel sheets, and repeated entries waste time and cause confusion.
+                                Student details are written again and again in different places, wasting time and
+                                creating mistakes.
                             </p>
                         </div>
                     </div>
@@ -132,10 +187,11 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                Fee Errors and Daily Arguments
+                                Fee Confusion and Daily Complaints
                             </h3>
                             <p class="text-slate-600 leading-relaxed font-medium">
-                                Manual fee calculations lead to mistakes, parent complaints, and unnecessary stress.
+                                Manual fee calculations cause errors, arguments with parents, and unnecessary pressure
+                                on staff.
                             </p>
                         </div>
                     </div>
@@ -152,10 +208,10 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                Exam-Time Pressure
+                                Exam and Result Pressure
                             </h3>
                             <p class="text-slate-600 leading-relaxed font-medium">
-                                Result preparation, report cards, and certificates become stressful during exams.
+                                Marksheets, results, and certificates become stressful and time-consuming during exams.
                             </p>
                         </div>
                     </div>
@@ -172,11 +228,11 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">
-                                Parents Calling for Updates
+                                Parents Calling All the Time
                             </h3>
                             <p class="text-slate-600 leading-relaxed font-medium">
-                                Parents call repeatedly for fees, attendance, and results due to lack of clear
-                                information.
+                                Parents keep calling for fees, attendance, and results because information is not easily
+                                available.
                             </p>
                         </div>
                     </div>
@@ -189,12 +245,12 @@
                         <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-100/60 rounded-full blur-3xl"></div>
 
                         <h3 class="text-3xl font-bold mb-6 text-slate-900">
-                            Why Schools Choose VIDYAOne
+                            Why Schools Prefer VIDYAOne
                         </h3>
 
                         <p class="text-slate-600 mb-10 text-lg leading-relaxed">
-                            VIDYAOne School Management Software is built for real school work.
-                            Simple to use, reliable every day, and installed directly on your school computer.
+                            VIDYAOne is designed for real school work, not for technical people.
+                            Your staff can use it easily, and your daily work stays organised.
                         </p>
 
                         <ul class="space-y-6">
@@ -203,7 +259,7 @@
                                     class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
                                     ✓
                                 </div>
-                                Works smoothly without internet
+                                Works fully without internet
                             </li>
 
                             <li class="flex items-center gap-4 text-slate-800 font-semibold text-lg">
@@ -211,7 +267,7 @@
                                     class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
                                     ✓
                                 </div>
-                                Accurate fees, exams, and student records
+                                Clear and accurate fees, exams, and records
                             </li>
 
                             <li class="flex items-center gap-4 text-slate-800 font-semibold text-lg">
@@ -219,18 +275,18 @@
                                     class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600">
                                     ✓
                                 </div>
-                                Your school data stays inside the campus
+                                School data stays safe inside your campus
                             </li>
                         </ul>
 
                         <button
                             class="w-full mt-12 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all active:scale-[0.98] shadow-md">
-                            See How It Works
+                            Book a Free Demo
                         </button>
 
                         <!-- Trust Note -->
                         <p class="text-center text-sm text-slate-400 mt-6 font-medium">
-                            No spam • No sales pressure • Unsubscribe anytime
+                            No spam • No pressure • Decide only after seeing the demo
                         </p>
                     </div>
                 </div>
@@ -239,8 +295,8 @@
         </div>
     </section>
 
-
-    <section class="relative px-6 py-20 md:py-28 bg-[#FDFDFD] overflow-hidden" id="hover-trigger-section">
+    <!-- Feature Section -->
+    <section class="relative px-6 py-12  bg-[#FDFDFD] overflow-hidden" id="hover-trigger-section">
         <div
             class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_10%,_rgba(59,130,246,0.03),transparent_50%)] pointer-events-none">
         </div>
@@ -248,43 +304,75 @@
         </div>
 
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
-                <div class="max-w-6xl">
+
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16">
+                <div class="max-w-3xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-slate-900 text-white rounded-full mb-6">
                         <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
-                        <span class="text-[10px] font-bold uppercase tracking-widest">The Core Engine</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">
+                            Daily School Work Made Easy
+                        </span>
                     </div>
 
-                    <h2
-                        class="text-5xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight md:leading-[0.9] mb-6">
-                        Streamline Your Entire School
-                        <span class="bg-gradient-to-r from-blue-600 to-rose-600 bg-clip-text text-transparent">
-                            With VIDYAOne.
+                    <h2 class="text-5xl md:text-5xl font-black text-slate-900 tracking-tighter leading-[0.95] mb-6">
+                        One Software for
+                        <span
+                            class="bg-gradient-to-r from-blue-600 via-green-500 to-rose-600 bg-clip-text text-transparent">
+                            Your Entire School
                         </span>
                     </h2>
 
-                    <p class="text-lg text-slate-500 font-medium ">
-                        VIDYAOne School Management Software is a powerful offline Windows-based solution that brings
-                        reliability to Indian schools without depending on the internet.
+                    <p class="text-xl text-slate-500 font-medium leading-relaxed">
+                        VIDYAOne is a simple, offline school management software made for Indian schools.
+                        It runs on your Windows computer and works smoothly without internet.
                     </p>
+                </div>
 
+                <div class="flex flex-wrap items-center gap-5 lg:pb-2">
 
+                    <a href="/tour"
+                        class="group relative flex items-center gap-3 px-10 py-5 bg-gradient-to-br from-blue-600 to-green-500 text-white rounded-2xl font-bold transition-all hover:scale-105 hover:rotate-1 active:scale-95 shadow-[0_20px_40px_-10px_rgba(37,99,235,0.4)]">
+                        <span class="relative z-10">Product Tour</span>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                        <div
+                            class="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400 to-green-300 opacity-0 group-hover:opacity-100 transition-opacity blur-lg -z-10">
+                        </div>
+                    </a>
+
+                    <a href="/pricing"
+                        class="group flex items-center gap-2 px-10 py-5 bg-white text-slate-900 border-2 border-rose-100 rounded-2xl font-bold hover:border-rose-500 hover:text-rose-600 transition-all active:scale-95 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 text-rose-500 group-hover:scale-110 transition-transform" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span
+                            class="bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text group-hover:text-transparent transition-all">View
+                            Pricing</span>
+                    </a>
                 </div>
             </div>
-
+            <!-- Video + Highlights -->
             <div class="grid lg:grid-cols-12 gap-8 mb-16">
                 <div
                     class="lg:col-span-8 group relative bg-slate-100 rounded-[3rem] p-3 border border-slate-200/60 shadow-2xl transition-all duration-700">
                     <div class="relative aspect-video rounded-[2.5rem] overflow-hidden bg-black shadow-inner">
                         <iframe
                             class="absolute inset-0 w-full h-full opacity-90 group-hover:opacity-100 transition-opacity"
-                            src="https://www.youtube.com/embed/S1yK4Njz5SI" title="Demo" frameborder="0"
+                            src="https://www.youtube.com/embed/S1yK4Njz5SI" title="VIDYAOne Demo" frameborder="0"
                             allowfullscreen></iframe>
                     </div>
-
                 </div>
 
                 <div class="lg:col-span-4 flex flex-col gap-4">
+
+                    <!-- Admission -->
                     <div
                         class="group relative flex-1 bg-white border border-slate-100 rounded-[2.5rem] p-8 shadow-sm hover:shadow-md transition-all">
                         <div
@@ -295,18 +383,25 @@
                                     stroke-width="2" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-black text-slate-900 mb-2">Smart Admission</h3>
-                        <p class="text-sm text-slate-500 mb-4">Capture enquiries and convert them with one click.</p>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">
+                            Admission & Enquiries
+                        </h3>
+                        <p class="text-sm text-slate-500 mb-4">
+                            Record all enquiries, follow up easily, and convert them into confirmed admissions.
+                        </p>
                         <div class="flex flex-wrap gap-2">
                             <a href="/enquiry-management"
-                                class="px-3 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">Manage
-                                Enquiries</a>
+                                class="px-3 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-bold">
+                                Enquiry Register
+                            </a>
                             <a href="/book-live-demo"
-                                class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">See
-                                Workflow →</a>
+                                class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">
+                                See Demo →
+                            </a>
                         </div>
                     </div>
 
+                    <!-- Parent Communication -->
                     <div
                         class="group relative flex-1 bg-white border border-slate-100 rounded-[2.5rem] p-8 shadow-sm hover:shadow-md transition-all">
                         <div
@@ -317,131 +412,123 @@
                                     stroke-width="2" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-black text-slate-900 mb-2">Parent Connect</h3>
-                        <p class="text-sm text-slate-500 mb-4">Built-in SMS engine for fees and alerts.</p>
+                        <h3 class="text-xl font-black text-slate-900 mb-2">
+                            Parent Communication
+                        </h3>
+                        <p class="text-sm text-slate-500 mb-4">
+                            Send fee reminders, notices, and updates without repeated phone calls.
+                        </p>
                         <div class="flex flex-wrap gap-2">
                             <a href="/sms-management"
-                                class="px-3 py-1.5 rounded-full bg-rose-600 text-white text-[10px] font-bold">Send
-                                SMS</a>
+                                class="px-3 py-1.5 rounded-full bg-rose-600 text-white text-[10px] font-bold">
+                                Send SMS
+                            </a>
                             <a href="/sms-management#auto-settings"
-                                class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">Auto-SMS
-                                →</a>
+                                class="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold">
+                                Auto Alerts →
+                            </a>
                         </div>
                     </div>
+
                 </div>
             </div>
 
-            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
-                <h3 class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500">Explore VIDYAOne Modules
-                </h3>
-                <div class="flex gap-2">
-                    <a href="/school-software-tour"
-                        class="px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-semibold hover:bg-black transition">Full
-                        Software Tour</a>
-                    <a href="/pricing"
-                        class="px-4 py-2 rounded-full bg-white border border-slate-200 text-xs font-semibold hover:border-slate-400 transition">View
-                        Pricing</a>
+            <section class="">
+                <div class="swiper moduleCarousel pb-16">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide h-auto">
+                            <a href="/certificates"
+                                class="group h-full flex flex-col p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-100 transition-all duration-500">
+                                <div
+                                    class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Certificates</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Generate professional
+                                    TC, Bonafide, and student ID cards instantly with custom templates.</p>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <a href="/admin"
+                                class="group h-full flex flex-col p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-500">
+                                <div
+                                    class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2"
+                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Admin Control</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Granular permission
+                                    settings. Control who sees what with advanced role-based access.</p>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <a href="/bell"
+                                class="group h-full flex flex-col p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-100 transition-all duration-500">
+                                <div
+                                    class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:animate-bounce transition-all">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2"
+                                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Smart Bell</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Automate period
+                                    timings and break announcements across the campus integrated hardware.</p>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <a href="/backup"
+                                class="group h-full flex flex-col p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-100 transition-all duration-500">
+                                <div
+                                    class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Cloud Backup</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Real-time sync with
+                                    Google Drive. Your data is always safe, encrypted, and retrievable.</p>
+                            </a>
+                        </div>
+
+                        <div class="swiper-slide h-auto">
+                            <a href="/registration"
+                                class="group h-full flex flex-col p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:border-rose-500/30 hover:shadow-2xl hover:shadow-rose-100 transition-all duration-500">
+                                <div
+                                    class="w-14 h-14 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-all">
+                                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-width="2"
+                                            d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                                    </svg>
+                                </div>
+                                <h4 class="text-lg font-bold text-slate-900 mb-2">Registration</h4>
+                                <p class="text-sm text-slate-500 font-medium leading-relaxed">Seamless student
+                                    onboarding with digital forms, document uploads, and fee mapping.</p>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-pagination"></div>
                 </div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <a href="/certificates-documentation"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-emerald-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Certificates</p>
-                    <p class="text-[10px] text-emerald-700 font-semibold ">Browse Formats</p>
-                </a>
-
-                <a href="/enquiry-management"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-blue-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:-rotate-6 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2"
-                                d="M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Enquiry Desk</p>
-                    <p class="text-[10px] text-blue-700 font-semibold ">Enquiry Register</p>
-                </a>
-
-                <a href="/attendance-management"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-purple-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Attendance</p>
-                    <p class="text-[10px] text-purple-700 font-semibold ">Open Module</p>
-                </a>
-
-                <a href="/transport-management"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-orange-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Transport</p>
-                    <p class="text-[10px] text-orange-700 font-semibold ">Manage Routes</p>
-                </a>
-
-                <a href="/inventory-management"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-rose-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center mb-4 group-hover:-rotate-6 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Inventory</p>
-                    <p class="text-[10px] text-rose-700 font-semibold ">Stock & Store</p>
-                </a>
-
-                <a href="/accounts-management"
-                    class="group flex flex-col items-center text-center p-6 bg-slate-50 hover:bg-white border border-transparent hover:border-slate-500/20 hover:shadow-xl rounded-[2rem] transition-all duration-300">
-                    <div
-                        class="w-12 h-12 bg-slate-200 text-slate-700 rounded-xl flex items-center justify-center mb-4 group-hover:rotate-6 transition-transform">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2" />
-                        </svg>
-                    </div>
-                    <p class="text-sm font-bold text-slate-900 uppercase tracking-tight mb-1">Accounts</p>
-                    <p class="text-[10px] text-slate-700 font-semibold ">Ledger & Reports</p>
-                </a>
-            </div>
-
-            <div
-                class="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 p-8 border border-slate-100 rounded-[2.5rem] bg-white/50">
-                <p class="text-sm text-slate-600 font-medium max-w-lg">
-                    Ready to bring VIDYAOne School Management Software to your campus? Get a personalised walkthrough on
-                    your Windows system.
-                </p>
-                <div class="flex flex-wrap gap-3">
-                    <a href="/book-live-demo"
-                        class="px-6 py-3 rounded-full bg-blue-600 text-white text-sm font-semibold shadow-lg shadow-blue-500/30 hover:bg-blue-700 transition">Book
-                        Live Demo</a>
-                    <a href="/order-now"
-                        class="px-5 py-3 rounded-full bg-emerald-500 text-white text-sm font-semibold hover:bg-emerald-600 transition">Order
-                        Full Version</a>
-                </div>
-            </div>
         </div>
     </section>
 
-
-    <section class="relative py-24 px-6 bg-white overflow-hidden">
+    <!-- Fees and Exam -->
+    <section class="relative py-12 px-6 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto relative z-10">
+
+            <!-- Section Header -->
             <div class="mb-16">
                 <div
                     class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-100 mb-6">
@@ -449,15 +536,17 @@
                         Fees & Exams
                     </span>
                 </div>
+
                 <h2 class="text-4xl md:text-6xl font-black text-slate-900 leading-tight tracking-tight">
                     Fees and Exams,
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-blue-600">
-                        Handled Smoothly, Offline
+                        Made Simple for Schools
                     </span>
                 </h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+
                 <!-- Fee Management -->
                 <div
                     class="md:col-span-6 group bg-white border border-slate-200 rounded-[2.5rem] p-8 md:p-10 shadow-sm hover:shadow-blue-50 transition-all duration-500">
@@ -465,16 +554,20 @@
                         class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 font-bold">
                         ₹
                     </div>
+
                     <span class="text-blue-600 font-bold text-xs uppercase tracking-widest block mb-3">
                         Fee Management
                     </span>
+
                     <h3 class="text-3xl font-bold text-slate-900 mb-4 leading-tight">
-                        Daily Fee Work, Clear and Accurate
+                        No More Fee Confusion
                     </h3>
+
                     <p class="text-slate-600 mb-6 font-medium">
-                        VIDYAOne School Management Software helps schools manage fee collection without confusion.
-                        From instalments to receipts, everything works reliably on a fully offline Windows system.
+                        Manage school fees with confidence.
+                        VIDYAOne keeps every payment, balance, and receipt clear and accurate on a fully offline system.
                     </p>
+
                     <ul class="space-y-3 text-slate-700 mb-10 font-medium">
                         <li class="flex items-center gap-2">
                             <span class="text-blue-500 font-bold">✓</span>
@@ -482,13 +575,18 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="text-blue-500 font-bold">✓</span>
-                            Share fee cards and estimates with parents
+                            Maintain fee cards, dues, and instalments
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-blue-500 font-bold">✓</span>
+                            Fewer disputes and fewer parent complaints
                         </li>
                     </ul>
+
                     <div class="flex gap-3">
                         <a href="/fee-collection"
                             class="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-slate-900 transition">
-                            Explore Fee Collection
+                            View Fee Module
                         </a>
                     </div>
                 </div>
@@ -503,37 +601,46 @@
                             </path>
                         </svg>
                     </div>
+
                     <span class="text-rose-600 font-bold text-xs uppercase tracking-widest block mb-3">
                         Exam Management
                     </span>
+
                     <h3 class="text-3xl font-bold text-slate-900 mb-4 leading-tight">
-                        Exams Without Last-Minute Stress
+                        Stress-Free Exams and Results
                     </h3>
+
                     <p class="text-slate-600 mb-6 font-medium">
-                        Plan exams, enter marks, and generate results confidently.
-                        VIDYAOne supports CBSE, ICSE, State Boards and custom formats, all on a secure offline system.
+                        Conduct exams smoothly without last-minute rush.
+                        Enter marks once and generate results, report cards, and rankings with ease.
                     </p>
+
                     <ul class="space-y-3 text-slate-700 mb-10 font-medium">
                         <li class="flex items-center gap-2">
                             <span class="text-rose-500 font-bold">✓</span>
-                            Board-wise grading and assessment formats
+                            Supports CBSE, ICSE, State Board and custom exams
                         </li>
                         <li class="flex items-center gap-2">
                             <span class="text-rose-500 font-bold">✓</span>
-                            Merit lists, rankings and result export
+                            Automatic grades, totals, and rankings
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="text-rose-500 font-bold">✓</span>
+                            Print marksheets and share results easily
                         </li>
                     </ul>
+
                     <div class="flex gap-3">
                         <a href="/exam-management"
                             class="px-6 py-3 bg-rose-600 text-white rounded-xl font-bold text-sm hover:bg-slate-900 transition">
-                            Explore Exam Module
+                            View Exam Module
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
-
 
     <!-- Lets Start -->
     <section class="relative py-24 px-6 bg-[#F9FAFB] overflow-hidden">
@@ -563,21 +670,22 @@
                         </div>
 
                         <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
-                            Start Using VIDYAOne,<br />
+                            Start Using VIDYAOne<br />
                             <span class="text-slate-700">
-                                Step by Step
+                                Without Any Difficulty
                             </span>
                         </h2>
 
                         <p class="text-base md:text-lg text-slate-600 max-w-xl leading-relaxed mb-6">
-                            We help your school move to VIDYAOne smoothly. The software is installed on your school
-                            computer, your staff is guided patiently, and daily work continues without interruption.
+                            We help your school start VIDYAOne step by step.
+                            The software is installed on your school computer, staff are guided clearly,
+                            and daily work continues smoothly.
                         </p>
 
                         <p class="text-sm font-semibold text-slate-700">
                             <a href="/book-demo" class="hover:text-blue-600 transition-all">Book a Demo</a>
                             <span class="mx-2">|</span>
-                            <a href="/start-trial" class="hover:text-blue-600 transition-all">Try the Software</a>
+                            <a href="/start-trial" class="hover:text-blue-600 transition-all">Start Free Trial</a>
                         </p>
                     </div>
 
@@ -592,11 +700,11 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 mb-1">
-                                    Setup and Training
+                                    Installation and Training
                                 </h3>
                                 <p class="text-sm text-slate-600 leading-relaxed max-w-md">
-                                    We install the software, help with basic data entry, and train your staff
-                                    on admissions, student records, and fees.
+                                    We install the software, help with initial setup,
+                                    and train your staff on basic school work like admissions, fees, and records.
                                 </p>
                             </div>
                         </div>
@@ -608,11 +716,11 @@
                             </div>
                             <div>
                                 <h3 class="text-lg font-bold text-slate-900 mb-1">
-                                    Daily School Work
+                                    Regular Office Work
                                 </h3>
                                 <p class="text-sm text-slate-600 leading-relaxed max-w-md">
                                     Attendance, fee collection, certificates, and office work
-                                    start running through VIDYAOne in your regular routine.
+                                    are handled daily using VIDYAOne without confusion.
                                 </p>
                             </div>
                         </div>
@@ -627,8 +735,8 @@
                                     Exams and Results
                                 </h3>
                                 <p class="text-sm text-slate-600 leading-relaxed max-w-md">
-                                    Exams, marks, report cards, and results are handled calmly,
-                                    without last-minute pressure.
+                                    Exams, marks entry, report cards, and results
+                                    are managed calmly without last-minute stress.
                                 </p>
                             </div>
                         </div>
@@ -648,18 +756,18 @@
                                 </svg>
                             </div>
                             <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                                Full-Year Support
+                                Year-Round Support
                             </span>
                         </div>
 
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-6 leading-tight">
-                            Support for the Entire School Year
+                        <h3 class="text-2xl md:text-2xl font-extrabold text-slate-900 mb-6 leading-tight">
+                            Support for the Full Academic Year
                         </h3>
 
                         <p class="text-slate-600 leading-relaxed mb-10 text-base">
-                            Our support does not stop after installation.
-                            We assist your school throughout the academic year,
-                            from admissions to final results.
+                            Our work does not stop after installation.
+                            We support your school throughout the year,
+                            from the first admission to the final exam result.
                         </p>
 
                         <div class="space-y-6">
@@ -704,7 +812,7 @@
                                 </svg>
                             </div>
                             <span class="text-slate-600 text-sm font-semibold">
-                                One support team for the complete academic session.
+                                Dedicated Expert support team for the whole year.
                             </span>
                         </div>
 
@@ -724,6 +832,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- CTA Section -->
     <section class="relative py-28 px-6 bg-[#fffafb] overflow-hidden">
@@ -885,174 +994,152 @@
         </div>
     </section>
 
-    <!-- Customization Section -->
-    <section class="relative min-h-screen py-24 px-6 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
-        <div
-            class="absolute top-0 right-0 w-[600px] h-[600px] bg-rose-50/50 rounded-full blur-[120px] -z-10 animate-pulse">
+    <section class="relative min-h-screen py-24 px-6 bg-[#FAFBFF] overflow-hidden">
+        <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-rose-100/40 rounded-full blur-[120px] -z-10">
         </div>
-        <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-[100px] -z-10"></div>
+        <div
+            class="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-[120px] -z-10">
+        </div>
 
         <div class="max-w-7xl mx-auto">
-            <div class="mb-20 space-y-6">
-                <div class="flex items-center gap-3 text-rose-600 font-bold tracking-[0.2em] uppercase text-xs">
-                    <span class="w-10 h-[2px] bg-rose-600 rounded-full"></span>
-                    Customization Support
-                </div>
-                <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                    Use Your Format.
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-blue-600 to-emerald-600">
-                        Or Build One With Us.
-                    </span>
-                </h2>
-                <p class="text-lg md:text-xl text-slate-600 max-w-6xl font-medium leading-relaxed">
-                    Every school works in its own way. With VIDYAOne, you do not need to change your existing
-                    designs or formats. You can continue with what you already use, or make small changes
-                    whenever required. If you have a new idea, we are happy to work with you.
-                </p>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-50 border border-rose-100 mb-6">
+                <span class="text-rose-700 font-bold text-[10px] uppercase tracking-[0.2em]">
+                    Customization available
+                </span>
             </div>
 
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-                <div class="lg:col-span-5 space-y-4">
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
+                Software That Matches Your School
+                <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-blue-600 to-green-600">
+                    Your Formats Stay the Same
+                </span>
+            </h2>
 
-                    <div
-                        class="group relative p-6 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-transparent hover:border-rose-100">
-                        <div class="flex items-start gap-6">
-                            <div
-                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-rose-500 text-white flex items-center justify-center shadow-lg shadow-rose-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">ID Cards</h3>
-                                <p class="text-slate-500 leading-relaxed text-sm font-medium">
-                                    Use your current ID card design or adjust it slowly.
-                                    Layout, fields, size, and details can be changed as per your school’s preference.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
 
-                    <div
-                        class="group relative p-6 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-transparent hover:border-blue-100">
-                        <div class="flex items-start gap-6">
-                            <div
-                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12h6m-6 4h6" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Marksheets</h3>
-                                <p class="text-slate-500 leading-relaxed text-sm font-medium">
-                                    Continue with your existing marksheet format or modify grading,
-                                    columns, or layout to match your board or internal rules.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="group relative p-6 rounded-3xl transition-all duration-500 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-transparent hover:border-emerald-100">
-                        <div class="flex items-start gap-6">
-                            <div
-                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-lg shadow-emerald-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 20H5a2 2 0 01-2-2V6" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-2">Reports & Documents</h3>
-                                <p class="text-slate-500 leading-relaxed text-sm font-medium">
-                                    Academic reports, admit cards, certificates, and summaries can be used
-                                    as they are, or updated whenever your school needs a change.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-7 relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-tr from-rose-50 via-blue-50 to-emerald-50 rounded-[3rem] -rotate-1 scale-105 opacity-50 blur-sm">
-                    </div>
-
-                    <div
-                        class="relative bg-white rounded-[2.5rem] p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)] border border-slate-200/60">
-                        <h4 class="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
-                            Format Examples
-                            <span
-                                class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] rounded-md uppercase tracking-wider font-bold">
-                                Optional
-                            </span>
-                        </h4>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <a href="/student-marksheet-and-result"
-                                class="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-rose-600 hover:border-rose-600 transition-all duration-300">
-                                <div class="text-lg font-bold text-slate-900 group-hover:text-white">
-                                    Marksheet Formats
-                                </div>
-                                <p class="text-xs text-slate-500 mt-1 group-hover:text-rose-100">
-                                    View sample layouts
-                                </p>
-                            </a>
-
-                            <a href="/student-id-cards"
-                                class="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-blue-600 hover:border-blue-600 transition-all duration-300">
-                                <div class="text-lg font-bold text-slate-900 group-hover:text-white">
-                                    ID Card Samples
-                                </div>
-                                <p class="text-xs text-slate-500 mt-1 group-hover:text-blue-100">
-                                    Optional designs
-                                </p>
-                            </a>
-
-                            <a href="/student-admit-card-and-exam-marks"
-                                class="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-emerald-600 hover:border-emerald-600 transition-all duration-300">
-                                <div class="text-lg font-bold text-slate-900 group-hover:text-white">
-                                    Admit Cards
-                                </div>
-                                <p class="text-xs text-slate-500 mt-1 group-hover:text-emerald-100">
-                                    Use or modify
-                                </p>
-                            </a>
-
-                            <a href="/school-software-tour"
-                                class="group p-5 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-slate-900 hover:border-slate-900 transition-all duration-300">
-                                <div class="text-lg font-bold text-slate-900 group-hover:text-white">
-                                    Reports Preview
-                                </div>
-                                <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-400">
-                                    See how reports work
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div
-                class="mt-12 p-8 md:p-12 bg-white rounded-[3rem] border border-slate-100 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] flex flex-col md:flex-row items-center justify-between gap-8">
                 <div
-                    class="text-2xl md:text-3xl font-bold text-slate-900 max-w-xl text-center md:text-left leading-tight">
-                    Have a format in mind or want to improve an existing one?
-                    <span class="text-rose-600">Let’s work on it together.</span>
+                    class="md:col-span-8 group relative bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-200/60 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                    <div
+                        class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 transition-transform group-hover:scale-110">
+                    </div>
+
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <span
+                                class="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-bold mb-6">
+                                Marksheet Customisation
+                            </span>
+                            <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                                Marksheet Formats That Match Your Board
+                            </h3>
+                            <p class="text-slate-600 text-lg  font-medium">
+                                Choose from <strong>150+ marksheet formats covering CBSE</strong>,
+                                ICSE and State Boards.
+                                If your school follows a different structure,
+                                we customise the marksheet exactly as per your rules.
+                            </p>
+                        </div>
+                        <div class="mt-8">
+                            <a href="/contact"
+                                class="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white rounded-2xl font-bold hover:bg-blue-600 transition-colors shadow-lg shadow-red-200">
+                                Customise Marksheet
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <a href="/contact"
-                    class="w-full md:w-auto px-10 py-5 bg-blue-600 text-white font-black rounded-full hover:bg-rose-600 hover:shadow-2xl transition-all duration-300 shadow-xl shadow-blue-100 uppercase">
-                    Talk to Our Team
-                </a>
+
+                <div
+                    class="md:col-span-4 group bg-white p-8 rounded-[2.5rem] border-t-4 border-pink-500 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all duration-500">
+                    <div class="w-16 h-16 bg-pink-50 text-pink-600 rounded-2xl flex items-center justify-center mb-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900 mb-4">
+                        Student ID Cards in Your Style
+                    </h3>
+                    <p class="text-slate-600 font-medium mb-8">
+                        Select from 10+ ID card formats or share your existing design.
+                        We match the layout, colours, fields and barcode setup
+                        so printing is quick and consistent.
+                    </p>
+                    <a href="/contact"
+                        class="text-pink-600 font-black flex items-center gap-2 group-hover:gap-4 transition-all">
+                        Customise ID Card →
+                    </a>
+                </div>
+
+                <div
+                    class="md:col-span-6 group bg-white p-8 rounded-[2.5rem] border-t-4 border-green-500 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-2xl transition-all duration-500">
+                    <div class="flex items-start gap-6">
+                        <div
+                            class="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-black text-slate-900 mb-2">
+                                Certificates That Look Official
+                            </h3>
+                            <p class="text-slate-600 font-medium mb-4">
+                                Transfer Certificate, Bonafide and Fee Receipts
+                                are customised with your wording, layout
+                                and authorised sign areas.
+                            </p>
+                            <a href="/contact" class="text-green-600 font-black text-sm uppercase tracking-wider">
+                                Customise Certificates
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="md:col-span-6 group relative bg-white p-10 rounded-[3rem] border-2 border-dashed border-slate-200 hover:border-blue-500/50 hover:bg-blue-50/30 transition-all duration-500 flex flex-col items-center justify-center overflow-hidden">
+
+                    <div
+                        class="absolute -top-10 -right-10 w-32 h-32 bg-blue-50 rounded-full group-hover:scale-150 transition-transform duration-700">
+                    </div>
+
+                    <div class="relative z-10 text-center">
+
+                        <h3 class="text-2xl md:text-3xl font-black text-slate-900 mb-3">
+                            Already using a format?
+                        </h3>
+
+                        <p class="text-slate-600 font-medium mb-4 mx-auto leading-relaxed">
+                            Don't change your workflow. Send us your current documents and we will <span
+                                class="text-blue-600 font-bold">match them exactly</span>.
+                        </p>
+
+                        <a href="/contact"
+                            class="inline-flex items-center gap-3 px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 hover:shadow-xl hover:shadow-blue-200 transition-all active:scale-95">
+                            <span>SHARE YOUR FORMAT</span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- Comparison Section -->
     <section class="relative py-12 px-6 bg-white overflow-hidden">
@@ -1240,107 +1327,149 @@
 
 
 
-
     <div id="orderModal"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-500">
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500">
 
         <div id="modalContent"
-            class="relative bg-white w-full max-w-3xl rounded-[2rem] shadow-[0_40px_100px_-15px_rgba(0,0,0,0.3)] border border-slate-100 overflow-hidden transform scale-95 opacity-0 transition-all duration-500">
+            class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border border-white/20 overflow-hidden transform scale-90 opacity-0 transition-all duration-500">
 
             <button onclick="closeModal()"
-                class="absolute top-6 right-6 z-20 p-2 text-slate-400 hover:text-rose-500 hover:bg-rose-50 rounded-full transition-all">
+                class="absolute top-6 right-6 z-30 p-2 text-slate-400 hover:text-white hover:bg-rose-500 rounded-full transition-all duration-300">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
 
-            <div class="flex flex-col md:flex-row min-h-[450px]">
-                <div class="md:w-5/12 bg-slate-50 p-10 flex flex-col justify-center relative border-r border-slate-100">
-                    <div class="absolute top-0 left-0 w-full h-full opacity-30">
-                        <div class="absolute top-10 left-10 w-32 h-32 bg-yellow-200 rounded-full blur-3xl"></div>
-                        <div class="absolute bottom-10 right-10 w-32 h-32 bg-rose-200 rounded-full blur-3xl"></div>
+            <div class="flex flex-col lg:flex-row min-h-[520px]">
+
+                <div class="lg:w-5/12 bg-slate-950 p-12 flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute top-[-10%] left-[-10%] w-64 h-64 bg-blue-600/30 rounded-full blur-[80px]">
+                    </div>
+                    <div class="absolute bottom-[-10%] right-[-10%] w-64 h-64 bg-rose-600/20 rounded-full blur-[80px]">
                     </div>
 
                     <div class="relative z-10">
                         <div
-                            class="inline-block px-3 py-1 rounded-md bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider mb-4">
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                             Limited Time Offer
                         </div>
-                        <h2 class="text-4xl font-black text-slate-900 leading-[0.9] mb-4">
-                            Unlock <br><span class="text-blue-600">Full Access.</span>
+
+                        <h2 class="text-5xl font-black text-white leading-[0.9] mb-6 tracking-tighter">
+                            Unlock <br><span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-400 to-rose-400">Full
+                                Access.</span>
                         </h2>
-                        <p class="text-sm text-slate-500 font-medium leading-relaxed">
-                            Join 1500+ schools streamlining their administration with VIDYAOne.
+
+                        <p class="text-slate-400 text-base font-medium leading-relaxed mb-8">
+                            Join <span class="text-white font-bold">1500+ schools</span> across India streamlining
+                            administration with VIDYAOne's offline power.
                         </p>
+
+                        <div class="flex items-center gap-3">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-blue-500"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-green-500"></div>
+                                <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-rose-500"></div>
+                            </div>
+                            <span class="text-xs text-slate-500 font-bold uppercase tracking-widest">Trusted by
+                                Principals</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="md:w-7/12 p-10 flex flex-col justify-center">
-                    <h3 class="text-xl font-bold text-slate-900 mb-6">Our Commitments to You</h3>
+                <div class="lg:w-7/12 p-12 bg-white flex flex-col justify-center">
+                    <h3 class="text-2xl font-black text-slate-900 mb-8 tracking-tight">Our Commitment to You</h3>
 
-                    <div class="space-y-6 mb-8">
-                        <div class="flex gap-4">
+                    <div class="grid gap-8 mb-10">
+                        <div class="flex gap-5 group">
                             <div
-                                class="flex-shrink-0 w-10 h-10 rounded-2xl bg-rose-50 flex items-center justify-center text-rose-500">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-slate-900">Privacy First</h4>
+                                <p class="text-sm text-slate-500 leading-snug">Your data stays on your local machine.
+                                    Encrypted and strictly private.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5 group">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-green-50 text-green-600 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2"
+                                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-slate-900">Priority Support</h4>
+                                <p class="text-sm text-slate-500 leading-snug">Direct access to our developers. No bots,
+                                    just expert human help.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5 group">
+                            <div
+                                class="flex-shrink-0 w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-width="2"
                                         d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                 </svg>
                             </div>
                             <div>
-                                <p class="text-sm font-bold text-slate-800">Privacy First</p>
-                                <p class="text-xs text-slate-500">Your school data is encrypted and strictly private.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 w-10 h-10 rounded-2xl bg-yellow-50 flex items-center justify-center text-yellow-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-slate-800">No Spam Policy</p>
-                                <p class="text-xs text-slate-500">Communication only during your relevant working hours.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-4">
-                            <div
-                                class="flex-shrink-0 w-10 h-10 rounded-2xl bg-green-50 flex items-center justify-center text-green-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 12l2 2 4-4" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-sm font-bold text-slate-800">Direct Support</p>
-                                <p class="text-xs text-slate-500">No bots. Direct contact with our technical team.</p>
+                                <h4 class="text-base font-bold text-slate-900">Spam-Free Promise</h4>
+                                <p class="text-sm text-slate-500 leading-snug">We respect your time. Contact only during
+                                    your school hours.</p>
                             </div>
                         </div>
                     </div>
 
                     <a href="/order-now"
-                        class="group flex items-center justify-center gap-3 w-full py-4 bg-slate-900 hover:bg-blue-600 text-white font-bold rounded-2xl transition-all duration-300 shadow-xl shadow-slate-200 hover:shadow-blue-200">
-                        <span>Order Full Version Now</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                        class="group relative flex items-center justify-center gap-3 w-full py-5 bg-slate-900 text-white font-black rounded-2xl transition-all duration-300 hover:bg-blue-600 shadow-[0_20px_40px_-10px_rgba(15,23,42,0.3)] hover:shadow-blue-200 active:scale-95">
+                        <span class="relative z-10">Order Full Version Now</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform relative z-10" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
                     </a>
 
-                    <p class="text-center text-[10px] text-slate-400 mt-4 font-bold uppercase tracking-widest">
-                        Offline Power • Local Reliability • Secure Data
-                    </p>
+                    <div
+                        class="mt-6 flex items-center justify-center gap-6 opacity-40 grayscale hover:grayscale-0 transition-all">
+                        <span class="text-[9px] font-black tracking-widest uppercase">Offline Power</span>
+                        <span class="text-[9px] font-black tracking-widest uppercase">Lifetime Reliability</span>
+                        <span class="text-[9px] font-black tracking-widest uppercase">Secure Data</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper('.moduleCarousel', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 4 },
+            }
+        });
+    </script>
     <script>
         const modal = document.getElementById('orderModal');
         const content = document.getElementById('modalContent');
