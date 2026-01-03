@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Report – Print Ready</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* PRINT STYLES */
+        @media print {
+            @page {
+                /* margin: top right bottom left */
+                /* 30mm bottom margin ensures space for footer + 10mm gap */
+                margin: 10mm 15mm 30mm 15mm;
+            }
+
+            body {
+                background: white !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .print\:hidden {
+                display: none !important;
+            }
+
+            .print\:block {
+                display: block !important;
+            }
+
+            /* SEPARATE GRAPH AND GRID: Force page break after graph */
+            #graphSection {
+                break-after: page;
+                margin-bottom: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            #recordSection {
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            /* Fix Table Layout for Print */
+            table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                table-layout: auto !important;
+            }
+
+            th,
+            td {
+                border: 1px solid #e2e8f0 !important;
+                padding: 6px 8px !important;
+                font-size: 10px !important;
+            }
+
+            thead {
+                display: table-header-group;
+            }
+
+            tr {
+                page-break-inside: avoid;
+            }
+
+            /* FIXED FOOTER AT BOTTOM */
+            .print-footer {
+                position: fixed;
+                bottom: 0;
+                /* 🔥 always 0 */
+                left: 0;
+                right: 0;
+                height: 15mm;
+                background: white !important;
+                border-top: 1px solid #e2e8f0;
+
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                padding: 0 15mm;
+                box-sizing: border-box;
+            }
+
+            /* Dynamic Page Numbering */
+            .page-number::after {
+                content: counter(page);
+            }
+        }
+
+        /* Screen Styles */
+        .page-number::after {
+            content: "";
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 min-h-screen p-6 text-slate-900" >
+
+    <header class="max-w-6xl mx-auto mb-6 flex items-center justify-between print:hidden">
+        <div>
+            <h2 class="text-2xl font-bold text-slate-800">Enquiry Report</h2>
+            <p class="text-sm text-slate-500">View and manage school admission enquiries</p>
+        </div>
+        <button onclick="openPrintModal()"
+            class="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg hover:bg-blue-700 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M6 9V2h12v7" />
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                <path d="M6 14h12v8H6z" />
+            </svg>
+            Print Report
+        </button>
+    </header>
+
+    <div class="hidden print:block mb-8">
+        <div class="flex items-center justify-between border-b-2 border-slate-800 pb-4">
+            <div class="flex items-center gap-4">
+                <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="h-16 w-16" />
+                <div>
+                    <h1 class="text-2xl font-bold uppercase">VIDYAOne Demo School</h1>
+                    <p class="text-sm">Main Road, City Name, State – 123456</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-semibold text-blue-800">Enquiry Report</h2>
+                <p class="text-xs text-slate-500" id="printTimestampTop"></p>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto space-y-6">
+        <section id="graphSection" class="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
+            <h3 class="hidden print:block text-sm font-bold text-slate-700 mb-4 uppercase">Analytical Overview</h3>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div
+                    class="h-48 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+                    <img src="https://cdn1.byjus.com/wp-content/uploads/2021/03/line-graph.png"
+                        class="w-full h-full object-cover" />
+                </div>
+                <div
+                    class="h-48 rounded-lg border border-slate-200 bg-slate-50 overflow-hidden flex items-center justify-center">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1TAQXgFfwvcgdcBtLUUWgo0FjjktWC_0liA&s"
+                        class="w-full h-full object-cover" />
+                </div>
+            </div>
+        </section>
+
+        <section id="recordSection" class="rounded-xl bg-white p-6 shadow-sm border border-slate-200">
+            <h3 class="text-sm font-bold text-slate-700 mb-4 print:block hidden uppercase">Detailed Enquiry Records</h3>
+
+            <div class="mb-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between print:hidden">
+                <input id="searchInput" type="text" placeholder="Search records..."
+                    class="rounded-lg border border-slate-200 bg-slate-50 py-2 px-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none md:w-64" />
+                <div class="flex items-center gap-2 text-sm text-slate-600">
+                    <span>Show:</span>
+                    <select id="pageSize" class="rounded border border-slate-200 p-1">
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full border-collapse">
+                    <thead class="bg-slate-50 text-[11px] uppercase text-slate-600">
+                        <tr>
+                            <th class="px-4 py-3 text-left">ID</th>
+                            <th class="px-4 py-3 text-left">Date</th>
+                            <th class="px-4 py-3 text-left">Student</th>
+                            <th class="px-4 py-3 text-left">Parent</th>
+                            <th class="px-4 py-3 text-left">Class</th>
+                            <th class="px-4 py-3 text-left">Source</th>
+                            <th class="px-4 py-3 text-left">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="enquiryTableBody" class="divide-y divide-slate-100 text-sm"></tbody>
+                </table>
+            </div>
+
+            <div id="paginationBar" class="mt-6 flex items-center justify-between border-t pt-4 print:hidden">
+                <div id="tableInfo" class="text-sm text-slate-500"></div>
+                <div class="flex gap-1">
+                    <button onclick="prevPage()" id="btnPrev"
+                        class="px-3 py-1 rounded border bg-white hover:bg-slate-50">Prev</button>
+                    <button onclick="nextPage()" id="btnNext"
+                        class="px-3 py-1 rounded border bg-white hover:bg-slate-50">Next</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="hidden print:block print-footer">
+        <div class="flex w-full justify-between items-center text-slate-500 text-[10px]">
+            <span>System Generated Report • <strong>VIDYAOne</strong></span>
+            <span>Printed on: <span id="printDate"></span></span>
+            <span>Page <span class="page-number"></span></span>
+        </div>
+    </footer>
+
+    <div id="printModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm print:hidden">
+        <div class="w-full max-w-md rounded-xl bg-white p-6 shadow-2xl">
+            <h3 class="text-lg font-bold text-slate-900">Print Configuration</h3>
+            <div class="mt-4 space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700">Orientation</label>
+                    <div class="mt-2 grid grid-cols-2 gap-3">
+                        <label
+                            class="flex cursor-pointer items-center justify-center gap-2 rounded-lg border p-3 hover:bg-slate-50">
+                            <input type="radio" name="orientation" value="portrait" checked /> <span>Portrait</span>
+                        </label>
+                        <label
+                            class="flex cursor-pointer items-center justify-center gap-2 rounded-lg border p-3 hover:bg-slate-50">
+                            <input type="radio" name="orientation" value="landscape" /> <span>Landscape</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700">Include Sections</label>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="printGraphs" checked />
+                        Analytical Graphs</label>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="printRecords" checked />
+                        All Enquiry Records</label>
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end gap-3">
+                <button onclick="closePrintModal()"
+                    class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-800">Cancel</button>
+                <button onclick="printReport()"
+                    class="rounded-lg bg-blue-600 px-6 py-2 text-sm font-bold text-white hover:bg-blue-700">Confirm &
+                    Print</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const enquiries = [
+            { id: 'ENQ001', date: '12 Jan 2024', student: 'Aarav Sharma', parent: 'Rajesh Sharma', className: 'Class 1', source: 'Walk-in', status: 'Open' },
+            { id: 'ENQ002', date: '11 Jan 2024', student: 'Priya Patel', parent: 'Amit Patel', className: 'Nursery', source: 'Website', status: 'In Progress' },
+            { id: 'ENQ003', date: '10 Jan 2024', student: 'Rohan Verma', parent: 'Suresh Verma', className: 'Class 2', source: 'Phone', status: 'Closed' },
+            { id: 'ENQ004', date: '09 Jan 2024', student: 'Sneha Gupta', parent: 'Pankaj Gupta', className: 'KG', source: 'Walk-in', status: 'Open' },
+            { id: 'ENQ005', date: '08 Jan 2024', student: 'Kabir Singh', parent: 'Manoj Singh', className: 'Class 3', source: 'Website', status: 'In Progress' },
+            { id: 'ENQ006', date: '07 Jan 2024', student: 'Ishita Jain', parent: 'Rakesh Jain', className: 'Nursery', source: 'Phone', status: 'Open' },
+            { id: 'ENQ007', date: '06 Jan 2024', student: 'Vikram Rao', parent: 'Mahesh Rao', className: 'Class 4', source: 'Walk-in', status: 'Closed' },
+            { id: 'ENQ008', date: '05 Jan 2024', student: 'Tanya Mehta', parent: 'Sanjay Mehta', className: 'Class 1', source: 'Website', status: 'Open' },
+            { id: 'ENQ009', date: '04 Jan 2024', student: 'Mohit Yadav', parent: 'Ajay Yadav', className: 'KG', source: 'Phone', status: 'In Progress' },
+            { id: 'ENQ010', date: '03 Jan 2024', student: 'Ananya Rao', parent: 'Vijay Rao', className: 'Class 2', source: 'Walk-in', status: 'Open' },
+        ];
+
+        let filteredData = [...enquiries];
+        let currentPage = 1;
+        let itemsPerPage = 10;
+
+        function init() {
+            renderTable();
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('pageSize').addEventListener('change', (e) => {
+                itemsPerPage = parseInt(e.target.value);
+                currentPage = 1;
+                renderTable();
+            });
+        }
+
+        function renderTable(dataToRender = null) {
+            const data = dataToRender || filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+            const tbody = document.getElementById('enquiryTableBody');
+            tbody.innerHTML = data.map(row => `
+                <tr>
+                    <td class="px-4 py-3 font-medium">${row.id}</td>
+                    <td class="px-4 py-3">${row.date}</td>
+                    <td class="px-4 py-3 font-semibold">${row.student}</td>
+                    <td class="px-4 py-3">${row.parent}</td>
+                    <td class="px-4 py-3">${row.className}</td>
+                    <td class="px-4 py-3">${row.source}</td>
+                    <td class="px-4 py-3"><span class="px-2 py-1 rounded-full text-[10px] border ${getStatusClass(row.status)}">${row.status}</span></td>
+                </tr>
+            `).join('');
+            if (!dataToRender) updatePagination();
+        }
+
+        function getStatusClass(s) {
+            if (s === 'Open') return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+            if (s === 'In Progress') return 'bg-amber-50 text-amber-700 border-amber-200';
+            return 'bg-slate-50 text-slate-600 border-slate-200';
+        }
+
+        function handleSearch(e) {
+            const term = e.target.value.toLowerCase();
+            filteredData = enquiries.filter(item => Object.values(item).some(v => v.toLowerCase().includes(term)));
+            currentPage = 1;
+            renderTable();
+        }
+
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredData.length / itemsPerPage) || 1;
+            document.getElementById('tableInfo').innerText = `Total Records: ${filteredData.length}`;
+            document.getElementById('btnPrev').disabled = currentPage === 1;
+            document.getElementById('btnNext').disabled = currentPage === totalPages;
+        }
+
+        function openPrintModal() { document.getElementById('printModal').classList.replace('hidden', 'flex'); }
+        function closePrintModal() { document.getElementById('printModal').classList.replace('flex', 'hidden'); }
+
+        function printReport() {
+            const orientation = document.querySelector('input[name="orientation"]:checked').value;
+            const showGraphs = document.getElementById('printGraphs').checked;
+            const showRecords = document.getElementById('printRecords').checked;
+
+            document.getElementById('graphSection').style.display = showGraphs ? 'block' : 'none';
+            document.getElementById('recordSection').style.display = showRecords ? 'block' : 'none';
+
+            const now = new Date().toLocaleString("en-IN", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+            document.getElementById('printDate').innerText = now;
+            document.getElementById('printTimestampTop').innerText = `Report Date: ${now}`;
+
+            const style = document.createElement('style');
+            style.id = "orientationStyle";
+            style.innerHTML = `@page { size: ${orientation}; }`;
+            document.head.appendChild(style);
+
+            if (showRecords) renderTable(filteredData); // Show all records for printing
+
+            closePrintModal();
+            setTimeout(() => {
+                window.print();
+                style.remove();
+                document.getElementById('graphSection').style.display = 'block';
+                document.getElementById('recordSection').style.display = 'block';
+                renderTable();
+            }, 500);
+        }
+
+        function prevPage() { if (currentPage > 1) { currentPage--; renderTable(); } }
+        function nextPage() { if (currentPage < Math.ceil(filteredData.length / itemsPerPage)) { currentPage++; renderTable(); } }
+
+        init();
+    </script>
+</body>
+
+</html>
