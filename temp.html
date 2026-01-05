@@ -1,195 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fcfcfd; }
-
-        /* Windows 11 Mica Effect */
-        .mica {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(30px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-        }
-
-        /* 3D Perspective Container */
-        .perspective-container {
-            perspective: 1500px;
-        }
-
-        /* Hover Tilt Effect */
-        .tilt-card {
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            transform-style: preserve-3d;
+        
+        /* Razorpay Logo Slant Effect */
+        .rzp-logo-slant {
+            clip-path: polygon(0 0, 100% 0, 82% 100%, 0% 100%);
         }
         
-        .perspective-container:hover .manual-stack {
-            transform: rotateY(15deg) rotateX(5deg) scale(0.95);
-            opacity: 0.5;
-            filter: grayscale(100%);
-        }
-
-        .perspective-container:hover .software-screen {
-            transform: translateZ(50px) rotateY(-5deg);
-            box-shadow: 0 50px 100px -20px rgba(59, 130, 246, 0.2);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-
-        .glow-line {
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+        .premium-mesh {
+            background-image: radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%), 
+                              radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.05) 0px, transparent 50%);
         }
     </style>
 </head>
-<body class="antialiased text-slate-900">
+<body class="antialiased premium-mesh min-h-screen py-20 px-4">
 
-    <section class="relative py-24 px-6 overflow-hidden">
-        <!-- Modern Background Decors -->
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-100/50 rounded-full blur-[100px] -z-10"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full blur-[100px] -z-10"></div>
-
-        <div class="max-w-7xl mx-auto">
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            <!-- Section Header -->
-            <div class="flex flex-col md:flex-row items-end justify-between mb-20 gap-6">
-                <div class="max-w-2xl">
-                    <span class="inline-block px-4 py-1.5 mb-4 text-xs font-extrabold tracking-[0.2em] text-blue-600 bg-blue-50 rounded-full uppercase">
-                        The Evolution
-                    </span>
-                    <h2 class="text-5xl md:text-6xl font-800 text-slate-900 tracking-tighter">
-                        Retire the <span class="text-slate-400 italic">Paper</span>.<br>
-                        Embrace the <span class="text-blue-600">Digital Hub</span>.
-                    </h2>
+            <!-- LEFT SIDE: VALUE PROPOSITION -->
+            <div>
+                <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 px-4 py-1.5 rounded-full mb-6">
+                    <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+                    <span class="text-[10px] font-bold text-blue-700 uppercase tracking-[0.2em]">Upgrade to Cloud Automation</span>
                 </div>
-                <div class="text-slate-500 font-medium text-lg border-l-4 border-blue-600 pl-6 py-2">
-                    VIDYAOne simplifies the complex, <br>turning hours of work into seconds.
-                </div>
-            </div>
-
-            <!-- Perspective Visualizer -->
-            <div class="perspective-container grid lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Manual Side (The "Old" Way) -->
-                <div class="manual-stack tilt-card relative order-2 lg:order-1">
-                    <div class="relative z-10 p-8 rounded-[2rem] bg-slate-100 border border-slate-200 shadow-xl">
-                        <h3 class="text-xl font-bold text-slate-600 mb-8 flex items-center gap-3">
-                            <span class="p-2 bg-slate-200 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM184,192H72a8,8,0,0,1,0-16H184a8,8,0,0,1,0,16Zm0-32H72a8,8,0,0,1,0-16H184a8,8,0,0,1,0,16Zm0-32H72a8,8,0,0,1,0-16H184a8,8,0,0,1,0,16Zm0-32H72a8,8,0,0,1,0-16H184a8,8,0,0,1,0,16Z"></path></svg>
-                            </span>
-                            Manual School Work
-                        </h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 text-slate-500">
-                                <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                                <p class="font-medium">Many registers for the same work</p>
-                            </div>
-                            <div class="flex items-center gap-4 text-slate-500">
-                                <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                                <p class="font-medium">Fees and marks calculated by hand</p>
-                            </div>
-                            <div class="flex items-center gap-4 text-slate-500">
-                                <div class="w-2 h-2 rounded-full bg-slate-300"></div>
-                                <p class="font-medium">Same information written again and again</p>
-                            </div>
-                            <div class="p-4 bg-rose-50 border border-rose-100 rounded-xl flex items-center gap-4 text-rose-600">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                                </svg>
-                                <p class="font-bold text-sm uppercase tracking-tight">Pressure and confusion during exams</p>
-                            </div>
+                <h2 class="text-4xl md:text-4xl font-extrabold text-slate-900 leading-[1.1] mb-6">
+                    Hands-free Renewal with <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-pink-500">Auto-Subscription.</span>
+                </h2>
+                
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Stop worrying about annual expiry dates. Our new 5-Year Subscription plan ensures your school software stays active with automatic secure payments.
+                </p>
+
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                    <div class="flex gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                            <svg class="w-3.5 h-3.5 text-green-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </div>
+                        <span class="text-sm font-bold text-slate-700">Flat 20% Discount Applied</span>
                     </div>
-                    <!-- Decorative back layers -->
-                    <div class="absolute top-4 -right-4 w-full h-full bg-slate-200/50 -z-10 rounded-[2rem]"></div>
-                </div>
-
-                <!-- One Software Side (The "Modern" Way) -->
-                <div class="software-screen tilt-card order-1 lg:order-2">
-                    <div class="mica p-1 rounded-[2.5rem] shadow-2xl overflow-hidden animate-float">
-                        <div class="bg-white rounded-[2.4rem] p-8 md:p-12 relative overflow-hidden">
-                            
-                            <!-- Internal App Header Decor -->
-                            <div class="flex items-center justify-between mb-12">
-                                <div class="h-8 w-32 bg-blue-50 rounded-lg flex items-center px-3">
-                                    <div class="w-2 h-2 rounded-full bg-blue-500 animate-pulse mr-2"></div>
-                                    <div class="h-2 w-16 bg-blue-200 rounded"></div>
-                                </div>
-                                <div class="flex gap-2">
-                                    <div class="w-2 h-2 rounded-full bg-slate-100"></div>
-                                    <div class="w-2 h-2 rounded-full bg-slate-100"></div>
-                                </div>
-                            </div>
-
-                            <h3 class="text-3xl font-800 text-blue-600 mb-2">VIDYAOne Hub</h3>
-                            <p class="text-slate-400 text-sm font-bold mb-10 uppercase tracking-widest">Unified Management Environment</p>
-
-                            <div class="grid grid-cols-1 gap-4">
-                                <!-- Dynamic List Items -->
-                                <div class="flex items-center gap-5 p-4 bg-blue-50 rounded-2xl border border-blue-100 group hover:bg-blue-600 transition-all duration-300">
-                                    <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-blue-600 shadow-sm transition-transform group-hover:rotate-12">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
-                                    </div>
-                                    <p class="font-bold text-blue-900 group-hover:text-white">All regular work handled in one place</p>
-                                </div>
-
-                                <div class="flex items-center gap-5 p-4 bg-indigo-50 rounded-2xl border border-indigo-100 group hover:bg-indigo-600 transition-all duration-300">
-                                    <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-indigo-600 shadow-sm transition-transform group-hover:rotate-12">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-                                    </div>
-                                    <p class="font-bold text-indigo-900 group-hover:text-white">Records stay correct and updated</p>
-                                </div>
-
-                                <div class="flex items-center gap-5 p-4 bg-emerald-50 rounded-2xl border border-emerald-100 group hover:bg-emerald-600 transition-all duration-300">
-                                    <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-emerald-600 shadow-sm transition-transform group-hover:rotate-12">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
-                                    </div>
-                                    <p class="font-bold text-emerald-900 group-hover:text-white">No repeated writing of details</p>
-                                </div>
-
-                                <div class="mt-6 flex items-center justify-between p-6 bg-slate-900 rounded-[1.5rem] text-white overflow-hidden relative">
-                                    <div class="relative z-10">
-                                        <div class="text-[10px] uppercase font-black tracking-widest text-blue-400 mb-1">Status: Operational</div>
-                                        <p class="text-lg font-bold">Exam work feels controlled</p>
-                                    </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white/10 absolute -right-2 -bottom-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                                </div>
-                            </div>
+                    <div class="flex gap-3">
+                        <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                            <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
                         </div>
+                        <span class="text-sm font-bold text-slate-700">Price Protection for 5 Years</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center shrink-0">
+                            <svg class="w-3.5 h-3.5 text-pink-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="text-sm font-bold text-slate-700">Auto-Payment Management</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <span class="text-sm font-bold text-slate-700">Cancel Subscription Anytime</span>
                     </div>
                 </div>
 
+                <!-- Footer Support Note -->
+                <div class="p-4 bg-white/50 border border-slate-200 rounded-2xl flex items-center gap-4">
+                    <img src="https://img.icons8.com/fluency/48/000000/headset.png" class="w-10 h-10" />
+                    <div>
+                        <p class="text-xs font-black text-slate-400 uppercase">Need assistance?</p>
+                        <p class="text-sm font-bold text-slate-800">Call Billing Support: +91-7080137444</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Footer Stats / Trust Bar -->
-            <div class="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center group">
-                    <div class="text-4xl font-800 text-slate-300 group-hover:text-blue-600 transition-colors">0.0s</div>
-                    <div class="text-sm font-bold uppercase tracking-widest text-slate-500 mt-2">Data Redundancy</div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-4xl font-800 text-slate-300 group-hover:text-blue-600 transition-colors">100%</div>
-                    <div class="text-sm font-bold uppercase tracking-widest text-slate-500 mt-2">Record Integrity</div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-4xl font-800 text-slate-300 group-hover:text-blue-600 transition-colors">1-Tap</div>
-                    <div class="text-sm font-bold uppercase tracking-widest text-slate-500 mt-2">Result Generation</div>
-                </div>
-                <div class="text-center group">
-                    <div class="text-4xl font-800 text-slate-300 group-hover:text-blue-600 transition-colors">Zero</div>
-                    <div class="text-sm font-bold uppercase tracking-widest text-slate-500 mt-2">Manual Stress</div>
+            <!-- RIGHT SIDE: RECREATED RAZORPAY UI CARD -->
+            <div class="flex flex-col items-start lg:items-center">
+                <!-- <p class="text-sm font-semibold text-slate-700 mb-4 ml-1 lg:ml-0">Subscription for 5 Year</p> -->
+                
+                <div class="bg-white rounded-xl border border-slate-100 shadow-2xl p-8 w-full max-w-[420px]">
+                    
+                    <!-- Toggle UI -->
+                    <div class="flex justify-center mb-10">
+                        <div class="inline-flex border border-blue-400 rounded-md overflow-hidden">
+                            <button class="px-6 py-2 bg-[#4c90ef] text-white text-xs font-bold tracking-tight">Subscription</button>
+                            <button class="px-6 py-2 bg-white text-slate-700 text-xs font-bold hover:bg-slate-50 transition-colors">One-Time</button>
+                        </div>
+                    </div>
+
+                    <!-- Content Area -->
+                    <div class="mb-8">
+                        <h3 class="text-[15px] font-bold text-slate-800 leading-snug">
+                            Single PC 5 Year Subscription (Software + 4 Years Renewal)
+                        </h3>
+                        <p class="text-sm font-medium text-slate-300 mt-1">
+                            (20% Discount Applied)
+                        </p>
+                    </div>
+
+                    <!-- Price Box -->
+                    <div class="border border-slate-100 rounded-md p-5 flex justify-between items-center mb-10">
+                        <div>
+                            <div class="text-[22px] font-extrabold text-slate-800 tracking-tight">₹ 4,720.00</div>
+                            <div class="text-[11px] font-semibold text-slate-400 mt-0.5">Frequency: Yearly</div>
+                        </div>
+                        <!-- Empty Checkmark indicator from image -->
+                        <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5 text-slate-200" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Razorpay Button Reproduction -->
+                    <button class="w-full flex items-center border border-[#1d3d99] rounded-md overflow-hidden group hover:shadow-md transition-shadow">
+                        <!-- Blue Tab -->
+                        <div class="bg-[#1d3d99] py-3.5 px-6 rzp-logo-slant flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24"><path d="M11.95 3L2 14h6.5l-1.5 7L17 10h-6.5l1.5-7z"/></svg>
+                        </div>
+                        <!-- Pay Now Text -->
+                        <div class="flex-grow py-3.5 text-center text-[#1d3d99] font-black italic text-xl pr-6 bg-gradient-to-r from-blue-50/50 to-white">
+                            Pay Now
+                        </div>
+                    </button>
+
+                    <!-- Branded Footer -->
+                    <div class="mt-4 flex items-center justify-center gap-1.5">
+                        <span class="text-[10px] font-medium text-slate-400 italic">Powered by</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" class="h-4" alt="Razorpay">
+                    </div>
                 </div>
             </div>
 
         </div>
-    </section>
+    </div>
 
 </body>
 </html>
