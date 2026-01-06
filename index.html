@@ -259,6 +259,7 @@
             { name: "vSoftware Report", url: "reports" },
             { name: "Getting Started Page - VSS", url: "vidyaone-getting-started" },
             { name: "Pricing Page - VSS", url: "vss-pricing" },
+            { name: "Hero Section - VSS", url: "Hero-Page-VSS" },
        
             // add more here...
         ];
@@ -307,7 +308,7 @@
                     const cardDelay = delay + 0.03 * (idx + 1);
 
                     html += `
-                        <a href="${fullUrl}"
+                        <a href="${fullUrl}" target="_blank"
                            class="relative group card-hover bg-slate-900/80 border border-slate-800 rounded-xl p-4 sm:p-5 flex flex-col justify-between overflow-hidden"
                            style="animation-delay: ${cardDelay.toFixed(2)}s;">
                             
