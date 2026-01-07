@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIDYAOne School Management Software Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: "Plus Jakarta Sans", sans-serif;
+        }
+
+
+        /* Modern Glass Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.15);
+            border-color: #3b82f6;
+        }
+
+        /* Subtle Progress Rail */
+        .roadmap-rail::before {
+            content: '';
+            position: absolute;
+            left: 1.35rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6 0%, #cbd5e1 100%);
+            opacity: 0.3;
+        }
+
+        /* CTA Pulse for VIDYAOne step */
+        .cta-pulse {
+            animation: pulse-blue 2s infinite;
+        }
+
+        @keyframes pulse-blue {
+            0% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        .mesh-gradient {
+            background-color: #f8fafc;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-image-mask {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="antialiased text-slate-900 bg-slate-50">
+
+    <!-- PRODUCT ONBOARDING PAGE -->
+    <header class="relative pt-20 pb-16 lg:pt-32 lg:pb-32 overflow-hidden">
+
+        <!-- Background Effects -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
+            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-400/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-[10%] left-[-5%] w-96 h-96 bg-emerald-400/20 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                <!-- Left Content -->
+                <div class="text-center lg:text-left order-2 lg:order-1">
+
+                    <!-- Status -->
+                    <div
+                        class="inline-flex items-center gap-3 px-3 py-1.5 rounded-full glass-panel border border-blue-100 shadow-sm mb-8">
+                        <span class="flex h-2 w-2 relative">
+                            <span
+                                class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
+                            Onboarding in Progress
+                        </span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900 mb-6">
+                        Set up
+                        <span
+                            class="block bg-gradient-to-r from-blue-600 via-blue-500 to-emerald-500 bg-clip-text text-transparent">
+                            VIDYAOne
+                        </span>
+                        step by step.
+                    </h1>
+
+                    <!-- Subtext -->
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
+                        This guided onboarding will help you install, configure, and activate
+                        VIDYAOne School Management Software smoothly.
+                        Follow each step to get your system ready for daily school operations.
+                    </p>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <a href="#installation"
+                            class="group relative w-full sm:w-auto px-10 py-4 bg-slate-900 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all hover:bg-blue-600 shadow-xl shadow-slate-200">
+                            <span class="relative z-10">Continue Setup</span>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                            </div>
+                        </a>
+
+                        <a href="#demo"
+                            class="w-full sm:w-auto px-10 py-4 bg-white text-slate-700 border border-slate-200 font-bold text-lg rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
+                            </svg>
+                            Take a Product Tour
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Right Visual -->
+                <div class="relative order-1 lg:order-2">
+
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-blue-100 rounded-full pointer-events-none opacity-50">
+                    </div>
+
+                    <div class="relative z-20 animate-float">
+
+                        <!-- Dashboard Card -->
+                        <div
+                            class="glass-panel p-3 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-white">
+                            <div
+                                class="bg-white rounded-[2.2rem] overflow-hidden aspect-[16/10] shadow-inner relative group">
+                                <img src="Image/Dashboard.png" alt="VIDYAOne Dashboard"
+                                    class="w-full h-full object-cover hero-image-mask transition-transform duration-700 group-hover:scale-105" />
+
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent pointer-events-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status Card -->
+                        <div class="absolute -bottom-6 -left-6 lg:-left-12 bg-white p-5 rounded-2xl shadow-2xl border border-slate-100 animate-float"
+                            style="animation-delay: -2s;">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tight">
+                                        Setup Status
+                                    </p>
+                                    <p class="text-base font-extrabold text-slate-800">
+                                        Secure & Ready
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sync Badge -->
+                        <div
+                            class="absolute -top-6 -right-6 glass-panel py-3 px-6 rounded-2xl shadow-xl border border-white/80 hidden sm:block">
+                            <div class="flex items-center gap-3">
+                                <div class="w-2 h-2 rounded-full bg-blue-600"></div>
+                                <span class="text-sm font-bold text-slate-700">
+                                    License Sync Active
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/30 blur-[100px] -z-10">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section
+        class="min-h-screen bg-gradient-to-br from-slate-50 to-white flex items-center justify-center py-20 px-6 overflow-hidden relative">
+
+        <!-- Decorative Blurs -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-400/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="max-w-6xl w-full relative z-10">
+
+            <!-- Header -->
+            <div class="max-w-6xl mb-16">
+                <h1 class="text-5xl md:text-5xl font-black text-slate-900 tracking-tighter mb-6 leading-[1.1]">
+                    Let’s get your school
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">
+                        started with VIDYAOne.
+                    </span>
+                </h1>
+                <p class="text-xl text-slate-600 leading-relaxed">
+                    Before we move ahead, let’s quickly confirm your software purchase.
+                    If you already have VIDYAOne, you can continue to the next onboarding step.
+                    If not, you’re welcome to explore the product, book a demo, or complete your purchase first.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
+                <!-- Purchased -->
+                <div
+                    class="md:col-span-7 group relative overflow-hidden rounded-[2rem] bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-xl hover:shadow-2xl hover:border-emerald-400/50 transition-all duration-500 hover:-translate-y-2">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="relative p-10 h-full flex flex-col justify-between">
+
+                        <div>
+                            <div class="flex items-center space-x-4 mb-8">
+                                <div
+                                    class="p-4 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-2xl shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                </div>
+                                <span class="text-emerald-600 font-bold tracking-widest uppercase text-sm">
+                                    Ready to Continue
+                                </span>
+                            </div>
+
+                            <h2 class="text-3xl font-bold text-slate-900 mb-4">
+                                Already purchased VIDYAOne?
+                            </h2>
+
+                            <p class="text-slate-700 text-lg leading-relaxed">
+                                Perfect. If your school has already purchased VIDYAOne School Management Software,
+                                you can move ahead with onboarding.
+                                In the next step, we’ll verify your license and begin setting up your system.
+                            </p>
+                        </div>
+
+                        <div class="mt-12">
+                            <a href="#next-step"
+                                class="inline-flex items-center group/btn bg-gradient-to-r from-emerald-500 to-blue-600 px-8 py-4 rounded-xl text-white font-bold text-lg shadow-lg hover:shadow-emerald-500/40 transform hover:-translate-y-1 transition-all duration-300">
+                                Continue to Next Step
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="w-6 h-6 ml-3 group-hover/btn:translate-x-2 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Not Purchased -->
+                <div
+                    class="md:col-span-5 group relative overflow-hidden rounded-[2rem] bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-xl hover:shadow-2xl hover:border-pink-400/50 transition-all duration-500 hover:-translate-y-2">
+
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="relative p-10 h-full flex flex-col">
+
+                        <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                            Haven’t purchased yet?
+                        </h2>
+
+                        <p class="text-slate-700 mb-8 leading-relaxed">
+                            That’s completely fine. You can explore VIDYAOne, book a free demo,
+                            or purchase the software when you’re ready.
+                            Once purchased, you can return here and continue onboarding.
+                        </p>
+
+                        <div class="space-y-3 mt-auto">
+
+                            <!-- Demo -->
+                            <a href="/demo"
+                                class="flex items-center justify-between w-full p-4 rounded-xl border border-indigo-200 bg-indigo-50/50 text-indigo-800 font-semibold hover:bg-indigo-100 hover:border-indigo-400 hover:shadow-md transition-all duration-300">
+                                <span>Book a Free Live Demo</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </a>
+
+                            <!-- Purchase -->
+                            <a href="/purchase"
+                                class="flex items-center justify-between w-full p-4 rounded-xl bg-gradient-to-r from-pink-500 to-red-500 text-white font-bold hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                <span>Purchase VIDYAOne Software</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust -->
+            <div class="mt-12 flex items-center space-x-6 opacity-60 hover:opacity-100 transition-all duration-700">
+                <p class="text-sm font-bold text-slate-600 uppercase tracking-[0.2em]">
+                    Trusted by Schools Across India
+                </p>
+                <div class="h-px flex-grow bg-slate-200"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PREREQUISITES -->
+    <section id="prerequisites"
+        class="relative bg-gradient-to-t from-slate-50 via-white to-emerald-50/30 py-12 overflow-hidden">
+
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-400/5 rounded-full blur-[120px]">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Content -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <span
+                            class="text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase bg-emerald-50/80 px-4 py-2 rounded-2xl border border-emerald-200/50 shadow-sm">
+                            Before You Continue
+                        </span>
+                        <h2
+                            class="text-4xl md:text-5xl font-bold text-slate-900 mt-6 leading-tight bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent">
+                            System <br />
+                            <span
+                                class="bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text text-transparent">
+                                Prerequisites
+                            </span>
+                        </h2>
+                    </div>
+
+                    <p class="text-slate-600 text-lg leading-relaxed max-w-lg">
+                        To ensure a smooth installation and reliable performance, please take a moment to confirm that
+                        your system meets the basic requirements below. Most modern school computers already do.
+                    </p>
+
+                    <div class="pt-6">
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-sm font-bold text-emerald-600 hover:text-emerald-700 transition-all duration-300 group shadow-sm hover:shadow-emerald-200/50 px-4 py-2 rounded-xl bg-emerald-50/50 backdrop-blur-sm hover:bg-emerald-100/60">
+                            <span>Need help checking this?</span>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Cards -->
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+
+                    <!-- OS -->
+                    <div
+                        class="group p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/50 shadow-lg hover:shadow-2xl hover:shadow-emerald-200/50 hover:border-emerald-400/40 hover:-translate-y-2 transition-all duration-500">
+                        <div
+                            class="w-12 h-12 mb-6 rounded-2xl bg-emerald-100/80 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-all duration-300 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-slate-900 font-bold text-xl mb-3">Operating System</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Latest version of Windows installed (Windows 10 or Windows 11 recommended).
+                        </p>
+                    </div>
+
+                    <!-- Framework -->
+                    <div
+                        class="group p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/50 shadow-lg hover:shadow-2xl hover:shadow-blue-200/50 hover:border-blue-400/40 hover:-translate-y-2 transition-all duration-500">
+                        <div
+                            class="w-12 h-12 mb-6 rounded-2xl bg-blue-100/80 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-all duration-300 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-slate-900 font-bold text-xl mb-3">.NET Framework</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Microsoft .NET Framework version 4.6 or above installed.
+                        </p>
+                    </div>
+
+                    <!-- Hardware -->
+                    <div
+                        class="group p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/50 shadow-lg hover:shadow-2xl hover:shadow-purple-200/50 hover:border-purple-400/40 hover:-translate-y-2 transition-all duration-500">
+                        <div
+                            class="w-12 h-12 mb-6 rounded-2xl bg-purple-100/80 flex items-center justify-center text-purple-500 group-hover:scale-110 transition-all duration-300 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 7h18M3 12h18M3 17h18">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-slate-900 font-bold text-xl mb-3">Processor & Memory</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Intel i3 processor or higher with at least 4GB RAM.
+                        </p>
+                    </div>
+
+                    <!-- Internet -->
+                    <div
+                        class="group p-8 rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200/50 shadow-lg hover:shadow-2xl hover:shadow-orange-200/50 hover:border-orange-400/40 hover:-translate-y-2 transition-all duration-500">
+                        <div
+                            class="w-12 h-12 mb-6 rounded-2xl bg-orange-100/80 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-all duration-300 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-slate-900 font-bold text-xl mb-3">Internet Connection</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            A stable internet connection is required only to download the software setup.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURITY CHECK -->
+    <section id="security-check" class="relative bg-[#f8fafc] py-24">
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+            <!-- Header -->
+            <div class="text-center mb-16 space-y-4">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-700 text-[10px] font-bold tracking-[0.3em] uppercase">
+                    Quick System Check
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">
+                    Security &amp;
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
+                        System Settings
+                    </span>
+                </h2>
+
+                <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+                    Before installation, please review a few simple system settings.
+                    These checks help avoid interruptions and ensure VIDYAOne runs smoothly from day one.
+                </p>
+            </div>
+
+            <!-- Cards -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+                <!-- Firewall -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-b from-emerald-300/40 to-transparent rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+
+                    <div
+                        class="relative h-full flex flex-col p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="p-3 rounded-xl bg-emerald-100 text-emerald-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded uppercase tracking-tighter">
+                                Recommended
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">
+                                Windows Firewall
+                            </h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Ensure Windows Firewall allows VIDYAOne to run without restriction.
+                                Adding the application to allowed apps prevents unnecessary blocking.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Antivirus -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-b from-red-300/40 to-transparent rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+
+                    <div
+                        class="relative h-full flex flex-col p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="p-3 rounded-xl bg-red-100 text-red-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 11c0 3.866-3.134 7-7 7m14-7c0 3.866-3.134 7-7 7m0-14V3" />
+                                </svg>
+                            </div>
+                            <span
+                                class="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded uppercase tracking-tighter">
+                                Required
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">
+                                Antivirus Protection
+                            </h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Keep an active antivirus installed.
+                                If needed, add VIDYAOne to the antivirus exclusion list to avoid false alerts.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-b from-blue-300/40 to-transparent rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+
+                    <div
+                        class="relative h-full flex flex-col p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="p-3 rounded-xl bg-blue-100 text-blue-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="text-[10px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded uppercase tracking-tighter">
+                                Important
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">
+                                Date &amp; Time
+                            </h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Confirm your system date, time, and time zone are correct.
+                                Automatic time sync is recommended for accurate records.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Permissions -->
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-b from-orange-300/40 to-transparent rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+                    </div>
+
+                    <div
+                        class="relative h-full flex flex-col p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300">
+
+                        <div class="flex items-start justify-between mb-6">
+                            <div class="p-3 rounded-xl bg-orange-100 text-orange-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9l-2-2H5a2 2 0 00-2 2v11a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <span
+                                class="text-[10px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded uppercase tracking-tighter">
+                                Access
+                            </span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">
+                                Folder Permissions
+                            </h3>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                Make sure the VIDYAOne installation folder has full read and write access.
+                                This ensures smooth data storage and report generation.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTALLATION STEPS -->
+    <section class="py-24 px-6 bg-white/30">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="mb-20 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-slate-900">
+                    Let’s set up
+                    <span class="text-blue-500">
+                        VIDYAOne
+                    </span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-t from-red-600 to-pink-500">
+                        School Management Software
+                    </span>
+                </h2>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">
+                    Follow this high-speed roadmap to deploy your system. Most schools complete this in just under 10
+                    minutes.
+                </p>
+            </div>
+
+            <div class="relative roadmap-rail space-y-8">
+
+                <div class="relative flex gap-6 md:gap-10 group">
+                    <div
+                        class="z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-white border-2 border-slate-100 flex items-center justify-center font-bold text-slate-400 group-hover:border-blue-600 group-hover:text-blue-600 transition-all duration-300 shadow-sm">
+                        1
+                    </div>
+                    <a href="https://www.microsoft.com/en-us/sql-server/sql-server-downloads"
+                        class="glass-card flex-1 p-6 md:p-8 rounded-[2rem] flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:border-blue-400 transition-all shadow-sm bg-white/80">
+                        <div class="max-w-xl">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Install SQL Server</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Download SQL Server Express (2012). This serves as the secure vault for all your
+                                school's academic and financial records.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center gap-2 text-blue-600 font-bold text-sm bg-blue-50 px-6 py-4 rounded-2xl min-w-[200px] group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                Get SQL Express
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="relative flex gap-6 md:gap-10 group">
+                    <div
+                        class="z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-white border-2 border-slate-100 flex items-center justify-center font-bold text-slate-400 group-hover:border-blue-600 group-hover:text-blue-600 transition-all duration-300 shadow-sm">
+                        2
+                    </div>
+                    <a href="#"
+                        class="glass-card flex-1 p-6 md:p-8 rounded-[2rem] flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:border-blue-400 transition-all shadow-sm bg-white/80">
+                        <div class="max-w-xl">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Crystal Reports Runtime</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Enables the high-fidelity printing engine for automated report cards, fee receipts, and
+                                official certificates.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center gap-2 text-blue-600 font-bold text-sm bg-blue-50 px-6 py-4 rounded-2xl min-w-[200px] group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                Get Runtime
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="relative flex gap-6 md:gap-10 group">
+                    <div
+                        class="z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-blue-600 shadow-lg shadow-blue-200 flex items-center justify-center font-bold text-white">
+                        3
+                    </div>
+                    <a href="#"
+                        class="glass-card flex-1 p-6 md:p-8 rounded-[2.5rem] flex flex-col lg:flex-row lg:items-center justify-between gap-6 ring-2 ring-blue-50 bg-white shadow-xl">
+                        <div class="max-w-xl">
+                            <div
+                                class="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-lg mb-3">
+                                Core Application</div>
+                            <h3 class="text-2xl font-black text-slate-900 mb-2 tracking-tight">VIDYAOne School
+                                Management
+                                Software</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Run the primary installer. This setup contains the complete management suite for
+                                administrators, teachers, and staff.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div
+                                class="cta-pulse flex items-center justify-center gap-3 bg-blue-600 text-white font-bold px-8 py-5 rounded-2xl min-w-[220px] shadow-lg shadow-blue-100 transition-transform active:scale-95">
+                                Download Now
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="relative flex gap-6 md:gap-10 group">
+                    <div
+                        class="z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-white border-2 border-slate-100 flex items-center justify-center font-bold text-slate-400 group-hover:border-blue-600 group-hover:text-blue-600 transition-all duration-300 shadow-sm">
+                        4
+                    </div>
+                    <a href="#"
+                        class="glass-card flex-1 p-6 md:p-8 rounded-[2rem] flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:border-blue-400 transition-all shadow-sm bg-white/80">
+                        <div class="max-w-xl">
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">Attach Database File</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Link the .mdf data file to your SQL Server to initialize your school's unique workspace
+                                environment.
+                            </p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <div
+                                class="flex items-center justify-center gap-2 text-blue-600 font-bold text-sm bg-blue-50 px-6 py-4 rounded-2xl min-w-[200px] group-hover:bg-blue-600 group-hover:text-white transition-all">
+                                Get Database
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="relative flex gap-6 md:gap-10 group">
+                    <div
+                        class="z-10 flex-shrink-0 w-12 h-12 rounded-2xl bg-emerald-500 shadow-lg shadow-emerald-200 flex items-center justify-center font-bold text-white ring-4 ring-emerald-50">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <div class="glass-card flex-1 p-6 md:p-8 rounded-[2rem] border-emerald-100 bg-emerald-50/20">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2 uppercase tracking-tight text-emerald-600">
+                            Activate System</h3>
+                        <p class="text-slate-600 text-sm mb-4">
+                            Launch the desktop application and enter your unique License Key to unlock all modules and
+                            begin managing your school.
+                        </p>
+                        <div
+                            class="inline-flex items-center gap-2 text-emerald-600 font-bold text-[10px] uppercase tracking-[0.2em] bg-white border border-emerald-100 px-4 py-2 rounded-xl shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            Enter Key in Application
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Help section -->
+    <section id="certificate" class="w-full  flex items-center bg-gradient-to-br from-slate-50 to-white/80">
+
+        <div class="max-w-5xl mx-auto px-6 pb-24 pt-12 grid md:grid-cols-2 gap-10 items-center">
+
+            <!-- Left content -->
+            <div class="text-slate-900 space-y-6 lg:space-y-8">
+                <p
+                    class="text-xs font-semibold tracking-[0.2em] text-emerald-500 uppercase bg-emerald-50/50 px-3 py-1 rounded-full inline-block">
+                    Onboarding Completed
+                </p>
+
+                <h2
+                    class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
+                    Download Your<br />Onboarding Certificate
+                </h2>
+
+                <p class="text-slate-600 text-sm md:text-base leading-relaxed max-w-lg">
+                    You’re almost done. This certificate confirms that your school has successfully completed
+                    the VIDYAOne onboarding process.
+                    You can keep it for records, approvals, or future reference.
+                </p>
+
+                <ul class="mt-6 space-y-3 text-sm text-slate-600 max-w-md">
+                    <li class="flex items-start gap-3">
+                        <span
+                            class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span>Confirms successful installation and system readiness.</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span
+                            class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span>Includes key school and contact information.</span>
+                    </li>
+
+                    <li class="flex items-start gap-3">
+                        <span
+                            class="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </span>
+                        <span>Useful for management review and IT documentation.</span>
+                    </li>
+                </ul>
+
+            </div>
+
+            <!-- Form -->
+            <div
+                class="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-100/50 px-6 py-8 md:px-10 md:py-10 lg:shadow-emerald-100/50">
+
+                <!-- Form Header -->
+                <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                        <span class="text-2xl text-white">🏆</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">
+                            Onboarding Certificate Details
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">
+                            Please review and fill in the details below. All required fields are marked with
+                            <span class="text-emerald-600 font-semibold">*</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <form class="space-y-5">
+
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                            School Name <span class="text-emerald-600">*</span>
+                        </label>
+                        <input type="text" required
+                            class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                            placeholder="Enter your school’s full name" />
+                    </div>
+
+                    <div class="space-y-1.5">
+                        <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                            City & State <span class="text-emerald-600">*</span>
+                        </label>
+                        <input type="text" required
+                            class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                            placeholder="e.g. Jaipur, Rajasthan" />
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                                Contact Person <span class="text-emerald-600">*</span>
+                            </label>
+                            <input type="text" required
+                                class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                                placeholder="Primary contact name" />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                                Mobile Number <span class="text-emerald-600">*</span>
+                            </label>
+                            <input type="tel" required
+                                class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                                placeholder="10-digit mobile number" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                                Official Email <span class="text-emerald-600">*</span>
+                            </label>
+                            <input type="email" required
+                                class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                                placeholder="school@email.com" />
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-semibold text-slate-800 tracking-wide">
+                                Sender ID <span class="text-emerald-600">*</span>
+                            </label>
+                            <input type="text" required
+                                class="w-full rounded-2xl border border-slate-200/60 bg-slate-50/80 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400 transition-all backdrop-blur-sm hover:border-slate-300"
+                                placeholder="If applicable" />
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-2">
+                        <label
+                            class="inline-flex items-start gap-3 p-4 bg-slate-50/50 rounded-2xl border border-slate-200/50 hover:bg-slate-100 transition-all cursor-pointer group">
+                            <input type="checkbox" required
+                                class="mt-1 h-5 w-5 rounded-lg border-slate-300 text-emerald-600 focus:ring-emerald-500 shadow-sm group-hover:border-emerald-400" />
+                            <span class="text-sm text-slate-700 leading-relaxed">
+                                I confirm that <strong> VIDYAOne School Management Software</strong> is installed
+                                successfully and all
+                                setup steps have been completed.
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-emerald-600 to-blue-600 text-white text-sm font-bold shadow-lg hover:shadow-emerald-500/50 hover:scale-[1.02] transition-all duration-300 backdrop-blur-sm border border-emerald-400/20">
+                        <span>🏆</span>
+                        Generate &amp; Download Certificate
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support"
+        class="w-full flex items-center bg-gradient-to-br from-slate-50 via-white to-blue-50/50 text-slate-900 pb-24">
+        <div class="max-w-7xl mx-auto px-6 ">
+            <div class="text-center mb-10">
+
+                <h2
+                    class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-700 bg-clip-text text-transparent pb-1">
+                    Ready to Master Your Software?
+                </h2>
+                <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                    Get training, access help resources, and connect with our support team to unlock full potential.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- HELP ARTICLES -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-blue-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-100/80 flex items-center justify-center group-hover:bg-blue-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">📚</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Help Articles</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Quick guides for common tasks like admissions, fees, reports, and system maintenance.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-blue-600">
+                        Start Reading →
+                    </span>
+                </a>
+
+                <!-- TRAINING VIDEOS -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-emerald-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-emerald-100/80 flex items-center justify-center group-hover:bg-emerald-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">🎥</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Training Videos</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Step-by-step video tutorials covering all major modules and advanced features.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-emerald-600">
+                        Watch Now →
+                    </span>
+                </a>
+
+                <!-- SUBMIT TICKET -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-orange-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-orange-100/80 flex items-center justify-center group-hover:bg-orange-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">🎫</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Submit a Ticket</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Get dedicated support for technical issues, feature requests, or customization needs.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-orange-600">
+                        Open Ticket →
+                    </span>
+                </a>
+
+                <!-- REQUEST CALLBACK -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-purple-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-purple-100/80 flex items-center justify-center group-hover:bg-purple-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">📞</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Request Callback</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Schedule a call with our expert team for personalized guidance and troubleshooting.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-purple-600">
+                        Book Call →
+                    </span>
+                </a>
+
+                <!-- WHATSAPP -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-green-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-green-100/80 flex items-center justify-center group-hover:bg-green-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">💬</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Connect on WhatsApp</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Instant support via WhatsApp for quick questions and real-time assistance.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-green-600">
+                        Message Now →
+                    </span>
+                </a>
+
+                <!-- SCHEDULE TRAINING -->
+                <a href="#"
+                    class="group relative bg-white/70 backdrop-blur-xl rounded-3xl p-8 border border-slate-200/50 shadow-lg hover:shadow-2xl hover:border-indigo-300/50 hover:-translate-y-2 transition-all duration-300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-indigo-100/80 flex items-center justify-center group-hover:bg-indigo-200/80 transition mb-6 mx-auto shadow-sm">
+                        <span class="text-2xl">📅</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center text-slate-900">Schedule Training</h3>
+                    <p class="text-slate-600 text-sm text-center mb-6 leading-relaxed">
+                        Book live training sessions for your staff to master all software features.
+                    </p>
+                    <span
+                        class="text-xs font-semibold tracking-wide uppercase text-center block text-slate-500 group-hover:text-indigo-600">
+                        Book Session →
+                    </span>
+                </a>
+            </div>
+
+            <!-- CONTACT INFO BAR -->
+            <div class="mt-20 pt-16 border-t border-slate-200/50 text-center">
+                <p class="text-lg text-slate-600 mb-4">
+                    Need immediate help?
+                </p>
+                <div class="flex flex-wrap justify-center items-center gap-6 text-sm">
+                    <span class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-slate-100 rounded-xl flex items-center justify-center shadow-sm">
+                            📧
+                        </span>
+                        <a href="mailto:support@vidyaone.com"
+                            class="text-slate-700 hover:text-slate-900 font-medium">support@vidyaone.com</a>
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <span class="w-8 h-8 bg-slate-100 rounded-xl flex items-center justify-center shadow-sm">
+                            📞
+                        </span>
+                        <a href="tel:+917080137444" class="text-slate-700 hover:text-slate-900 font-medium">+91 70801
+                            37444</a>
+                    </span>
+                    <a href="#"
+                        class="px-6 py-2.5 bg-slate-100 backdrop-blur rounded-xl hover:bg-slate-200 hover:shadow-md transition font-semibold text-slate-800 hover:text-slate-900">
+                        All Support Options →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
