@@ -4,167 +4,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIDYAOne | Modern Setup</title>
+    <title>Payment Successful - VIDYAOne</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
-        .mesh-gradient {
-            background-color: #f8fafc;
-            background-image:
-                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+        .success-pulse {
+            animation: pulse 2s infinite;
         }
 
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-image-mask {
-            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-        }
-
-        @keyframes float {
+        @keyframes pulse {
             0% {
-                transform: translateY(0px);
+                transform: scale(1);
+                opacity: 1;
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: scale(1.05);
+                opacity: 0.8;
             }
 
             100% {
-                transform: translateY(0px);
+                transform: scale(1);
+                opacity: 1;
             }
-        }
-
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
         }
     </style>
 </head>
 
-<body class="mesh-gradient antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <header class="relative pt-20 pb-16 lg:pt-32 lg:pb-32 overflow-hidden">
 
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none z-0">
-            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-400/20 rounded-full blur-[120px]"></div>
-            <div class="absolute bottom-[10%] left-[-5%] w-96 h-96 bg-emerald-400/20 rounded-full blur-[120px]"></div>
-        </div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <main class="mx-auto ">
 
-                <div class="text-center lg:text-left order-2 lg:order-1">
+        <section
+            class="relative text-center pt-20  pb-14 px-6 mb-12 overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-transparent">
 
-                    <div
-                        class="inline-flex items-center gap-3 px-3 py-1.5 rounded-full glass-panel border border-blue-100 shadow-sm mb-8">
-                        <span class="flex h-2 w-2">
-                            <span
-                                class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-                        </span>
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
-                            Onboarding Active
-                        </span>
-                    </div>
-
-                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900 mb-6">
-                        Set up
-                        <span
-                            class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-emerald-500">
-                            VIDYAOne
-                        </span>
-                        with absolute ease.
-                    </h1>
-
-                    <p class="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 mb-10">
-                        The definitive school management ecosystem. Install and configure your workspace in minutes with
-                        our guided deployment engine.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <a href="#installation"
-                            class="group relative w-full sm:w-auto px-10 py-4 bg-slate-900 text-white font-bold text-lg rounded-2xl overflow-hidden transition-all hover:bg-blue-600 shadow-xl shadow-slate-200">
-                            <span class="relative z-10">Continue Setup</span>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                            </div>
-                        </a>
-                        <a href="#demo"
-                            class="w-full sm:w-auto px-10 py-4 bg-white text-slate-700 border border-slate-200 font-bold text-lg rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
-                            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                                <path
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" />
-                            </svg>
-                            View Demo
-                        </a>
-                    </div>
-
-                </div>
-
-                <div class="relative order-1 lg:order-2">
-
-                    <div
-                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-blue-100 rounded-full pointer-events-none opacity-50">
-                    </div>
-
-                    <div class="relative z-20 animate-float">
-                        <div
-                            class="glass-panel p-3 rounded-[3rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-white">
-                            <div
-                                class="bg-white rounded-[2.2rem] overflow-hidden aspect-[16/10] shadow-inner relative group">
-                                <img src="Image/Dashboard.png" alt="VIDYAOne Dashboard"
-                                    class="w-full h-full object-cover hero-image-mask transition-transform duration-700 group-hover:scale-105" />
-
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent pointer-events-none">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="absolute -bottom-6 -left-6 lg:-left-12 bg-white p-5 rounded-2xl shadow-2xl border border-slate-100 animate-float"
-                            style="animation-delay: -2s;">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-200">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-slate-400 uppercase tracking-tight">Deployment</p>
-                                    <p class="text-base font-extrabold text-slate-800">100% Secure</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div
-                            class="absolute -top-6 -right-6 glass-panel py-3 px-6 rounded-2xl shadow-xl border border-white/80 hidden sm:block">
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 rounded-full bg-blue-600"></div>
-                                <span class="text-sm font-bold text-slate-700">Live Server Sync</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/30 blur-[100px] -z-10">
-                    </div>
-                </div>
-
+            <!-- Background accents -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-40">
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-emerald-200 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-100 rounded-full blur-3xl"></div>
             </div>
-        </div>
-    </header>
+
+            <!-- Success Icon -->
+            <div class="relative inline-flex items-center justify-center mb-8">
+                <div class="absolute inset-0 bg-emerald-400 blur-2xl opacity-20 animate-pulse"></div>
+
+                <div
+                    class="relative w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center border border-emerald-100">
+                    <div
+                        class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-inner success-pulse">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"
+                                d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="max-w-5xl mx-auto">
+                <span
+                    class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-emerald-700 uppercase bg-emerald-100 rounded-full">
+                    Payment Successful
+                </span>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                    Thank you for your transaction
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                    Your request has been successfully recorded and is now being reviewed.
+                </p>
+
+                <p class="mt-4 text-slate-500  mx-auto">
+                    Our support team will connect with you shortly to assist with payment details
+                    and guide you through the next steps. If you have any questions,
+                    help is always just a call away.
+                </p>
+            </div>
+
+        </section>
+
+        <section
+            class="bg-white max-w-5xl m-auto rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between mb-20">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-xl font-bold text-slate-900">Need immediate help?</h3>
+                <p class="text-slate-500">Connect with us directly while you wait for onboarding.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 transition text-sm font-medium">
+                    <i class="fa-solid fa-phone mr-2 text-slate-400"></i> Phone Support
+                </button>
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition text-sm font-medium">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                </button>
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 transition text-sm font-medium">
+                    <i class="fa-solid fa-ticket mr-2 text-slate-400"></i> Support Ticket
+                </button>
+            </div>
+        </section>
+        <section class="relative overflow-hidden bg-white py-24 px-6 lg:px-8">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-slate-50/50 rounded-full blur-[120px] pointer-events-none">
+            </div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                    <!-- SUPPORT FEATURES -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                        <!-- Expert Team -->
+                        <div
+                            class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12l2 2 4-4m5-2a9 9 0 11-6-8.28" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Experienced Support Team</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                A trained team with strong understanding of school software and daily operations.
+                            </p>
+                        </div>
+
+                        <!-- Data Setup -->
+                        <div
+                            class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 text-red-600 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Data Setup & Correction</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Help with data entry, migration, and correction to maintain accurate school records.
+                            </p>
+                        </div>
+
+                        <!-- Training -->
+                        <div
+                            class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 flex items-center justify-center rounded-xl bg-pink-50 text-pink-600 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Teacher & Operator Training</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Clear training sessions to help staff use the system correctly and confidently.
+                            </p>
+                        </div>
+
+                        <!-- Follow-up -->
+                        <div
+                            class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                            <div
+                                class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-2">Regular Follow-ups</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed">
+                                Ongoing check-ins to ensure smooth usage and quick resolution of issues.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="space-y-8">
+                        <div
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                                Support Available (Mon–Sat | 9:00 AM – 5:00 PM)
+                            </span>
+                        </div>
+
+                        <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                            Reliable support for daily school operations
+                        </h2>
+
+                        <p class="text-lg text-slate-500 leading-relaxed">
+                            Our support team manages technical issues, data assistance, and training so your school
+                            staff
+                            can focus on teaching and student development.
+                        </p>
+
+                        <a href="#"
+                            class="inline-flex items-center px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-600 transition">
+                            Contact Support
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+                <div
+                class="relative bg-gradient-to-r from-emerald-50 via-white to-blue-50 rounded-[3rem] p-1 max-w-6xl m-auto border border-slate-100 shadow-inner mt-12">
+                <div class="bg-white/60 backdrop-blur-sm rounded-[2.8rem] py-12 px-6">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center border-r border-slate-100 last:border-0">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">1,500<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Schools using
+                                VIDYAOne</div>
+                        </div>
+                        <div class="text-center border-r border-slate-100 last:border-0 lg:border-r">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">10,000<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Staff trained
+                            </div>
+                        </div>
+                        <div class="text-center border-r border-slate-100 last:border-0">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">150K<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Issues Resolved
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">550K<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Feedback Calls
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <section class="mx-auto px-6 py-24 bg-white">
+            <div class="max-w-6xl m-auto">
+
+                <!-- HEADER -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-4xl">
+                        <h2 class="text-emerald-600 font-bold tracking-[0.2em] uppercase text-xs mb-3">
+                            Other VIDYAOne Products
+                        </h2>
+                        <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">
+                            More solutions for your school
+                        </h3>
+                        <p class="mt-4 text-slate-500 text-lg">
+                            Along with the VIDYAOne offline school management software, we also provide online solutions
+                            to support your school’s digital needs.
+                        </p>
+                    </div>
+
+                    <button
+                        class="group flex items-center gap-3 bg-slate-900 px-8 py-4 rounded-2xl text-sm font-bold text-white hover:bg-emerald-600 transition-all duration-300 shadow-xl shadow-slate-200">
+                        View All Products
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- PRODUCTS -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <!-- ONLINE SCHOOL SOFTWARE -->
+                    <div
+                        class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <div
+                                class="w-16 h-16 rounded-[1.5rem] overflow-hidden shadow-lg shadow-blue-200 mb-8 bg-white flex items-center justify-center">
+                                <img src="https://cdn.vidyaone.com/Company/Website/icon_school.png"
+                                    alt="Online School Software" class="w-10 h-10 object-contain" />
+                            </div>
+
+
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                                    Online School Software
+                                </h4>
+                                <p class="text-slate-500 leading-relaxed mb-8">
+                                    A web-based school management system for schools that prefer online access.
+                                    Manage attendance, fees, exams, reports, and communication from any device with
+                                    internet connectivity.
+                                </p>
+                            </div>
+
+                            <div
+                                class="flex items-center gap-2 text-blue-600 font-bold text-sm uppercase tracking-widest">
+                                <span>View Software Details</span>
+                                <div
+                                    class="w-8 h-[2px] bg-blue-100 group-hover:w-12 group-hover:bg-blue-600 transition-all duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SCHOOL WEBSITE -->
+                    <div
+                        class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                        <div class="flex flex-col h-full">
+                            <div
+                                class="w-16 h-16 rounded-[1.5rem] overflow-hidden shadow-lg shadow-blue-200 mb-8 bg-white flex items-center justify-center">
+                                <img src="https://cdn.vidyaone.com/Company/Website/icon_college.png" alt="Online School Software" class="w-10 h-10 object-contain" />
+                            </div>
+
+
+                            <div class="flex-grow">
+                                <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">
+                                    College Website
+                                </h4>
+                                <p class="text-slate-500 leading-relaxed mb-8">
+                                    A professional school website to share information with parents and students.
+                                    Display notices, admissions details, achievements, photo galleries, and contact
+                                    information in one place.
+                                </p>
+                            </div>
+
+                            <div
+                                class="flex items-center gap-2 text-emerald-600 font-bold text-sm uppercase tracking-widest">
+                                <span>View Website Samples</span>
+                                <div
+                                    class="w-8 h-[2px] bg-emerald-100 group-hover:w-12 group-hover:bg-emerald-600 transition-all duration-500">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
 
 </body>
 
