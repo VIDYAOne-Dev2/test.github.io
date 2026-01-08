@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - VIDYAOne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .success-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+
+
+    <main class="max-w-5xl mx-auto px-6 pb-24">
+
+        <section
+            class="relative text-center py-16 px-6 mb-12 overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-transparent">
+
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-40">
+                <div class="absolute top-0 left-1/4 w-64 h-64 bg-emerald-200 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-blue-100 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative inline-flex items-center justify-center mb-8">
+                <div class="absolute inset-0 bg-emerald-400 blur-2xl opacity-20 animate-pulse"></div>
+
+                <div
+                    class="relative w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center border border-emerald-100">
+                    <div
+                        class="w-16 h-16 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-inner success-pulse">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <span
+                    class="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-widest text-emerald-700 uppercase bg-emerald-100 rounded-full">
+                    Transaction Complete
+                </span>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                    You’re all set! Welcome to <span class="text-emerald-600">VIDYAOne</span>
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">
+                    We’ve received your payment and couldn't be more excited to have you on board.
+                </p>
+
+                <p class="mt-4 text-slate-500 max-w-xl mx-auto">
+                    Sit back and relax—our onboarding specialists are already preparing your environment. You will
+                    receive a call within the next 30 minutes to finalize your installation.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="max-w-6xl mx-auto mb-20 px-6">
+
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
+                <div class="text-center md:text-left">
+                    <h2 class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-600 mb-1">Our Commitment</h2>
+                    <p class="text-2xl font-bold text-slate-800">How our team will help you</p>
+                </div>
+
+                <div class="flex items-center gap-3 bg-white px-5 py-2.5 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </div>
+                    <p class="text-sm font-semibold text-slate-700">
+                        Support Available: <span class="text-slate-500 font-normal ml-1">Mon - Sat, 9 AM - 5 PM</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-desktop text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Installation</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Remote activation and technical setup for your
+                        Windows systems.</p>
+                </div>
+
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-purple-500/5 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Data Setup</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Secure configuration of student records and
+                        academic parameters.</p>
+                </div>
+
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chalkboard-user text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Staff Training</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Personalized 1-on-1 guidance to ensure your team
+                        is proficient.</p>
+                </div>
+
+                <div
+                    class="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 transition-all duration-300">
+                    <div
+                        class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-headset text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Ongoing Care</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Priority technical support available whenever you
+                        need us.</p>
+                </div>
+            </div>
+
+            <div
+                class="relative bg-gradient-to-r from-emerald-50 via-white to-blue-50 rounded-[3rem] p-1 border border-slate-100 shadow-inner">
+                <div class="bg-white/60 backdrop-blur-sm rounded-[2.8rem] py-12 px-6">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center border-r border-slate-100 last:border-0">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">1,500<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Schools using
+                                VIDYAOne</div>
+                        </div>
+                        <div class="text-center border-r border-slate-100 last:border-0 lg:border-r">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">10,000<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Staff trained
+                            </div>
+                        </div>
+                        <div class="text-center border-r border-slate-100 last:border-0">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">150K<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Issues Resolved
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-extrabold text-slate-900 mb-1">550K<span
+                                    class="text-emerald-500">+</span></div>
+                            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Feedback Calls
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between mb-20">
+            <div class="mb-6 md:mb-0">
+                <h3 class="text-xl font-bold text-slate-900">Need immediate help?</h3>
+                <p class="text-slate-500">Connect with us directly while you wait for onboarding.</p>
+            </div>
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 transition text-sm font-medium">
+                    <i class="fa-solid fa-phone mr-2 text-slate-400"></i> Phone Support
+                </button>
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition text-sm font-medium">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp
+                </button>
+                <button
+                    class="flex items-center px-5 py-2.5 rounded-full border border-slate-200 hover:bg-slate-50 transition text-sm font-medium">
+                    <i class="fa-solid fa-ticket mr-2 text-slate-400"></i> Support Ticket
+                </button>
+            </div>
+        </section>
+
+        <hr class="border-slate-200 mb-20">
+        <section class="max-w-6xl mx-auto px-6 py-24 bg-white">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-emerald-600 font-bold tracking-[0.2em] uppercase text-xs mb-3">Expand Your Digital
+                        Campus</h2>
+                    <h3 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">
+                        Beyond Management. <span class="text-slate-400">Total Digitization.</span>
+                    </h3>
+                </div>
+                <button
+                    class="group flex items-center gap-3 bg-slate-900 px-8 py-4 rounded-2xl text-sm font-bold text-white hover:bg-emerald-600 transition-all duration-300 shadow-xl shadow-slate-200">
+                    View All Products
+                    <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div
+                    class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                    <div class="flex flex-col h-full">
+                        <div
+                            class="w-16 h-16 bg-blue-600 text-white rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-blue-200 mb-8 group-hover:-rotate-3 transition-transform duration-500">
+                            <i class="fa-solid fa-globe text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Official School Website
+                            </h4>
+                            <p class="text-slate-500 leading-relaxed mb-8">
+                                Launch a high-performance, SEO-optimized portal that showcases your institution’s
+                                achievements and streamlines admissions.
+                            </p>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-blue-600 font-extrabold text-sm uppercase tracking-widest">
+                            <span>Explore Features</span>
+                            <div
+                                class="w-8 h-[2px] bg-blue-100 group-hover:w-12 group-hover:bg-blue-600 transition-all duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                    <div class="flex flex-col h-full">
+                        <div
+                            class="w-16 h-16 bg-amber-500 text-white rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-amber-200 mb-8 group-hover:-rotate-3 transition-transform duration-500">
+                            <i class="fa-solid fa-child-reaching text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Pre-School Creative Web
+                            </h4>
+                            <p class="text-slate-500 leading-relaxed mb-8">
+                                Engaging, colorful, and parent-friendly web experiences designed specifically to win the
+                                hearts of young families.
+                            </p>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-amber-600 font-extrabold text-sm uppercase tracking-widest">
+                            <span>Explore Features</span>
+                            <div
+                                class="w-8 h-[2px] bg-amber-100 group-hover:w-12 group-hover:bg-amber-600 transition-all duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                    <div class="flex flex-col h-full">
+                        <div
+                            class="w-16 h-16 bg-indigo-600 text-white rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-indigo-200 mb-8 group-hover:-rotate-3 transition-transform duration-500">
+                            <i class="fa-solid fa-building-columns text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">College Web Architecture
+                            </h4>
+                            <p class="text-slate-500 leading-relaxed mb-8">
+                                Robust platforms built for higher education, focusing on department management, research
+                                highlights, and alumni portals.
+                            </p>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-indigo-600 font-extrabold text-sm uppercase tracking-widest">
+                            <span>Explore Features</span>
+                            <div
+                                class="w-8 h-[2px] bg-indigo-100 group-hover:w-12 group-hover:bg-indigo-600 transition-all duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group bg-slate-50/50 rounded-[3rem] p-10 border border-slate-100 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.08)] transition-all duration-500 cursor-pointer">
+                    <div class="flex flex-col h-full">
+                        <div
+                            class="w-16 h-16 bg-emerald-600 text-white rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-emerald-200 mb-8 group-hover:-rotate-3 transition-transform duration-500">
+                            <i class="fa-solid fa-laptop-code text-2xl"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h4 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Virtual Schooling Module
+                            </h4>
+                            <p class="text-slate-500 leading-relaxed mb-8">
+                                Bring your classroom to the cloud with integrated e-learning, online exams, and
+                                real-time student performance tracking.
+                            </p>
+                        </div>
+                        <div
+                            class="flex items-center gap-2 text-emerald-600 font-extrabold text-sm uppercase tracking-widest">
+                            <span>Explore Features</span>
+                            <div
+                                class="w-8 h-[2px] bg-emerald-100 group-hover:w-12 group-hover:bg-emerald-600 transition-all duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-12 text-slate-400 text-sm">
+        &copy; 2026 VIDYAOne Solutions. All rights reserved.
+    </footer>
+
+</body>
+
+</html>
