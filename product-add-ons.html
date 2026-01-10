@@ -16,7 +16,6 @@
     <!-- Main Content -->
     <main>
 
-
         <section class="relative w-full bg-white py-24 lg:py-32 overflow-hidden font-sans">
 
             <div class="absolute inset-0 pointer-events-none">
@@ -210,7 +209,7 @@
                         <h1 class="text-5xl md:text-4xl font-bold text-slate-900 tracking-tight leading-[1.1]">
                             <span class="relative">
                                 <span class="relative z-10 text-blue-600">
-                                    SMS Integration
+                                    Available Add-Ons
                                 </span>
                                 <span class="absolute bottom-2 left-0 w-full h-3 bg-yellow-200/60 -z-10"></span>
                             </span>
@@ -239,7 +238,7 @@
 
                 <!-- Card -->
                 <article
-                    class="relative bg-white border border-slate-200 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500">
+                    class=" max-w-xl relative bg-white border border-slate-200 rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-500">
 
                     <div class="absolute top-0 left-0 w-full h-1.5 flex opacity-70">
                         <div class="h-full w-1/4 bg-blue-500"></div>
@@ -249,208 +248,236 @@
                     </div>
 
                     <div class="p-8 lg:p-14">
-                        <div class="flex flex-col lg:flex-row gap-8">
+                        <div class="w-full space-y-8">
 
-                            <!-- Left Info -->
-                            <div class="w-full lg:w-[35%] space-y-8">
-                                <div class="flex items-center gap-6">
-                                    <div
-                                        class="h-20 w-20 rounded-3xl bg-gradient-to-br from-red-100 via-pink-100 to-yellow-100 flex items-center justify-center text-red-600 shadow-sm">
-                                        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5" />
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 17a3 3 0 006 0" />
-                                        </svg>
-                                    </div>
-
-                                    <div>
-                                        <h4 class="text-3xl  font-bold text-slate-900 tracking-tight">
-                                            SMS Gateway
-                                        </h4>
-                                        <div class="flex items-center gap-2 mt-1">
-                                            <span
-                                                class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest rounded-md">
-                                                DLT Compliant
-                                            </span>
-                                            <span class="text-slate-400 text-xs font-medium italic">
-                                                Secure Integration
-                                            </span>
-                                        </div>
-                                    </div>
+                            <!-- Header -->
+                            <div class="flex items-center gap-6">
+                                <div
+                                    class="h-20 w-20 rounded-3xl bg-gradient-to-br from-red-100 via-pink-100 to-yellow-100 flex items-center justify-center text-red-600 shadow-sm">
+                                    <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a3 3 0 006 0" />
+                                    </svg>
                                 </div>
 
-                                <p class="text-lg text-slate-500 leading-relaxed">
-                                    Send official and approved SMS for attendance, fees, holidays, and school notices.
-                                    All messages are sent directly from
-                                    <b class="text-slate-900 font-semibold">VIDYAOne School Management Software</b>
-                                    without using any external system.
-                                </p>
-
-                                <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
-                                    <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">
-                                        Why Schools Use SMS
-                                    </h6>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
-                                            ✔ TRAI & DLT Approved
-                                        </div>
-                                        <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
-                                            ✔ Automatic Message Delivery
-                                        </div>
+                                <div>
+                                    <h4 class="text-3xl font-bold text-slate-900 tracking-tight">
+                                        SMS Gateway
+                                    </h4>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span
+                                            class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-black uppercase tracking-widest rounded-md">
+                                            DLT Compliant
+                                        </span>
+                                        <span class="text-slate-400 text-xs font-medium italic">
+                                            Secure Integration
+                                        </span>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Description -->
+                            <p class="text-lg text-slate-500 leading-relaxed">
+                                Send official and approved SMS for attendance, fees, holidays, and school notices.
+                                All messages are sent directly from
+                                <b class="text-slate-900 font-semibold">
+                                    VIDYAOne School Management Software
+                                </b>
+                                without using any external system.
+                            </p>
+
+                            <!-- Benefits -->
+                            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                                <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">
+                                    Why Schools Use SMS
+                                </h6>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                        ✔ TRAI & DLT Approved
+                                    </div>
+                                    <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                        ✔ Automatic Message Delivery
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CTAs -->
+                            <div class="flex flex-col sm:flex-row items-center gap-3 w-full">
+
+                                <!-- Tertiary -->
+                                <a href="#"
+                                    class="px-6 py-3 bg-white border border-emerald-200 text-emerald-700 font-black text-xs rounded-xl hover:border-emerald-600 hover:text-emerald-800 transition-all text-center">
+                                    Buy Credits
+                                </a>
+
+                                <!-- Primary -->
+                                <a href="#"
+                                    class="px-6 py-3 bg-slate-900 text-white font-black text-xs rounded-xl hover:bg-blue-600 transition-all text-center">
+                                    Activate SMS Service
+                                </a>
+
+                                <!-- Secondary -->
+                                <a href="#"
+                                    class="px-6 py-3 bg-white border border-slate-200 text-slate-700 font-black text-xs rounded-xl hover:border-slate-900 transition-all text-center">
+                                    How to Use SMS
+                                </a>
+
+
+
+                            </div>
+
+
+                            <!-- Footer Info -->
                             <div
-                                class="w-full lg:w-[65%] grid grid-cols-1 md:grid-cols-2 gap-8 lg:border-l lg:border-slate-100 lg:pl-8 font-sans">
+                                class="mt-8 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
 
-                                <div
-                                    class="p-6 rounded-3xl hover:bg-blue-50/50 border border-transparent hover:border-blue-100 transition-colors group">
-                                    <div class="flex items-center gap-2 mb-5">
-                                        <span
-                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white font-black text-sm antialiased shadow-sm">
-                                            01
-                                        </span>
-                                        <h5
-                                            class=" font-bold text-slate-900 uppercase text-[14px] tracking-[0.15em] antialiased">
-                                            Activate SMS Integration
-                                        </h5>
-                                    </div>
-                                    <p class="text-[16px] text-slate-500 mb-6 leading-relaxed font-medium">
-                                        To send SMS in India, schools must complete the mandatory DLT process.
-                                        This is a one-time setup required before any SMS can be delivered.
-                                    </p>
-                                    <ul class="space-y-3">
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-blue-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-blue-600 transition-colors decoration-blue-100 underline-offset-4 hover:underline">
-                                                DLT registration with telecom operator
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-blue-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-blue-600 transition-colors decoration-blue-100 underline-offset-4 hover:underline">
-                                                PE–TM chain configuration and approval
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-blue-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-blue-600 transition-colors decoration-blue-100 underline-offset-4 hover:underline">
-                                                Sender ID creation and approval
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-blue-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-blue-600 transition-colors decoration-blue-100 underline-offset-4 hover:underline">
-                                                SMS content template submission and approval
-                                            </a>
-                                        </li>
-                                    </ul>
-
-
-                                </div>
-
-                                <div
-                                    class="p-6 rounded-3xl hover:bg-emerald-50/50 border border-transparent hover:border-emerald-100 transition-colors group">
-                                    <div class="flex items-center gap-2 mb-5">
-                                        <span
-                                            class="flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500 text-white font-black text-sm  shadow-sm">
-                                            02
-                                        </span>
-                                        <h5
-                                            class=" font-bold text-slate-900 uppercase text-[14px] tracking-[0.15em] antialiased">
-                                            Use SMS in the Software
-                                        </h5>
-                                    </div>
-                                    <p class="text-[16px] text-slate-500 mb-6 leading-relaxed font-medium">
-                                        Once activated, SMS works automatically inside
-                                        <b class="text-slate-900 font-bold">VIDYAOne School Management Software</b>
-                                        based on daily school activities.
-                                    </p>
-                                    <ul class="space-y-3">
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-emerald-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-emerald-600 transition-colors decoration-emerald-100 underline-offset-4 hover:underline">
-                                                Automatic fee due and reminder SMS
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-emerald-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-emerald-600 transition-colors decoration-emerald-100 underline-offset-4 hover:underline">
-                                                Fee payment confirmation SMS
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-emerald-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-emerald-600 transition-colors decoration-emerald-100 underline-offset-4 hover:underline">
-                                                Attendance alerts to parents
-                                            </a>
-                                        </li>
-                                        <li
-                                            class="flex items-start gap-3 text-[14px] font-semibold text-slate-700 leading-snug">
-                                            <span class="text-emerald-400 mt-0.5">•</span>
-                                            <a href="#"
-                                                class="hover:text-emerald-600 transition-colors decoration-emerald-100 underline-offset-4 hover:underline">
-                                                Holiday notices and circular messages
-                                            </a>
-                                        </li>
-                                    </ul>
-
+                                <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                        DLT Compliant Messaging
+                                    </span>
+                                    <span class="w-1 h-1 bg-slate-200 rounded-full"></span>
+                                    <span>Real-Time Delivery Status</span>
                                 </div>
 
                             </div>
-                        </div>
-
-                        <!-- Footer -->
-                        <!-- Footer -->
-                        <div
-                            class="mt-12 pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-
-                            <!-- Left Info -->
-                            <div class="flex items-center gap-4 text-xs font-bold text-slate-400">
-                                <span class="flex items-center gap-2">
-                                    <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
-                                    DLT Compliant Messaging
-                                </span>
-                                <div class="w-1 h-1 bg-slate-200 rounded-full"></div>
-                                <span>Real-Time Delivery Status</span>
-                            </div>
-
-                            <!-- Right CTAs -->
-                            <div class="flex items-center gap-3 w-full md:w-auto">
-                                <a href="#"
-                                    class="flex-1 md:flex-none px-6 py-3 bg-slate-900 text-white font-black text-xs  rounded-xl hover:bg-blue-600 transition-all text-center">
-                                    Start Using SMS Services
-                                </a>
-                                <a href="#"
-                                    class="flex-1 md:flex-none px-6 py-3 bg-white border border-slate-200 text-slate-700 font-black text-xs  rounded-xl hover:border-slate-900 transition-all text-center">
-                                    Learn How to Use SMS
-                                </a>
-                            </div>
 
                         </div>
+                    </div>
 
 
         </section>
 
+        <section class="relative w-full py-24 lg:py-32 overflow-hidden font-sans">
+
+
+
+            <div class="relative max-w-[1400px] mx-auto px-6 lg:px-12">
+
+                <div class="w-full mb-16">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                        <span class="flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        <span class="text-[11px] font-bold text-slate-600 uppercase tracking-[0.2em]">Unlimited
+                            Customization</span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                        Customised for <span class="text-blue-600">Your School</span>
+                        <span class="relative inline-block mt-2">
+                            Reports & Templates
+                            <span class="absolute bottom-2 left-0 w-full h-3 bg-yellow-200/60 -z-10"></span>
+                        </span>
+                    </h2>
+
+                    <p class="text-lg text-slate-500 leading-relaxed">
+                        Every school follows a unique academic structure and presentation style.
+                        We help you customise marksheets, ID cards, and admit cards so they match
+                        your school’s format, branding, and internal requirements.
+                    </p>
+
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <div class="group bg-white/70 backdrop-blur-md border border-white rounded-[2.5rem] p-10 
+        shadow-[0_8px_30px_rgb(0,0,0,0.04)] 
+        hover:shadow-[0_20px_50px_rgba(37,99,235,0.1)] 
+        transition-all duration-500 border-b-4 border-b-blue-500 
+        flex flex-col items-center text-center">
+
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6 
+            group-hover:scale-110 transition-transform duration-500">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-4">
+                            Marksheet Templates
+                        </h3>
+
+                        <a href="#" class="inline-flex items-center justify-center font-bold text-blue-600 
+            group-hover:gap-2 transition-all">
+                            View Available Templates
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="group bg-white/70 backdrop-blur-md border border-white rounded-[2.5rem] p-10 
+        shadow-[0_8px_30px_rgb(0,0,0,0.04)] 
+        hover:shadow-[0_20px_50px_rgba(16,185,129,0.1)] 
+        transition-all duration-500 border-b-4 border-b-emerald-500 
+        flex flex-col items-center text-center">
+
+                        <div class="w-16 h-16 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 
+            group-hover:scale-110 transition-transform duration-500">
+                            <i class="fa-solid fa-address-card text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">
+                            ID Card Templates
+                        </h3>
+
+                        <a href="#" class="inline-flex items-center justify-center font-bold text-emerald-600 
+            group-hover:gap-2 transition-all">
+                            View ID Cards
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="group bg-white/70 backdrop-blur-md border border-white rounded-[2.5rem] p-10 
+        shadow-[0_8px_30px_rgb(0,0,0,0.04)] 
+        hover:shadow-[0_20px_50px_rgba(236,72,153,0.1)] 
+        transition-all duration-500 border-b-4 border-b-pink-500 
+        flex flex-col items-center text-center">
+
+                        <div class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-600 mb-6 
+            group-hover:scale-110 transition-transform duration-500">
+                            <i class="fa-solid fa-clipboard-check text-3xl"></i>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-slate-900 mb-4">
+                            Admit Cards
+                        </h3>
+
+                        <a href="#" class="inline-flex items-center justify-center font-bold text-pink-600 
+            group-hover:gap-2 transition-all">
+                            View Admit Cards
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="mt-20 flex flex-col items-center">
+                    <div class="p-1 bg-gradient-to-r from-blue-500 via-pink-500 to-yellow-500 rounded-[2rem] shadow-xl">
+                        <a href="#"
+                            class="flex flex-col sm:flex-row items-center gap-6 px-12 py-8 bg-white rounded-[1.8rem] hover:bg-slate-50 transition-colors group">
+                            <div>
+                                <h4 class="text-2xl font-bold text-slate-900">Have a specific format in mind?</h4>
+                                <p class="text-slate-500">Share your existing PDF or Excel format with our experts.</p>
+                            </div>
+                            <div
+                                class="h-14 w-14 rounded-full bg-blue-600 text-white flex items-center justify-center group-hover:rotate-[360deg] transition-transform duration-700 shadow-lg shadow-blue-200">
+                                <i class="fa-solid fa-plus text-xl"></i>
+                            </div>
+                            <span class="text-lg font-black text-blue-600 uppercase tracking-tight">Let's Discuss Your
+                                Format</span>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
 
         <!-- STATUS SECTION -->
-        <section class="w-full py-12 bg-slate-50/50">
+        <!-- <section class="w-full py-12 bg-slate-50/50">
             <div class="max-w-7xl mx-auto">
 
                 <div class="mb-12">
@@ -460,7 +487,6 @@
                             <span class="relative z-10 text-green-600">
                                 Recharge
                             </span>
-                            <!-- <span class="absolute bottom-2 left-0 w-full h-3 bg-yellow-200/60 -z-10"></span> -->
                         </span>
                         Notification Credits
                     </h1>
@@ -471,12 +497,10 @@
                     </p>
                 </div>
 
-                <!-- Credits -->
                 <section class="max-w-7xl mx-auto ">
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
 
-                        <!-- 1K -->
                         <div class="bg-white border border-slate-200 p-6 rounded-3xl text-center">
                             <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
                                 Starter
@@ -489,7 +513,6 @@
                             </button>
                         </div>
 
-                        <!-- 5K -->
                         <div class="bg-white border border-slate-200 p-6 rounded-3xl text-center">
                             <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
                                 Basic
@@ -502,7 +525,6 @@
                             </button>
                         </div>
 
-                        <!-- 10K -->
                         <div
                             class="bg-blue-600 p-6 rounded-3xl text-center shadow-lg shadow-blue-200 relative scale-105">
                             <span
@@ -520,7 +542,6 @@
                             </button>
                         </div>
 
-                        <!-- 50K -->
                         <div class="bg-white border border-slate-200 p-6 rounded-3xl text-center">
                             <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
                                 Advanced
@@ -533,7 +554,6 @@
                             </button>
                         </div>
 
-                        <!-- 100K -->
                         <div class="bg-white border border-slate-200 p-6 rounded-3xl text-center">
                             <p class="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mb-3">
                                 Enterprise
@@ -548,13 +568,11 @@
 
                     </div>
 
-                    <!-- Info Note -->
                     <div class="mt-10 mx-auto">
                         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 rounded-2xl
                     bg-gradient-to-r from-blue-50 via-green-50 to-pink-50
                     border border-slate-200">
 
-                            <!-- Icon -->
                             <div class="flex items-center justify-center w-10 h-10 rounded-xl
                         bg-blue-600 text-white shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -563,7 +581,6 @@
                                 </svg>
                             </div>
 
-                            <!-- Text Content -->
                             <div class="text-sm text-slate-700 leading-relaxed">
                                 <p>
                                     Please ensure that your <span class="font-semibold">DLT registration</span> and
@@ -599,11 +616,7 @@
                     </button>
                 </div>
             </section>
-        </section>
-
-
-
-
+        </section> -->
 
     </main>
 
