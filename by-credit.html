@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>VIDYAOne | SMS Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .glass-info {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes rotate-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .animate-rotate-slow {
+            animation: rotate-slow 80s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Scroll reveal base state */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition:
+                opacity 0.8s ease-out,
+                transform 0.8s ease-out;
+        }
+
+        /* Revealed state */
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-[#fcfcfd] text-slate-900 min-h-screen">
+
+    <!-- || Hero Section || -->
+    <div class="reveal relative min-h-[600px] overflow-hidden flex items-center justify-center py-24
+            bg-gradient-to-br from-blue-50 via-white to-yellow-50">
+
+        <!-- Decorative accents -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 -right-24 w-96 h-96 bg-red-300/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-6xl w-full relative z-10">
+
+            <!-- Hero Header -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-4">
+                    Recharge Credits. <span class="text-blue-600">Send Without Delay.</span>
+                </h1>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">
+                    Check your balance instantly and recharge credits to keep your messaging
+                    services running smoothly without interruptions.
+                </p>
+            </div>
+
+            <!-- Main Card -->
+            <div class="rounded-3xl bg-white/70 backdrop-blur-xl border border-slate-200
+                   shadow-[0_25px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+
+                <div class="flex flex-col lg:flex-row">
+
+                    <!-- Left Panel: Client Verification -->
+                    <div class="lg:w-1/3 p-10 bg-gradient-to-br from-blue-50 to-white
+                           border-b lg:border-b-0 lg:border-r border-slate-200">
+
+                        <div class="space-y-6">
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">
+                                    Client Verification
+                                </label>
+
+                                <div class="relative">
+                                    <input type="text" placeholder="Enter Client ID" class="w-full pl-4 pr-12 py-4 bg-white border border-slate-200
+                                           rounded-2xl shadow-sm focus:ring-2 focus:ring-blue-500
+                                           focus:border-transparent outline-none transition-all
+                                           text-slate-800 font-medium">
+
+                                    <div class="absolute right-4 top-1/2 -translate-y-1/2 text-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.355r2.404-4.332a4.915 4.915 0 01-4.808 0L12 21.355z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4
+                                   rounded-2xl transition-all duration-300
+                                   shadow-lg shadow-blue-200 flex items-center
+                                   justify-center gap-2 group">
+                                <span>Check Balance</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </button>
+
+                            <div class="flex items-center justify-center gap-4 opacity-70">
+                                <span class="h-px w-8 bg-slate-300"></span>
+                                <span class="text-[10px] font-bold text-slate-500 uppercase">
+                                    Secure & Verified Access
+                                </span>
+                                <span class="h-px w-8 bg-slate-300"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Balance Overview -->
+                    <div class="lg:w-2/3 p-10 lg:p-14 relative bg-white">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 relative z-10">
+
+                            <!-- Balance -->
+                            <div>
+                                <p class="text-sm font-semibold text-green-600 mb-2">
+                                    Available Credits
+                                </p>
+                                <h3 class="text-6xl font-black text-slate-900 tracking-tighter">
+                                    0000
+                                </h3>
+
+                                <div class="mt-4 inline-flex items-center px-3 py-1 rounded-full
+                                       bg-red-100 text-red-700 text-xs font-bold">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 mr-2"></span>
+                                    BALANCE EXHAUSTED
+                                </div>
+                            </div>
+
+                            <!-- Usage -->
+                            <div class="flex flex-col justify-center space-y-8 border-l border-slate-200 md:pl-12">
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase mb-1">
+                                        Total Usage
+                                    </p>
+                                    <p class="text-2xl font-bold text-slate-800">
+                                        0000 <span class="text-sm font-normal text-slate-400">credits used</span>
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs font-bold text-slate-400 uppercase mb-1">
+                                        Last Recharge
+                                    </p>
+                                    <p class="text-xl font-semibold text-slate-500">
+                                        Not Available
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Zero Balance Info Message -->
+                        <div class="mt-10 p-5 rounded-2xl bg-yellow-50 border border-yellow-200
+                               flex items-start gap-3">
+                            <div class="text-yellow-600 mt-0.5">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 9v2m0 4h.01M10.29 3.86l-7.4 12.8A1.5 1.5 0 004.2 19h15.6a1.5 1.5 0 001.31-2.34l-7.4-12.8a1.5 1.5 0 00-2.42 0z" />
+                                </svg>
+                            </div>
+
+                            <div>
+                                <p class="text-sm font-bold text-slate-800">
+                                    Your credit balance is currently zero
+                                </p>
+                                <p class="text-sm text-slate-600">
+                                    Recharge now to continue using messaging services without any interruption.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Subtle background graphic -->
+                        <!-- Subtle rotating background graphic -->
+                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none
+           flex items-center justify-center animate-rotate-slow">
+                            <svg width="400" height="400" viewBox="0 0 100 100" fill="none">
+                                <circle cx="50" cy="50" r="40" stroke="currentColor" stroke-width="0.5" />
+                                <circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="0.5" />
+                                <circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="0.5" />
+                            </svg>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- || Recharge Credit || -->
+    <section class=" reveal py-20 bg-gradient-to-b from-white to-blue-50/40 text-slate-900 antialiased overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+                <div class="max-w-3xl">
+                    <h2 class="text-xs font-bold text-blue-600 uppercase tracking-[0.2em] mb-3">
+                        Recharge Plans
+                    </h2>
+                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
+                        Buy SMS <span class="relative inline-block">
+                            <span class="relative z-10">Credits</span>
+                            <span class="absolute bottom-1 left-0 w-full h-3 bg-blue-100 -z-10"></span>
+                        </span>
+                    </h1>
+                    <p class="mt-4 text-slate-500 text-lg font-medium">
+                        Choose a credit pack that fits your usage. Recharge anytime and pay only for what you use.
+                    </p>
+                </div>
+
+                <div class="hidden md:block">
+                    <span class="text-sm font-semibold text-slate-400">
+                        Currency: <span class="text-slate-900">INR (₹)</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-14">
+
+                <!-- 1,000 -->
+                <div class="group flex flex-col p-7 rounded-[2.5rem] bg-white border border-slate-200
+                        hover:shadow-xl hover:shadow-red-200/40 transition-all">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="p-3 bg-red-50 rounded-2xl text-red-600">
+                            ⚡
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-red-50 text-red-600 rounded-md">
+                            SAVE 10%
+                        </span>
+                    </div>
+
+                    <span class="text-3xl font-black text-slate-900 mb-1">₹225</span>
+                    <p class="text-sm font-bold text-slate-800">1,000 Credits</p>
+                    <p class="text-xs text-slate-400 mb-8">Best for testing & low usage</p>
+
+                    <button class="mt-auto w-full py-3 rounded-xl bg-slate-50
+                           group-hover:bg-red-600 group-hover:text-white
+                           group-hover:shadow-lg group-hover:shadow-red-200
+                           text-slate-600 text-xs font-bold transition-all">
+                        Buy Now
+                    </button>
+                </div>
+
+                <!-- 5,000 -->
+                <div class="group flex flex-col p-7 rounded-[2.5rem] bg-white border border-slate-200
+                        hover:shadow-xl hover:shadow-pink-200/40 transition-all">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="p-3 bg-pink-50 rounded-2xl text-pink-600">
+                            ⭐
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-pink-50 text-pink-600 rounded-md">
+                            SAVE 15%
+                        </span>
+                    </div>
+
+                    <span class="text-3xl font-black text-slate-900 mb-1">₹1,062</span>
+                    <p class="text-sm font-bold text-slate-800">5,000 Credits</p>
+                    <p class="text-xs text-slate-400 mb-8">Better value per message</p>
+
+                    <button class="mt-auto w-full py-3 rounded-xl bg-slate-50
+                           group-hover:bg-pink-600 group-hover:text-white
+                           group-hover:shadow-lg group-hover:shadow-pink-200
+                           text-slate-600 text-xs font-bold transition-all">
+                        Buy Now
+                    </button>
+                </div>
+
+                <!-- 10,000 (Popular) -->
+                <div class="relative flex flex-col p-7 rounded-[2.5rem] bg-blue-50
+                        border-2 border-blue-500 shadow-xl shadow-blue-200/50 lg:-translate-y-4">
+
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2
+                           bg-blue-600 text-white text-[10px] font-black uppercase
+                           tracking-widest px-4 py-1.5 rounded-full">
+                        Popular
+                    </div>
+
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-12 h-12 min-w-[3rem] rounded-2xl
+              bg-blue-100 rounded-2xl text-blue-600
+               flex items-center justify-center shrink-0 text-xl">
+                            ✔
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-blue-600 text-white rounded-md">
+                            SAVE 20%
+                        </span>
+                    </div>
+
+                    <span class="text-3xl font-black text-slate-900 mb-1">₹2,000</span>
+                    <p class="text-sm font-bold text-slate-900">10,000 Credits</p>
+                    <p class="text-xs text-slate-500 mb-8 font-medium">
+                        Ideal for regular usage
+                    </p>
+
+                    <button class="mt-auto w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700
+                           text-white text-xs font-black shadow-lg shadow-blue-400/40 transition-all">
+                        Recharge Now
+                    </button>
+                </div>
+
+                <!-- 50,000 -->
+                <div class="group flex flex-col p-7 rounded-[2.5rem] bg-white border border-slate-200
+                        hover:shadow-xl hover:shadow-green-200/40 transition-all">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="p-3 bg-green-50 rounded-2xl text-green-600">
+                            📈
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-green-50 text-green-600 rounded-md">
+                            SAVE 20%
+                        </span>
+                    </div>
+
+                    <span class="text-3xl font-black text-slate-900 mb-1">₹10,000</span>
+                    <p class="text-sm font-bold text-slate-800">50,000 Credits</p>
+                    <p class="text-xs text-slate-400 mb-8">For high-volume messaging</p>
+
+                    <button class="mt-auto w-full py-3 rounded-xl bg-slate-50
+                           group-hover:bg-green-600 group-hover:text-white
+                           group-hover:shadow-lg group-hover:shadow-green-200
+                           text-slate-600 text-xs font-bold transition-all">
+                        Buy Now
+                    </button>
+                </div>
+
+                <!-- 100,000 -->
+                <div class="group flex flex-col p-7 rounded-[2.5rem] bg-white border border-slate-200
+                        hover:shadow-xl hover:shadow-amber-200/40 transition-all">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="p-3 bg-amber-50 rounded-2xl text-amber-600">
+                            🏆
+                        </div>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-amber-50 text-amber-600 rounded-md">
+                            BEST VALUE
+                        </span>
+                    </div>
+
+                    <span class="text-3xl font-black text-slate-900 mb-1">₹19,500</span>
+                    <p class="text-sm font-bold text-slate-800">100,000 Credits</p>
+                    <p class="text-xs text-slate-400 mb-8">Lowest cost per SMS</p>
+
+                    <button class="mt-auto w-full py-3 rounded-xl bg-slate-50
+                           group-hover:bg-amber-600 group-hover:text-white
+                           group-hover:shadow-lg group-hover:shadow-amber-200
+                           text-slate-600 text-xs font-bold transition-all">
+                        Buy Now
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Info Blocks -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-16">
+
+                <div class="flex items-center gap-4 p-6 rounded-3xl bg-amber-50 border border-amber-200">
+                    <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center
+                           text-amber-700 text-xl font-bold">
+                        !
+                    </div>
+                    <p class="text-sm font-semibold text-amber-900">
+                        Prices are exclusive of 18% GST. Applicable taxes will be added at checkout.
+                    </p>
+                </div>
+
+                <div class="flex items-start gap-4 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm">
+                    <div class="w-12 h-12 min-w-[3rem] rounded-2xl
+           bg-blue-600 text-white
+           flex items-center justify-center
+           shrink-0 text-xl">
+                        ℹ
+                    </div>
+
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">
+                            Credit Usage
+                        </h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">
+                            1 Credit = 1 SMS (160 English or 70 Unicode characters).
+                            Credits are deducted automatically based on message length.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- || Avilable Service || -->
+    <section class=" reveal w-full py-14 bg-gradient-to-b from-slate-50/50 to-white">
+        <div class="max-w-[1400px] mx-auto px-6">
+
+            <!-- Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div class="space-y-3 max-w-5xl">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest">
+                            Messaging Services
+                        </span>
+                    </div>
+
+                    <h2 class="text-4xl font-bold text-slate-900 tracking-tight leading-[1.1]">
+                        Activate Messaging Services
+                    </h2>
+
+                    <p class="text-slate-500 text-base">
+                        Enable messaging services on your account and manage credits from one place.
+                        Once activated, these services can be used across different modules wherever messaging is
+                        required.
+                    </p>
+                </div>
+
+                <div
+                    class="inline-flex items-center px-5 py-2.5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5 mr-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-sm font-bold text-slate-700">
+                        Ready for Activation
+                    </span>
+                </div>
+            </div>
+
+            <!-- Service Card -->
+            <article class="max-w-xl relative bg-white border border-slate-200 rounded-[2.5rem]
+                   overflow-hidden shadow-sm hover:shadow-xl hover:shadow-blue-900/5
+                   transition-all duration-500">
+
+                <!-- Top Accent -->
+                <div class="absolute top-0 left-0 w-full h-1.5 flex opacity-70">
+                    <div class="h-full w-1/4 bg-blue-500"></div>
+                    <div class="h-full w-1/4 bg-red-500"></div>
+                    <div class="h-full w-1/4 bg-emerald-500"></div>
+                    <div class="h-full w-1/4 bg-amber-400"></div>
+                </div>
+
+                <div class="p-8 lg:p-14">
+                    <div class="w-full space-y-8">
+
+                        <!-- Card Header -->
+                        <div class="flex items-center gap-6">
+                            <div class="h-20 w-20 rounded-3xl bg-gradient-to-br
+                                   from-red-100 via-pink-100 to-yellow-100
+                                   flex items-center justify-center text-red-600 shadow-sm">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17a3 3 0 006 0" />
+                                </svg>
+                            </div>
+
+                            <div>
+                                <h4 class="text-3xl font-bold text-slate-900 tracking-tight">
+                                    SMS Gateway
+                                </h4>
+                                <span class="inline-block mt-1 px-2 py-0.5
+                                       bg-emerald-100 text-emerald-700
+                                       text-[10px] font-black uppercase tracking-widest
+                                       rounded-md">
+                                    Available
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <p class="text-lg text-slate-500 leading-relaxed">
+                            Activate SMS functionality and manage message credits with ease.
+                            Once enabled, SMS can be used wherever messaging is supported across your system.
+                        </p>
+
+                        <!-- Benefits -->
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                            <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3">
+                                What You Get
+                            </h6>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                    ✔ One-click service activation
+                                </div>
+                                <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                    ✔ Centralized credit management
+                                </div>
+                                <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                    ✔ Real-time usage visibility
+                                </div>
+                                <div class="text-xs font-bold text-slate-600 flex items-center gap-2">
+                                    ✔ Secure and stable delivery layer
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="flex justify-center w-full">
+                            <a href="#" class="px-8 py-3 bg-blue-600 text-white font-black text-sm
+                                   rounded-xl hover:bg-blue-700 transition-all text-center">
+                                Activate SMS Gateway
+                            </a>
+                        </div>
+
+                        <!-- Footer Info -->
+                        <div class="flex justify-center items-center gap-6 text-xs font-bold text-slate-400">
+                            <span class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                Secure Infrastructure
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                Usage & Balance Tracking
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- || Suport Section || -->
+    <section class=" reveal relative overflow-hidden bg-white py-12  px-6 lg:px-8">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-slate-50/50 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl pb-6 mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <!-- SUPPORT FEATURES -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+                    <!-- Expert Team -->
+                    <div
+                        class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-xl bg-blue-50 text-blue-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12l2 2 4-4m5-2a9 9 0 11-6-8.28" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Experienced Support Team</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            A trained team with strong understanding of school software and daily operations.
+                        </p>
+                    </div>
+
+                    <!-- Data Setup -->
+                    <div
+                        class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-red-50 text-red-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Data Setup & Correction</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Help with data entry, migration, and correction to maintain accurate school records.
+                        </p>
+                    </div>
+
+                    <!-- Training -->
+                    <div
+                        class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-xl bg-pink-50 text-pink-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Teacher & Operator Training</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Clear training sessions to help staff use the system correctly and confidently.
+                        </p>
+                    </div>
+
+                    <!-- Follow-up -->
+                    <div
+                        class="p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-md transition">
+                        <div
+                            class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-100 text-slate-700 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Regular Follow-ups</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Ongoing check-ins to ensure smooth usage and quick resolution of issues.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-100">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">
+                            Support Available (Mon–Sat | 9:00 AM – 5:00 PM)
+                        </span>
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
+                        Reliable support for daily school operations
+                    </h2>
+
+                    <p class="text-lg text-slate-500 leading-relaxed">
+                        Our support team manages technical issues, data assistance, and training so your school
+                        staff
+                        can focus on teaching and student development.
+                    </p>
+
+                    <a href="#"
+                        class="inline-flex items-center px-8 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-blue-600 transition">
+                        Contact Support
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const revealElements = document.querySelectorAll(".reveal");
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("reveal-visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15,
+                    rootMargin: "0px 0px -80px 0px"
+                }
+            );
+
+            revealElements.forEach((el) => observer.observe(el));
+        });
+    </script>
+
+
+</body>
+
+</html>
