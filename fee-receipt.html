@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Student Fee Receipt</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A5 landscape;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        .a5-horizontal {
+            width: 210mm;
+            height: 148mm;
+            background: #fff;
+            position: relative;
+        }
+
+        .accent-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #3B82F6, #F59E0B);
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-4">
+
+    <div class="a5-horizontal shadow-xl rounded-xl border border-slate-200 overflow-hidden">
+
+        <div class="accent-bar"></div>
+
+        <!-- HEADER -->
+        <div class="px-4 py-3 border-b border-slate-300">
+            <div class="flex justify-between items-center">
+
+                <div class="flex gap-3 items-center">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="w-12 h-12 object-contain" />
+
+                    <div>
+                        <h1 class="text-lg font-extrabold text-slate-800">
+                            VIDYAOne Demo Public School
+                        </h1>
+                        <p class="text-[11px] text-blue-600 font-semibold">
+                            Knowledge • Discipline • Excellence
+                        </p>
+                        <p class="text-[10px] text-slate-600">
+                            Shalingram Bhawan, Golghar Gorakhpur Uttar Pradesh - 273001
+
+                        </p>
+                        <p class="text-[10px] text-slate-600">
+                            Mobile: +91 98XXXXXX12 | Email: info@school.edu | website :<span class="text-blue-700">
+                                vidyaone.com</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-right text-[11px]">
+                    <p> Hindi Medium | Affiliation: 213000 </p>
+                    <p> U-DISE: 07020304506 </p>
+                    <!-- <p><b>Receipt No:</b> FR-2026-0045</p> -->
+                    <p><b>Date:</b> 20-Jan-2026</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- STUDENT DETAILS -->
+        <div class="flex gap-6 px-4 py-3 border-b border-slate-300 text-[11px]">
+
+            <!-- LEFT: Student Details -->
+            <div class="grid grid-cols-3 gap-x-6 flex-1">
+
+                <div>
+                    <b>Fee Receipt No.:</b> <span class="font-bold text-green-600 uppercase"> FR-2026-0045</span>
+                </div>
+
+                <div>
+                    <b>SID .: </b> ST-88219
+                </div>
+
+                <div>
+                    <b>SR No / Roll No .:</b> <span class="text-green-700"> SR-4001 </span>/ 12
+                </div>
+
+                <div>
+                    <b>Student Name .:</b> Aditya Pratap Singh
+                </div>
+
+                <div>
+                    <b>Father Name .:</b> Rajesh Singh
+                </div>
+
+                <div>
+                    <b>Class & Section .:</b> IX-B
+                </div>
+
+                <div>
+                    <b>Mobile No .:</b> +91 98XXXXXX12
+                </div>
+
+
+
+                <div class="col-span-2">
+                    <b>Address:</b> H.No 214, Sector 12, R.K. Puram, New Delhi – 110022
+                </div>
+
+            </div>
+
+            <!-- RIGHT: Student Image -->
+            <div class="flex-shrink-0">
+                <div class="w-18 h-20 border border-slate-300 rounded-lg overflow-hidden">
+                    <img src="Image/icon-student.png" alt="Student Photo" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- TABLE + PAYMENT SUMMARY -->
+        <div class="flex gap-4 px-4 mt-2">
+
+            <!-- LEFT: FEE TABLE (50%) -->
+            <div class="w-[60%]">
+                <div class="border border-slate-300 rounded-lg overflow-hidden text-[10px]">
+
+                    <!-- Table Header -->
+                    <div class="grid grid-cols-[1fr_40px_50px_80px_70px] bg-slate-100 font-semibold text-center">
+                        <div class="p-2 border-r flex items-center justify-center">Fee Head</div>
+                        <div class="p-2 border-r flex items-center justify-center">Qty</div>
+                        <div class="p-2 border-r flex items-center justify-center">Rate</div>
+                        <div class="p-2 border-r flex items-center justify-center">Calculation</div>
+                        <div class="p-2 flex items-center justify-center">Amount</div>
+                    </div>
+
+
+                    <!-- Table Rows -->
+                    <div class="divide-y divide-slate-200">
+
+                        <!-- Tuition Fee -->
+                        <div class="grid grid-cols-[1fr_40px_50px_80px_70px] h-6 items-center">
+                            <div class="border-r pl-2 flex items-center">Tuition Fee</div>
+                            <div class="border-r flex items-center justify-center">2</div>
+                            <div class="border-r flex items-center justify-end pr-2">250</div>
+                            <div class="border-r flex items-center justify-center">2 × 250</div>
+                            <div class="flex items-center justify-end pr-2 font-semibold">500</div>
+                        </div>
+
+                        <!-- Exam Fee -->
+                        <div class="grid grid-cols-[1fr_40px_50px_80px_70px] h-6 items-center">
+                            <div class="border-r pl-2 flex items-center">Exam Fee</div>
+                            <div class="border-r flex items-center justify-center">1</div>
+                            <div class="border-r flex items-center justify-end pr-2">300</div>
+                            <div class="border-r flex items-center justify-center">1 × 300</div>
+                            <div class="flex items-center justify-end pr-2 font-semibold">300</div>
+                        </div>
+
+                        <!-- Admission Fee -->
+                        <div class="grid grid-cols-[1fr_40px_50px_80px_70px] h-6 items-center">
+                            <div class="border-r pl-2 flex items-center">Admission Fee</div>
+                            <div class="border-r flex items-center justify-center">1</div>
+                            <div class="border-r flex items-center justify-end pr-2">1,500</div>
+                            <div class="border-r flex items-center justify-center">1 × 1,500</div>
+                            <div class="flex items-center justify-end pr-2 font-semibold">1,500</div>
+                        </div>
+                        <div class="grid grid-cols-[1fr_40px_50px_80px_70px] h-6 items-center">
+                            <div class="border-r pl-2 flex items-center"> </div>
+                            <div class="border-r flex items-center justify-center"> </div>
+                            <div class="border-r flex items-center justify-end pr-2"> </div>
+                            <div class="border-r flex items-center justify-center"> </div>
+                            <div class="flex items-center justify-end pr-2 font-semibold"> </div>
+                        </div>
+
+
+
+                        <!-- Duplicate rows for 10+ fee heads -->
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- RIGHT: PAYMENT SUMMARY (50%) -->
+            <div class="w-[45%] border border-slate-300 rounded-lg p-4 text-[11px] flex flex-col justify-between">
+
+                <!-- TOP: Installment + QR -->
+                <div class="grid grid-cols-[1fr_auto] gap-4">
+
+                    <!-- Installment & Calculation -->
+                    <div>
+                        <p class="text-[10px] uppercase text-slate-600 font-semibold">
+                            Installment Name
+                        </p>
+                        <p class="text-[12px] font-semibold text-blue-700">
+                            First Installment
+                        </p>
+
+                        <div class="mt-3 grid grid-cols-2 gap-y-1 text-[11px]">
+                            <p><b>Payment Mode</b></p>
+                            <p class="text-right">UPI</p>
+
+                            <p><b>Total Amount</b></p>
+                            <p class="text-right">₹2,300</p>
+
+                            <p><b>Discount</b></p>
+                            <p class="text-right text-red-600">− ₹100</p>
+
+                            <p class="col-span-2 text-[10px] text-slate-600">
+                                <b>Discount Remark:</b> Sibling Discount
+                            </p>
+
+
+                            <!-- <p class="font-extrabold text-green-700">
+                                Payable Amount
+                            </p>
+                            <p class="font-extrabold text-green-700 text-right">
+                                ₹1,400
+                            </p> -->
+                        </div>
+                    </div>
+
+                    <!-- QR Code -->
+                    <div class="text-center">
+                        <div
+                            class="w-20 h-20 border border-slate-300 rounded-lg flex items-center justify-center overflow-hidden">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKsAAACUCAMAAADbGilTAAAAY1BMVEX///8AAAD4+PiDg4Oenp7T09N0dHRFRUUsLCzk5OTg4OA1NTWhoaGWlpbIyMiGhoYNDQ2vr69oaGgYGBhubm7r6+tNTU3x8fG7u7uOjo5UVFTCwsJ7e3smJiZZWVk+Pj4fHx/nsoXiAAALQElEQVR4nO2c62KrrBKGG40x2mg8nxNz/1e5mVFGp+Axbdpvr7x/KojwxCoOw8DHx1tvvfWWoroxZ1VSSZFoQjgIxZFnjCtxqHQqs8K+3qaGVDnfSFdoUd5hXjGVhJQJB5E4yPJxJVbclz679MtkBUdIxbqqR/JWsR4XajmrrIk4qDjrrS/96SisF0idF1o5/gDr9ddZg9bW6qGwNnma5k1rtwmwGqmQIVk/M9u+O312XkKdjPWhb6QNNrF++o5WkcJ6rqrKxtKQU9hVdXcl6zEV2UDutlWVFSKRMtZI34j/uY3V0Z87KawoS+aEcLcsyRrKbAsK1fISYj3pG3E2srr6c2tYb8+yuq9mjV/LmvtjuSpr0zRmpGd1TXEylNcWjUyprC5rJd/J6sfBoK4j5aygWs/a19RfG0HqCimV1TyMWon9vazBuMO77mHtlXRQvTjrddxIsJuVfQdfwrr/vu5kdcc1aViPL2b1r2WJT3BaFEVIn1dgjRuv7HSBc61ktYpe7otZ8Zap14bjK7DPMu6SleuFrJe1rHn166yr7+sfYA0/bftGl+RgXjHWWJhLbZinuRsJGwyMsZSNG17JmruOM3yHr1lVNfmYNRLnnYvIjsAG88VB5v8WKxd8aCvGmhgfI4ttsAd+n5XGBcN9fTXruJYpewCl3tf1rCZrZS+rFY0VMtbU6oVGuSfON75luSGUPI9Zz5g9wxqyVqydrBrxPgvUyFPpQ7ZwGrMOmmBV9d2sF/ZogGjkYURv1udYgz/B+jA9rWzGWoRheBG5pTPNer4UYeERaymK+5LV1jdiPjaxzonbLmS/TrC28O3lY0OyX+f0G6xf+lc4eLU/64+wLvk0H4zVV1jxi5vIX32mZ8BnrI+FVtb5NI0lEevtdotLmYOssci6QfcQiL+PUNSVRo/bI4FKSzhJrKta+R5N9K9c3Nbm49gX6r/ESi/glVjVt+VFrK60o3I1Gw6KKEngI3Y4yUJpkyRJJnnOIpGE4pSfSdZQXJIQqzVuwCCLbYdyarRg+dgWpegGki+jkDn4+eS+DLrkwq6FBtLP8dO0lfWuZ13j00Rxe0DDSk8MdLsp3JphLupvs9o/xDr3DHBW+qq8kDW/njo1Bb1biUgx1tQ8nZILvE2VZHXE+KW2N7Fekq6lpFCY1rGmrXIDudGA31hoHe2BRLJiTdzvssR6ktnr7AENq90nAmKlb8HAqtouO1jpf/X/yhrEnYoP48PJZMr/GNsunLUN4p41iIOOVZSFmoJIZb1BlcQqGjiU4hKjOfTZ61kHleI6mz5e8CjysSGxaqSZ1SNWkBUcRsMw/I6A4bhhLk7DSjEA6jj2e1m3zm38JutWfxYXuMZaYoVnIN7Eeuajd5WVXJ21fAZceO/WjQtcmH+gJ7Qoy/I4zF3AlIU4XWM/CIlEz5pDJVDao9+JcxtQ+lT3kxwesHpyygPrhl+WemV5XRdDcjwEk74MkIETfdAopGo9q3UTRUKWZcp5w9Fk5Ci16xs753fpWKVmWQ8HhXVe/wRrOlOAsdKY+wvrQWFt9IhPs8bRaVKmJcwn9Jw3wta661lzKHSB0vSrXZFjqYieKFm3h5Gd5a0fby/5XZ7us7jghc9pXAD9C49Ieor16W+Bysptl/v3sd7+Iusty7Lqxiq2ISt3nPQijqoJVoh0ShmrIcOZ0jbrVAV9A63PWEtR78kVNazjJdYTzFyyniaoRY4j2mtDmLTUsxqmndkm8xO6nz2ijbOhEFnWxWeJ2gzGCuetuy0a2MaKUywlYwUoRMSqJlgnfJooKsV88HxsuDE+61dZN9hZNFJWpyA7KDjgvpMJVqjpPMEafwtrbV5RJt67ok91CmshkWOiJSdPNfSuO4U478G1wFo312sJOUOv4dd1F0NSius8capIJWsiztUb47PmBF31Y+Y8jyMCDaNMkmprD4PPp2xtlVUzdzzHWr1Z17E+lliZBbCONVNY141huNR3C18r/gKG5tU8Gj1rcCr7dwtk+OzdAt3LvjZ4t+oj1HIbv1s5ZM8Y0JPS9Fkg6oR5HDz3E5I0piCId4p7/YSD1G8Bis9tTMSQvJp11X1VWZPtrNeP7codaV8glLSMUD4FYrW9nTV1X2UlKByUYUVw8CntLCwElhWoxTdf2jYr7aywv9juDB8Won4V+XeZnc+wPsa/MEP/bZj2cfAemHzwNoFNaBdpXzfSSXJ7j53FBX3WEO42w6rRxNwxd1ps9Gkusc6tMflLrOTPIlZaY3KX/etTrBt98N2YW4ynPcvqAtMNMSz20Za69GNuH18wGIF7ImGBfWLDAfRwAVyLMyHwJsVJc2oigoKx/EVU6+IaFJHAiKxRA4koHW9iRV8GuinAB4+G+nCX6d6AauX+DaNs6ITRx+iyG0g3f4jtYvOG6d54QpovoO5vGBfoWXlsuSZGj1gHW5vNG+6OffzrrMEC69hdWYtUvMwqLhmx9l7M58cw5CtG1sQrSzSDMhndDr7i4lKOYt1rZvfFjcgO2dgwD+Ul1AAILTZwRl+pAXcbK8nXrwnk/iwKNeXi41gUehrUVp6KKV1i1cQTJk+wPhWru42VvgWLrNcVrLvHMNYMKy5KJFb1GaD4rG2s3VycnIVelnfoJzT7Kcg+XMrv/kWG6AfEGQi9wo8Czn7SgiRoIU/G2X0/IAs94kH9t0BURH0WzHEG9/xjbXgW92nSPD50pFM+IhLNHZO++IiYNH3WU/7XN+sX1sEHv5G16MM4TvegZ8XwKXybMOIKmikhCwtBCqynCKIZTThfylmQTLK6okDTKqx3v4/RGuY2NrKSLPmN1YTfoaAQkuPMpGQJmJ019AOlvhLSU6zcHphg5fGvII09gFo1F/dPsB4Oy88AsboUfava2h8SYx3rjtjXnIUmcuHXJkmSyFMLlUkv+HfEERSC6hyrnze8sppOCusZLlkfn7UoNf6VxPsslCY2h3RVWFHP+zR3smpinv491nWx5RA8TrHlTDlZiHFXBmLLFVaqaWCFa82HKL6edVXMPsmfKal5P4gVgCLGiuLR/4tav7cHSB3HDtL4z4j1+9ae/xbrnvWG61nnnoE5VhwjK6zDuGD9XjSLa6JQYRgWaJHI0kfoAmJImXIPCgMWTuHg2ofixArFC8aaQVYI8uTCqVWs37e3B19fMOzrQFL7rI229k+xHt6sW1ipNLCiT9OVUIusZIKbz7DOreXlrPckikyaN4RUKc0vDaudjKpNoINqYTCTPsO6uEaanZ+YN9SwqrKZkbuLdWntOWtvYt7wzbqPFfakQjWrWO9VdccBr7jinjFWA7ZfOP0kayNnJfkeFFOsRprmaPs6eZrXwZi1bttuM7EfY+UzvousVAg3L2OstPbrx1j5uOA/yUojgT2s2+JfF1lxfgInOgiqLoqa3vUMAtsdyVpB5PtRxtCbC6w2bQT0PazqXjTuzDpOFM3HHhZYUevt1x17/Mytj93B+o17ff051pk91KZY5QoHXPeArHe5BIJYsYyBN6Ovu2MNxs1tfAbm9qZDVtx/jrE2UBLcx3c4wJBiSxxcGKspsmpj3EBdipqOrLl1K3uf2dsDTVNa00/S7D/AlO9dx/l9+5CsZt295nTVHpWatefPsO5dd7xq788QNvmEhht5yiLWa1Zlpivzae9P2tcBYp7w/0bh8VY7ZjUoAmoV6+KeqrmMg7+pO6HCOb/qs2lP1W6vL7jkLLLP2GdRvcGY1bmL2tYt/F/vd1HPUa9oSY/81FoI1r+i9saQPM+q7qv7E6zb9lbmoh5cs7eyysoHn/SWblhvuGnP6i87TZPVpdmzGpX02RjH6eqvTcvVe1a/9dZb/5j+B0bvGrWls2JhAAAAAElFTkSuQmCC" alt="Payment QR Code" class="w-full h-full object-contain" />
+                        </div>
+
+                        <p class="text-[9px] text-slate-500 mt-1">
+                            Scan to verify
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- MIDDLE: Paid & Balance -->
+                <div class="mt-3 text-[12px] space-y-1">
+
+                    <div class="flex justify-between">
+                        <p class="font-semibold">Payable Amount</p>
+                        <p class="font-extrabold text-green-700">₹2,200</p>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <p class="font-semibold">Balance Amount</p>
+                        <p class="font-bold text-blue-700">₹0</p>
+                    </div>
+
+                    <div class="flex justify-between border-t border-slate-200 pt-1">
+                        <p class="font-semibold uppercase text-slate-700">Paid Amount </p>
+                        <p class="font-extrabold text-blue-800">₹2,200</p>
+                    </div>
+
+                </div>
+
+
+                <!-- BOTTOM: Signature -->
+                <div class="text-right mt-4">
+                    <div class="w-40 h-8 border-b border-slate-400 ml-auto"></div>
+                    <p class="text-[10px] font-semibold uppercase mt-1">
+                        Authorized Signature
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="px-4 mt-2 pt-2 border-t border-slate-200 flex justify-between text-[9px] text-slate-600">
+            <p>This is a computer generated receipt.</p>
+            <p>Designed by <b class="text-blue-600">VIDYAOne</b></p>
+        </div>
+
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>

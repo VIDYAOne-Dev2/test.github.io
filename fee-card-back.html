@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Modern Fee Card - Back Side</title>
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A5 landscape;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                padding: 0;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        .a5-horizontal {
+            width: 210mm;
+            height: 148mm;
+            background: white;
+            position: relative;
+            padding: 15mm;
+            /* Balanced margins for printing */
+            box-sizing: border-box;
+        }
+
+        .table-row:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .accent-line {
+            height: 6px;
+            background: linear-gradient(90deg, #EF4444 0%, #EC4899 25%, #3B82F6 75%, #F59E0B 100%);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="a5-horizontal shadow-2xl rounded-2xl overflow-hidden">
+        <div class="accent-line"></div>
+
+        <div class="flex justify-between items-end mb-4">
+            <div>
+                <h2 class="text-xl font-extrabold text-slate-800 uppercase tracking-tight">
+                    Fee Payment Record <span class="text-blue-600">2026-27</span>
+                </h2>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Structure Name: Primary Fee 
+                </p>
+            </div>
+            <div class="bg-blue-50 px-4 py-2 rounded-xl border border-blue-100 text-right">
+                <p class="text-[9px] text-blue-500 font-bold uppercase leading-none mb-1">Total Annual Payable</p>
+                <p class="text-lg font-black text-blue-900 leading-none">₹ 48,000/-</p>
+            </div>
+        </div>
+
+        <div class="border-2 border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div
+                class="grid grid-cols-8 bg-slate-900 text-white font-bold text-[10px] uppercase tracking-wider text-center py-3">
+                <div class="border-r border-slate-700">Date</div>
+                <div class="border-r border-slate-700">Receipt No</div>
+                <div class="border-r border-slate-700 col-span-2">Head/Description</div>
+                <div class="border-r border-slate-700">Total</div>
+                <div class="border-r border-slate-700">Paid</div>
+                <div class="border-r border-slate-700">Balance</div>
+                <div>Signature</div>
+            </div>
+
+            <div class="divide-y divide-slate-200 text-[11px] font-medium text-slate-700">
+                <script>
+                    const months = ["ADMISSION", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER", "JANUARY", "FEBRUARY", "MARCH"];
+                    months.forEach(month => {
+                        document.write(`
+                        <div class="grid grid-cols-8 text-center table-row items-center">
+                            <div class="py-2.5 border-r border-slate-200"></div>
+                            <div class="py-2.5 border-r border-slate-200"></div>
+                            <div class="py-2.5 border-r border-slate-200 col-span-2"></div>
+                            <div class="py-2.5 border-r border-slate-200"></div>
+                            <div class="py-2.5 border-r border-slate-200"></div>
+                            <div class="py-2.5 border-r border-slate-200 bg-blue-50/30"></div>
+                            <div class="py-2.5"></div>
+                        </div>
+                    `);
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="mt-6 flex justify-between items-end">
+            <div class="text-[9px] text-slate-500 leading-tight max-w-[60%]">
+                <p class="font-bold text-red-600 mb-1 underline uppercase">Notice to Parents:</p>
+                <ul class="list-disc ml-4 space-y-0.5">
+                    <li>Check the receipt number and cashier signature immediately after payment.</li>
+                    <li>In case of loss of this card, ₹50 fine will be charged for a duplicate.</li>
+                </ul>
+            </div>
+
+            <div class="flex gap-8">
+                <div class="text-center">
+                    <div class="w-28 h-8 border-b-2 border-slate-200 mb-1"></div>
+                    <p class="text-[9px] font-extrabold text-slate-800 uppercase italic tracking-wider">Parent Sig.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-32 h-8 border-b-2 border-slate-900 mb-1 flex items-center justify-center">
+                    </div>
+                    <p class="text-[9px] font-extrabold text-blue-900 uppercase tracking-widest">Cashier Signature</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-4 left-0 w-full px-[15mm] flex justify-between items-center opacity-40">
+            <p class="text-[8px] font-bold text-slate-400">
+                Printed on: 20-Jan-2026
+            </p>
+            <p class="text-[8px] font-bold text-slate-400 uppercase">
+                Designed by <span class="text-blue-800">VIDYAOne</span>
+            </p>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

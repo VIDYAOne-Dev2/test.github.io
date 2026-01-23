@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vSearch | Professional School Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F8FAFC;
+        }
+
+        .sidebar-item-active {
+            background-color: #F1F5F9;
+            border-right: 3px solid #0EA5E9;
+        }
+
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+    </style>
+
+    <style>
+        /* Custom Scrollbar for the form body */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+    </style>
+
+</head>
+
+<body class="h-screen flex flex-col overflow-hidden">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <header
+        class="h-20 glass-header px-8 flex items-center justify-between shrink-0 z-50 sticky top-0 border-b border-slate-200/60 bg-white/95 backdrop-blur-md">
+
+        <div class="flex items-center gap-4 shrink-0">
+            <div class="flex items-center gap-1">
+                <div class="w-15 h-15 rounded-xl flex items-center justify-center ">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" alt="VIDYAOne Logo"
+                        class="w-8 h-8 object-contain" />
+                </div>
+
+                <div class="flex items-baseline gap-3">
+                    <span class="font-extrabold text-2xl text-slate-900 tracking-tight">
+                        vSearch<span class="text-sky-600">.com</span>
+                    </span>
+                    <span class="hidden lg:block text-sm font-medium text-slate-400 border-l border-slate-200 pl-3">
+                        Search Schools Across India
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-1 max-w-xl mx-10">
+            <div class="relative group">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i data-lucide="search"
+                        class="w-4 h-4 text-slate-400 group-focus-within:text-sky-500 transition-colors"></i>
+                </div>
+                <input type="text" placeholder="Search by school name, city, or board..."
+                    class="w-full bg-slate-100/80 border border-slate-200 text-sm py-2.5 pl-11 pr-4 rounded-2xl outline-none focus:bg-white focus:ring-4 focus:ring-sky-50 focus:border-sky-400 transition-all">
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 shrink-0">
+
+            <button onclick="openLocationModal()" class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800
+           hover:bg-slate-50 hover:border-slate-400 transition">
+                <i data-lucide="map-pin" class="h-4 w-4 text-sky-500"></i>
+                View Nearby Schools
+            </button>
+
+
+
+    </header>
+
+
+
+    <div class="flex flex-1 overflow-hidden">
+        <aside
+            class="w-72 bg-white border-r border-slate-200 h-screen flex flex-col overflow-y-auto custom-scrollbar shadow-sm">
+
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                <h2 class="text-lg font-semibold text-slate-800 tracking-tight">Filters</h2>
+                <button class="text-xs font-medium text-sky-600 hover:text-sky-700 transition-colors">Clear all</button>
+            </div>
+
+            <div class="p-6 space-y-8">
+
+                <!-- Sort -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-3">Sort Results
+                        By</label>
+                    <div class="relative">
+                        <select
+                            class="w-full appearance-none bg-sky-50 border border-sky-200 text-slate-700 text-sm rounded-lg focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 block p-2.5 outline-none transition-all">
+                            <option selected>Newest First</option>
+                            <option value="rating">Top Rated</option>
+                            <option value="popularity">Most Popular</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Institution Type -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-3">Institution
+                        Type</label>
+                    <div class="grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-lg">
+                        <button
+                            class="text-[12px] font-medium py-1.5 px-2 bg-sky-100 text-sky-700 rounded-md border border-sky-200">
+                            Co-ed
+                        </button>
+                        <button
+                            class="text-[12px] font-medium py-1.5 px-2 text-slate-500 hover:text-pink-600 transition-colors">
+                            Boys
+                        </button>
+                        <button
+                            class="text-[12px] font-medium py-1.5 px-2 text-slate-500 hover:text-green-600 transition-colors">
+                            Girls
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Academic Board -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-4">Academic
+                        Board</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500/30">
+                            <span class="ml-3 text-sm text-slate-600 group-hover:text-sky-700">CBSE</span>
+                        </label>
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-pink-500 focus:ring-pink-500/30">
+                            <span class="ml-3 text-sm text-slate-600 group-hover:text-pink-600">ICSE / ISC</span>
+                        </label>
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-green-500 focus:ring-green-500/30">
+                            <span class="ml-3 text-sm text-slate-600 group-hover:text-green-600">IB Board</span>
+                        </label>
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-yellow-500 focus:ring-yellow-500/30">
+                            <span class="ml-3 text-sm text-slate-600 group-hover:text-yellow-600">State Board</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Location Focus with Suggestions -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-3">Location
+                        Focus</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-4 w-4 text-slate-400 group-focus-within:text-sky-500" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input type="text" list="districts" placeholder="Search District..."
+                            class="block w-full pl-10 pr-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all">
+                        <datalist id="districts">
+                            <option value="Gorakhpur">
+                            <option value="Lucknow">
+                            <option value="Varanasi">
+                            <option value="Kanpur">
+                            <option value="Prayagraj">
+                            <option value="Noida">
+                            <option value="Ghaziabad">
+                        </datalist>
+                    </div>
+                </div>
+
+                <!-- Institution Category (Checkboxes) -->
+                <div>
+                    <label class="block text-[11px] uppercase tracking-wider font-bold text-slate-400 mb-3">Institution
+                        Category</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-sky-600 focus:ring-sky-500/30">
+                            <span class="ml-3 text-sm text-slate-600">Pre-School</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-pink-500 focus:ring-pink-500/30">
+                            <span class="ml-3 text-sm text-slate-600">Primary School</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-green-500 focus:ring-green-500/30">
+                            <span class="ml-3 text-sm text-slate-600">Secondary / Senior Secondary</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-yellow-500 focus:ring-yellow-500/30">
+                            <span class="ml-3 text-sm text-slate-600">College</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox"
+                                class="w-4 h-4 rounded border-slate-300 text-slate-600 focus:ring-slate-400/30">
+                            <span class="ml-3 text-sm text-slate-600">University</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-8 space-y-8 bg-[#f8fafc] custom-scrollbar">
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- SCHOOL CARD -->
+                <div class="group relative bg-white rounded-2xl border border-slate-200 overflow-hidden
+         transition-all duration-300 hover:-translate-y-1
+         hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
+
+                    <!-- FULL CARD LINK -->
+                    <a href="/school/st-ignatius-global-academy" aria-label="View St. Ignatius Global Academy details"
+                        class="absolute inset-0 z-10 rounded-2xl">
+                    </a>
+
+                    <div class="flex flex-col md:flex-row gap-5 p-5 relative z-0">
+
+                        <!-- IMAGE + U-DISE -->
+                        <div class="w-full md:w-52 shrink-0 relative z-20">
+
+                            <!-- U-DISE -->
+                            <div class="mt-3 mb-2 flex justify-center items-center gap-2 text-center">
+                                <p class="text-[13px] font-bold uppercase text-slate-400 font-bold tracking-wider">
+                                    U-DISE Code
+                                </p>
+                                <p class="text-md font-mono font-bold text-indigo-600 tracking-wide">
+                                    ******03006
+                                </p>
+                            </div>
+
+                            <div class="relative h-36">
+                                <img src="data:image/jpeg;base64,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"
+                                    class="w-full h-full object-cover rounded-xl" alt="St. Ignatius Global Academy" />
+
+                                <!-- Badges -->
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold">
+                                        Co-Edu
+                                    </span>
+                                    <span class="bg-indigo-600 text-white px-2 py-1 rounded-lg text-[10px] font-bold">
+                                        CBSE
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- CONTENT -->
+                        <div class="flex-1 flex flex-col justify-between relative z-20">
+
+                            <!-- HEADER -->
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 class="text-lg font-extrabold text-slate-900 tracking-tight">
+                                        St. Ignatius Global Academy
+                                    </h3>
+
+                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full
+                   bg-emerald-50 text-emerald-600 border border-emerald-100
+                   text-[11px] font-bold uppercase">
+                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        Verified
+                                    </span>
+                                </div>
+
+                                <!-- Address -->
+                                <p class="mt-1 text-sm text-slate-500">
+                                    <i class="fa-solid fa-location-dot mr-1 text-slate-400"></i>
+                                    Boring Road, Patna, Bihar – <b>800001</b>
+                                </p>
+
+                                <!-- Website -->
+                                <p class="mt-1 text-sm">
+                                    <i class="fa-solid fa-globe mr-1 text-slate-400"></i>
+                                    <a href="https://www.ignatiusacademy.edu.in" target="_blank"
+                                        onclick="event.stopPropagation()"
+                                        class="relative z-20 text-indigo-600 font-semibold hover:underline">
+                                        www.ignatiusacademy.edu.in
+                                    </a>
+                                </p>
+                            </div>
+
+                            <!-- META -->
+                            <div class="mt-4 grid grid-cols-2 gap-4 border-t border-slate-100 pt-4">
+
+                                <div>
+                                    <p class="text-[10px] uppercase text-slate-400 font-bold">
+                                        Board & Medium
+                                    </p>
+                                    <p class="text-sm font-semibold text-slate-700">
+                                        CBSE • English
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p class="text-[10px] uppercase text-slate-400 font-bold">
+                                        Affiliation No.
+                                    </p>
+                                    <p class="text-sm font-semibold text-slate-700">
+                                        CBSE / 2130456
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <p class="text-[10px] uppercase text-slate-400 font-bold">
+                                        Category
+                                    </p>
+                                    <p class="text-sm font-semibold text-slate-700">
+                                        Secondary School
+                                    </p>
+                                </div>
+
+                                <!-- CTA BUTTON -->
+                                <div class="w-full">
+                                    <button onclick="event.stopPropagation()" class="relative z-20 flex w-full items-center justify-center gap-2
+                   rounded-full border-2 border-slate-100 py-2.5
+                   transition-all duration-300 hover:scale-[1.02]
+                   bg-green-100 text-green hover:border-green-900 shadow-sm">
+
+                                        <span class="text-[12px] font-black uppercase tracking-widest">
+                                            Enquire Now
+                                        </span>
+
+                                        <div class="flex h-6 w-6 items-center justify-center rounded-full
+                     bg-green-500 text-white transition-all duration-300
+                     group-hover:bg-orange-600 group-hover:scale-110
+                     group-active:scale-90 shadow-sm">
+
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+                                        </div>
+
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
+
+                    <div class="flex flex-col md:flex-row gap-5 p-5">
+
+                        <div class="w-full md:w-52 shrink-0">
+                            <div class="mt-3 mb-2 flex justify-center items-center gap-2 text-center">
+                                <p class="text-[13px] uppercase text-slate-400 font-bold tracking-wider">
+                                    U-DISE Code
+                                </p>
+                                <p class="text-md font-mono font-bold text-pink-600 tracking-wide">
+                                    ******04584
+                                </p>
+                            </div>
+                            <div class="relative h-36">
+
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_zXYAOIecMxOLnwdmPEuY4dOZ9eP1F-JXTA&s"
+                                    class="w-full h-full object-cover rounded-xl" />
+
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span class="bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold">
+                                        Girls
+                                    </span>
+                                    <span class="bg-pink-600 text-white px-2 py-1 rounded-lg text-[10px] font-bold">
+                                        ICSE
+                                    </span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="flex-1 flex flex-col justify-between">
+
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h3 class="text-lg font-extrabold text-slate-900 tracking-tight">
+                                        St. Mary’s Convent School
+                                    </h3>
+
+                                    <span
+                                        class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 text-[11px] font-bold uppercase">
+                                        <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        Verified
+                                    </span>
+                                </div>
+
+                                <p class="mt-1 text-sm text-slate-500">
+                                    Civil Lines, Prayagraj, Uttar Pradesh – <b>211001</b>
+                                </p>
+
+                                <p class="mt-1 text-sm">
+                                    <a href="#" class="text-indigo-600 font-semibold hover:underline">
+                                        www.stmarysprayagraj.edu.in
+                                    </a>
+                                </p>
+                            </div>
+
+                            <div class="mt-4 border-t border-slate-100 pt-4">
+                                <div class="flex justify-between gap-2 mb-4">
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Board & Medium</p>
+                                        <p class="text-sm font-semibold text-slate-700">UP Board • Hindi</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Affiliation</p>
+                                        <p class="text-xs font-semibold text-slate-700">908712</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Category</p>
+                                        <p class="text-xs font-semibold text-slate-700">High School</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="group flex-1 min-w-[120px] flex items-center justify-center gap-2           rounded-full border-2 border-slate-100 py-2.5           transition-all duration-300
+           hover:scale-[1.02] bg-green-100 text-green hover:border-green-900
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Enquire Now
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white
+               transition-all duration-300
+               group-hover:bg-orange-600
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-sky-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+
+                                    <button class="group flex-1 min-w-[100px] flex items-center justify-center gap-2
+           rounded-full border-2 border-slate-100 py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] hover:bg-indigo-500 hover:text-white hover:border-indigo-700
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Admission
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white
+               transition-all duration-300
+               group-hover:bg-indigo-700
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-indigo-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 4v16m8-8H4" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <a href="/school/saraswati-vidya-mandir" class="block group">
+
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden
+               transition-all duration-300
+               hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
+
+                        <div class="p-5 flex flex-col justify-between h-full">
+
+                            <!-- TOP ROW : NAME + CHIPS -->
+                            <div>
+
+                                <!-- NAME + CHIPS -->
+                                <div class="flex items-start justify-between gap-3">
+
+                                    <div>
+                                        <h3 class="text-lg font-extrabold text-slate-900 tracking-tight leading-tight">
+                                            Saraswati Vidya Mandir
+                                        </h3>
+
+                                        <!-- U-DISE -->
+                                        <p
+                                            class="mt-0.5 text-[11px] font-mono font-bold text-emerald-600 tracking-wider">
+                                            U-DISE: ******04542
+                                        </p>
+                                    </div>
+
+                                    <!-- CHIPS -->
+                                    <div class="flex gap-1.5 shrink-0">
+                                        <span class="px-2 py-0.5 rounded-md text-[10px] font-bold
+                       bg-slate-100 text-slate-700">
+                                            Co-Edu
+                                        </span>
+                                        <span class="px-2 py-0.5 rounded-md text-[10px] font-bold
+                       bg-indigo-600 text-white">
+                                            ICSE
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!-- ADDRESS -->
+                                <p class="mt-1 text-sm text-slate-500">
+                                    Golghar, Gorakhpur, Uttar Pradesh – <b>273001</b>
+                                </p>
+
+                                <!-- WEBSITE -->
+                                <p class="mt-1 text-sm">
+                                    <span class="text-indigo-600 font-semibold">
+                                        www.svmgorakhpur.edu.in
+                                    </span>
+                                </p>
+
+                            </div>
+
+
+                            <!-- META GRID -->
+                            <div class="mt-4 border-t border-slate-100 pt-4">
+                                <div class="flex justify-between gap-2 mb-4">
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Board & Medium</p>
+                                        <p class="text-sm font-semibold text-slate-700">UP Board • Hindi</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Affiliation</p>
+                                        <p class="text-xs font-semibold text-slate-700">908712</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Category</p>
+                                        <p class="text-xs font-semibold text-slate-700">High School</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-2">
+                                    <button class="group flex-1 min-w-[120px] flex items-center justify-center gap-2
+           rounded-full  py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] bg-green-100 text-green border-green-900
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Enquire Now
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white
+               transition-all duration-300
+               group-hover:bg-orange-600
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-sky-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+
+                                    <button class="group flex-1 min-w-[100px] flex items-center justify-center gap-2
+           rounded-full border-2 border-slate-100 py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] hover:bg-indigo-500 hover:text-white hover:border-indigo-700
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Admission
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white
+               transition-all duration-300
+               group-hover:bg-indigo-700
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-indigo-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 4v16m8-8H4" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+                                    <button class="group flex-1 min-w-[100px] flex items-center justify-center gap-2
+           rounded-full border-2 border-slate-100 py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] hover:bg-emerald-500 hover:text-white hover:border-emerald-700
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Pay Fee
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white
+               transition-all duration-300
+               group-hover:bg-emerald-700
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-emerald-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4
+                   4-1.79 4-4-1.79-4-4-4zm0-4v2m0 12v2m8-8h-2M6 12H4" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </a>
+
+
+
+                <div
+                    class="group bg-white rounded-2xl border border-slate-200 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.08)]">
+                    <div class="flex flex-col md:flex-row gap-5 p-5">
+                        <div class="w-full md:w-52 shrink-0">
+                            <div class="mt-3 mb-2 flex justify-center items-center gap-2 text-center">
+                                <p class="text-[13px] uppercase text-slate-400 font-bold tracking-wider">U-DISE Code</p>
+                                <p class="text-md font-mono font-bold text-emerald-600 tracking-wide">******04672</p>
+                            </div>
+                            <div class="relative h-36">
+                                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop"
+                                    class="w-full h-full object-cover rounded-xl" />
+                                <div class="absolute top-3 left-3 flex gap-2">
+                                    <span
+                                        class="bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-[10px] font-bold">Co-Edu</span>
+                                    <span
+                                        class="bg-emerald-600 text-white px-2 py-1 rounded-lg text-[10px] font-bold">State</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-lg font-extrabold text-slate-900 tracking-tight">Saraswati Vidya Mandir
+                                </h3>
+                                <p class="mt-1 text-sm text-slate-500">Golghar, Gorakhpur, Uttar Pradesh – <b>273001</b>
+                                </p>
+                                <p class="mt-1 text-sm">
+                                    <a href="#"
+                                        class="text-indigo-600 font-semibold hover:underline">www.svmgorakhpur.edu.in</a>
+                                </p>
+                            </div>
+
+                            <div class="mt-4 border-t border-slate-100 pt-4">
+                                <div class="flex justify-between grid-cols-3 gap-2 mb-4">
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Board & Medium</p>
+                                        <p class="text-sm font-semibold text-slate-700">UP Board • Hindi</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Affiliation</p>
+                                        <p class="text-xs font-semibold text-slate-700">908712</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[10px] uppercase text-slate-400 font-bold">Category</p>
+                                        <p class="text-xs font-semibold text-slate-700">High School</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-wrap gap-1">
+                                    <button class="group flex-1 min-w-[130px] flex items-center justify-center gap-2
+           rounded-full  py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] bg-green-100 text-green border-green-900
+           shadow-sm">
+
+                                        <span class="text-[10px] font-black uppercase tracking-widest">
+                                            Enquire Now
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 text-white
+               transition-all duration-300
+               group-hover:bg-orange-600
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-sky-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+
+                                    <button class="group flex-1 min-w-[100px] flex items-center justify-center gap-2
+           rounded-full border-2 border-slate-100 py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] hover:bg-indigo-500 hover:text-white hover:border-indigo-700
+           shadow-sm">
+
+                                        <span class="text-[10px] font-black uppercase tracking-widest">
+                                            Admission
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-500 text-white
+               transition-all duration-300
+               group-hover:bg-indigo-700
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-indigo-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 4v16m8-8H4" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+                                    <button class="group flex-1 min-w-[100px] flex items-center justify-center gap-2
+           rounded-full border-2 border-slate-100 py-2.5
+           transition-all duration-300
+           hover:scale-[1.02] hover:bg-emerald-500 hover:text-white hover:border-emerald-700
+           shadow-sm">
+
+                                        <span class="text-[11px] font-black uppercase tracking-widest">
+                                            Pay Fee
+                                        </span>
+
+                                        <div class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500 text-white
+               transition-all duration-300
+               group-hover:bg-emerald-700
+               group-hover:scale-110 group-active:scale-90
+               shadow-sm shadow-emerald-200">
+
+                                            <svg class="h-3 w-3 transition-transform duration-300
+                   group-hover:-translate-y-0.5 group-hover:translate-x-0.5" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                                    d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4
+                   4-1.79 4-4-1.79-4-4-4zm0-4v2m0 12v2m8-8h-2M6 12H4" />
+                                            </svg>
+
+                                        </div>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </main>
+
+        <aside class="w-72 bg-white border-l border-slate-200 p-6 flex flex-col gap-8 overflow-y-auto hide-scrollbar">
+
+            <div class="relative group">
+                <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-sky-600 to-indigo-600 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 animate-pulse">
+                </div>
+
+                <button onclick="toggleForm(true)"
+                    class="relative w-full bg-slate-900 hover:bg-slate-800 text-white py-4 rounded-xl text-[13px] font-bold shadow-2xl transition-all transform hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    List Your Institution
+                </button>
+            </div>
+
+            <div
+                class="relative group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/50 transition-all duration-500 hover:shadow-sky-200/50">
+
+                <div
+                    class="absolute -top-24 -right-24 w-48 h-48 bg-sky-400/20 blur-[80px] rounded-full group-hover:bg-indigo-400/30 transition-colors duration-700">
+                </div>
+                <div
+                    class="absolute -bottom-24 -left-24 w-48 h-48 bg-indigo-400/10 blur-[80px] rounded-full group-hover:bg-sky-400/20 transition-colors duration-700">
+                </div>
+
+                <div class="relative p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-sky-500/20 blur-lg rounded-full animate-pulse"></div>
+                                <img src="https://cdn.vidyaone.com/Company/Website/icon_software.png"
+                                    alt="VIDYAOne Logo" class="relative w-11 h-11 object-contain drop-shadow-sm">
+                            </div>
+                            <div>
+                                <h3 class="text-[15px] font-extrabold text-slate-800 tracking-tight leading-none">
+                                    VIDYAOne</h3>
+                                <p class="text-[10px] font-bold text-sky-600 uppercase tracking-[0.15em] mt-1">
+                                    School Management Software
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-slate-900 leading-tight mb-2">
+                            Digitize your school <br />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-indigo-600">in
+                                24 hours.</span>
+                        </h4>
+                        <p class="text-[12px] text-slate-500 font-medium leading-relaxed">
+                            The world's first <span class="text-slate-800 font-semibold italic">offline-first</span>
+                            management suite designed for high-performance institutions.
+                        </p>
+                    </div>
+
+
+                    <button
+                        class="relative w-full overflow-hidden group/btn flex items-center justify-center gap-2 bg-slate-900 text-white py-4 rounded-2xl text-[13px] font-bold transition-all duration-300 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-200 active:scale-[0.98]">
+                        <div
+                            class="absolute inset-0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent">
+                        </div>
+
+                        <span>Book Free Demo</span>
+                        <svg class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 px-1">
+                    VIDYAOne's Services
+                </h4>
+
+                <div class="space-y-2">
+                    <div
+                        class="group flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="text-sm font-semibold text-slate-700">SMS Gateway</span>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="mt-auto pt-6 border-t border-slate-100">
+                <div class="bg-slate-50 rounded-2xl p-4 flex items-center gap-4">
+                    <div class="flex -space-x-2">
+                        <div class="w-7 h-7 rounded-full bg-slate-300 border-2 border-white"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-400 border-2 border-white"></div>
+                        <div class="w-7 h-7 rounded-full bg-slate-500 border-2 border-white"></div>
+                    </div>
+                    <p class="text-[10px] font-bold text-slate-500 leading-tight">
+                        Trusted by <span class="text-slate-900">1,500+</span> Institutions nationwide.
+                    </p>
+                </div>
+            </div>
+
+        </aside>
+
+
+
+    </div>
+
+    <!-- LOCATION MODAL -->
+    <div id="locationModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm">
+
+        <div class="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl animate-scaleIn">
+
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-xl bg-sky-100 flex items-center justify-center">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-sky-600"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800">
+                    Allow Location Access
+                </h3>
+            </div>
+
+            <p class="text-sm text-slate-600 leading-relaxed">
+                We use your location to show nearby schools and institutions around you.
+                Your location is never stored.
+            </p>
+
+            <div class="mt-6 flex gap-3">
+                <button onclick="closeLocationModal()"
+                    class="flex-1 rounded-xl border border-slate-300 bg-white py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
+                    Not Now
+                </button>
+
+                <button onclick="requestLocation()"
+                    class="flex-1 rounded-xl bg-sky-600 py-2.5 text-sm font-bold text-white hover:bg-sky-700 transition">
+                    Allow
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="full-screen-modal"
+        class="fixed inset-0 z-50 backdrop-blur-md flex items-center justify-center hidden opacity-0 transition-opacity duration-500 bg-slate-900/40 p-4">
+
+        <div id="form-container"
+            class="w-full max-w-3xl max-h-[80vh] flex flex-col antialiased scale-95 translate-y-10 transition-all duration-500 relative bg-white rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.2)] border border-slate-200/60 overflow-hidden">
+
+            <button onclick="toggleForm(false)"
+                class="absolute top-5 right-5 z-[60] p-2 bg-white hover:bg-red-50 text-slate-400 hover:text-red-500 rounded-full transition-all shadow-md border border-slate-100 group">
+                <i data-lucide="x" class="w-5 h-5 group-hover:rotate-90 transition-transform"></i>
+            </button>
+
+            <div class="p-8 border-b border-slate-100 bg-gradient-to-br from-slate-50 to-white relative shrink-0">
+                <div class="absolute top-0 right-12 p-4 opacity-5">
+                    <i data-lucide="graduation-cap" class="w-20 h-20 text-sky-600"></i>
+                </div>
+
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <span
+                            class="w-6 h-6 rounded-full bg-sky-600 text-white text-[10px] font-bold flex items-center justify-center ring-4 ring-sky-100">1</span>
+                        <span class="text-xs font-bold text-slate-900">Details</span>
+                    </div>
+                    <div class="w-8 h-[1px] bg-slate-200"></div>
+                    <div class="flex items-center gap-2 opacity-40">
+                        <span
+                            class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 text-[10px] font-bold flex items-center justify-center">2</span>
+                        <span class="text-xs font-bold text-slate-500">Verify</span>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">Register Institution</h2>
+                <p class="text-slate-500 text-sm font-medium">Join India's most advanced school directory.</p>
+            </div>
+
+            <form id="school-form" onsubmit="handleSubmit(event)"
+                class="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
+
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="h-4 w-1 bg-sky-500 rounded-full"></span>
+                        <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Identity</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2 relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-sky-600 uppercase tracking-tighter z-10">School
+                                Name</label>
+                            <input type="text" placeholder="Enter official name..." required
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:ring-4 focus:ring-sky-500/10 focus:border-sky-500 outline-none transition-all text-sm font-semibold text-slate-700 placeholder:text-slate-300">
+                        </div>
+
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Institute
+                                Type</label>
+                            <select
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-semibold text-slate-700 appearance-none cursor-pointer">
+                                <option>Pre-School</option>
+                                <option>Primary School</option>
+                                <option>Secondary School</option>
+                            </select>
+                        </div>
+
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Academic
+                                Board</label>
+                            <select
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-semibold text-slate-700 appearance-none cursor-pointer">
+                                <option>CBSE</option>
+                                <option>ICSE</option>
+                                <option>IB Curriculum</option>
+                            </select>
+                        </div>
+
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">U-DISE
+                                Code</label>
+                            <input type="text" maxlength="11" placeholder="12-digit code"
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-mono font-bold tracking-widest text-sky-600">
+                        </div>
+
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Affiliation
+                                No.</label>
+                            <input type="text" placeholder="e.g. 2130456"
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-mono font-bold text-slate-600">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <span class="h-4 w-1 bg-sky-500 rounded-full"></span>
+                        <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400">Reach & Promo</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Email
+                                Address</label>
+                            <input type="email" id="user-email" placeholder="principal@school.com" required
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-semibold">
+                        </div>
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Phone
+                                Number</label>
+                            <input type="tel" placeholder="+91" required
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl focus:border-sky-500 outline-none transition-all text-sm font-semibold">
+                        </div>
+
+
+
+                        <div class="md:col-span-2 group">
+                            <label
+                                class="block text-[10px] font-black text-slate-400 uppercase tracking-tighter mb-2 ml-2">Campus
+                                Showcase Image</label>
+                            <div
+                                class="relative flex items-center justify-center w-full h-28 transition bg-white border-2 border-slate-200 border-dashed rounded-2xl group-hover:border-sky-400 group-hover:bg-sky-50/30">
+                                <div class="flex flex-col items-center">
+                                    <i data-lucide="cloud-upload" class="w-6 h-6 text-sky-500 mb-1"></i>
+                                    <span class="text-xs font-bold text-slate-500">Drop photo or <span
+                                            class="text-sky-600">browse</span></span>
+                                </div>
+                                <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Website</label>
+                            <input type="url" placeholder="https://..."
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl text-sm">
+                        </div>
+                        <div class="relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-slate-400 uppercase tracking-tighter z-10">Pincode</label>
+                            <input type="text" maxlength="6" placeholder="000000"
+                                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-xl text-sm font-mono tracking-[0.3em]">
+                        </div>
+                        <div class="md:col-span-2 relative">
+                            <label
+                                class="absolute -top-2 left-4 px-2 bg-white text-[10px] font-black text-amber-500 uppercase tracking-tighter z-10">Referral
+                                Code</label>
+                            <div class="relative">
+                                <i data-lucide="ticket-percent"
+                                    class="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300"></i>
+                                <input type="text" placeholder="HAVE A CODE?"
+                                    class="w-full pl-12 pr-5 py-3.5 bg-slate-50/50 border border-slate-200 rounded-xl focus:border-amber-400 focus:bg-white outline-none transition-all text-xs font-black tracking-widest text-slate-700">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-4 bg-slate-900 text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-sky-600 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3 group mt-4">
+                    Verify & Publish Listing
+                    <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </form>
+
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+        function toggleForm(isOpen) {
+            const modal = document.getElementById('full-screen-modal');
+            const container = document.getElementById('form-container');
+
+            if (isOpen) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.add('opacity-100');
+                    container.classList.remove('scale-95', 'translate-y-10');
+                    container.classList.add('scale-100', 'translate-y-0');
+                    document.body.style.overflow = 'hidden';
+                }, 10);
+            } else {
+                modal.classList.remove('opacity-100');
+                container.classList.add('scale-95', 'translate-y-10');
+                container.classList.remove('scale-100', 'translate-y-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                    // Reset form state if closed
+                    document.getElementById('thanks-message').classList.add('hidden');
+                    document.getElementById('school-form').classList.remove('hidden');
+                }, 500);
+            }
+        }
+
+        // Close on background click
+        window.onclick = function (event) {
+            const modal = document.getElementById('full-screen-modal');
+            if (event.target == modal) toggleForm(false);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('user-email');
+            const displayEmail = document.getElementById('display-email');
+            const thanksCard = document.getElementById('thanks-message');
+
+            displayEmail.innerText = emailInput.value;
+            thanksCard.classList.remove('hidden');
+
+            if (window.lucide) lucide.createIcons();
+        }
+    </script>
+
+
+    <script>
+        function openLocationModal() {
+            document.getElementById('locationModal').classList.remove('hidden');
+            document.getElementById('locationModal').classList.add('flex');
+        }
+
+        function closeLocationModal() {
+            document.getElementById('locationModal').classList.add('hidden');
+            document.getElementById('locationModal').classList.remove('flex');
+        }
+
+        function requestLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        console.log('Latitude:', position.coords.latitude);
+                        console.log('Longitude:', position.coords.longitude);
+                        closeLocationModal();
+                        // call your nearby school API here
+                    },
+                    () => {
+                        alert('Location permission denied');
+                    }
+                );
+            } else {
+                alert('Geolocation not supported');
+            }
+        }
+    </script>
+
+    <script>
+        // This function initializes the icons. 
+        // It must run after the HTML is loaded.
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

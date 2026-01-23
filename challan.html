@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDYAOne - Fee Challan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+        }
+
+        @media print {
+            body { background-color: #fff; padding: 0; }
+            .no-print { display: none; }
+            .challan-copy {
+                page-break-inside: avoid;
+                border: 1px solid #e2e8f0 !important;
+                margin-bottom: 0 !important;
+            }
+        }
+
+        .challan-copy {
+            height: 94mm;
+            position: relative;
+        }
+
+        .grad-bank { background: linear-gradient(90deg, #0ea5e9, #38bdf8); }
+        .grad-school { background: linear-gradient(90deg, #22c55e, #4ade80); }
+        .grad-student { background: linear-gradient(90deg, #ec4899, #f472b6); }
+    </style>
+</head>
+
+<body class="p-2 md:p-6">
+
+<div class="max-w-4xl mx-auto">
+
+<script>
+const copies = [
+    { title: "Bank Copy", bar: "grad-bank", chip: "grad-bank" },
+    { title: "School Copy", bar: "grad-school", chip: "grad-school" },
+    { title: "Student Copy", bar: "grad-student", chip: "grad-student" }
+];
+
+copies.forEach((copy, index) => {
+    document.write(`
+        <div class="challan-copy bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden mb-6 flex flex-col">
+
+            <div class="flex h-2">
+                <div class="w-full ${copy.bar}"></div>
+            </div>
+
+            <div class="px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="w-12 h-12 object-contain">
+                    <div>
+                        <h1 class="text-xl font-extrabold text-slate-800 leading-none">
+                            VIDYAOne Demo Public School
+                        </h1>
+                        <p class="text-[10px] text-slate-500 font-medium mt-1">
+                            Excellence in Education | Affiliation No: 213000
+                        </p>
+                        <span class="inline-block mt-1 px-3 py-0.5 text-white text-[9px] font-bold rounded-full uppercase tracking-wider ${copy.chip}">
+                            ${copy.title}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <h2 class="text-pink-600 font-black text-xl uppercase tracking-tighter">
+                        Fee Challan
+                    </h2>
+                    <p class="text-[11px] font-bold text-slate-700">No: CH-2026-0045</p>
+                    <p class="text-[10px] text-slate-400">Date: 21-Jan-2026</p>
+                </div>
+            </div>
+
+            <!-- Student Details -->
+            <div class="mx-6 p-3 bg-slate-50 rounded-lg grid grid-cols-6 gap-4 text-[11px] border border-slate-100">
+                <div class="col-span-2">
+                    <span class="text-slate-400 block uppercase text-[9px] font-bold">Student Name</span>
+                    <span class="font-bold text-slate-800 text-sm italic">Aditya Pratap Singh</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block uppercase text-[9px] font-bold">Class</span>
+                    <span class="font-semibold text-slate-700 text-sm">IX - B</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block uppercase text-[9px] font-bold">SID</span>
+                    <span class="font-semibold text-slate-700 text-sm">ST-88219</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block uppercase text-[9px] font-bold">Father Name</span>
+                    <span class="font-semibold text-slate-700 text-sm">Rajesh Singh</span>
+                </div>
+                <div>
+                    <span class="text-slate-400 block uppercase text-[9px] font-bold">Mobile No</span>
+                    <span class="font-semibold text-slate-700 text-sm">98765 43210</span>
+                </div>
+            </div>
+
+            <div class="px-6 py-4 flex-grow grid grid-cols-12 gap-6">
+
+                <div class="col-span-4 bg-sky/5 border-2 border-sky/20 rounded-xl p-4 text-center">
+                    <p class="text-[10px] text-sky-700 font-bold uppercase tracking-widest">Amount Payable</p>
+                    <p class="text-3xl font-black text-slate-800">₹ 2,200</p>
+                    <p class="text-[9px] text-slate-500 mt-1">Two Thousand Two Hundred Only</p>
+                </div>
+
+                <div class="col-span-5 text-[10px] space-y-1.5 border-r border-slate-100 pr-4">
+                    <p class="font-bold text-green-600 uppercase border-b border-green-100 pb-1 mb-2">
+                        Bank Transfer Details
+                    </p>
+                    <p class="flex justify-between"><span>A/C Name:</span><span class="font-semibold">VIDYAOne School Fund</span></p>
+                    <p class="flex justify-between"><span>HDFC Bank:</span><span class="font-bold">50100445588992</span></p>
+                    <p class="flex justify-between"><span>IFSC Code:</span><span>HDFC0001234</span></p>
+                    <p class="text-[9px] text-slate-400 italic mt-2">
+                        * Please mention Student ID in remarks.
+                    </p>
+                </div>
+
+                <div class="col-span-3 flex flex-col items-center justify-center">
+                    <div class="p-1 border-2 border-yellow-400 rounded-lg">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=65x65&data=vidyaone-payment-2026" class="w-14 h-14">
+                    </div>
+                    <p class="text-[8px] text-yellow-600 mt-1 uppercase font-extrabold">
+                        Scan with Any UPI
+                    </p>
+                </div>
+            </div>
+
+            <div class="px-6 py-2 bg-slate-50 border-t border-slate-100 flex justify-between items-center text-[9px]">
+                <p class="text-slate-400 italic text-[8px]">Valid until: 10-Feb-2026</p>
+                <div class="text-right">
+                    <div class="h-6 w-32 border-b border-slate-300 ml-auto"></div>
+                    <p class="text-slate-600 font-bold uppercase mt-1">
+                        Cashier / Authorized Signature
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        ${index < 2 ? `
+            <div class="no-print w-full border-b-2 border-dashed border-slate-300 my-4 relative flex justify-center items-center gap-2">
+               
+
+            </div>
+        ` : ``}
+    `);
+});
+</script>
+
+</div>
+
+<div class="max-w-4xl mx-auto mt-6 no-print flex justify-center">
+    <button onclick="window.print()" class="bg-slate-900 text-white px-10 py-3 rounded-xl font-bold shadow-xl">
+        Print Receipt Copies
+    </button>
+</div>
+
+</body>
+</html>

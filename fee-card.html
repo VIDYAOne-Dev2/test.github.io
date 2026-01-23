@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Modern School Fee Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A5 landscape;
+                margin: 0;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                padding: 0;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+
+        .a5-horizontal {
+            width: 210mm;
+            height: 148mm;
+            background: white;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Decorative accents using your requested colors */
+        .accent-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #EF4444 0%, #EC4899 25%, #3B82F6 75%, #F59E0B 100%);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="a5-horizontal shadow-2xl rounded-xl border border-gray-200">
+        <div class="accent-bar"></div>
+
+        <div class="w-[60%] p-8 flex flex-col">
+
+            <!-- HEADER -->
+            <div class="w-full border-b border-slate-300 pb-4 mb-4">
+                <!-- Official Numbers -->
+                <p class="text-[12px] font-semibold text-slate-700 text-center uppercase tracking-wide">
+                    Academic Session : 2026–27
+                </p>
+                <div class="text-center">
+                    <p
+                        class="text-[10px] font-bold text-white bg-amber-500 inline-block px-3 py-[2px] rounded-full mt-1 uppercase tracking-wide">
+                        Hindi Medium
+                    </p>
+                </div>
+
+
+                <div class="flex items-center gap-2">
+
+                    <!-- School Logo -->
+                    <div class="w-14 h-14 flex-shrink-0">
+                        <img src="https://cdn.vidyaone.com/Company/Email/icon.png" alt="School Logo"
+                            class="w-full h-full object-contain" />
+                    </div>
+
+                    <!-- School Identity -->
+                    <div class="flex-1 text-center">
+
+                        <h1 class="text-xl font-extrabold tracking-wide text-slate-800">
+                            VIDYAOne Demo Public School
+                        </h1>
+                        <p class="text-[12px] font-semibold text-blue-600">
+                            Knowledge • Discipline • Excellence
+                        </p>
+                        <p class="text-[10px] text-slate-600 mt-1 leading-snug">
+                            Sector 12, R.K. Puram, New Delhi – 110022
+                        </p>
+
+                    </div>
+                </div>
+                <div class="w-full text-[10px] text-slate-700 flex justify-between gap-6 mt-3">
+                    <span><b>Affiliation:</b> 213000</span>
+                    <span><b>U-DISE:</b> 07020304506</span>
+                    <span><b>Since:</b> 1998</span>
+                </div>
+
+                <!-- Contact Strip -->
+                <div
+                    class="grid grid-cols-2 gap-x-2 gap-y-2 text-[9px] text-slate-700 mt-3 pt-2 border-t border-slate-200">
+
+                    <div>
+                        <span class="text-blue-600 font-semibold uppercase">
+                            <i class="fa-solid fa-mobile-screen-button mr-1"></i>Mobile.:
+                        </span>
+                        +91 98XXXXXX12
+                    </div>
+
+                    <div>
+                        <span class="text-blue-600 font-semibold uppercase">
+                            <i class="fa-solid fa-bus mr-1"></i>Transport .:
+                        </span>
+                        +91 98XXXXXX45
+                    </div>
+
+                    <div>
+                        <span class="text-blue-600 font-semibold uppercase">
+                            <i class="fa-solid fa-envelope mr-1"></i>Email .:
+                        </span>
+                        info@stmarksacademy.edu
+                    </div>
+
+                    <div>
+                        <span class="text-blue-600 font-semibold uppercase">
+                            <i class="fa-solid fa-globe mr-1"></i>Website .:
+                        </span>
+                        www.stmarksacademy.edu
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>
+
+            <!-- STUDENT DETAILS -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex-grow">
+
+                <!-- TOP: Photo + Student Info -->
+                <div class="flex gap-5 items-start mb-1">
+
+                    <!-- Photo -->
+                    <div
+                        class="w-24 h-28 bg-white border border-slate-300 rounded-lg flex items-center justify-center overflow-hidden">
+                        <img src="Image/icon-student.png" alt="Student Photo" class="w-full h-full object-cover" />
+                    </div>
+
+
+                    <!-- Student Info -->
+                    <div class="flex-1 grid grid-cols-2 gap-y-2 gap-x-4 text-[11px]">
+
+                        <div class="col-span-2">
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">
+                                Student Name
+                            </label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-800">
+                                Aditya Pratap Singh
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">SR Number</label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                2026/SMA/104
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">Student ID</label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                ST-88219
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">Class & Section</label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                IX - B
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">Roll No</label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                24
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- BOTTOM: Aadhaar + Contact + Address -->
+                <div class=" text-[11px]">
+
+                    <!-- Aadhaar & Mobile -->
+                    <div class="flex justify-between gap-6 mb-2">
+
+                        <div class="flex-1">
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">
+                                Aadhaar No
+                            </label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                1234 5678 9012
+                            </div>
+                        </div>
+
+                        <div class="flex-1 text-right">
+                            <label class="text-blue-600 font-semibold uppercase text-[9px]">
+                                Mobile No
+                            </label>
+                            <div class="border-b border-slate-300 font-semibold text-slate-700">
+                                +91 98XXXXXX12
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label class="text-blue-600 font-semibold uppercase text-[9px]">
+                            Address
+                        </label>
+                        <div class="border-b border-slate-300 font-semibold text-slate-700 leading-snug">
+                            H.No 214, Sector 12, R.K. Puram, New Delhi – 110022
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SIGNATURE -->
+            <div class=" flex justify-end px-2">
+                <div class="text-center">
+                    <div class="h-10 w-32 border-b border-slate-400"></div>
+                    <p class="text-[10px] font-semibold text-slate-700 uppercase mt-1">
+                        Principal Signature
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="w-[40%] bg-slate-900 p-6 text-white relative">
+            <div class="absolute top-0 right-0 w-16 h-16 bg-amber-400"
+                style="clip-path: polygon(100% 0, 0 0, 100% 100%);"></div>
+
+            <h2
+                class="text-amber-400 font-extrabold text-sm uppercase tracking-widest mb-4 border-l-4 border-amber-400 pl-2">
+                Important Notes
+            </h2>
+
+            <ol class="space-y-3 text-[10px] leading-tight text-slate-300">
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">01.</span>
+                    School fees must be paid between 8:00 AM to 1:00 PM on working days only.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">02.</span>
+                    The last date for fee payment is the 15th of every month.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">03.</span>
+                    Late fee will be charged after the due date as per school rules.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">04.</span>
+                    Fees once paid are non-refundable and non-adjustable.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">05.</span>
+                    Fees are charged for the full academic year, even if the student joins late.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">06.</span>
+                    Parents must bring the fee card at the time of every payment.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">07.</span>
+                    A duplicate fee card can be issued from the school office on payment of applicable charges.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">08.</span>
+                    Transport fees must be paid along with the monthly school fees, if applicable.
+                </li>
+
+                <li class="flex gap-2">
+                    <span class="text-amber-400 font-bold">09.</span>
+                    In case of long pending dues, the school reserves the right to take necessary action.
+                </li>
+
+                <li class="flex gap-2 font-semibold text-white italic bg-slate-800 p-2 rounded">
+                    <span>*</span>
+                    For any clarification regarding fees, please contact the school office.
+                </li>
+            </ol>
+
+            <!-- Fee Card Label -->
+            <div class="mt-4 pt-3 border-t border-slate-700 text-center">
+                <p class="text-amber-400 font-extrabold uppercase tracking-widest text-[11px]">
+                    Fee Card
+                </p>
+                <p class="text-[10px] text-slate-300 mt-1 leading-snug">
+                    Please keep this fee card safely and bring it during every fee payment.
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

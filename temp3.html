@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-8px) scale(1.02);
+            }
+        }
+
+        .floating-avatar {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .modern-modal {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transform-origin: bottom right;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-hidden {
+            opacity: 0;
+            transform: scale(0.9) translateY(40px);
+            pointer-events: none;
+        }
+
+        .action-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            background: #f8faff;
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-rainbow {
+            background: linear-gradient(135deg,
+                    #ef4444 0%,
+                    /* soft red */
+                    #ec4899 30%,
+                    /* pink */
+                    #f97316 65%,
+                    /* orange */
+                    #eab308 100%
+                    /* warm yellow */
+                );
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+    <style>
+        /* Blink Shadow Effect - Cycles through Red, Pink, Blue */
+        @keyframes multiColorShadow {
+            0% {
+                filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.4));
+            }
+
+            33% {
+                filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.5));
+            }
+
+            66% {
+                filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.4));
+            }
+        }
+
+        .blink-shadow {
+            animation: multiColorShadow 3s infinite ease-in-out;
+        }
+
+        /* Tooltip Slide & Fade States */
+        .tooltip-hidden {
+            opacity: 0;
+            transform: translateX(30px) scale(0.9);
+            pointer-events: none;
+        }
+
+        .tooltip-visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 min-h-screen">
+
+    <div class="fixed bottom-8 right-8 z-[10000] flex flex-col items-end gap-3">
+        <div id="helpTooltip"
+            class="tooltip-hidden transition-all duration-500 bg-slate-900/90 backdrop-blur-md text-white px-5 py-2.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-white/10">
+            <span class="relative flex h-2.5 w-2.5">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-pink-500"></span>
+            </span>
+            <p class="text-[12px] font-black tracking-widest whitespace-nowrap uppercase">Need Help? Talk to an Expert
+            </p>
+        </div>
+
+        <button id="chatBtn" class="group relative outline-none border-none bg-transparent p-0 cursor-pointer">
+            <div
+                class="absolute inset-0 bg-gradient-to-tr from-red-500 via-pink-500 via-yellow-400 to-blue-500 rounded-full blur-3xl opacity-20 group-hover:opacity-60 transition-opacity duration-1000">
+            </div>
+
+            <div id="avatarRotate"
+                class="relative w-24 h-24 transition-all duration-[1200ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                style="transform: rotate(10deg);">
+                <div class="w-full h-full bg-transparent overflow-visible blink-shadow">
+                    <img src="https://desk.zoho.com/portal/api/publicImages/484691000000325059?portalId=edbsn5b8c61347b7b07bf52813983dcf5ed0fd8327f8bcf9bd5eaa48cebf73e71a249"
+                        class="w-full h-full object-contain transform transition-transform duration-500 group-hover:scale-110"
+                        alt="Expert">
+                    <div
+                        class="absolute bottom-1 right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <div
+                            class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </button>
+    </div>
+
+
+
+    <div id="chatModal" class="modal-hidden fixed bottom-32 right-8 z-[10001] w-full max-w-[400px]">
+        <div class="modern-modal rounded-[32px] overflow-hidden bg-white shadow-2xl">
+
+            <div class="p-8 pb-6 bg-gradient-to-b from-slate-50 to-transparent">
+                <div class="flex justify-between items-start">
+
+                    <!-- Left -->
+                    <div class="flex items-start gap-4">
+
+                        <!-- Icon -->
+                        <div class="w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-blue-600 to-blue-500 
+                       flex items-center justify-center text-white shadow-md">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+
+                        <!-- Text -->
+                        <div>
+                            <h2 class="text-[22px] font-extrabold text-slate-900 leading-snug tracking-tight">
+                                <span id="greetingText" class="block">
+                                    Hello,
+                                </span>
+                                <span class="text-rainbow">
+                                    how can we help?
+                                </span>
+                            </h2>
+
+                            <p class="mt-2 text-[12px] font-medium text-slate-500 flex items-center gap-2">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 text-blue-500"></i>
+                                Mon – Sat, 9:00 AM to 5:00 PM
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Close -->
+                    <button onclick="closeModal()"
+                        class="p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-white transition">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="px-8 pb-8">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="h-px flex-1 bg-slate-100"></span>
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest px-2">
+                        Need Help? Talk to an Expert
+                    </span>
+                    <span class="h-px flex-1 bg-slate-100"></span>
+                </div>
+
+                <div class="space-y-3">
+                    <button
+                        class="action-card w-full p-4 rounded-2xl bg-white flex items-center gap-4 text-left border border-slate-100 hover:border-blue-200 transition-all">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600">
+                            <i data-lucide="phone-forwarded" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-900 text-sm">Instant Callback</h4>
+                            <p class="text-xs text-slate-500">Talk to our experts now</p>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-slate-300"></i>
+                    </button>
+
+                    <button
+                        class="action-card w-full p-4 rounded-2xl bg-white flex items-center gap-4 text-left border border-slate-100 hover:border-green-200 transition-all">
+                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600">
+                            <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-900 text-sm">WhatsApp Chat</h4>
+                            <p class="text-xs text-slate-500">Connect on WhatsApp</p>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-slate-300"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-slate-50/80 px-8 py-5 border-t border-slate-100 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-blue-600"></i>
+                    <span class="text-[11px] font-bold text-slate-600 uppercase tracking-tight">
+                        1500+ Trusted by Schools
+                    </span>
+                </div>
+                <p class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Expert Team</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        // Elements
+        const avatar = document.getElementById('avatarRotate');
+        const tooltip = document.getElementById('helpTooltip');
+        const chatBtn = document.getElementById('chatBtn');
+        const modal = document.getElementById('chatModal');
+        let isAutoAnimating = false;
+
+        // --- Helper Functions ---
+        const showTooltip = () => {
+            // Only show tooltip if modal is hidden
+            if (modal.classList.contains('modal-hidden')) {
+                tooltip.classList.remove('tooltip-hidden');
+                tooltip.classList.add('tooltip-visible');
+            }
+        };
+
+        const hideTooltip = () => {
+            tooltip.classList.add('tooltip-hidden');
+            tooltip.classList.remove('tooltip-visible');
+        };
+
+        const showModal = () => {
+            hideTooltip(); // Ensure tooltip slides away
+            modal.classList.remove('modal-hidden');
+            updateGreeting();
+        };
+
+        const closeModal = () => {
+            modal.classList.add('modal-hidden');
+        };
+
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const greetingElement = document.getElementById('greetingText');
+            if (!greetingElement) return;
+
+            if (hour < 12) greetingElement.innerText = "Good morning,";
+            else if (hour < 17) greetingElement.innerText = "Good afternoon,";
+            else greetingElement.innerText = "Good evening,";
+        }
+
+        // --- Core Logic ---
+
+        // 1) 10-Second Auto-Dance (Only runs if modal is closed)
+        setInterval(() => {
+            if (modal.classList.contains('modal-hidden')) {
+                if (!isAutoAnimating) {
+                    avatar.style.transform = 'rotate(370deg) scale(1.1)';
+                    showTooltip();
+                    isAutoAnimating = true;
+                } else {
+                    avatar.style.transform = 'rotate(10deg) scale(1)';
+                    hideTooltip();
+                    isAutoAnimating = false;
+                }
+            }
+        }, 10000);
+
+        // 2) Hover (Mouse Enter) Logic
+        chatBtn.addEventListener('mouseenter', () => {
+            showModal();
+            // Tiny physical feedback bounce
+            avatar.style.transform = 'rotate(10deg) scale(0.95)';
+            setTimeout(() => avatar.style.transform = 'rotate(10deg) scale(1.1)', 150);
+        });
+
+        // 3) Mouse Out Logic (The Fix)
+        // We wrap both in a parent or handle the "Mouse Out" carefully 
+        // so the modal doesn't flicker when moving from button to modal.
+
+        chatBtn.addEventListener('mouseleave', (e) => {
+            // We check if the mouse is moving toward the modal
+            // If it's not, we close the modal.
+            const movingTo = e.relatedTarget;
+            if (!modal.contains(movingTo)) {
+                closeModal();
+            }
+        });
+
+        modal.addEventListener('mouseleave', (e) => {
+            // Close modal when mouse leaves the modal area, 
+            // unless it's moving back to the button.
+            const movingTo = e.relatedTarget;
+            if (movingTo !== chatBtn && !chatBtn.contains(movingTo)) {
+                closeModal();
+            }
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        updateGreeting();
+    </script>
+
+</body>
+
+</html>
