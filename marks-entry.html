@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marks Entry Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+            color: #334155;
+        }
+
+        .input {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+            outline: none;
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            transition: all .2s ease;
+        }
+
+        .tool-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            background: #0ea5e9;
+            transition: background .2s ease;
+        }
+
+        .primary-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <div class="max-w-[1600px] mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+        <!-- HEADER -->
+        <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Marks Entry</h1>
+                <p class="text-xs text-slate-400 mt-0.5">
+                    Home / Exam / Marks Entry
+                </p>
+            </div>
+
+            <div class="flex gap-3">
+
+                <!-- New Subject -->
+                <button class="tool-btn text-sky-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    New Exam
+                </button>
+
+
+
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+          text-orange-700 border border-orange-200
+           rounded-xl hover:bg-orange-100 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Calendar Day Icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3M16 7V3M4 9h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 21h12a2 2 0 002-2V7
+               a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h2v2H9z" />
+                    </svg>
+
+                    Student Timetable
+                </button>
+                <!-- Time Table -->
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+        text-violet-700 border border-violet-200
+        rounded-xl hover:bg-violet-100 transition">
+
+                    <!-- Admit Card / ID Card Icon -->
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Card Outline -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16a2 2 0 012 2v8a2 2 0 01-2 2H4
+            a2 2 0 01-2-2V9a2 2 0 012-2z" />
+
+                        <!-- Profile Circle -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12a2 2 0 104 0 2 2 0 00-4 0z" />
+
+                        <!-- Name Line -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 16h6" />
+                    </svg>
+
+                    Admit Card
+                </button>
+
+
+            </div>
+        </div>
+
+
+        <!-- Filters Section -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+            <div class="grid grid-cols-7 gap-4 items-end">
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Shift</label>
+                    <select class="input mt-1">
+                        <option>General</option>
+                        <option>English Medium</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Class</label>
+                    <select class="input mt-1">
+                        <option>Class 10</option>
+                        <option>Class 11</option>
+                        <option>Class 12</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Stream</label>
+                    <select class="input mt-1">
+                        <option>Art</option>
+                        <option>Biology</option>
+                        <option>Math</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Section</label>
+                    <select class="input mt-1">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+
+
+                <div class="col-span-2">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Select Exam
+                    </label>
+                    <select class="input mt-1">
+                        <option>-- Choose Exam --</option>
+                        <option>Annual Examination 2026</option>
+                        <option>Mid Term Exam</option>
+                        <option>Pre Board Exam</option>
+                    </select>
+                </div>
+
+                <!-- Load Button -->
+                <div class="flex items-end">
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-semibold
+           bg-sky-500 text-white border border-sky-200
+           rounded-full hover:bg-sky-100 hover:text-sky-900 transition">
+
+
+                        Load Students
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Smart Marks Entry Filter Bar -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+
+            <div class="flex justify-between items-center gap-6">
+
+                <!-- LEFT SIDE -->
+                <div class="flex items-center gap-6">
+                    <div class="flex flex-col">
+                        <label class="text-[11px] uppercase font-bold text-slate-400 mb-1">
+                            Find Student Record
+                        </label>
+                        <!-- Search Box -->
+                        <div class="relative w-[340px]">
+                            <svg class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-4.35-4.35m1.85-5.4a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+
+                            <input class="input pl-11 bg-white shadow-sm"
+                                placeholder="Search student by name, roll no, father name..." />
+                        </div>
+                    </div>
+
+                    <!-- View Mode Selector -->
+                    <div class="flex flex-col">
+                        <label class="text-[11px] uppercase font-bold text-slate-400 mb-1">
+                            Marks Entry Mode
+                        </label>
+
+                        <div class="flex rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden">
+
+                            <!-- All Subjects -->
+                            <button
+                                class="px-5 py-2 text-sm font-semibold text-slate-700 bg-slate-100 border-r border-slate-200 hover:bg-sky-100 transition">
+                                All Subjects
+                            </button>
+
+                            <!-- Subject Wise -->
+                            <button
+                                class="px-5 py-2 text-sm font-semibold text-sky-600 bg-sky-50 hover:bg-slate-50 hover:text-slate-800 transition">
+                                Subject Wise
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- Subject Dropdown -->
+                    <div class="w-[240px]">
+                        <label class="text-[11px] uppercase font-bold text-slate-400">
+                            Select Subject (For Subject Wise)
+                        </label>
+
+                        <select class="input mt-1 bg-white shadow-sm">
+                            <option value="">-- Choose Subject --</option>
+                            <option>Mathematics</option>
+                            <option>English</option>
+                            <option>Science</option>
+                            <option>Social Science</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE ACTION -->
+                <div class="flex gap-3">
+
+                    <!-- Print Blank Marks Sheet -->
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-bold
+        bg-emerald-50 text-emerald-700 border border-emerald-200
+        rounded-xl hover:bg-emerald-100 transition shadow-sm">
+
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V4h12v5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18h12v2H6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 14h12v4H6z" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6 10H5a2 2 0 00-2 2v4a2 2 0 002 2h1" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M18 10h1a2 2 0 012 2v4a2 2 0 01-2 2h-1" />
+                        </svg>
+
+                        Print Blank Sheet
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GRID VIEW -->
+        <div class="px-6 py-4">
+
+            <h2 class="text-sm font-bold text-slate-700 mb-3">
+                Annual Examination - 2026
+                <span class="text-blue-400 italic">(Regular)</span>
+            </h2>
+
+            <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
+
+                <!-- Table Header -->
+                <div class="bg-slate-100 px-5 py-3 text-[11px] font-bold uppercase text-slate-500
+grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]">
+
+                    <!-- Fixed Columns -->
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">
+                        Sr
+                    </div>
+
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">
+                        Student ID
+                    </div>
+
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">
+                        Roll No
+                    </div>
+
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">
+                        Student Name
+                    </div>
+
+                    <!-- Subject Columns -->
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Math-101</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Engl-102</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Scie-103</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Hist-104</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Hind-104</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Compu-105</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Sans-106</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-100
+                        </p>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="text-center leading-tight">
+                        <p class="font-bold text-slate-700">Total</p>
+                        <p class="text-[10px] font-semibold text-slate-400 normal-case">
+                            Max-700
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Rows -->
+                <div class="divide-y divide-slate-100 bg-white text-sm">
+
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                        <div class="font-semibold text-slate-500">1</div>
+                        <div class="font-semibold text-sky-600">SID-001</div>
+                        <div class="text-slate-600">1001</div>
+
+                        <div class="font-semibold text-slate-800">Ankit Maurya</div>
+
+                        <input maxlength="3" placeholder="--"
+                            class="w-[80px] text-center input font-bold uppercase border border-slate-200 rounded-xl focus:ring-1 focus:ring-blue-300"
+                            list="reasonList" /> <!-- Reason Options --> <datalist id="reasonList">
+                            <option value="AB">Absent</option>
+                            <option value="ML">Medical Leave</option>
+                            <option value="FD">Fee Due</option>
+                            <option value="UM">Unfair Means</option>
+                        </datalist>
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="85">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="90">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="72">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="81">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="88">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="75">
+
+                        <input class="w-[75px] text-center input bg-green-50 font-bold text-green-700" value="569"
+                            disabled>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                        <div class="font-semibold text-slate-500">2</div>
+                        <div class="font-semibold text-sky-600">SID-002</div>
+                        <div class="text-slate-600">1002</div>
+
+                        <div class="font-semibold text-slate-800">Beatriz Chen</div>
+
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="66">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="74">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="80">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="69">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="70">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="82">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="77">
+
+                        <input class="w-[75px] text-center input bg-green-50 font-bold text-green-700" value="518"
+                            disabled>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                        <div class="font-semibold text-slate-500">3</div>
+                        <div class="font-semibold text-sky-600">SID-003</div>
+                        <div class="text-slate-600">1003</div>
+
+                        <div class="font-semibold text-slate-800">Cassian Thorne</div>
+
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="91">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="79">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="84">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="73">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="80">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="86">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="78">
+
+                        <input class="w-[75px] text-center input bg-green-50 font-bold text-green-700" value="571"
+                            disabled>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                        <div class="font-semibold text-slate-500">4</div>
+                        <div class="font-semibold text-sky-600">SID-004</div>
+                        <div class="text-slate-600">1004</div>
+
+                        <div class="font-semibold text-slate-800">Diana Prince</div>
+
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="88">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="92">
+                        <input maxlength="3" placeholder="--"
+                            class="w-[80px] text-center input font-bold uppercase border border-slate-200 rounded-xl focus:ring-1 focus:ring-blue-300"
+                            list="reasonList" /> <!-- Reason Options --> <datalist id="reasonList">
+                            <option value="AB">Absent</option>
+                            <option value="ML">Medical Leave</option>
+                            <option value="FD">Fee Due</option>
+                            <option value="UM">Unfair Means</option>
+                        </datalist>
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="76">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="83">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="90">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="81">
+
+                        <input class="w-[75px] text-center input bg-green-50 font-bold text-green-700" value="595"
+                            disabled>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_100px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                        <div class="font-semibold text-slate-500">5</div>
+                        <div class="font-semibold text-sky-600">SID-005</div>
+                        <div class="text-slate-600">1005</div>
+
+                        <div class="font-semibold text-slate-800">Evan Wright</div>
+
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="72">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="68">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="75">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="70">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="73">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="78">
+                        <input maxlength="3" class="w-[80px] text-center input font-semibold" value="69">
+
+                        <input class="w-[75px] text-center input bg-green-50 font-bold text-green-700" value="505"
+                            disabled>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    
+
+
+
+
+        <!-- FOOTER SUMMARY -->
+        <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-between items-center">
+
+            <div class="flex gap-8">
+
+                <!-- Students Loaded -->
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Students Loaded
+                    </p>
+                    <p class="text-xl font-bold text-slate-800">5</p>
+                </div>
+
+                <!-- Marks Filled -->
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Marks Filled
+                    </p>
+                    <p class="text-xl font-bold text-emerald-600">5</p>
+                </div>
+
+                <!-- Pending -->
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Pending
+                    </p>
+                    <p class="text-xl font-bold text-orange-600">0</p>
+                </div>
+
+                <!-- Not Attempted (Reason Wise) -->
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Not Attempted
+                    </p>
+
+                    <div class="flex gap-2 pt-1  text-sm font-bold">
+
+                        <!-- ML -->
+                        <span class="relative group cursor-pointer
+         text-blue-700 ">
+                            ML - 2 ,
+
+                            <!-- Tooltip -->
+                            <span class="absolute -top-8 left-1/2 -translate-x-1/2
+                whitespace-nowrap px-2 py-1 text-[11px]
+                rounded-md bg-blue-50  opacity-0
+                group-hover:opacity-100 transition">
+                                Medical Leave
+                            </span>
+                        </span>
+
+                        <!-- FD -->
+                        <span class="relative group cursor-pointer
+           text-rose-700 ">
+                            FD - 1
+
+                            <!-- Tooltip -->
+                            <span class="absolute -top-8 left-1/2 -translate-x-1/2
+                whitespace-nowrap px-2 py-1 text-[11px]
+                rounded-md bg-rose-50  opacity-0
+                group-hover:opacity-100 transition">
+                                Fee Due
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!-- Footer Actions -->
+            <div class="flex gap-3">
+
+                <!-- Clear Section Button -->
+                <button class="tool-btn text-slate-600 hover:bg-slate-50 hover:text-slate-800 
+           rounded-lg px-3 py-2 border border-slate-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Trash Icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862
+               a2 2 0 01-1.995-1.858L5 7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 11v6M14 11v6" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 7V4h6v3M4 7h16" />
+                    </svg>
+
+                    Clear Marks
+                </button>
+
+
+                <!-- Cancel Button -->
+                <button class="tool-btn text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg px-3 py-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    Cancel
+                </button>
+
+                <!-- Save Exam Button -->
+                <button class="flex items-center gap-2 px-5 py-2 font-bold text-sm
+           rounded-xl text-white
+           bg-emerald-600 hover:bg-emerald-700
+           shadow-sm shadow-emerald-200 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2
+           2 6.477 2 12s4.477 10 10 10z" />
+                    </svg>
+
+
+                    Save Marks
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam List</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+            color: #334155;
+        }
+
+        .input {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+            outline: none;
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            transition: all .2s ease;
+        }
+
+        .tool-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            background: #0ea5e9;
+            transition: background .2s ease;
+        }
+
+        .primary-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <div class="max-w-[1500px] mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Exam List</h1>
+                <p class="text-xs text-slate-400 mt-0.5">
+                    Home / Exam / List
+                </p>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-3">
+                <button class="tool-btn text-sky-600 hover:bg-sky-50">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    New Exam
+                </button>
+
+
+            </div>
+        </div>
+        <!-- Filters Section -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+            <div class="grid grid-cols-7 gap-4 items-end">
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Shift</label>
+                    <select class="input mt-1">
+                        <option>General</option>
+                        <option>English Medium</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Class</label>
+                    <select class="input mt-1">
+                        <option>Class 10</option>
+                        <option>Class 11</option>
+                        <option>Class 12</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Stream</label>
+                    <select class="input mt-1">
+                        <option>Art</option>
+                        <option>Biology</option>
+                        <option>Math</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Section</label>
+                    <select class="input mt-1">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+
+                <!-- Load Button -->
+                <div class="flex items-end">
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-semibold
+           bg-sky-500 text-white border border-sky-200
+           rounded-full hover:bg-sky-100 hover:text-sky-900 transition">
+
+
+                        Load Exams
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Search + Filters -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50 flex  items-end gap-4">
+
+            <div class="flex items-center gap-2">
+
+                <label class="text-[11px] uppercase font-bold text-slate-400">
+                    Exam Type
+                </label>
+
+                <select class="input w-44">
+                    <option>All Exam Types</option>
+                    <option>Regular Exam</option>
+                    <option>Practical</option>
+                    <option>Unit Test</option>
+                </select>
+            </div>
+
+            <!-- Search -->
+            <div class="relative w-[420px]">
+                <svg class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-4.35-4.35m1.85-5.4a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+
+                <input class="input pl-11" placeholder="Search exam by name, type, class...">
+            </div>
+
+
+        </div>
+
+
+        <!-- Exam Table -->
+        <div class="px-6 py-4">
+            <div class="overflow-hidden rounded-xl border border-slate-200">
+
+                <!-- Table Header -->
+                <div class="bg-slate-100 px-5 py-3 text-[11px] font-bold uppercase tracking-wider text-slate-500
+        grid grid-cols-[70px_260px_150px_150px_220px_130px_130px_220px]">
+
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Sr
+                        <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg>
+                    </div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Exam Name<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Exam Type<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Shift<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Applicable Classes<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Start Date<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">End Date<svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="text-center">Modules</div>
+                </div>
+
+                <!-- Rows -->
+                <div class="divide-y divide-slate-100 bg-white text-sm">
+
+                    <!-- Rows Wrapper -->
+                    <div class="divide-y divide-slate-100 bg-white text-sm">
+
+                        <!-- Row 1 -->
+                        <div class="grid grid-cols-[70px_260px_150px_150px__220px_130px_130px_220px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                            <!-- Sr + Menu -->
+                            <div class="relative group flex items-center gap-2">
+
+                                <!-- Vertical Three Dot -->
+                                <button class="flex items-center justify-center w-7 h-7 rounded-lg
+                text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 3a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4z" />
+                                    </svg>
+                                </button>
+
+                                <!-- Sr -->
+                                <p class="font-semibold text-slate-500">1</p>
+
+                                <!-- Dropdown -->
+                                <div class="absolute left-10 top-2 hidden group-hover:block
+                bg-white border border-slate-200 shadow-xl rounded-xl w-40 z-30 overflow-hidden">
+
+                                    <button class="flex items-center gap-2 px-4 py-2 text-sm w-full hover:bg-slate-50">
+                                        👁 View Exam
+                                    </button>
+
+                                    <button class="flex items-center gap-2 px-4 py-2 text-sm w-full hover:bg-slate-50">
+                                        ✏️ Edit Exam
+                                    </button>
+
+                                    <button
+                                        class="flex items-center gap-2 px-4 py-2 text-sm w-full hover:bg-red-50 text-red-600">
+                                        🗑 Delete Exam
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Exam Name -->
+                            <div class="font-semibold text-slate-800">Annual Examination 2026</div>
+
+                            <!-- Type -->
+                            <div class="text-slate-600">Regular Exam</div>
+                            <div class="text-slate-600">General</div>
+
+                            <!-- Classes -->
+                            <div class="text-slate-600">Class 10, Class 12</div>
+
+                            <!-- Start -->
+                            <div class="text-slate-600">01 Mar 2026</div>
+
+                            <!-- End -->
+                            <div class="text-slate-600">20 Mar 2026</div>
+
+                            <!-- Modules -->
+                            <div class="flex justify-center gap-3">
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-violet-50 text-violet-700 border border-violet-200 hover:bg-violet-100">
+                                    Timetable
+                                </button>
+
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100">
+                                    Marks Entry
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="grid grid-cols-[70px_260px_150px_150px_220px_130px_130px_220px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                            <div class="relative group flex items-center gap-2">
+                                <button class="flex items-center justify-center w-7 h-7 rounded-lg
+                text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 3a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4z" />
+                                    </svg>
+                                </button>
+
+                                <p class="font-semibold text-slate-500">2</p>
+
+                                <div class="absolute left-10 top-2 hidden group-hover:block
+                bg-white border border-slate-200 shadow-xl rounded-xl w-40 z-30 overflow-hidden">
+                                    <button class="px-4 py-2 w-full hover:bg-slate-50">👁 View Exam</button>
+                                    <button class="px-4 py-2 w-full hover:bg-slate-50">✏️ Edit Exam</button>
+                                    <button class="px-4 py-2 w-full hover:bg-red-50 text-red-600">🗑 Delete
+                                        Exam</button>
+                                </div>
+                            </div>
+
+                            <div class="font-semibold text-slate-800">Mid Term Examination 2025</div>
+                            <div class="text-slate-600">Unit Test</div>
+                            <div class="text-slate-600">General</div>
+
+                            <div class="text-slate-600">Class 9, Class 10</div>
+                            <div class="text-slate-600">10 Sep 2025</div>
+                            <div class="text-slate-600">25 Sep 2025</div>
+
+                            <div class="flex justify-center gap-3">
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-violet-50 text-violet-700 border border-violet-200 hover:bg-violet-100">
+                                    Timetable
+                                </button>
+
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100">
+                                    Marks Entry
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="grid grid-cols-[70px_260px_150px_150px_220px_130px_130px_220px]
+        px-5 py-4 hover:bg-slate-50 transition items-center">
+
+                            <div class="relative group flex items-center gap-2">
+                                <button class="flex items-center justify-center w-7 h-7 rounded-lg
+                text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M10 3a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4zm0 5a2 2 0 110 4 2 2 0 010-4z" />
+                                    </svg>
+                                </button>
+
+                                <p class="font-semibold text-slate-500">3</p>
+
+                                <div class="absolute left-10 top-2 hidden group-hover:block
+                bg-white border border-slate-200 shadow-xl rounded-xl w-40 z-30 overflow-hidden">
+                                    <button class="px-4 py-2 w-full hover:bg-slate-50">👁 View Exam</button>
+                                    <button class="px-4 py-2 w-full hover:bg-slate-50">✏️ Edit Exam</button>
+                                    <button class="px-4 py-2 w-full hover:bg-red-50 text-red-600">🗑 Delete
+                                        Exam</button>
+                                </div>
+                            </div>
+
+                            <div class="font-semibold text-slate-800">Pre Board Examination 2026</div>
+                            <div class="text-slate-600">Practice Exam</div>
+                            <div class="text-slate-600">English Medium</div>
+                            <div class="text-slate-600">Class 10 - Arts</div>
+                            <div class="text-slate-600">05 Jan 2026</div>
+                            <div class="text-slate-600">18 Jan 2026</div>
+
+                            <div class="flex justify-center gap-3">
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-violet-50 text-violet-700 border border-violet-200 hover:bg-violet-100">
+                                    Timetable
+                                </button>
+
+                                <button class="px-3 py-2 rounded-xl text-xs font-bold
+                bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100">
+                                    Marks Entry
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>
+
+
+  

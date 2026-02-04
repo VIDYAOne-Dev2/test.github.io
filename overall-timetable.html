@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overall Exam Timetable - Landscape</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A4 landscape;
+                margin: 5mm;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+                padding: 0;
+                background: #fff;
+            }
+
+            .sheet {
+                box-shadow: none;
+                border: none;
+                width: 100%;
+            }
+        }
+
+        /* A4 Landscape Dimensions */
+        .sheet {
+            width: 297mm;
+            min-height: 210mm;
+            background: #fff;
+        }
+
+        .accent-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #3B82F6, #F59E0B);
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-start min-h-screen p-4">
+
+    <div class="sheet shadow-xl rounded-xl border border-slate-200 overflow-hidden">
+
+        <div class="accent-bar"></div>
+
+        <div class="px-8 py-4 border-b border-slate-300">
+            <div class="flex justify-between items-center">
+                <div class="flex gap-4 items-center">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="w-14 h-14 object-contain" />
+                    <div>
+                        <h1 class="text-xl font-extrabold text-slate-800">VIDYAOne Demo Public School</h1>
+                        <p class="text-[12px] text-blue-600 font-semibold tracking-wide">Knowledge • Discipline •
+                            Excellence</p>
+                        <p class="text-[11px] text-slate-600">Shalingram Bhawan, Golghar Gorakhpur Uttar Pradesh -
+                            273001</p>
+                        <p class="text-[11px] text-slate-600">Mobile: +91 98XXXXXX12  Website: <span
+                                class="text-blue-700 font-semibold">vidyaone.com</span></p>
+                    </div>
+                </div>
+
+                <div class="text-right text-[12px] leading-tight">
+                    <p class="text-slate-700 py-1">Hindi Medium | Affiliation: 213000 |
+
+                        U-DISE: 07020304506</p>
+                    <p class="pb-1"><b>Session:</b> 2025 - 2026</p>
+                    <p><b>Exam Time:</b> 8:45 AM to 10:30 AM</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center py-3 border-b border-slate-300 bg-slate-50">
+            <h2 class="text-sm font-extrabold uppercase text-slate-800 tracking-widest">
+                Annual Examination Timetable (Classes I - XII)
+            </h2>
+        </div>
+
+        <div class="px-8 py-6">
+            <div class="border border-slate-400 overflow-hidden rounded-lg">
+                <table class="w-full table-fixed border-collapse text-[10px] text-center uppercase">
+                    <thead class="bg-slate-800 text-white">
+                        <tr>
+                            <th class="w-[120px] p-3 border-r border-slate-600 font-bold">Date</th>
+                            <th class="w-[70px] p-3 border-r border-slate-600 font-bold">Day</th>
+                            <th class="p-3 border-r border-slate-600">I</th>
+                            <th class="p-3 border-r border-slate-600">II</th>
+                            <th class="p-3 border-r border-slate-600">III</th>
+                            <th class="p-3 border-r border-slate-600">IV</th>
+                            <th class="p-3 border-r border-slate-600">V</th>
+                            <th class="p-3 border-r border-slate-600">VI</th>
+                            <th class="p-3 border-r border-slate-600">VII</th>
+                            <th class="p-3 border-r border-slate-600">VIII</th>
+                            <th class="p-3 border-r border-slate-600">IX</th>
+                            <th class="p-3 border-r border-slate-600">X</th>
+                            <th class="p-3 border-r border-slate-600">XI</th>
+                            <th class="p-3">XII</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="divide-y divide-slate-300">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">23-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">WED</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">EVS</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">SCIENCE</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">PHYSICS</td>
+                            <td class="p-2">MATH/BIO</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">24-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">THU</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">EVS</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SCIENCE</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">HINDI/SANS</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">CHEMISTRY</td>
+                            <td class="p-2">ENGLISH</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">25-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">FRI</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">CHEM/B.ST</td>
+                            <td class="p-2">ACCOUNTANCY</td>
+                        </tr>
+
+                        <tr class="bg-slate-100">
+                            <td class="p-2 border-r bg-slate-200 font-semibold text-slate-900">27-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">SUN</td>
+                            <td colspan="12" class="p-2 font-black tracking-[1em] text-slate-400 text-center">
+                                Sunday - Holiday
+                            </td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">28-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">MON</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SCIENCE</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">HINDI</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SCIENCE</td>
+                            <td class="p-2 border-r">BIOLOGY</td>
+                            <td class="p-2">ECONOMICS</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">29-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">TUE</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">SCIENCE</td>
+                            <td class="p-2 border-r">ENGLISH</td>
+                            <td class="p-2 border-r">SANSKRIT</td>
+                            <td class="p-2 border-r">SOCIAL SC</td>
+                            <td class="p-2 border-r">MATHS</td>
+                            <td class="p-2 border-r">G.K.</td>
+                            <td class="p-2 border-r">V.ED</td>
+                            <td class="p-2 border-r">HISTORY</td>
+                            <td class="p-2">POL. SCIENCE</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">30-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">WED</td>
+                            <td class="p-2 border-r">GK / V.ED</td>
+                            <td class="p-2 border-r">GK / V.ED</td>
+                            <td class="p-2 border-r">GK / V.ED</td>
+                            <td class="p-2 border-r">GK / V.ED</td>
+                            <td class="p-2 border-r">GK / V.ED</td>
+                            <td class="p-2 border-r">AI / ICT</td>
+                            <td class="p-2 border-r">AI / ICT</td>
+                            <td class="p-2 border-r">AI / ICT</td>
+                            <td class="p-2 border-r">AI / ICT</td>
+                            <td class="p-2 border-r">AI / ICT</td>
+                            <td class="p-2 border-r">PHYSICAL ED</td>
+                            <td class="p-2">ENTREPRENEUR</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">31-JUL-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">THU</td>
+                            <td class="p-2 border-r">DRAWING</td>
+                            <td class="p-2 border-r">DRAWING</td>
+                            <td class="p-2 border-r">DRAWING</td>
+                            <td class="p-2 border-r">DRAWING</td>
+                            <td class="p-2 border-r">DRAWING</td>
+                            <td class="p-2 border-r">COMP. SC</td>
+                            <td class="p-2 border-r">COMP. SC</td>
+                            <td class="p-2 border-r">COMP. SC</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2">REVISION</td>
+                        </tr>
+
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 border-r bg-slate-50 font-semibold text-slate-900">01-AUG-2025</td>
+                            <td class="p-2 border-r font-bold text-slate-500">FRI</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">REVISION</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2 border-r">RESULT</td>
+                            <td class="p-2">RESULT</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- NOTES SECTION -->
+        <div class="px-8 pt-4 text-[10px] border-t border-slate-200">
+
+            <p class="font-bold text-slate-700 uppercase mb-2">
+                Important Instructions
+            </p>
+
+            <ul class="list-disc pl-5 space-y-1 text-slate-600">
+                <li>Students must report at least 15 minutes before the exam start time.</li>
+                <li>Admit Card is mandatory for entry into the examination hall.</li>
+                <li>Mobile phones, smart watches, or any electronic gadgets are not allowed.</li>
+                <li>Maintain discipline and follow all examination rules strictly.</li>
+            </ul>
+
+        </div>
+
+        <div class="flex justify-end gap-20 px-12 pb-10 text-[11px] font-semibold text-slate-700">
+            <div class="text-left">
+                <div class="w-40 border-t border-slate-500 mt-10"></div>
+                <p class="mt-1 uppercase">Exam In-Charge</p>
+            </div>
+            <div class="text-right">
+                <div class="w-40 border-t border-slate-500 mt-10 ml-auto"></div>
+                <p class="mt-1 uppercase">Principal</p>
+            </div>
+        </div>
+
+        <div class="px-8 py-3 border-t border-slate-200 bg-slate-50 flex justify-between text-[10px] text-slate-500">
+            <p>This timetable is computer generated.</p>
+            <p>Designed by: <b class="text-blue-600">VIDYAOne</b></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

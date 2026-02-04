@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invigilator  TimeTable Generation</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+            color: #334155;
+        }
+
+        .input {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+            outline: none;
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            transition: all .2s ease;
+        }
+
+        .tool-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            background: #0ea5e9;
+            transition: background .2s ease;
+        }
+
+        .primary-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <div class="max-w-[1500px] mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Invigilator Timetable </h1>
+                <p class="text-xs text-slate-400 mt-0.5">
+                    Home / Exam / Invigilator Timetable
+                </p>
+            </div>
+            <div class="flex gap-3">
+
+                <!-- New Subject -->
+                <button class="tool-btn text-sky-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    New Exam
+                </button>
+
+
+
+                <!-- Daily Timetable -->
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+          text-orange-700 border border-orange-200
+           rounded-xl hover:bg-orange-100 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Calendar Day Icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3M16 7V3M4 9h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 21h12a2 2 0 002-2V7
+               a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h2v2H9z" />
+                    </svg>
+
+                    Student Timetable
+                </button>
+
+
+                <!-- Overall Timetable -->
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+          text-violet-700 border border-violet-200
+           rounded-xl hover:bg-violet-100 transition">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Calendar Grid Icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3M16 7V3M4 9h16" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 21h12a2 2 0 002-2V7
+               a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+
+                        <!-- Grid Blocks -->
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8 13h2v2H8zM12 13h2v2h-2zM16 13h2v2h-2z" />
+                    </svg>
+
+                    Overall Timetable
+                </button>
+
+
+
+
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+            <div class="grid grid-cols-7 gap-4 items-end">
+
+                <!-- Select Exam -->
+                <div class="col-span-2">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Select Exam
+                    </label>
+                    <select class="input mt-1">
+                        <option value="">-- Choose Exam --</option>
+                        <option>Annual Examination 2026</option>
+                        <option>Mid Term Exam</option>
+                        <option>Pre Board Exam</option>
+                    </select>
+                </div>
+
+                <!-- Select Date -->
+                <div class="col-span-1">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Start Date
+                    </label>
+                    <input type="date" class="input mt-1">
+                </div>
+                  <!-- Select Date -->
+                <div class="col-1">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        End  Date
+                    </label>
+                    <input type="date" class="input mt-1">
+                </div>
+
+                <!-- Load Timetable Button -->
+                <div class="col-span-2 flex items-end gap-4">
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-semibold
+                       bg-sky-50 text-sky-700 border border-sky-200
+                       rounded-xl hover:bg-sky-100 transition">
+                        <!-- Calendar Icon -->
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3M16 7V3M4 9h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 21h12a2 2 0 002-2V7
+                           a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h2v2H9z" />
+                        </svg>
+
+                        Load Timetable
+                    </button>
+
+                    <!-- Print Buttons -->
+                    <div class="flex gap-3">
+
+                        <!-- TimeTable -->
+                        <button class="tool-btn text-emerald-600">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <!-- ID Card Icon -->
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16a2 2 0 012 2v6a2 2 0 01-2 2H4
+                       a2 2 0 01-2-2V9a2 2 0 012-2z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 11h4M8 15h6" />
+                            </svg>
+                            Print TimeTable
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Daily Timetable Output -->
+        <div class="px-6 py-6">
+
+            <!-- Timetable Summary Card -->
+            <div class="mb-6 flex items-center justify-between 
+               bg-white border border-slate-200 rounded-2xl 
+               shadow-sm px-6 py-5">
+
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Exam Name
+                    </p>
+                    <p class="text-lg font-bold text-slate-800">
+                        Annual Examination 2026
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Timetable Date
+                    </p>
+                    <p class="text-lg font-bold text-slate-800">
+                        01 March 2026
+                    </p>
+                </div>
+
+                <div class="text-right">
+                    <p class="text-[11px] uppercase font-bold text-slate-400">
+                        Total Scheduled
+                    </p>
+                    <p class="text-lg font-bold text-sky-700">
+                        03 Classes
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Modern Timetable Table -->
+            <div class="overflow-hidden rounded-2xl border border-slate-200">
+
+                <!-- Table Header -->
+                <div class="grid grid-cols-7 bg-slate-100 px-5 py-3 
+                   text-[11px] font-bold uppercase tracking-wide text-slate-500">
+
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Shift <svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Class <svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Subject <svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700 justify-center">Room <svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="flex items-center gap-1 cursor-pointer hover:text-slate-700">Invigilator <svg
+                            class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M16 15l-4 4-4-4" />
+                        </svg></div>
+                    <div class="text-center">Timing</div>
+                    <div>Remarks</div>
+                </div>
+
+
+                <!-- Table Rows -->
+                <div class="divide-y divide-slate-100 bg-white">
+
+                    <!-- Row 1 -->
+                    <div class="grid grid-cols-7 items-center px-5 py-4 
+                       hover:bg-slate-50 transition">
+                        <div class="font-semibold text-slate-800">
+                            General
+                        </div>
+                        <div class="font-semibold text-slate-800">
+                            Class 10-A
+                        </div>
+
+                        <div class="text-slate-700">
+                            Mathematics (Paper I)
+                        </div>
+
+                        <div class="text-center font-semibold text-slate-700">
+                            A-101
+                        </div>
+
+                        <div class="text-slate-700">
+                            R. Sharma
+                        </div>
+
+                        <div class="text-center text-slate-600 font-medium">
+                            09:00 – 12:00
+                        </div>
+
+                        <!-- Blank Remarks Input -->
+                        <input class="input" placeholder="Add remark...">
+                    </div>
+
+
+                    <!-- Row 2 -->
+                    <div class="grid grid-cols-7 items-center px-5 py-4 
+                       hover:bg-slate-50 transition">
+                        <div class="font-semibold text-slate-800">
+                            General
+                        </div>
+                        <div class="font-semibold text-slate-800">
+                            Class 10-B
+                        </div>
+
+                        <div class="text-slate-700">
+                            English (Literature)
+                        </div>
+
+                        <div class="text-center font-semibold text-slate-700">
+                            B-204
+                        </div>
+
+                        <div class="text-slate-700">
+                            Sarah Jenkins
+                        </div>
+
+                        <div class="text-center text-slate-600 font-medium">
+                            09:00 – 12:00
+                        </div>
+
+                        <!-- Blank Remarks Input -->
+                        <input class="input" placeholder="Add remark...">
+                    </div>
+
+
+                    <!-- Row 3 -->
+                    <div class="grid grid-cols-7 items-center px-5 py-4 
+                       hover:bg-slate-50 transition">
+                        <div class="font-semibold text-slate-800">
+                            General
+                        </div>
+                        <div class="font-semibold text-slate-800">
+                            Class 12-A
+                        </div>
+
+                        <div class="text-slate-700">
+                            Physics (Theory)
+                        </div>
+
+                        <div class="text-center font-semibold text-slate-700">
+                            C-301
+                        </div>
+
+                        <div class="text-slate-700">
+                            A. Verma
+                        </div>
+
+                        <div class="text-center text-slate-600 font-medium">
+                            10:00 – 01:00
+                        </div>
+
+                        <!-- Blank Remarks Input -->
+                        <input class="input" placeholder="Add remark...">
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

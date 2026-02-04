@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Exam Timetable</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
+
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        .sheet {
+            width: 210mm;
+            background: #fff;
+        }
+
+        .accent-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #3B82F6, #F59E0B);
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-center min-h-screen p-6">
+
+    <div class="sheet shadow-xl rounded-xl border border-slate-200 overflow-hidden">
+
+        <!-- Accent Bar -->
+        <div class="accent-bar"></div>
+
+        <!-- HEADER -->
+        <div class="px-6 py-4 border-b border-slate-300">
+
+            <div class="flex justify-between items-center">
+
+                <!-- School Info -->
+                <div class="flex gap-3 items-center">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="w-12 h-12 object-contain" />
+
+                    <div>
+                        <h1 class="text-lg font-extrabold text-slate-800">
+                            VIDYAOne Demo Public School
+                        </h1>
+
+                        <p class="text-[11px] text-blue-600 font-semibold">
+                            Knowledge • Discipline • Excellence
+                        </p>
+
+                        <p class="text-[10px] text-slate-600">
+                            Golghar, Gorakhpur Uttar Pradesh - 273001
+                        </p>
+
+                        <p class="text-[11px] text-slate-600">Mobile: +91 98XXXXXX12 | Website: <span
+                                class="text-blue-700 font-semibold">vidyaone.com</span></p>
+                    </div>
+                </div>
+
+                <!-- Exam Info -->
+                <div class="text-right text-[11px] leading-tight">
+
+                    <p class="text-slate-700 py-1">Hindi Medium | Affiliation: 213000 |
+
+                        U-DISE: 07020304506</p>
+                    <p><b>Session:</b> 2025 - 2026</p>
+                    <p><b>Exam Time:</b> 8:45 AM - 10:30 AM</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="text-center py-3 border-b border-slate-300 bg-slate-50">
+            <h2 class="text-sm font-extrabold uppercase text-slate-800 tracking-widest">
+                Annual Examination Timetable
+            </h2>
+        </div>
+
+        <!-- STUDENT DETAILS (With Photo) -->
+        <div class="px-8 py-4 border-b border-slate-200 ">
+
+            <div class="flex justify-between items-start gap-6">
+
+                <!-- Left Details -->
+                <div class="grid grid-cols-2 gap-y-2 gap-x-6 flex-1 text-[14px]">
+
+                    <p><b>SID:</b> SID-001</p>
+                    <p><b>Roll No:</b> 1001</p>
+
+                    <p><b>Student Name:</b> Ankit Maurya</p>
+                    <p><b>Class & Section:</b> X-A</p>
+
+                    <p><b>Exam Name:</b> Annual Examination 2026</p>
+
+                </div>
+
+                <!-- Right Student Photo -->
+                <div class="flex-shrink-0 text-center">
+
+                    <div
+                        class="w-20 h-20 border border-slate-300 rounded-xl overflow-hidden bg-slate-50 flex items-center justify-center">
+
+                        <!-- Student Image -->
+                        <img src="Image/icon-student.png" class="w-full h-full object-cover" alt="Student Photo">
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT TIMETABLE -->
+        <div class="px-6 py-4">
+
+            <div class="border border-slate-400 rounded-lg overflow-hidden">
+
+                <table class="w-full text-[11px] text-center border-collapse">
+
+                    <!-- Table Header -->
+                    <thead class="bg-slate-100 uppercase font-bold text-slate-700">
+                        <tr>
+                            <th class="p-2 border border-slate-300 w-[110px]">Date</th>
+                            <th class="p-2 border border-slate-300 w-[80px]">Day</th>
+                            <th class="p-2 border border-slate-300 w-[120px]">Paper</th>
+                            <th class="p-2 border border-slate-300">Subject</th>
+                            <th class="p-2 border border-slate-300 w-[120px]">Code</th>
+                            <th class="p-2 border border-slate-300 w-[110px]">Start Time</th>
+                            <th class="p-2 border border-slate-300 w-[110px]">End Time</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body -->
+                    <tbody class="text-slate-700">
+
+                        <!-- Row 1 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-2 border border-slate-300">23-Jul-2025</td>
+                            <td class="p-2 border border-slate-300 font-bold">WED</td>
+                            <td class="p-2 border border-slate-300 font-semibold">Paper-I</td>
+                            <td class="p-2 border border-slate-300">English</td>
+                            <td class="p-2 border border-slate-300 font-semibold">ENG-102</td>
+                            <td class="p-2 border border-slate-300">08:45 AM</td>
+                            <td class="p-2 border border-slate-300">10:30 AM</td>
+                        </tr>
+
+                        <!-- Row 2 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-2 border border-slate-300">24-Jul-2025</td>
+                            <td class="p-2 border border-slate-300 font-bold">THU</td>
+                            <td class="p-2 border border-slate-300 font-semibold">Paper-II</td>
+                            <td class="p-2 border border-slate-300">Mathematics</td>
+                            <td class="p-2 border border-slate-300 font-semibold">MTH-101</td>
+                            <td class="p-2 border border-slate-300">08:45 AM</td>
+                            <td class="p-2 border border-slate-300">10:30 AM</td>
+                        </tr>
+
+                        <!-- Row 3 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-2 border border-slate-300">25-Jul-2025</td>
+                            <td class="p-2 border border-slate-300 font-bold">FRI</td>
+                            <td class="p-2 border border-slate-300 font-semibold">Paper-III</td>
+                            <td class="p-2 border border-slate-300">Social Science</td>
+                            <td class="p-2 border border-slate-300 font-semibold">SOC-104</td>
+                            <td class="p-2 border border-slate-300">08:45 AM</td>
+                            <td class="p-2 border border-slate-300">10:30 AM</td>
+                        </tr>
+
+                        <!-- Row 4 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-2 border border-slate-300">26-Jul-2025</td>
+                            <td class="p-2 border border-slate-300 font-bold">SAT</td>
+                            <td class="p-2 border border-slate-300 font-semibold">Paper-IV</td>
+                            <td class="p-2 border border-slate-300">Hindi</td>
+                            <td class="p-2 border border-slate-300 font-semibold">HIN-105</td>
+                            <td class="p-2 border border-slate-300">08:45 AM</td>
+                            <td class="p-2 border border-slate-300">10:30 AM</td>
+                        </tr>
+
+                        <!-- Row 5 -->
+                        <tr class="hover:bg-slate-50 transition">
+                            <td class="p-2 border border-slate-300">28-Jul-2025</td>
+                            <td class="p-2 border border-slate-300 font-bold">MON</td>
+                            <td class="p-2 border border-slate-300 font-semibold">Paper-V</td>
+                            <td class="p-2 border border-slate-300">Science</td>
+                            <td class="p-2 border border-slate-300 font-semibold">SCI-103</td>
+                            <td class="p-2 border border-slate-300">08:45 AM</td>
+                            <td class="p-2 border border-slate-300">10:30 AM</td>
+                        </tr>
+
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+        <div class="px-8 pt-3 text-[10px] border-t border-slate-200 text-slate-600">
+            <b class="text-slate-700 uppercase">Note:</b>
+            Students must carry their admit card and report 15 minutes before the exam start time.
+        </div>
+
+        <!-- SIGNATURE -->
+        <div class="flex justify-between px-8 pb-6 text-[10px] font-semibold text-slate-700">
+
+            <div class="text-left">
+                <div class="w-36 border-t border-slate-500 mt-10"></div>
+                <p class="mt-1 uppercase">Class Teacher</p>
+            </div>
+
+            <div class="text-right">
+                <div class="w-36 border-t border-slate-500 mt-10 ml-auto"></div>
+                <p class="mt-1 uppercase">Principal</p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="px-6 py-2 border-t border-slate-200 flex justify-between text-[9px] text-slate-500">
+            <p>This timetable is computer generated.</p>
+            <p>Designed by <b class="text-blue-600">VIDYAOne</b></p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admit Cards Print</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+
+            body {
+                background: white;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+
+        .admit-card {
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .accent-bar {
+            height: 5px;
+            background: linear-gradient(90deg, #3B82F6, #F59E0B);
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <!-- A4 Admit Card Grid -->
+    <div class="grid grid-cols-2 gap-4">
+
+        <!-- VIDYAOne Admit Card -->
+        <div class="border border-slate-300 rounded-xl overflow-hidden bg-white text-[10px] w-[380px] shadow-sm">
+
+            <!-- Accent Bar -->
+            <div class="h-[6px] bg-gradient-to-r from-blue-500 to-amber-400"></div>
+
+            <!-- HEADER -->
+            <div class="flex justify-between items-start px-3 py-2 border-b border-slate-200">
+
+                <!-- Left Logo + School -->
+                <div class="flex gap-2 items-center">
+                    <img src="https://cdn.vidyaone.com/Company/Email/icon.png" class="w-10 h-10 object-contain" />
+
+                    <div>
+                        <p class="font-extrabold text-[13px] text-slate-800">
+                            VIDYAOne Demo School
+                        </p>
+                        <p class="text-[9px] text-blue-600 font-semibold">
+                            Knowledge • Discipline • Excellence
+                        </p>
+                        <p class="text-[9px] text-slate-500 leading-tight">
+                            Shaligram Bhawan, Gorakhpur, UP - 273015
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Codes -->
+                <div class="text-[9px] text-slate-600 text-right leading-tight">
+                    <p><b>U-DISE:</b> 0123</p>
+                    <p><b>Aff No:</b> 0123</p>
+                    <p><b>Mob:</b> 7080137444</p>
+                    <p><b>Mob:</b> 9519049995</p>
+                </div>
+
+            </div>
+
+            <!-- TITLE -->
+            <div class="text-center py-2">
+                <span
+                    class="px-4 py-[3px] rounded-full border border-blue-300 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase">
+                    Admit Card
+                </span>
+            </div>
+
+            <!-- BODY -->
+            <div class="flex justify-between px-3 pb-3 gap-3">
+
+                <!-- LEFT DETAILS -->
+                <div class="flex-1 space-y-[8px] text-slate-700 pt-2">
+                    <div class="flex justify-between pr-4">
+                        <p class="flex">
+                            <span>
+                                <b class="text-slate-800">Valid For :</b>
+                                <span class="font-semibold text-blue-700">Unit Test 1</span>
+                            </span>
+
+
+                        </p>
+                        <p><b>Class :</b> <span class="font-semibold text-emerald-700">11</span></p>
+                    </div>
+                    <!-- SID + Roll -->
+                    <div class="flex justify-between pr-4">
+                        <p><b>SID No :</b> <span class="text-slate-800 font-semibold">SID-052</span></p>
+                        <p><b>Roll No :</b> <span class="font-semibold">12</span></p>
+                    </div>
+
+                    <!-- Class + Stream -->
+                    <div class="flex justify-between pr-4">
+                        <p><b>Student's Name :</b> <span class="font-semibold text-emerald-700">Ankit Kumar</span></p>
+                    </div>
+
+                    <!-- Name -->
+                    <p>
+                        <b>Father's Name :</b>
+                        <span class=" text-slate-800">Mr. Abhishek Kumar</span>
+                    </p>
+
+                    <!-- Father -->
+                    <p>
+                        <b>Mother's Name :</b>
+                        <span class=" text-slate-700">Mrs. Anushka</span>
+                    </p>
+
+                  
+
+                </div>
+
+                <!-- RIGHT PHOTO -->
+                <div class="w-[95px] text-center">
+
+                    <!-- Photo Box -->
+                    <div
+                        class="w-[78px] h-[90px] border border-slate-300 rounded-lg mx-auto bg-slate-50 flex items-center justify-center overflow-hidden">
+                        <img src="Image/icon-student.png" class="w-full h-full object-cover" />
+                    </div>
+
+                    <!-- Session -->
+                    <p class="font-bold text-[11px] text-slate-800 mt-1">
+                        2026-27
+                    </p>
+
+                  
+
+                    <p class="font-semibold text-[9px] text-slate-700 mt-1">
+                        Principal Sign.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTE -->
+            <div class="border-t border-slate-200 px-3 py-2 text-[9px] text-slate-600 bg-slate-50">
+                <b class="text-slate-700 uppercase">Note:</b>
+                Entry without Admit Card is not allowed during exam.
+            </div>
+
+        </div>
+
+
+
+
+        <!-- 👉 इसी तरह 8 या 10 cards copy/paste कर सकते हो -->
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Schedule & Marks</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(180deg, #f1f5f9, #e2e8f0);
+            color: #334155;
+        }
+
+        /* Compact grid without extra column */
+        .exam-grid {
+            display: grid;
+            grid-template-columns:
+                160px
+                /* Subject */
+                200px
+                /* Paper */
+                80px
+                /* Max */
+                80px
+                /* Pass */
+                140px
+                /* Marks Type */
+                160px
+                /* Date */
+                140px
+                /* Start */
+                120px
+                /* End */
+                80px
+                /* Room */
+                200px;
+            /* Invigilator */
+            gap: 6px;
+            align-items: center;
+        }
+
+        .input {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 7px 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+            outline: none;
+        }
+
+        .row {
+            padding: 6px;
+            border-radius: 12px;
+            transition: background 0.15s ease;
+        }
+
+        .row:hover {
+            background: #f8fafc;
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            transition: all .2s ease;
+        }
+
+        .tool-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            background: #0ea5e9;
+            transition: background .2s ease;
+        }
+
+        .primary-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <div class="max-w-[1500px] mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div>
+                <h1 class="text-xl font-bold text-slate-800">Exam Schedule & Marks</h1>
+                <p class="text-xs text-slate-400 mt-0.5">
+                    Home / Exam / Create
+                </p>
+            </div>
+            <div class="flex gap-3">
+
+                <!-- New Subject -->
+                <button class="tool-btn text-sky-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    New Subject
+                </button>
+
+                <!-- New Paper -->
+                <button class="tool-btn text-pink-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                    </svg>
+                    New Paper
+                </button>
+
+                <!-- Subject Structure -->
+                <button class="tool-btn text-indigo-600">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                        <!-- Layers / Structure Icon -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4l8 4-8 4-8-4 8-4z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 12l8 4 8-4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l8 4 8-4" />
+                    </svg>
+                    Subject Structure
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Exam Basics -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+            <div class="flex gap-3 items-end">
+
+                <!-- Exam Name -->
+                <div class="w-[250px]">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Exam Name
+                    </label>
+                    <input class="input mt-1" value="Annual Examination 2026">
+                </div>
+
+                <!-- Exam Type -->
+                <div class="w-36">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Exam Type
+                    </label>
+                    <select class="input mt-1">
+                        <option>Regular Exam</option>
+                        <option>Practical</option>
+                        <option>Test</option>
+                    </select>
+                </div>
+
+
+                <!-- Exam Order -->
+                <div class="w-24">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Exam Order
+                    </label>
+                    <input class="input mt-1 text-slate-400" value="001">
+                </div>
+
+                <!-- Exam Type -->
+                <div class="w-36">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Shift
+                    </label>
+                    <select class="input mt-1">
+                        <option>General</option>
+                        <option>English Medium</option>
+                        <option>Hindi Medium</option>
+                    </select>
+                </div>
+
+                <!-- Applicable Classes -->
+                <div class="w-[350px]">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Applicable Classes
+                    </label>
+                    <input class="input mt-1" placeholder="Class 10-A, 10-B">
+                </div>
+
+                <!-- Subject Structure Name -->
+                <div class="w-56">
+                    <label class="text-[11px] uppercase font-bold text-slate-400">
+                        Subject Structure
+                    </label>
+                    <input class="input mt-1" value="CBSE Class 10 Structure">
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex items-end pb-[2px]">
+
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-semibold
+           bg-sky-500 text-white border border-sky-200
+           rounded-full hover:bg-sky-100 hover:text-sky-900 transition">
+
+
+                        Load Subjects
+                    </button>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+        <!-- Table Header -->
+        <div class="px-6 py-3 bg-slate-100 border-b border-slate-200">
+            <div class="exam-grid text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                <div>Subject Name</div>
+                <div>Paper Type</div>
+                <div class="text-center">Max Mark</div>
+                <div class="text-center">Pass. Mark</div>
+                <div class="text-center">Marks Type</div>
+                <div class="text-center">Exam Date</div>
+                <div class="text-center">Start Time</div>
+                <div class="text-center">End Time</div>
+                <div class="text-center">Room No.</div>
+                <div class="text-center">Invigilator Name</div>
+            </div>
+        </div>
+        <!-- Rows -->
+        <div class="px-6 py-4 space-y-2">
+
+            <!-- Mathematics – Paper 1 -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="Mathematics">
+                <input class="input" value="Paper I (Algebra)">
+                <input class="input text-center" value="100">
+                <input class="input text-center bg-green-50" value="33">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-01">
+                <input class="input text-center" type="time" value="09:00">
+                <input class="input text-center" type="time" value="12:00">
+                <input class="input text-center" value="A-101">
+                <input class="input" value="R. Sharma">
+            </div>
+
+            <!-- Mathematics – Paper 2 -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="Mathematics">
+                <input class="input" value="Paper II (Geometry)">
+                <input class="input text-center" value="100">
+                <input class="input text-center bg-green-50" value="33">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-03">
+                <input class="input text-center" type="time" value="09:00">
+                <input class="input text-center" type="time" value="12:00">
+                <input class="input text-center" value="A-102">
+                <input class="input" value="R. Sharma">
+            </div>
+
+            <!-- English -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="English">
+                <input class="input" value="Literature">
+                <input class="input text-center" value="100">
+                <input class="input text-center bg-green-50" value="33">
+                <select class="input">
+                    <option>Grading</option>
+                </select>
+                <input class="input" type="date" value="2026-03-05">
+                <input class="input text-center" type="time" value="09:00">
+                <input class="input text-center" type="time" value="12:00">
+                <input class="input text-center" value="B-204">
+                <input class="input" value="Sarah Jenkins">
+            </div>
+
+            <!-- Physics – Theory -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="Physics">
+                <input class="input" value="Theory">
+                <input class="input text-center" value="70">
+                <input class="input text-center bg-green-50" value="23">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-07">
+                <input class="input text-center" type="time" value="10:00">
+                <input class="input text-center" type="time" value="13:00">
+                <input class="input text-center" value="C-301">
+                <input class="input" value="A. Verma">
+            </div>
+
+            <!-- Physics – Practical -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="Physics">
+                <input class="input" value="Practical">
+                <input class="input text-center" value="30">
+                <input class="input text-center bg-green-50" value="10">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-08">
+                <input class="input text-center" type="time" value="10:00">
+                <input class="input text-center" type="time" value="12:00">
+                <input class="input text-center" value="LAB-1">
+                <input class="input" value="A. Verma">
+            </div>
+
+            <!-- Chemistry -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="Chemistry">
+                <input class="input" value="Theory">
+                <input class="input text-center" value="100">
+                <input class="input text-center bg-green-50" value="33">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-10">
+                <input class="input text-center" type="time" value="09:00">
+                <input class="input text-center" type="time" value="12:00">
+                <input class="input text-center" value="A-201">
+                <input class="input" value="P. Mehta">
+            </div>
+
+            <!-- History -->
+            <div class="exam-grid row">
+                <input class="input font-semibold" value="History">
+                <input class="input" value="Modern History">
+                <input class="input text-center" value="100">
+                <input class="input text-center bg-green-50" value="33">
+                <select class="input">
+                    <option>Numeric</option>
+                </select>
+                <input class="input" type="date" value="2026-03-12">
+                <input class="input text-center" type="time" value="13:00">
+                <input class="input text-center" type="time" value="16:00">
+                <input class="input text-center" value="D-105">
+                <input class="input" value="K. Singh">
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Summary (Colorful & Enhanced) -->
+        <div class="mx-6 mb-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-6">
+
+            <!-- Subjects -->
+            <div class="flex-1 rounded-xl bg-sky-50 border border-sky-100 px-5 py-4">
+                <p class="text-[11px] uppercase font-semibold text-sky-600">
+                    Total Subjects
+                </p>
+                <p class="text-2xl font-bold text-sky-700 mt-1">
+                    05
+                </p>
+            </div>
+
+            <!-- Papers -->
+            <div class="flex-1 rounded-xl bg-pink-50 border border-pink-100 px-5 py-4">
+                <p class="text-[11px] uppercase font-semibold text-pink-600">
+                    Total Papers
+                </p>
+                <p class="text-2xl font-bold text-pink-700 mt-1">
+                    07
+                </p>
+            </div>
+
+            <!-- Max Marks -->
+            <div class="flex-1 rounded-xl bg-green-50 border border-green-100 px-5 py-4">
+                <p class="text-[11px] uppercase font-semibold text-green-600">
+                    Max Marks
+                </p>
+                <p class="text-2xl font-bold text-green-700 mt-1">
+                    600
+                </p>
+            </div>
+
+            <!-- Passing Marks -->
+            <div class="flex-1 rounded-xl bg-emerald-50 border border-emerald-100 px-5 py-4">
+                <p class="text-[11px] uppercase font-semibold text-emerald-600">
+                    Passing Marks
+                </p>
+                <p class="text-2xl font-bold text-emerald-700 mt-1">
+                    198
+                </p>
+            </div>
+
+
+
+        </div>
+
+        <!-- Footer -->
+        <div class="px-6 py-4 border-t border-slate-100 flex justify-end gap-3">
+
+            <!-- Clear Section Button -->
+            <button class="tool-btn text-slate-600 hover:bg-slate-50 hover:text-slate-800 
+           rounded-lg px-3 py-2 border border-slate-200">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+
+                    <!-- Trash Icon -->
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862
+               a2 2 0 01-1.995-1.858L5 7" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 11v6M14 11v6" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 7V4h6v3M4 7h16" />
+                </svg>
+
+                Clear Records
+            </button>
+
+
+            <!-- Cancel Button -->
+            <button class="tool-btn text-red-600 hover:bg-red-50 hover:text-red-700 rounded-lg px-3 py-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Cancel
+            </button>
+
+            <!-- Save Exam Button -->
+            <button class="flex items-center gap-2 px-5 py-2 font-bold text-sm
+           rounded-xl text-white
+           bg-emerald-600 hover:bg-emerald-700
+           shadow-sm shadow-emerald-200 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2
+           2 6.477 2 12s4.477 10 10 10z" />
+                </svg>
+
+
+                Save Exam
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
