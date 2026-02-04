@@ -515,7 +515,478 @@ grid grid-cols-[50px_110px_90px_180px_100px_100px_100px_100px_100px_100px_100px_
             </div>
         </div>
 
-    
+        <!-- SUBJECT WISE CARD VIEW (Minimal + Premium) -->
+        <div class="px-6 py-6">
+
+            <!-- Heading -->
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 class="text-sm font-bold text-slate-800">
+                        Subject Wise Marks Entry
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">
+                        Exam: Annual Examination 2026 |
+                        Subject: <span class="font-semibold text-sky-600">Mathematics</span>
+                    </p>
+                </div>
+
+                <!-- Selected Subject Badge -->
+                <span class="px-4 py-2 rounded-full bg-sky-50 text-sky-700 text-xs font-bold border border-sky-200">
+                    Filling Marks for: Math
+                </span>
+            </div>
+            <!-- Student Marks Entry Grid (12 Students = 3 Rows) -->
+            <div class="grid grid-cols-4 gap-3">
+
+                <!-- Student 1 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Ankit Maurya</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-001 • Roll: 1001</p>
+
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 2 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Beatriz Chen</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-002 • Roll: 1002</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 3 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Cassian Thorne</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-003 • Roll: 1003</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 4 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Diana Prince</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-004 • Roll: 1004</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 5 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Eshan Verma</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-005 • Roll: 1005</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 6 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Fatima Khan</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-006 • Roll: 1006</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 7 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Gaurav Sharma</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-007 • Roll: 1007</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 8 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Hina Patel</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-008 • Roll: 1008</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 9 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Ishita Roy</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-009 • Roll: 1009</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 10 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Jay Mehta</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-010 • Roll: 1010</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 11 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Kavya Singh</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-011 • Roll: 1011</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+                <!-- Student 12 -->
+                <div
+                    class="flex items-center justify-between px-4 py-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition">
+                    <div class="leading-tight">
+                        <p class="font-semibold text-slate-800 text-sm">Liam Johnson</p>
+                        <p class="text-xs text-slate-500 mt-0.5">SID-012 • Roll: 1012</p>
+                    </div>
+                    <input maxlength="3" placeholder="--" list="reasonList" class="w-[80px] h-[38px]
+    text-center input font-bold uppercase
+    border border-slate-200 rounded-xl
+    transition
+    focus:ring-2 focus:ring-blue-200 focus:border-blue-400" oninput="
+        // Reset Colors
+        this.classList.remove(
+          'bg-rose-50','text-rose-700','border-rose-200',
+          'bg-blue-50','text-blue-700','border-blue-200',
+          'bg-orange-50','text-orange-700','border-orange-200',
+          'bg-purple-50','text-purple-700','border-purple-200'
+        );
+
+        // Apply Reason Colors
+        if(this.value=='AB') this.classList.add('bg-rose-50','text-rose-700','border-rose-200');
+        if(this.value=='ML') this.classList.add('bg-blue-50','text-blue-700','border-blue-200');
+        if(this.value=='FD') this.classList.add('bg-orange-50','text-orange-700','border-orange-200');
+        if(this.value=='UM') this.classList.add('bg-purple-50','text-purple-700','border-purple-200');
+    " />
+
+                    <!-- Reason Options -->
+                    <datalist id="reasonList">
+                        <option value="AB">Absent</option>
+                        <option value="ML">Medical Leave</option>
+                        <option value="FD">Fee Due</option>
+                        <option value="UM">Unfair Means</option>
+                    </datalist>
+
+                </div>
+
+            </div>
+
+
+        </div>
 
 
 
