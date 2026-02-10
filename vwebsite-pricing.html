@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium School Pricing Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: float 12s infinite alternate ease-in-out;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        .receipt-line {
+            position: relative;
+        }
+
+        .receipt-line::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px dotted #e2e8f0;
+            z-index: 1;
+        }
+
+        .receipt-line-white::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            border-bottom: 1px dotted black;
+            z-index: 1;
+        }
+
+        .receipt-line span {
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .professional-bg {
+            background: white;
+        }
+
+        .red-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #db2777 100%);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%);
+        }
+    </style>
+</head>
+
+<body class="relative bg-[#fafafa] ">
+
+    <div
+        class="absolute top-0 -left-4 w-72 h-72 bg-red-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob">
+    </div>
+    <div
+        class="absolute top-0 -right-4 w-72 h-72 bg-yellow-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000">
+    </div>
+    <div
+        class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000">
+    </div>
+    <div
+        class="absolute bottom-20 right-20 w-80 h-72 bg-green-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+    </div>
+
+    <section class="relative min-h-screen flex items-center overflow-hidden ">
+
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                <div class="" data-aos="fade-up">
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <!-- No Setup Fees -->
+                        <span
+                            class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 border border-green-100 shadow-sm">
+                            <svg class="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            No Setup Fees
+                        </span>
+
+                        <!-- Cancel Anytime -->
+                        <span
+                            class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 border border-yellow-100 shadow-sm">
+                            <svg class="w-4 h-4 mr-2 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18.364 5.636l-12.728 12.728M5.636 5.636l12.728 12.728" />
+                            </svg>
+                            Cancel Anytime
+                        </span>
+
+                        <!-- Quick Setup -->
+                        <span
+                            class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-pink-50 text-pink-700 border border-pink-100 shadow-sm">
+                            <svg class="w-4 h-4 mr-2 text-pink-600" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            Quick Setup
+                        </span>
+                    </div>
+
+                    <h1 class="text-5xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6 tracking-tight">
+                        Simple <span class="text-red-600 relative inline-block">Pricing
+                            <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 138 9" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 7C34.5 2.5 103.5 -1.5 137 7" stroke="#EF4444" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span> Plans <br>Designed for Schools
+                    </h1>
+
+                    <p class="text-xl text-slate-500 mb-10 max-w-4xl leading-relaxed font-light">
+                        Clear and flexible plans with no technical complexity. Whether you’re a small academy or a large
+                        institution, scale your school website with confidence.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <button
+                            class="px-10 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-2xl transition-all shadow-xl shadow-red-200 hover:scale-105 active:scale-95 flex items-center justify-center group">
+                            Start Free Website
+                            <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                        </button>
+                        <button
+                            class="px-10 py-4 bg-white/80 backdrop-blur-md border border-slate-200 text-slate-700 font-bold rounded-2xl hover:bg-white transition-all shadow-sm flex items-center justify-center">
+                            View All Features
+                        </button>
+                    </div>
+                </div>
+<div class="lg:w-[45%] w-full">
+    <div
+        class="bg-white rounded-[2rem] p-8 lg:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-100 relative overflow-hidden">
+        
+        <div
+            class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-red-400 via-pink-400 to-green-400">
+        </div>
+
+        <div class="flex justify-between items-center mb-10">
+            <span
+                class="text-[10px] font-black tracking-[0.15em] text-green-600 bg-green-50 px-3 py-1 rounded-md uppercase">
+                Flexible Website Journey
+            </span>
+            <span class="flex gap-1">
+                <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            </span>
+        </div>
+
+        <div class="space-y-0 relative">
+            <div class="absolute left-[27px] top-2 bottom-2 w-0.5 bg-slate-100"></div>
+
+            <!-- STEP 1 -->
+            <div class="relative flex gap-6 pb-10 group">
+                <div
+                    class="w-14 h-14 shrink-0 rounded-2xl bg-pink-50 border border-pink-100 flex items-center justify-center z-10 group-hover:bg-pink-500 group-hover:text-white transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold text-pink-500 uppercase tracking-widest">
+                        Website Templates
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-1">
+                        A ready layout to begin with
+                    </h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Pick a ready website design with essential school pages already in place.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="relative flex gap-6 pb-10 group">
+                <div
+                    class="w-14 h-14 shrink-0 rounded-2xl bg-yellow-50 border border-yellow-100 flex items-center justify-center z-10 group-hover:bg-yellow-500 group-hover:text-white transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold text-yellow-600 uppercase tracking-widest">
+                        Everyday Updates
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-1">
+                        Keep information fresh
+                    </h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Share notices, photos, and events easily without technical effort.
+                    </p>
+                </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="relative flex gap-6 group">
+                <div
+                    class="w-14 h-14 shrink-0 rounded-2xl bg-green-50 border border-green-100 flex items-center justify-center z-10 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                        </path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold text-green-600 uppercase tracking-widest">
+                        Additional Needs
+                    </span>
+                    <h4 class="text-xl font-bold text-slate-900 mb-1">
+                        Extend when required
+                    </h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        Add more sections or features whenever the school needs them.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 pt-8 border-t border-slate-50 flex items-center justify-between">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2">
+                    <div class="w-12 h-2 bg-green-500 rounded-full"></div>
+                    <div class="w-12 h-2 bg-green-500 rounded-full"></div>
+                    <div class="w-12 h-2 bg-slate-100 rounded-full"></div>
+                </div>
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                    Website Coverage: Well Established
+                </span>
+            </div>
+            <a href="#"
+                class="text-sm font-extrabold text-red-600 hover:text-red-700 flex items-center transition-colors">
+                View Website Options <span class="ml-1">→</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="container mx-auto max-w-6xl ">
+
+        <div
+            class="relative bg-white rounded-[2rem] border border-slate-100 overflow-hidden transition-all duration-300 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)]">
+
+            <div class="flex flex-col lg:flex-row items-stretch">
+
+                <!-- LEFT : VALUE -->
+                <div
+                    class="p-8 lg:p-12 lg:w-1/2 bg-gradient-to-br from-white via-white to-green-50/40 lg:border-r border-slate-100 flex flex-col justify-center">
+
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/70 border border-green-200 mb-5 w-fit">
+                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        <span class="text-[10px] font-bold text-green-700 uppercase tracking-widest">
+                            Free Starter Plan
+                        </span>
+                    </div>
+
+                    <h3 class="text-2xl lg:text-3xl font-extrabold text-slate-900 leading-snug">
+                        Launch Your School Website
+                        <span class="text-green-600 font-black"> Without Any Cost</span>
+                    </h3>
+
+                    <p class="text-sm text-slate-500 mt-3 leading-relaxed max-w-sm">
+                        Perfect for schools starting their digital journey. Go live with a clean, professional website
+                        and start communicating clearly with parents and students from day one.
+                    </p>
+                </div>
+
+                <!-- MIDDLE : FEATURES -->
+                <div class="px-8 gap-10 lg:px-12 py-10 lg:w-//2 flex flex-col justify-center items-center">
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-5 w-full">
+
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                Free Website Setup
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                School-ready Templates
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                Free School Sub-domain
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                No Credit Card Needed
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                Easy Content Updates
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-[13px] font-semibold text-slate-700">
+                                No Technical Skills Needed
+                            </span>
+                        </div>
+
+                    </div>
+                    <!-- RIGHT : CTA -->
+                    <div class="flex flex-col items-center lg:items-end justify-center ">
+
+                        <button
+                            class="w-full py-3.5 px-6 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-xl shadow-lg shadow-green-200 hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+                            Choose Website Design
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </button>
+
+
+                        <p
+                            class="mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center lg:text-right">
+                            Upgrade only when you need more
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <section class="py-20 lg:py-32 px-6 ">
+        <div class="container mx-auto max-w-7xl">
+
+            <div class="text-center mb-20">
+                <h2 class="text-4xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                    Choose a <span class="text-red-600">Plan</span> That Fits Your School
+                </h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+                    Simple yearly pricing designed for real school needs. Clear discounts, no confusion.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+
+                <div
+                    class="group bg-white rounded-[2.5rem] p-10 border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col hover:-translate-y-2">
+                    <div class="mb-8">
+                        <span
+                            class="inline-block px-3 py-1 rounded-lg text-[10px] font-bold bg-green-50 text-green-600 uppercase tracking-widest border border-green-100 mb-6">
+                            Best for Small Schools
+                        </span>
+                        <h3 class="text-2xl font-bold text-slate-900">Foundation</h3>
+                        <p class="text-sm text-slate-500 mt-2">Essential school website to get started online.</p>
+                    </div>
+
+                    <div class="mb-8 bg-slate-50/50 rounded-2xl p-6 border border-slate-100">
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-4xl font-extrabold text-slate-900">₹2,700</span>
+                            <span class="text-slate-400 font-medium text-sm">/ Year</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end receipt-line text-xs font-medium">
+                                <span class="pr-2 text-slate-400">Foundation Plan Price</span>
+                                <span class="pl-2 text-slate-400 line-through">₹3,000</span>
+                            </div>
+                            <div class="flex justify-between items-end receipt-line text-xs font-bold">
+                                <span class="pr-2 text-green-600">Discount (10%)</span>
+                                <span class="pl-2 text-green-600">- ₹300</span>
+                            </div>
+                            <div
+                                class="border-t border-slate-200 pt-3 flex justify-between font-extrabold text-slate-900 text-sm">
+                                <span>Amount Payable</span>
+                                <span>₹2,700</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-600">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Up to 5 website modules
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Free plugin access
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M6 18L18 6M6 6l12 12" stroke-width="2"></path>
+                            </svg>
+                            No system integration
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full py-4 border-2 border-red-600 text-red-600 font-extrabold rounded-2xl hover:bg-red-600 hover:text-white hover:shadow-lg hover:shadow-red-200 transition-all duration-300">
+                        Get Started
+                    </button>
+                </div>
+
+                <div
+                    class="relative group rounded-[2.5rem] p-10 bg-white border-2 border-red-500 shadow-[0_30px_60px_-15px_rgba(239,68,68,0.15)] scale-105 z-10 flex flex-col transition-all duration-500">
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-max">
+                        <span
+                            class="bg-yellow-400 text-slate-900 text-[11px] font-black px-6 py-2 rounded-full uppercase tracking-tighter shadow-xl ring-4 ring-white">
+                            Most Popular
+                        </span>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold text-slate-900">Professional</h3>
+                        <p class="text-sm text-slate-600 mt-2 font-medium">Complete website for growing schools.</p>
+                    </div>
+
+                    <div class="mb-8 bg-red-50 rounded-2xl p-6 border border-red-100">
+                        <div class="flex items-baseline gap-2 text-red-600 mb-4">
+                            <span class="text-4xl font-extrabold">₹6,800</span>
+                            <span class="font-medium text-sm text-red-400">/ Year</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end text-xs font-medium">
+                                <span class="text-red-400/70">Professional Plan Price</span>
+                                <span class="text-red-400/70 line-through">₹8,000</span>
+                            </div>
+                            <div class="flex justify-between items-end text-xs font-bold">
+                                <span class="text-green-600">Discount (15%)</span>
+                                <span class="text-green-600">- ₹1,200</span>
+                            </div>
+                            <div
+                                class="border-t border-red-200 pt-3 flex justify-between font-extrabold text-slate-900 text-sm">
+                                <span>Amount Payable</span>
+                                <span>₹6,800</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-bold">
+                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Up to 15 website modules
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-bold">
+                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            System integration enabled
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-700 font-bold">
+                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Custom domain
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full py-4 bg-red-600 text-white font-extrabold rounded-2xl shadow-xl shadow-red-200 hover:bg-red-700 hover:scale-[1.02] transition-all duration-300">
+                        Choose Professional
+                    </button>
+                </div>
+
+                <div
+                    class="group bg-white rounded-[2.5rem] p-10 border border-slate-200/60 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] transition-all duration-500 flex flex-col hover:-translate-y-2">
+                    <div class="mb-8">
+                        <span
+                            class="inline-block px-3 py-1 rounded-lg text-[10px] font-bold bg-pink-50 text-pink-600 uppercase tracking-widest border border-pink-100 mb-6">
+                            For Large Institutions
+                        </span>
+                        <h3 class="text-2xl font-bold text-slate-900">Expert</h3>
+                        <p class="text-sm text-slate-500 mt-2">Advanced solution for large institutions.</p>
+                    </div>
+
+                    <div class="mb-8 bg-slate-50/50 rounded-2xl p-6 border border-slate-100">
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-4xl font-extrabold text-slate-900">₹12,600</span>
+                            <span class="text-slate-400 font-medium text-sm">/ Year</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-end receipt-line text-xs font-medium">
+                                <span class="pr-2 text-slate-400">Expert Plan Price</span>
+                                <span class="pl-2 text-slate-400 line-through">₹18,000</span>
+                            </div>
+                            <div class="flex justify-between items-end receipt-line text-xs font-bold">
+                                <span class="pr-2 text-green-600">Discount (30%)</span>
+                                <span class="pl-2 text-green-600">- ₹5,400</span>
+                            </div>
+                            <div
+                                class="border-t border-slate-200 pt-3 flex justify-between font-extrabold text-slate-900 text-sm">
+                                <span>Amount Payable</span>
+                                <span>₹12,600</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-10 flex-grow">
+                        <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            All website modules
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Full system integration
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-600 font-medium">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z">
+                                </path>
+                            </svg>
+                            Dedicated support
+                        </li>
+                    </ul>
+
+                    <button
+                        class="w-full py-4 border-2 border-red-600 text-red-600 font-extrabold rounded-2xl hover:bg-red-600 hover:text-white transition-all duration-300">
+                        Go Expert
+                    </button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="container mx-auto max-w-7xl py-20">
+
+        <div
+            class="bg-white rounded-[3rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)] border border-slate-100 overflow-hidden">
+
+            <div class="flex flex-col lg:flex-row">
+
+                <div class="p-10 lg:p-14 lg:w-[60%] border-b lg:border-b-0 lg:border-r border-slate-50">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-50 border border-red-100 mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full red-gradient"></span>
+                        <span class="text-[11px] font-bold text-red-600 uppercase tracking-widest">Premium
+                            Enhancement</span>
+                    </div>
+
+                    <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight mb-4">
+                        Domain Purchase & <br><span class="text-transparent bg-clip-text red-gradient">Professional
+                            Setup</span>
+                    </h2>
+
+                    <p class="text-slate-500 font-medium mb-10 leading-relaxed max-w-md">
+                        Your domain is your school's digital front door. Let our experts handle the technical
+                        complexities while you choose your identity.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl step-number flex items-center justify-center shrink-0 border border-red-50">
+                                <span class="text-red-600 font-bold text-sm">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-800">Use Your School Name</h4>
+                                <p class="text-[13px] text-slate-400 font-medium">Pick a name that reflects your
+                                    institution (e.g., <span class="text-slate-600">stmarysschool</span> or <span
+                                        class="text-slate-600">greenvalleyacademy</span>).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <div
+                                class="w-10 h-10 rounded-xl step-number flex items-center justify-center shrink-0 border border-red-50">
+                                <span class="text-red-600 font-bold text-sm">02</span>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-extrabold text-slate-800">Select Extension (.com, .in, .edu)
+                                </h4>
+                                <p class="text-[13px] text-slate-400 font-medium">Choose based on your needs: <span
+                                        class="font-bold text-slate-500">.in</span> for local presence, <span
+                                        class="font-bold text-slate-500">.edu</span> for academic status, or <span
+                                        class="font-bold text-slate-500">.com</span> for global reach.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="p-10 lg:p-14 lg:w-[40%] bg-slate-50/50 flex flex-col justify-between text-center lg:text-left">
+                    <div>
+                        <div class="mb-8">
+                            <span class="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em]">One-Time
+                                Investment</span>
+                            <div class="flex items-baseline gap-2 justify-center lg:justify-start mt-2">
+                                <span class="text-5xl font-black text-slate-900">₹2,000</span>
+                            </div>
+                            <p class="text-xs font-bold text-green-600 mt-2 uppercase tracking-tight">Everything
+                                included • No renewal fees</p>
+                        </div>
+
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center gap-3 justify-center lg:justify-start">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-sm font-bold text-slate-600 tracking-tight">Professional
+                                    Consultation</span>
+                            </li>
+                            <li class="flex items-center gap-3 justify-center lg:justify-start">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-sm font-bold text-slate-600 tracking-tight">Full DNS & SSL
+                                    Handling</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <button
+                            class="red-gradient w-full py-5 text-white font-black rounded-2xl shadow-xl shadow-red-200 hover:opacity-90 transition-all active:scale-95 text-[12px] uppercase tracking-widest">
+                            Add Domain Service
+                        </button>
+                        <p class="mt-6 text-[10px] font-bold text-slate-300 uppercase tracking-widest text-center">
+                            Our team will guide you <br> during the selection process
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <main x-data="{ isYearly: true }">
+
+        <header class="pt-24 pb-12 px-6">
+            <div class="container mx-auto max-w-7xl text-center">
+                <h2 class="text-4xl lg:text-6xl font-extrabold mb-6 tracking-tight text-slate-900">
+                    Subscription Plans for <span class="text-red-600">Schools</span>
+                </h2>
+                <p class="text-slate-500 text-lg lg:text-xl font-medium max-w-2xl mx-auto">
+                    Choose monthly flexibility or save more with a yearly subscription.
+                </p>
+            </div>
+        </header>
+
+        <div class="flex flex-col items-center mb-20">
+            <div
+                class="bg-slate-200/50 p-1.5 rounded-[20px] flex items-center backdrop-blur-sm border border-slate-200">
+                <button @click="isYearly = false"
+                    :class="!isYearly ? 'bg-red-600 text-white shadow-lg shadow-red-200' : 'text-slate-500 hover:bg-slate-300/30'"
+                    class="px-10 py-3 rounded-[16px] text-sm font-bold transition-all duration-300">
+                    Monthly
+                </button>
+                <button @click="isYearly = true"
+                    :class="isYearly ? 'bg-red-600 text-white shadow-lg shadow-red-200' : 'text-slate-500 hover:bg-slate-300/30'"
+                    class="px-10 py-3 rounded-[16px] text-sm font-bold transition-all duration-300 flex items-center gap-2">
+                    Yearly
+                    <span
+                        class="bg-green-500 text-[9px] text-white px-2 py-0.5 rounded-full font-black animate-pulse">SAVE
+                        35%</span>
+                </button>
+            </div>
+            <div class="h-6 mt-4">
+                <p x-show="!isYearly" x-transition x-cloak class="text-sm font-bold text-slate-400">Billed monthly.
+                    Standard government taxes apply.</p>
+                <p x-show="isYearly" x-transition x-cloak
+                    class="text-sm font-bold text-green-600 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    Maximum Savings Enabled: Best value for long-term school growth.
+                </p>
+            </div>
+        </div>
+
+        <section class="container mx-auto max-w-7xl px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+
+                <template x-for="plan in [
+                { name: 'Foundation', desc: 'Essential digital identity', mPrice: 300, yOld: 3000, yNew: 2550, ySave: '15% OFF · Save ₹450', mGst: 54, yGst: 459, mTot: 354, yTot: 3009, featured: false },
+                { name: 'Professional', desc: 'For growing institutions', mPrice: 800, yOld: 8000, yNew: 6400, ySave: '20% OFF · Save ₹1600', mGst: 144, yGst: 1152, mTot: 944, yTot: 7552, featured: true },
+                { name: 'Expert', desc: 'Full-scale school system', mPrice: 1800, yOld: 18000, yNew: 11700, ySave: '35% OFF · Save ₹6300', mGst: 324, yGst: 2106, mTot: 2124, yTot: 13806, featured: false }
+            ]">
+                    <div :class="plan.featured ? 'border-2 border-yellow-400 shadow-[0_30px_60px_-15px_rgba(234,179,8,0.2)] scale-105 z-10' : 'border border-slate-200 shadow-sm'"
+                        class="pricing-card bg-white rounded-[2.5rem] p-10 flex flex-col relative group">
+
+                        <div x-show="plan.featured" class="absolute -top-4 left-1/2 -translate-x-1/2">
+                            <span
+                                class="bg-yellow-400 text-slate-900 text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-lg"
+                                x-text="isYearly ? 'Best Value' : 'Most Popular'"></span>
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900" x-text="plan.name"></h3>
+                            <p class="text-sm text-slate-400 mt-2 font-medium" x-text="plan.desc"></p>
+                        </div>
+
+                        <div class="flex h-20 flex-col justify-end mb-8">
+                            <div x-show="isYearly" x-transition:enter.duration.400ms class="space-y-1">
+
+
+                                <div class="text-4xl font-extrabold tracking-tighter text-slate-900">
+                                    <span x-text="'₹' + plan.yNew.toLocaleString()"></span><span
+                                        class="text-base text-slate-400 font-normal tracking-normal">/yr</span>
+                                    <span class="text-red-500 line-through text-xl font-semibold opacity-70 pl-1"
+                                        x-text="'₹' + plan.yOld.toLocaleString()"></span>
+                                </div>
+                                <div class="text-[11px] font-black text-green-600 uppercase tracking-tighter"
+                                    x-text="plan.ySave"></div>
+                            </div>
+
+                            <div x-show="!isYearly" x-transition:enter.duration.400ms>
+                                <div class="text-5xl font-extrabold tracking-tighter text-slate-900">
+                                    <span x-text="'₹' + plan.mPrice.toLocaleString()"></span><span
+                                        class="text-base text-slate-400 font-normal tracking-normal">/mo</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-50/80 rounded-2xl p-5 mb-10 border border-slate-100">
+                            <div
+                                class="flex justify-between text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">
+                                <span>Government GST (18%)</span>
+                                <span class="text-slate-600"
+                                    x-text="'₹' + (isYearly ? plan.yGst : plan.mGst).toLocaleString()"></span>
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+                                <span class="text-sm font-bold text-slate-500">Total Payable</span>
+                                <span class="text-xl font-black text-red-600"
+                                    x-text="'₹' + (isYearly ? plan.yTot : plan.mTot).toLocaleString()"></span>
+                            </div>
+                        </div>
+
+                        <button
+                            :class="plan.featured ? 'bg-red-600 text-white shadow-xl shadow-red-200 hover:bg-red-700' : 'border-2 border-red-600 text-red-600 hover:bg-red-50'"
+                            class="w-full py-5 rounded-[20px] font-extrabold transition-all active:scale-95 text-sm uppercase tracking-widest">
+                            Start <span x-text="isYearly ? 'Yearly' : 'Monthly'"></span> Plan
+                        </button>
+                    </div>
+                </template>
+
+            </div>
+        </section>
+
+    </main>
+
+
+
+
+    <section class="bg-slate-50 py-20 mt-20 px-6">
+        <div class="container mx-auto max-w-4xl">
+            <div
+                class="flex flex-col md:flex-row md:items-center justify-between gap-8 border-b border-slate-200 pb-12">
+                <div class="max-w-xs">
+                    <h2 class="text-xl font-bold text-slate-900 mb-2">Tax & Billing Transparency</h2>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        We believe in honest partnerships. Our billing process is designed to be clear and professional
+                        for school accounting.
+                    </p>
+                </div>
+
+                <div class="flex-1 max-w-md">
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
+                        <li class="flex items-center gap-3">
+                            <div class="bg-green-100 p-1 rounded-full">
+                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-600">All prices exclude GST</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-green-100 p-1 rounded-full">
+                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-600">GST applied at checkout</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-green-100 p-1 rounded-full">
+                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-600">Invoices for every payment</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-green-100 p-1 rounded-full">
+                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-600">No hidden charges</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
