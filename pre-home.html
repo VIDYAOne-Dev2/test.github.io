@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Website Platform Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 0% 0%, #fff5f5 0%, #ffffff 50%, #f0fdf4 100%);
+        }
+
+        .template-card {
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .template-card:hover {
+            transform: translateY(-10px) rotate(-1deg) scale(1.02);
+        }
+
+        .premium-gradient-text {
+            background: linear-gradient(135deg, #ef4444 0%, #db2777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #db2777 100%);
+        }
+
+        /* Subtle floating animation for the center hub */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .feature-node:hover {
+            border-color: #ef4444;
+            transform: scale(1.05);
+            background: white;
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #db2777 100%);
+        }
+
+        /* Subtle lift for cards on hover */
+        .template-card {
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .template-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.08);
+        }
+
+        .admin-gradient {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        }
+
+        .accent-gradient {
+            background: linear-gradient(135deg, #ef4444 0%, #db2777 100%);
+        }
+
+        .dashboard-card {
+            transition: all 0.4s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .spotlight-bg {
+            background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent),
+                radial-gradient(circle at bottom left, rgba(219, 39, 119, 0.05), transparent);
+        }
+
+        .premium-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 1);
+        }
+
+        .green-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+
+        .benefit-chip {
+            transition: all 0.3s ease;
+        }
+
+        .benefit-chip:hover {
+            background-color: white;
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .floating-blob {
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .cta-glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(241, 245, 249, 1);
+        }
+
+        .btn-green {
+            background: #10b981;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .btn-green:hover {
+            background: #059669;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Subtle scroll reveal animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            animation: fadeInUp 1s ease forwards;
+        }
+    </style>
+    <style>
+        /* Custom Bouncy Animation for the Central Sun */
+        @keyframes blob {
+            0% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: scale(1);
+            }
+
+            33% {
+                border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+                transform: scale(1.05);
+            }
+
+            66% {
+                border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+                transform: scale(0.95);
+            }
+
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 8s infinite alternate;
+        }
+    </style>
+</head>
+
+<body class="">
+
+
+
+    <!-- First Section -->
+    <section class="relative min-h-screen flex items-center pt-20 pb-16 px-6 overflow-hidden bg-[#FFFBEC]"
+        style="background-image: radial-gradient(#FFD6D6 1px, transparent 1px); background-size: 30px 30px;">
+
+        <div class="absolute top-10 left-10 animate-bounce transition-all duration-1000">
+            <svg width="80" height="80" viewBox="0 0 100 100" class="fill-yellow-400 opacity-40">
+                <path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" />
+            </svg>
+        </div>
+        <div class="absolute bottom-20 left-[10%] rotate-12 opacity-20">
+            <span class="text-9xl">🖍️</span>
+        </div>
+
+        <div class="container mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+
+                <div class="lg:w-[55%] text-center lg:text-left">
+
+                    <div
+                        class="inline-block px-6 py-2 bg-blue-500 text-white font-black rounded-[40%_60%_70%_30%/40%_50%_60%_50%] -rotate-2 mb-8 shadow-lg tracking-wider text-sm uppercase">
+                        100% Fun & Easy!
+                    </div>
+                    <h1
+                        class="text-5xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 leading-tight lg:leading-[1.1] mb-10">
+
+                        <span class="block mb-4">
+                            More Admissions With a
+                        </span>
+
+                        <span class="relative inline-block px-2">
+                            <span class="relative z-10 text-pink-500">
+                                Modern & Engaging
+                            </span>
+                            <svg class="absolute -bottom-3 left-0 w-full h-5 text-yellow-400 z-0" viewBox="0 0 100 20"
+                                preserveAspectRatio="none">
+                                <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="8" fill="none"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+
+                        <span class="block mt-4">
+                            Kindergarten Website
+                        </span>
+
+                    </h1>
+
+
+
+                    <p
+                        class="text-lg sm:text-xl lg:text-2xl text-slate-600 font-medium mb-12 leading-relaxed max-w-2xl">
+                        Launch a joyful online presence for your kindergarten.
+                        Choose a theme, add your photos, update your content, and go live in minutes.
+                        <span class="inline-block bg-green-100 text-green-700 font-semibold px-3 py-1 rounded-lg mt-3">
+                            No technical skills required.
+                        </span>
+                    </p>
+
+
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-6">
+
+                        <!-- Primary Button -->
+                        <button
+                            class="group inline-flex items-center gap-3 bg-red-500 hover:bg-red-600 text-white font-semibold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+
+                            <!-- Rocket Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15.59 14.37a6 6 0 00-8.48-8.48L3 10l4.11 4.11 4.48 4.48L15 21l1.63-4.11 4.11-4.11-5.15 1.59z" />
+                            </svg>
+
+                            Create Your Site
+                        </button>
+
+
+                        <!-- Secondary Button -->
+                        <button
+                            class="group inline-flex items-center gap-3 bg-white hover:bg-yellow-50 text-slate-800 font-semibold text-lg px-8 py-4 rounded-xl border-2 border-slate-800 shadow-md hover:shadow-lg transition-all duration-300">
+
+                            <!-- Eye Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 transition-transform duration-300 group-hover:scale-110" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                     c4.477 0 8.268 2.943 9.542 7
+                     -1.274 4.057-5.065 7-9.542 7
+                     -4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+
+                            See Designs
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="lg:w-[45%] relative mt-20 lg:mt-0">
+
+                    <div class="relative z-30 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                        <div class="bg-white p-4 shadow-2xl border-[12px] border-white rounded-sm box-content">
+                            <img src="https://s.tmimgcdn.com/scr/800x500/370000/rainbow-kids-amp-kindergarten-pre-school-html5-website-template_370043-original.jpg"
+                                alt="Kindergarten Play" class="w-full h-80 object-cover rounded-sm" />
+                            <p class="text-center font-handwriting text-2xl mt-4 text-slate-400">Our Morning Fun! ✨</p>
+                        </div>
+                        <div
+                            class="absolute -top-6 left-1/2 -translate-x-1/2 w-32 h-10 bg-blue-200/50 -rotate-3 backdrop-blur-sm border border-white/30">
+                        </div>
+                    </div>
+
+                    <div
+                        class="absolute -top-20 -right-10 w-40 h-40 bg-orange-400 rounded-full flex items-center justify-center text-white font-black text-center p-4 -rotate-12 shadow-xl border-4 border-white z-40">
+                        FREE Forever!
+                    </div>
+
+                    <div class="absolute -bottom-10 -left-10 w-48 h-48 z-0 opacity-40">
+                        <svg viewBox="0 0 100 100" class="w-full h-full text-yellow-500 fill-current">
+                            <circle cx="50" cy="50" r="20" />
+                            <g stroke="currentColor" stroke-width="8" stroke-linecap="round">
+                                <line x1="50" y1="10" x2="50" y2="25" />
+                                <line x1="50" y1="75" x2="50" y2="90" />
+                                <line x1="10" y1="50" x2="25" y2="50" />
+                                <line x1="75" y1="50" x2="90" y2="50" />
+                            </g>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
+                class="relative block w-full h-20 text-green-400 fill-current">
+                <path d="M0,0 C150,90 400,0 600,60 C800,120 1050,30 1200,60 L1200,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- Second Section -->
+    <section class="py-20 lg:py-32 px-6 relative overflow-hidden">
+
+        <div class="absolute top-10 right-10 opacity-10 rotate-12">
+            <svg width="200" height="200" viewBox="0 0 100 100" class="text-blue-500 fill-current">
+                <path d="M10,50 Q25,10 50,50 T90,50" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+        </div>
+
+        <div class="container mx-auto max-w-7xl relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+                <div class="w-full lg:w-5/12 text-center lg:text-left">
+                    <div
+                        class="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-yellow-300 border-b-4 border-yellow-500 mb-8 transform -rotate-2">
+                        <span class="text-2xl">🎒</span>
+                        <span class="text-xs font-black text-yellow-800 uppercase tracking-widest">
+                            Magic Tools for Teachers
+                        </span>
+                    </div>
+
+                    <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-800 leading-[1.1] mb-8">
+                        Beautiful Website for <br>
+                        <span class="text-blue-500">Every Growing Kindergarten</span>
+                    </h2>
+
+                    <p class="text-slate-600 text-lg lg:text-xl leading-relaxed mb-10 max-w-xl">
+                        Showcase your programs, build parent trust, and increase admissions with an easy-to-customize
+                        template.
+                    </p>
+
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start">
+                        <button
+                            class="w-full sm:w-auto px-10 py-5 bg-green-500 hover:bg-green-600 text-white font-black rounded-[2rem] border-b-8 border-green-700 transition-all active:border-b-0 active:translate-y-2 text-xl shadow-xl">
+                            See How It Works! ✨
+                        </button>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-8 relative">
+
+                    <div
+                        class="p-8 rounded-[3rem] bg-white border-4 border-purple-200 shadow-[10px_10px_0_#F3E8FF] hover:translate-y-[-5px] transition-transform">
+                        <div
+                            class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">
+                            🧩
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-3">Instant Playground</h4>
+                        <p class="text-slate-500 font-bold leading-snug">
+                            Your whole website pops up like a 3D book! Just add your photos and go.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-8 rounded-[3rem] bg-white border-4 border-orange-200 shadow-[10px_10px_0_#FFEDD5] mt-0 sm:mt-10 hover:translate-y-[-5px] transition-transform">
+                        <div
+                            class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">
+                            🎨
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-3">Easy as Coloring</h4>
+                        <p class="text-slate-500 font-bold leading-snug">
+                            Click, type, and save! If you can use an iPad, you can run this website.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-8 rounded-[3rem] bg-white border-4 border-pink-200 shadow-[10px_10px_0_#FCE7F3] hover:translate-y-[-5px] transition-transform">
+                        <div
+                            class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">
+                            📸
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-3">Picture Perfect</h4>
+                        <p class="text-slate-500 font-bold leading-snug">
+                            Galleries, lunch menus, and nap schedules—everything has its own happy place.
+                        </p>
+                    </div>
+
+                    <div
+                        class="p-8 rounded-[3rem] bg-white border-4 border-blue-200 shadow-[10px_10px_0_#DBEAFE] mt-0 sm:mt-10 hover:translate-y-[-5px] transition-transform">
+                        <div
+                            class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-3xl mb-6 shadow-inner">
+                            🌱
+                        </div>
+                        <h4 class="text-2xl font-black text-slate-800 mb-3">Grows With You</h4>
+                        <p class="text-slate-500 font-bold leading-snug">
+                            Whether you have 5 kids or 500, our website platform stays strong and fun.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Third Section -->
+    <section class="min-h-screen flex items-center py-20 px-6 bg-[#FFFDF5] relative">
+
+        <div class="absolute inset-0 pointer-events-none opacity-20"
+            style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNEw0MCA0ME0yNCAyNEwyMCAyMCIgc3Ryb2tlPSIjRkVBMzQ3IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvZz48L3N2Zz4=');">
+        </div>
+
+        <div class="container mx-auto max-w-8xl">
+            <div class="flex flex-col lg:flex-row gap-12 items-start">
+
+                <div class="lg:w-[40%] lg:sticky lg:top-24">
+                    <div
+                        class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-orange-400 border-b-4 border-orange-600 mb-8 transform -rotate-3">
+                        <span class="text-xl">✨</span>
+                        <span class="text-[11px] font-black text-white uppercase tracking-widest">
+                            Choose Your Theme
+                        </span>
+                    </div>
+
+                    <h2 class="text-5xl lg:text-5xl font-extrabold text-slate-800 leading-tight mb-8">
+                        Pick a <br>
+                        <span class="relative inline-block text-red-500">
+                            Beautiful Theme
+                        </span>
+                        <br> For Your School
+                    </h2>
+
+                    <p class="text-slate-600 text-lg lg:text-xl leading-relaxed mb-10 max-w-xl">
+                        Choose from 20+ ready designs made for kindergartens.
+                        Add your details, upload photos, and your website is ready to go.
+                    </p>
+
+
+
+                    <button class="relative group w-full sm:w-auto inline-block">
+                        <span class="absolute inset-0 bg-blue-700 rounded-[2rem] translate-y-2"></span>
+                        <span
+                            class="relative flex items-center justify-center gap-3 bg-blue-500 px-10 py-6 rounded-[2rem] text-white font-black text-lg uppercase tracking-wider transition-all group-active:translate-y-1">
+                            Open the Toy Box 🎨
+                            <svg class="w-6 h-6 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div class="mt-12 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🧸</span>
+                            <span class="font-black text-slate-500 text-sm uppercase">20+ Super Fun Designs</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">🍭</span>
+                            <span class="font-black text-slate-500 text-sm uppercase">Free to Peek & Play</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">♻️</span>
+                            <span class="font-black text-slate-500 text-sm uppercase">Swap Colors Anytime</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-[60%] grid grid-cols-1 md:grid-cols-2 gap-10">
+
+                    <div
+                        class="group relative bg-white rounded-[3rem] p-4 shadow-[15px_15px_0_#DBEAFE] border-4 border-blue-100 transform transition-transform hover:rotate-2">
+                        <div class="aspect-[4/5] rounded-[2.5rem] bg-blue-50 mb-6 overflow-hidden relative">
+                            <img src="/Image/Tempate-2.png" alt="Happy Blue Theme"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="px-4 py-2 bg-yellow-400 text-[10px] font-black text-yellow-900 rounded-lg shadow-lg uppercase -rotate-12 block border-2 border-white">
+                                    Kids Love This!
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4">
+                            <h4 class="text-2xl font-black text-blue-600 mb-2">Ocean Adventures</h4>
+                            <p class="text-sm text-slate-500 font-bold italic">
+                                A soft, bubbly design perfect for finger painting and nap time stories.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group relative bg-white rounded-[3rem] p-4 shadow-[15px_15px_0_#FEE2E2] border-4 border-red-100 mt-0 lg:mt-16 transform transition-transform hover:-rotate-2">
+                        <div class="aspect-[4/5] rounded-[2.5rem] bg-red-50 mb-6 overflow-hidden relative">
+                            <img src="/Image/Template-1.png" alt="Sunny Red Theme"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+
+                            <div class="absolute top-4 right-4">
+                                <span
+                                    class="px-4 py-2 bg-pink-500 text-[10px] font-black text-white rounded-lg shadow-lg uppercase rotate-6 block border-2 border-white">
+                                    Just Arrived 🎁
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4">
+                            <h4 class="text-2xl font-black text-red-500 mb-2">Sunny Day Sunflowers</h4>
+                            <p class="text-sm text-slate-500 font-bold italic">
+                                Bright, bold colors for schools that love to play outside and grow big!
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Sixth Section -->
+    <section class="py-24 px-6 bg-[#fafafa] overflow-hidden">
+        <div class="container mx-auto max-w-7xl">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <!-- Responsive -->
+                <div
+                    class="group p-10 rounded-[3rem] bg-white border-4 border-dashed border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 flex flex-col items-center text-center relative">
+
+                    <div
+                        class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mb-6 transform group-hover:rotate-12 transition-transform">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-blue-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="12" rx="2" />
+                            <path d="M8 20h8" />
+                        </svg>
+                    </div>
+
+                    <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tight">
+                        Mobile Friendly
+                    </h4>
+
+                    <p class="text-sm text-slate-500 leading-relaxed font-bold">
+                        Works smoothly on phones, tablets and desktops without any extra setup.
+                    </p>
+                </div>
+
+
+                <!-- Speed -->
+                <div
+                    class="group p-10 rounded-[3rem] bg-white border-4 border-dashed border-yellow-200 hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 flex flex-col items-center text-center relative">
+
+                    <div
+                        class="w-20 h-20 rounded-full bg-yellow-100 flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-yellow-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+
+                    <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tight">
+                        Fast Performance
+                    </h4>
+
+                    <p class="text-sm text-slate-500 leading-relaxed font-bold">
+                        Optimized for quick loading so parents can access information instantly.
+                    </p>
+                </div>
+
+
+                <!-- Security -->
+                <div
+                    class="group p-10 rounded-[3rem] bg-white border-4 border-dashed border-green-200 hover:border-green-400 hover:bg-green-50 transition-all duration-300 flex flex-col items-center text-center relative">
+
+                    <div
+                        class="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-6 transform group-hover:-rotate-12 transition-transform">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-green-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 11c1.104 0 2 .896 2 2v2H10v-2c0-1.104.896-2 2-2z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 11V7a5 5 0 00-10 0v4" />
+                        </svg>
+                    </div>
+
+                    <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tight">
+                        Secure & Reliable
+                    </h4>
+
+                    <p class="text-sm text-slate-500 leading-relaxed font-bold">
+                        Built with secure coding standards to keep your school information protected.
+                    </p>
+                </div>
+
+
+                <!-- Easy Customization -->
+                <div
+                    class="group p-10 rounded-[3rem] bg-white border-4 border-dashed border-pink-200 hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 flex flex-col items-center text-center relative">
+
+                    <div
+                        class="w-20 h-20 rounded-full bg-pink-100 flex items-center justify-center mb-6 transform group-hover:scale-110 transition-all">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-pink-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h10" />
+                        </svg>
+                    </div>
+
+                    <h4 class="text-xl font-black text-slate-800 mb-3 uppercase tracking-tight">
+                        Easy to Manage
+                    </h4>
+
+                    <p class="text-sm text-slate-500 leading-relaxed font-bold">
+                        Update text, photos and details easily without technical knowledge.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="mt-24 relative">
+                <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-10">
+                    <svg class="w-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                        <path d="M0,50 Q250,0 500,50 T1000,50" stroke="#FF5733" stroke-width="10" fill="none" />
+                    </svg>
+                </div>
+
+                <div
+                    class="flex flex-col lg:flex-row items-center justify-between gap-12 bg-white p-10 rounded-[4rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border-2 border-slate-100">
+
+                    <div class="flex items-center gap-6">
+                        <div class="flex -space-x-4">
+                            <div
+                                class="w-14 h-14 rounded-full border-4 border-white bg-orange-400 flex items-center justify-center text-xl shadow-lg rotate-[-5deg]">
+                                🍎</div>
+                            <div
+                                class="w-14 h-14 rounded-full border-4 border-white bg-blue-400 flex items-center justify-center text-xl shadow-lg rotate-[10deg]">
+                                🎨</div>
+                            <div
+                                class="w-14 h-14 rounded-full border-4 border-white bg-yellow-400 flex items-center justify-center text-xl shadow-lg rotate-[-8deg]">
+                                ⚽</div>
+                        </div>
+                        <div>
+                            <h5 class="text-slate-900 font-black text-xl leading-tight">
+                                Used by Growing Kindergartens
+                            </h5>
+                            <p class="text-slate-400 text-sm font-bold italic">
+                                A simple website solution for admissions, updates and parent communication.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        class="bg-gradient-to-r from-red-500 to-orange-500 px-12 py-6 rounded-full text-white font-black text-sm uppercase tracking-widest shadow-[0_10px_25px_-5px_rgba(239,68,68,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-3">
+                        Get Your Kindergarten Website
+                        <span class="text-2xl">→</span>
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <!-- Fifth Section -->
+    <section class="py-24 px-6 overflow-hidden bg-[#FEF9F6]">
+        <div class="container mx-auto max-w-7xl">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+
+                <div class="w-full lg:w-5/12 order-2 lg:order-1 relative">
+                    <div
+                        class="absolute -top-10 -right-10 w-72 h-72 bg-orange-100 rounded-full blur-3xl opacity-70 animate-pulse">
+                    </div>
+
+                    <div
+                        class="relative bg-slate-800 rounded-[3.5rem] p-4 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] border-[12px] border-slate-700">
+                        <div class="relative bg-white rounded-[2.5rem] overflow-hidden p-6 md:p-8">
+
+                            <div class="flex items-center justify-between mb-8 border-b-4 border-slate-50 pb-6">
+                                <div class="flex gap-2">
+                                    <div class="w-4 h-4 rounded-full bg-red-400"></div>
+                                    <div class="w-4 h-4 rounded-full bg-yellow-400"></div>
+                                    <div class="w-4 h-4 rounded-full bg-green-400"></div>
+                                </div>
+                                <span class="text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">School
+                                    Magic Control</span>
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-xs">
+                                    👩‍🏫</div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-blue-50 p-5 rounded-[2rem] border-b-4 border-blue-200">
+                                    <span class="text-2xl mb-2 block">📝</span>
+                                    <div class="h-2 w-12 bg-blue-200 rounded-full mb-2"></div>
+                                    <div class="h-2 w-full bg-blue-100 rounded-full"></div>
+                                </div>
+
+                                <div class="bg-purple-50 p-5 rounded-[2rem] border-b-4 border-purple-200">
+                                    <span class="text-2xl mb-2 block">📸</span>
+                                    <div class="h-2 w-12 bg-purple-200 rounded-full mb-2"></div>
+                                    <div class="h-2 w-full bg-purple-100 rounded-full"></div>
+                                </div>
+
+                                <div
+                                    class="col-span-2 bg-green-50 p-6 rounded-[2rem] border-b-4 border-green-200 flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm">
+                                            ✅</div>
+                                        <span class="text-xs font-black text-green-700 uppercase">Sports Day Photos
+                                            Uploaded!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute -bottom-8 -left-8 bg-yellow-400 p-6 rounded-[2.5rem] shadow-xl border-4 border-white rotate-[-6deg] hidden md:block">
+                            <div class="flex items-center gap-3">
+                                <span class="text-3xl">🍦</span>
+                                <div>
+                                    <p
+                                        class="text-[10px] font-black text-yellow-900 uppercase tracking-widest leading-none">
+                                        So Easy It's</p>
+                                    <p class="text-lg font-black text-yellow-900 leading-none">Piece of Cake!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12 order-1 lg:order-2">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-purple-100 border-2 border-purple-200 mb-6">
+                        <span class="text-sm">🪄</span>
+                        <span class="text-[11px] font-black text-purple-600 uppercase tracking-widest">
+                            Easy to Use Admin Panel
+                        </span>
+                    </div>
+
+                    <h2 class="text-5xl lg:text-6xl font-black text-slate-800 leading-[1.1] mb-8">
+                        Simple Admin Panel <br>
+                        <span class="relative inline-block text-pink-500">
+                            Anyone Can Use
+                            <svg class="absolute left-0 -bottom-3 w-full h-4" viewBox="0 0 100 20"
+                                preserveAspectRatio="none">
+                                <path d="M0,10 Q50,20 100,10" stroke="#FFD600" stroke-width="6" fill="none"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </h2>
+
+                    <p class="text-slate-600 font-bold text-xl leading-relaxed mb-10 italic">
+                        Update your website without any technical knowledge.
+                        Just log in, make changes, and save. It’s quick and easy.
+                    </p>
+
+                    <div class="grid gap-6 mb-12">
+
+                        <!-- Edit Text -->
+                        <div class="flex items-center gap-5 group">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-2xl bg-orange-400 text-white flex items-center justify-center shadow-[4px_4px_0_#c2410c] group-hover:translate-y-1 group-hover:shadow-none transition-all">
+
+                                <!-- Pencil Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11 5h2M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-800 text-lg uppercase tracking-tight">
+                                    Edit Text Easily
+                                </h4>
+                                <p class="text-slate-500 font-medium">
+                                    Change school information anytime with just a few clicks.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Upload Photos -->
+                        <div class="flex items-center gap-5 group">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-2xl bg-blue-400 text-white flex items-center justify-center shadow-[4px_4px_0_#1d4ed8] group-hover:translate-y-1 group-hover:shadow-none transition-all">
+
+                                <!-- Image Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <circle cx="8.5" cy="10.5" r="1.5" />
+                                    <path d="M21 15l-5-5L5 21" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-800 text-lg uppercase tracking-tight">
+                                    Upload Photos
+                                </h4>
+                                <p class="text-slate-500 font-medium">
+                                    Add classroom and event photos in seconds.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Share Updates -->
+                        <div class="flex items-center gap-5 group">
+                            <div
+                                class="w-14 h-14 shrink-0 rounded-2xl bg-green-400 text-white flex items-center justify-center shadow-[4px_4px_0_#15803d] group-hover:translate-y-1 group-hover:shadow-none transition-all">
+
+                                <!-- Megaphone Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11 5l9 4-9 4v6l-4-2v-8l4-2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-slate-800 text-lg uppercase tracking-tight">
+                                    Share Updates
+                                </h4>
+                                <p class="text-slate-500 font-medium">
+                                    Post announcements and important news for parents instantly.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="bg-pink-500 hover:bg-pink-600 text-white font-black py-5 px-10 rounded-[2rem] text-sm uppercase tracking-widest shadow-[0_10px_0_#be185d] transition-all active:translate-y-1 active:shadow-none flex items-center gap-4">
+                        View Admin Demo
+                        <span class="text-xl">→</span>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Seventh Section -->
+    <section class="container mx-auto max-w-7xl px-6 py-20">
+        <div class="relative bg-[#FFF9F0] rounded-[4rem] p-8 md:p-16 border-4 border-dashed border-orange-200">
+
+            <div class="absolute -top-20 -left-20 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-50"></div>
+
+            <div class="flex flex-col lg:flex-row gap-8 items-center">
+
+                <div class="w-full lg:w-5/12">
+                    <div class="relative group">
+                        <div
+                            class="bg-white p-10 md:p-12 rounded-[3.5rem] shadow-[0_30px_60px_-15px_rgba(255,171,0,0.2)] border-2 border-orange-100 relative overflow-hidden transform group-hover:rotate-1 transition-transform">
+
+                            <div class="absolute top-0 right-0">
+                                <div
+                                    class="bg-gradient-to-r from-pink-500 to-orange-500 text-white text-[10px] font-black px-8 py-3 rounded-bl-[2rem] uppercase tracking-widest shadow-lg">
+                                    Start Free Today
+                                </div>
+                            </div>
+
+                            <h3 class="text-orange-400 text-xs font-black uppercase tracking-[0.4em] mb-4">
+                                Starter Plan
+                            </h3>
+
+                            <div class="flex items-baseline gap-2 mb-8">
+                                <span
+                                    class="text-7xl font-black text-slate-800 leading-none tracking-tighter">Free</span>
+                                <span class="text-slate-400 font-bold text-xl italic">No Cost</span>
+                            </div>
+
+                            <div class="space-y-4 mb-10">
+                                <div
+                                    class="flex items-center gap-4 p-4 bg-orange-50 rounded-[1.5rem] border-b-4 border-orange-100">
+                                    <span class="text-xl">🏠</span>
+                                    <span class="text-sm font-black text-slate-700 uppercase tracking-tight">
+                                        Your Own Website Link
+                                    </span>
+                                </div>
+
+                                <div
+                                    class="flex items-center gap-4 p-4 bg-pink-50 rounded-[1.5rem] border-b-4 border-pink-100">
+                                    <span class="text-xl">👩‍👩‍👦</span>
+                                    <span class="text-sm font-black text-slate-700 uppercase tracking-tight">
+                                        Share Updates with Parents
+                                    </span>
+                                </div>
+                            </div>
+
+                            <button
+                                class="w-full py-6 rounded-[2.5rem] bg-emerald-500 text-white font-black text-sm uppercase tracking-[0.2em] shadow-[0_8px_0_#059669] hover:shadow-[0_4px_0_#059669] hover:translate-y-[4px] active:translate-y-[6px] active:shadow-none transition-all">
+                                Create Free Website
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-7/12">
+                    <div
+                        class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border-2 border-orange-200 mb-8 shadow-sm">
+                        <span class="text-lg">🌈</span>
+                        <span class="text-[11px] font-black text-orange-500 uppercase tracking-[0.3em]">
+                            Simple & Affordable
+                        </span>
+                    </div>
+
+                    <h2 class="text-5xl lg:text-5xl font-black text-slate-800 leading-[1.1] mb-8">
+                        Start Your School Website <br>
+                        <span class="text-blue-500">Without Any Risk</span>
+                    </h2>
+
+                    <p class="text-slate-500 text-xl font-bold leading-relaxed mb-10 italic">
+                        Get started with our free plan and create a professional website for your kindergarten.
+                        Share admissions details, post updates, and connect with parents easily.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div
+                            class="flex items-center gap-4 p-5 rounded-[2rem] bg-white shadow-sm border-2 border-slate-50 hover:border-yellow-300 transition-colors">
+                            <div class="w-4 h-4 rounded-full bg-yellow-400 animate-pulse"></div>
+                            <span class="text-xs font-black text-slate-600 uppercase tracking-widest">
+                                No Hidden Charges
+                            </span>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-5 rounded-[2rem] bg-white shadow-sm border-2 border-slate-50 hover:border-blue-300 transition-colors">
+                            <div class="w-4 h-4 rounded-full bg-blue-400"></div>
+                            <span class="text-xs font-black text-slate-600 uppercase tracking-widest">
+                                Setup in Minutes
+                            </span>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-5 rounded-[2rem] bg-white shadow-sm border-2 border-slate-50 hover:border-emerald-300 transition-colors">
+                            <div class="w-4 h-4 rounded-full bg-emerald-400"></div>
+                            <span class="text-xs font-black text-slate-600 uppercase tracking-widest">
+                                Works on All Devices
+                            </span>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-5 rounded-[2rem] bg-white shadow-sm border-2 border-slate-50 hover:border-pink-300 transition-colors">
+                            <div class="w-4 h-4 rounded-full bg-pink-400"></div>
+                            <span class="text-xs font-black text-slate-600 uppercase tracking-widest">
+                                Easy Support
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Eight Section -->
+    <!-- <section class="container mx-auto max-w-7xl py-20 px-6 ripple-container">
+
+        <div class="text-center max-w-5xl mx-auto mb-8">
+            <h2 class="text-4xl lg:text-5xl font-extrabold text-slate-800 tracking-tighter mb-4">
+                A Journey That
+                <span class="text-blue-600">Moves with You</span>
+            </h2>
+            <p class="text-slate-500 font-medium">
+                There is no "right" way to start—only your way. The platform is designed to be as quiet or as active as
+                your school office needs.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-6 max-w-4xl mx-auto">
+
+            <div
+                class="growth-node flex flex-col md:flex-row items-center gap-8 p-8 rounded-[3rem] bg-white border border-slate-100 shadow-sm">
+                <div
+                    class="w-20 h-20 shrink-0 rounded-[2rem] soft-gradient-1 flex items-center justify-center text-blue-600">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-xl font-extrabold text-slate-800">The Comfort Phase</h4>
+                    <p class="text-slate-500 text-sm mt-2">Pick a template and publish your basic "Contact Us" info.
+                        That's it. You're online and professional in minutes.</p>
+                </div>
+            </div>
+
+            <div
+                class="growth-node md:ml-12 flex flex-col md:flex-row items-center gap-8 p-8 rounded-[3rem] bg-white border border-slate-100 shadow-sm">
+                <div
+                    class="w-20 h-20 shrink-0 rounded-[2rem] soft-gradient-2 flex items-center justify-center text-pink-500">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                        </path>
+                    </svg>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-xl font-extrabold text-slate-800">The Connection Phase</h4>
+                    <p class="text-slate-500 text-sm mt-2">When a school holiday or event comes up, post a notice.
+                        Parents start checking in, and the site begins to feel alive.</p>
+                </div>
+            </div>
+
+            <div
+                class="growth-node md:ml-24 flex flex-col md:flex-row items-center gap-8 p-8 rounded-[3rem] bg-white border border-slate-100 shadow-sm">
+                <div
+                    class="w-20 h-20 shrink-0 rounded-[2rem] soft-gradient-3 flex items-center justify-center text-yellow-600">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+                        </path>
+                    </svg>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-xl font-extrabold text-slate-800">The Custom Phase</h4>
+                    <p class="text-slate-500 text-sm mt-2">Ready for a photo gallery or a staff directory? Add new
+                        sections whenever your office staff feels ready. No rush.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section> -->
+
+    <!-- Ninth Section -->
+    <section class="container mx-auto max-w-7xl px-6 py-24 bg-transparent">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <!-- Parent Communication -->
+            <div class="group relative">
+                <div
+                    class="absolute inset-0 bg-emerald-100 rounded-[3.5rem] translate-x-3 translate-y-3 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500">
+                </div>
+
+                <div
+                    class="p-10 md:p-12 rounded-[3.5rem] bg-white border-2 border-emerald-50 shadow-[0_20px_40px_-15px_rgba(16,185,129,0.25)] transition-all duration-500 relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-[2rem] bg-emerald-500 flex items-center justify-center shadow-[0_10px_0_#059669] group-hover:rotate-12 transition-transform duration-500">
+
+                            <!-- Megaphone Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11 5l9 4-9 4v6l-4-2v-8l4-2z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-black text-slate-800 leading-tight tracking-tight">
+                            Better <br> <span class="text-emerald-500">Parent Communication</span>
+                        </h4>
+                    </div>
+                    <p class="text-slate-500 text-xl font-bold leading-relaxed italic">
+                        Share updates, events and announcements in one place so parents stay informed and connected.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Office Management -->
+            <div class="group relative">
+                <div
+                    class="absolute inset-0 bg-pink-100 rounded-[3.5rem] translate-x-3 translate-y-3 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500">
+                </div>
+
+                <div
+                    class="p-10 md:p-12 rounded-[3.5rem] bg-white border-2 border-pink-50 shadow-[0_20px_40px_-15px_rgba(236,72,153,0.25)] transition-all duration-500 relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-[2rem] bg-pink-500 flex items-center justify-center shadow-[0_10px_0_#db2777] group-hover:-rotate-12 transition-transform duration-500">
+
+                            <!-- Settings Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2 12h2m16 0h2M12 2v2m0 16v2m7.07-14.07l-1.41 1.41M6.34 17.66l-1.41 1.41m0-12.02l1.41 1.41m12.02 12.02l1.41 1.41" />
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-black text-slate-800 leading-tight tracking-tight">
+                            Easy for <br> <span class="text-pink-500">Office Staff</span>
+                        </h4>
+                    </div>
+                    <p class="text-slate-500 text-xl font-bold leading-relaxed italic">
+                        Make changes quickly without technical help and manage your website with ease.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Full Control -->
+            <div class="group relative">
+                <div
+                    class="absolute inset-0 bg-blue-100 rounded-[3.5rem] translate-x-3 translate-y-3 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500">
+                </div>
+
+                <div
+                    class="p-10 md:p-12 rounded-[3.5rem] bg-white border-2 border-blue-50 shadow-[0_20px_40px_-15px_rgba(59,130,246,0.25)] transition-all duration-500 relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-[2rem] bg-blue-500 flex items-center justify-center shadow-[0_10px_0_#2563eb] group-hover:scale-110 transition-transform duration-500">
+
+                            <!-- Edit Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11 5h2M12 20h9M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-black text-slate-800 leading-tight tracking-tight">
+                            Full <br> <span class="text-blue-500">Control</span>
+                        </h4>
+                    </div>
+                    <p class="text-slate-500 text-xl font-bold leading-relaxed italic">
+                        Update text, photos and information anytime. You manage everything yourself.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Professional Look -->
+            <div class="group relative">
+                <div
+                    class="absolute inset-0 bg-yellow-100 rounded-[3.5rem] translate-x-3 translate-y-3 -z-10 group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-500">
+                </div>
+
+                <div
+                    class="p-10 md:p-12 rounded-[3.5rem] bg-white border-2 border-yellow-50 shadow-[0_20px_40px_-15px_rgba(234,179,8,0.25)] transition-all duration-500 relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
+                        <div
+                            class="w-20 h-20 shrink-0 rounded-[2rem] bg-yellow-400 flex items-center justify-center shadow-[0_10px_0_#ca8a04] group-hover:scale-110 transition-all duration-500">
+
+                            <!-- School Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10l9-7 9 7-9 7-9-7z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 21V12h6v9" />
+                            </svg>
+                        </div>
+                        <h4 class="text-3xl font-black text-slate-800 leading-tight tracking-tight">
+                            Clean & <br> <span class="text-yellow-600">Professional</span>
+                        </h4>
+                    </div>
+                    <p class="text-slate-500 text-xl font-bold leading-relaxed italic">
+                        Present your school with a modern and trusted look that builds confidence with parents.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Tenth Section -->
+    <section class="relative py-32 px-6 overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-yellow-100/60 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-pink-100/60 rounded-full blur-[120px]"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-50/40 rounded-full blur-[120px]">
+        </div>
+
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="flex flex-col items-center text-center">
+
+                <!-- Badge -->
+                <div
+                    class="flex items-center gap-4 mb-10 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border-2 border-slate-100 shadow-sm">
+                    <div class="flex -space-x-3">
+                        <div
+                            class="w-10 h-10 rounded-full border-4 border-white bg-emerald-400 flex items-center justify-center shadow-sm rotate-[-10deg]">
+                            <!-- Star Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.01 6.184a1 1 0 00.95.69h6.506c.969 0 1.371 1.24.588 1.81l-5.265 3.826a1 1 0 00-.364 1.118l2.01 6.184c.3.921-.755 1.688-1.538 1.118l-5.265-3.826a1 1 0 00-1.176 0l-5.265 3.826c-.783.57-1.838-.197-1.538-1.118l2.01-6.184a1 1 0 00-.364-1.118L2.995 11.61c-.783-.57-.38-1.81.588-1.81h6.506a1 1 0 00.95-.69l2.01-6.184z" />
+                            </svg>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-full border-4 border-white bg-pink-400 flex items-center justify-center shadow-sm rotate-[5deg]">
+                            <!-- Palette Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <circle cx="13.5" cy="6.5" r="1.5" />
+                                <circle cx="17.5" cy="10.5" r="1.5" />
+                                <circle cx="8.5" cy="7.5" r="1.5" />
+                                <circle cx="6.5" cy="12.5" r="1.5" />
+                                <path d="M12 22c5 0 9-4 9-9s-4-9-9-9-9 4-9 9c0 2 2 3 3 3h3c1 0 2 1 2 2 0 1 1 2 1 4z" />
+                            </svg>
+                        </div>
+                        <div
+                            class="w-10 h-10 rounded-full border-4 border-white bg-blue-400 flex items-center justify-center shadow-sm rotate-[-5deg]">
+                            <!-- School Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10l9-7 9 7-9 7-9-7z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 21V12h6v9" />
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="text-[12px] font-black text-slate-500 uppercase tracking-[0.3em]">
+                        Made for Kindergartens
+                    </span>
+                </div>
+
+                <!-- Heading -->
+                <h2 class="text-6xl md:text-7xl font-black text-slate-900 tracking-tighter leading-[0.9] mb-8">
+                    Launch your school website <br>
+                    <span class="relative inline-block text-emerald-500 mt-4">
+                        quickly and easily
+                        <svg class="absolute -bottom-2 left-0 w-full h-3 text-yellow-400" preserveAspectRatio="none"
+                            viewBox="0 0 100 20">
+                            <path d="M0,10 Q50,20 100,10" stroke="currentColor" stroke-width="10" fill="none"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                </h2>
+
+                <p class="text-slate-500 text-2xl font-bold max-w-2xl mb-16 leading-relaxed italic">
+                    Create a professional online presence for your kindergarten.
+                    Simple setup, easy updates, and built to grow with your school.
+                </p>
+
+                <!-- Buttons -->
+                <div
+                    class="bg-white/60 backdrop-blur-md p-6 rounded-[4rem] border-4 border-white shadow-2xl shadow-blue-100/50 flex flex-col md:flex-row items-center gap-6 mb-20 transform hover:scale-[1.02] transition-transform">
+
+                    <button
+                        class="bg-emerald-500 px-14 py-7 rounded-[3rem] text-white font-black text-sm uppercase tracking-widest shadow-[0_10px_0_#059669] hover:shadow-[0_5px_0_#059669] hover:translate-y-[5px] active:translate-y-[8px] active:shadow-none transition-all w-full md:w-auto">
+                        Create Free Website
+                    </button>
+
+                    <button
+                        class="px-10 py-7 rounded-[3rem] text-slate-600 font-black text-sm uppercase tracking-widest hover:bg-white transition-all w-full md:w-auto border-2 border-transparent hover:border-slate-100">
+                        View Designs
+                    </button>
+                </div>
+
+                <!-- Features -->
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-5xl border-t-4 border-dashed border-slate-100 pt-20">
+
+                    <div class="group">
+                        <div class="mb-4">
+                            <!-- Check Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-500 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-3">
+                            Free to Start
+                        </h5>
+                        <p class="text-sm text-slate-400 font-bold leading-relaxed">
+                            Begin without any upfront cost and upgrade anytime.
+                        </p>
+                    </div>
+
+                    <div class="group">
+                        <div class="mb-4">
+                            <!-- Shield Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-500 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 3l7 4v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7l7-4z" />
+                            </svg>
+                        </div>
+                        <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-3">
+                            No Card Required
+                        </h5>
+                        <p class="text-sm text-slate-400 font-bold leading-relaxed">
+                            Sign up without sharing payment details.
+                        </p>
+                    </div>
+
+                    <div class="group">
+                        <div class="mb-4">
+                            <!-- Support Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-pink-500 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18 10c0-4-3-7-6-7s-6 3-6 7v4a4 4 0 004 4h4a4 4 0 004-4v-4z" />
+                            </svg>
+                        </div>
+                        <h5 class="text-sm font-black text-slate-900 uppercase tracking-widest mb-3">
+                            Friendly Support
+                        </h5>
+                        <p class="text-sm text-slate-400 font-bold leading-relaxed">
+                            Our team is ready to help whenever you need assistance.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
