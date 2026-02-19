@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Website Dashboard Onboarding | WebTemplate Pro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0A192F",
+                        "accent": "#FF7A00",
+                        "background-light": "#F8FAFC",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-navy: #0A192F;
+            --accent-orange: #FF7A00;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(10, 25, 47, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(255, 122, 0, 0.03), transparent 30%);
+        }
+        .step-tab.active {
+            @apply border-accent text-accent;
+        }
+        .step-tab.active .step-indicator {
+            @apply bg-accent text-white border-accent;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light text-slate-900 font-display transition-colors duration-300">
+
+    <main>
+        <section class="relative min-h-[70vh] flex items-center overflow-hidden bg-[#F8FAFC] pt-16 pb-12">
+            <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="absolute top-10 left-10 w-64 h-64 bg-red-100/50 rounded-full blur-3xl animate-pulse"></div>
+                <div
+                    class="absolute bottom-10 right-10 w-80 h-80 bg-yellow-100/60 rounded-full blur-3xl animate-bounce-slow">
+                </div>
+                <div class="absolute top-1/2 left-1/4 w-48 h-48 bg-green-100/40 rounded-full blur-2xl animate-pulse">
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+                    <span class="flex h-2 w-2 rounded-full bg-green-500"></span>
+                    <span class="text-[10px] font-bold text-slate-500 tracking-[0.1em] uppercase">
+                        School Website Setup Active
+                    </span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-4 leading-tight">
+                    Set Up Your School Website <br />
+                    <span class="text-red-600 italic">step by step</span> and go
+                    <span class="text-yellow-500 underline decoration-yellow-200 underline-offset-4">
+                        live with confidence.
+                    </span>
+                </h1>
+
+                <p class="text-base text-slate-600 max-w-3xl mb-10 leading-relaxed">
+                    Welcome to your school website dashboard. Complete a few simple steps to
+                    add school details, upload content, customize pages, and publish your
+                    website for parents and students.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3 w-full ">
+                    <button
+                        class="group flex items-center justify-center gap-2 bg-slate-900 text-white px-7 py-3 rounded-xl font-bold text-sm hover:bg-black transition-all shadow-lg">
+                        Create Free Website
+                        <span
+                            class="material-symbols-outlined text-sm text-green-400 group-hover:rotate-12 transition-transform">
+                            bolt
+                        </span>
+                    </button>
+
+                    <button
+                        class="flex items-center justify-center gap-2 bg-white border border-slate-200 text-slate-700 px-7 py-3 rounded-xl font-bold text-sm hover:bg-slate-50 transition-all">
+                        <span class="material-symbols-outlined text-red-500 text-sm">
+                            play_circle
+                        </span>
+                        Book Live Demo
+                    </button>
+                </div>
+
+                <div
+                    class="mt-12 pt-8 border-t border-slate-200/60 flex gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-400">01</span>
+                        <span class="text-xs font-semibold text-slate-800">
+                            Add School Information
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-400">02</span>
+                        <span class="text-xs font-semibold text-slate-800">
+                            Customize Pages
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2 text-green-600">
+                        <span class="material-symbols-outlined text-xs">
+                            check_circle
+                        </span>
+                        <span class="text-xs font-semibold">
+                            Publish Website
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="py-16 bg-white border-y border-slate-100">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-black mb-4 text-primary">
+                        Complete Your School Website Setup
+                    </h2>
+                    <p class="text-slate-500">
+                        Follow these 6 guided steps to prepare your school website before going live.
+                    </p>
+
+                </div>
+                <div class="relative mb-12">
+                    <div class="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2"></div>
+                    <div class="relative flex justify-between items-center">
+                        <div class="step-tab active flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all">
+                                1</div>
+                            <span class="hidden md:block text-xs font-bold uppercase tracking-wider">Activate
+                                Pages</span>
+                        </div>
+                        <div class="step-tab flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all text-slate-400">
+                                2</div>
+                            <span class="hidden md:block text-xs font-bold uppercase tracking-wider text-slate-400">
+                                School Info
+                            </span>
+                        </div>
+                        <div class="step-tab flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all text-slate-400">
+                                3</div>
+                            <span
+                                class="hidden md:block text-xs font-bold uppercase tracking-wider text-slate-400">Upload
+                                Photos</span>
+                        </div>
+                        <div class="step-tab flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all text-slate-400">
+                                4</div>
+                            <span class="hidden md:block text-xs font-bold uppercase tracking-wider text-slate-400">Add
+                                or Remove Section</span>
+                        </div>
+                        <div class="step-tab flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all text-slate-400">
+                                5</div>
+                            <span
+                                class="hidden md:block text-xs font-bold uppercase tracking-wider text-slate-400">Review
+                                & Save</span>
+                        </div>
+                        <div class="step-tab flex flex-col items-center gap-3 cursor-pointer group">
+                            <div
+                                class="step-indicator w-10 h-10 rounded-full border-2 border-slate-200 bg-white flex items-center justify-center font-bold z-10 transition-all text-slate-400">
+                                6</div>
+                            <span
+                                class="hidden md:block text-xs font-bold uppercase tracking-wider text-slate-400">Publish
+                                Site</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 rounded-3xl p-8 lg:p-12 border border-slate-100 shadow-sm">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-accent">dynamic_feed</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-primary">
+                                Choose Which Pages to Show
+                            </h3>
+
+                            <p class="text-slate-600 text-lg leading-relaxed">
+                                First, decide which pages you want to show on your school website.
+                                You can turn pages on or off like About Us, Admissions, Academics,
+                                Gallery, and Contact. If you turn a page off, it will be hidden from
+                                the menu but your content will stay saved.
+                            </p>
+
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-slate-700">
+                                    <span class="material-symbols-outlined text-accent">check_circle</span>
+                                    <span>Show or hide pages anytime</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-slate-700">
+                                    <span class="material-symbols-outlined text-accent">check_circle</span>
+                                    <span>Your content stays safe even if a page is hidden</span>
+                                </li>
+                            </ul>
+
+                            <div class="pt-4 flex gap-4">
+                                <button
+                                    class="px-6 py-3 bg-primary text-white font-bold rounded-lg hover:bg-slate-800 transition-all">
+                                    Open Page Settings
+                                </button>
+
+                                <button class="px-6 py-3 text-primary font-bold hover:text-accent transition-all">
+                                    Next Step
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border-4 border-white shadow-xl">
+                            <img class="w-full h-auto" data-alt="Admin toggle switch for website page visibility"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlK1fHhqiG4Gr5jwMW-1HkWs2_Zufz6599A3dVmQOp9-yu3waCt-6Da5t7cHJu_wPdABHRhZUEAv-K4r27BIngNGYyqH_uHqOoAppKf8fW4WRBZVZ9KzkaF4z-ir5UwxrzdUZldC2tTKDUZxPsKz17dNFgt7XJ9CmMrhKtbVsOtYO4HvtKrS9twTteQPm7ptLsxCw2m0mwXIVX9EoYeTReBBLFjqNZ__wgE3Ru6zIsbkMdxtPoCMEhSe1SVyfCXtoYtWSDDNtnia5d" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-60">
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:opacity-100 transition-opacity">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500">2</span>
+                            <h4 class="font-bold text-primary">Edit Text Content</h4>
+                        </div>
+                        <img class="w-full h-32 object-cover rounded-lg mb-4"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIsco-DeDxYNyA1vMTj30klA4nNFyLZzHj_Zc2saz7MTjjfK-3msSnJa7wdaYuSqfYXlq8aFfN1NtiHnNOAh1t9KXuQkPGNl5_jC0_tbXV9uuViYtc6SVYABnXKFSZD6u5S-_9d92_J432Vhk0dUneuySk_VOoicgr0x4LQeVywJq1iC1E7P81E-BXWI7Ih3llgC4GAYxwPvNvI6Izrqc0O1PdFGkp9qrBwHUD9BXJrXUVp_iazQOon369cF9xOPMOv0QLoFCaCnYU" />
+                        <p class="text-sm text-slate-500 line-clamp-2">Updating your message is as simple as typing an
+                            email...</p>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:opacity-100 transition-opacity">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500">3</span>
+                            <h4 class="font-bold text-primary">Upload School Photos</h4>
+
+                        </div>
+                        <img class="w-full h-32 object-cover rounded-lg mb-4"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1f6YE_nfUBbl2iwF0t-_sLfwRFiJiEBKw4gSMUy8I94wqI_Xd9CWtfPC7zKIRaUxiRQQWtBY0VA4jF7bzYEU49kWJ8nY8Q6RvJ5jRGsKcBEuFGfdMvCZuyta3MkpAGYHXAgR3kpZ85mxBy4cEekI_WMiHZk4asoDIM9QjEEFrL5rJGIqlTagWu3RUsIPTdLvIUg0Ik-MmPAC5uNgZIumACLn_trVEKR3w64G26bM_g7tslwlzALDdFlgf3UphP8XxrVOPAKaUdA5f" />
+                        <p class="text-sm text-slate-500 line-clamp-2">
+                            Upload real photos of your campus,
+                            classrooms, events, and activities.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:opacity-100 transition-opacity">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span
+                                class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-500">4</span>
+                            <h4 class="font-bold text-primary">Add or Remove Sections</h4>
+                        </div>
+                        <img class="w-full h-32 object-cover rounded-lg mb-4"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJ58VK_1fpwQybNgUp-VFVY9nweuOZQ-TIhx2g1QwRzoVGuYmKeaB4hfv1LSUkRp5OHpp9zRW5lljsqa1dfJEht9t-m4uewEDiSIReGB64XyyNV29DjoOnT7alNZ-y7YpPNEQ9aBa-cdkdrCB6MJzSt4g3hZBspU8bQEXH3RJ-86eXt6Mp6f42DQyejPLAwRqeJYt23tjPLMKC2k9RiH5MFI0oXbgC4-z2Zd500X1WC5a8O-04TlnQ6H1imb9c_hUXnNOjDL-bv5Qk" />
+                        <p class="text-sm text-slate-500 line-clamp-2">Add or remove sections like facilities or
+                            achievements,
+                            to match your
+                            school’s needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 rounded-2xl bg-white hover:shadow-xl transition-all border border-slate-100 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-6 group-hover:bg-accent transition-colors">
+                            <span class="material-symbols-outlined">dynamic_feed</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-primary">Easy Page Management</h3>
+                        <p class="text-sm text-slate-500">Toggle pages on or off to control your site's menu structure
+                            instantly.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white hover:shadow-xl transition-all border border-slate-100 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-6 group-hover:bg-accent transition-colors">
+                            <span class="material-symbols-outlined">edit_note</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-primary">Drag &amp; Edit Content</h3>
+                        <p class="text-sm text-slate-500">Click any text to update. What you see is exactly what gets
+                            published.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white hover:shadow-xl transition-all border border-slate-100 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-6 group-hover:bg-accent transition-colors">
+                            <span class="material-symbols-outlined">image</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-primary">Media Manager</h3>
+                        <p class="text-sm text-slate-500">upload new images, replace old ones, and crop photos
+                            easily to fit your website design perfectly.</p>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-white hover:shadow-xl transition-all border border-slate-100 group">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center mb-6 group-hover:bg-accent transition-colors">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 text-primary">One-Click Publishing</h3>
+                        <p class="text-sm text-slate-500">Publish your changes to the live web with a single secure
+                            click.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-black mb-12 text-primary">School Website Launch Process</h2>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 overflow-x-auto pb-4">
+                    <div class="flex flex-col items-center gap-4 min-w-[120px]">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center border border-slate-100 text-primary">
+                            <span class="material-symbols-outlined text-3xl">login</span>
+                        </div>
+                        <span class="text-sm font-bold text-primary">Login</span>
+                    </div>
+                    <span class="hidden md:block material-symbols-outlined text-slate-300">trending_flat</span>
+                    <div class="flex flex-col items-center gap-4 min-w-[120px]">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center border border-slate-100 text-primary">
+                            <span class="material-symbols-outlined text-3xl">dashboard_customize</span>
+                        </div>
+                        <span class="text-sm font-bold text-primary">Select Template</span>
+                    </div>
+                    <span class="hidden md:block material-symbols-outlined text-slate-300">trending_flat</span>
+                    <div class="flex flex-col items-center gap-4 min-w-[120px]">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center border border-slate-100 text-primary">
+                            <span class="material-symbols-outlined text-3xl">auto_fix_high</span>
+                        </div>
+                        <span class="text-sm font-bold text-primary">Activate Pages</span>
+                    </div>
+                    <span class="hidden md:block material-symbols-outlined text-slate-300">trending_flat</span>
+                    <div class="flex flex-col items-center gap-4 min-w-[120px]">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-slate-50 shadow-sm flex items-center justify-center border border-slate-100 text-primary">
+                            <span class="material-symbols-outlined text-3xl">edit_square</span>
+                        </div>
+                        <span class="text-sm font-bold text-primary">Edit Content</span>
+                    </div>
+                    <span class="hidden md:block material-symbols-outlined text-slate-300">trending_flat</span>
+                    <div class="flex flex-col items-center gap-4 min-w-[120px]">
+                        <div
+                            class="w-20 h-20 rounded-2xl bg-accent shadow-lg shadow-accent/20 flex items-center justify-center text-white">
+                            <span class="material-symbols-outlined text-3xl">done_all</span>
+                        </div>
+                        <span class="text-sm font-bold text-accent">Publish</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <h2 class="text-3xl font-black mb-12 text-center text-primary">
+                Helpful Tips Before You Publish
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Tip 1 -->
+                <div
+                    class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:translate-y-[-4px] transition-all">
+                    <span class="material-symbols-outlined text-accent mb-3">title</span>
+                    <h4 class="font-bold mb-2 text-primary">Use Clear Headings</h4>
+                    <p class="text-xs text-slate-500">
+                        Write simple and clear headings for each page. This helps parents
+                        quickly understand your school information.
+                    </p>
+                </div>
+
+                <!-- Tip 2 -->
+                <div
+                    class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:translate-y-[-4px] transition-all">
+                    <span class="material-symbols-outlined text-accent mb-3">add_a_photo</span>
+                    <h4 class="font-bold mb-2 text-primary">Upload Real School Photos</h4>
+                    <p class="text-xs text-slate-500">
+                        Use real photos of your campus, classrooms, and events.
+                        Genuine images build trust with parents.
+                    </p>
+                </div>
+
+                <!-- Tip 3 -->
+                <div
+                    class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:translate-y-[-4px] transition-all">
+                    <span class="material-symbols-outlined text-accent mb-3">contact_page</span>
+                    <h4 class="font-bold mb-2 text-primary">Check Contact Details</h4>
+                    <p class="text-xs text-slate-500">
+                        Make sure your phone number, email address, and school
+                        location are correct before saving or publishing.
+                    </p>
+                </div>
+
+                <!-- Tip 4 -->
+                <div
+                    class="p-6 rounded-2xl bg-white border border-slate-100 shadow-sm hover:translate-y-[-4px] transition-all">
+                    <span class="material-symbols-outlined text-accent mb-3">save</span>
+                    <h4 class="font-bold mb-2 text-primary">Save and Then Publish</h4>
+                    <p class="text-xs text-slate-500">
+                        Click “Save” after making changes. Once everything is ready,
+                        click “Publish” to make your school website live.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="container mx-auto max-w-6xl ">
+
+            <div
+                class="relative bg-white rounded-[2rem] border border-slate-100 overflow-hidden transition-all duration-300 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.08)] hover:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.12)]">
+
+                <div class="flex flex-col lg:flex-row items-stretch">
+
+                    <!-- LEFT : VALUE -->
+                    <div
+                        class="p-8 lg:p-12 lg:w-1/2 bg-gradient-to-br from-white via-white to-green-50/40 lg:border-r border-slate-100 flex flex-col justify-center">
+
+                        <div
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/70 border border-green-200 mb-5 w-fit">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-[10px] font-bold text-green-700 uppercase tracking-widest">
+                                Free Starter Plan
+                            </span>
+                        </div>
+
+                        <h3 class="text-2xl lg:text-3xl font-extrabold text-slate-900 leading-snug">
+                            Launch Your School Website
+                            <span class="text-green-600 font-black"> Without Any Cost</span>
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-3 leading-relaxed max-w-sm">
+                            Perfect for schools starting their digital journey. Go live with a clean, professional
+                            website
+                            and start communicating clearly with parents and students from day one.
+                        </p>
+                    </div>
+
+                    <!-- MIDDLE : FEATURES -->
+                    <div class="px-8 gap-10 lg:px-12 py-10 lg:w-//2 flex flex-col justify-center items-center">
+                        <div class="grid grid-cols-2 gap-x-6 gap-y-5 w-full">
+
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    Free Website Setup
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    School-ready Templates
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    Free School Sub-domain
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    No Credit Card Needed
+                                </span>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    Easy Content Updates
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span class="text-[13px] font-semibold text-slate-700">
+                                    No Technical Skills Needed
+                                </span>
+                            </div>
+
+                        </div>
+                        <!-- RIGHT : CTA -->
+                        <div class="flex flex-col items-center lg:items-end justify-center ">
+
+                            <button
+                                class="w-full py-3.5 px-6 bg-green-600 hover:bg-green-700 text-white text-sm font-bold rounded-xl shadow-lg shadow-green-200 hover:shadow-xl transition-all active:scale-95 flex items-center justify-center gap-2">
+                                Choose Website Design
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </button>
+
+
+                            <p
+                                class="mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center lg:text-right">
+                                Upgrade only when you need more
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+</body>
+
+</html>
