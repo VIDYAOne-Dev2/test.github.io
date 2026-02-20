@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marks Entry Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .input {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, .15);
+            outline: none;
+        }
+
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            transition: all .2s ease;
+        }
+
+        .tool-btn:hover {
+            background: #f1f5f9;
+        }
+
+        .primary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            color: #ffffff;
+            background: #0ea5e9;
+            transition: background .2s ease;
+        }
+
+        .primary-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="p-6">
+
+    <div class="max-w-[1600px] mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+
+        <!-- HEADER -->
+        <div class="px-6 py-4 border-b flex bg-slate-50 justify-between items-center">
+            <div class="flex items-center justify-between">
+
+                <!-- Left Section -->
+                <div class="flex items-start gap-3">
+
+                    <!-- Menu Icon -->
+
+
+                    <!-- Title + Breadcrumb -->
+                    <div>
+                        <h1 class="text-xl font-bold text-slate-800">
+                            Sibling List
+                        </h1>
+
+                        <nav class="flex items-center text-xs text-slate-400 mt-1">
+                            <span class="hover:text-slate-600 cursor-pointer">Home</span>
+                            <span class="mx-2">/</span>
+                            <span class="hover:text-slate-600 cursor-pointer">Admission</span>
+                            <span class="mx-2">/</span>
+                            <span class="text-slate-500 font-medium">Sibling List</span>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="flex gap-3">
+
+                <!-- New Subject -->
+                <button class="tool-btn text-sky-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+
+                        <!-- User Head -->
+                        <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" />
+
+                        <!-- User Body -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2 20c0-4 3-7 7-7s7 3 7 7" />
+
+                        <!-- Plus Sign -->
+                        <line x1="19" y1="8" x2="19" y2="14" stroke-linecap="round" />
+                        <line x1="16" y1="11" x2="22" y2="11" stroke-linecap="round" />
+                    </svg>
+
+                    New Registration
+                </button>
+
+                <!-- Assign Sibling -->
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+    rounded-xl
+    bg-indigo-50 text-indigo-700 border border-indigo-200
+    hover:bg-indigo-600 hover:text-white transition">
+
+                    <!-- User Plus Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+
+                        <!-- User -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20a6 6 0 0112 0" />
+
+                        <!-- Plus -->
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 8v4M17 10h4" />
+                    </svg>
+
+                    Assign Sibling
+                </button>
+                <!-- Time Table -->
+                <!-- Student List -->
+                <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+    rounded-xl
+    bg-sky-50 text-sky-700 border border-sky-200
+    hover:bg-sky-600 hover:text-white transition">
+
+                    <!-- Users Group Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20a6 6 0 0112 0" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 14a4 4 0 014-4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20 14a4 4 0 00-4-4" />
+                    </svg>
+
+                    Student List
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Filters Section -->
+        <div class="px-6 py-5 bg-white ">
+            <div class="grid grid-cols-6  gap-4 items-end">
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Shift</label>
+                    <select class="input mt-1">
+                        <option>General</option>
+                        <option>English Medium</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Class</label>
+                    <select class="input mt-1">
+                        <option>Class 10</option>
+                        <option>Class 11</option>
+                        <option>Class 12</option>
+                    </select>
+                </div>
+
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Stream</label>
+                    <select class="input mt-1">
+                        <option>Art</option>
+                        <option>Sceince</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-[11px] uppercase font-bold text-slate-400">Section</label>
+                    <select class="input mt-1">
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                    </select>
+                </div>
+
+                <!-- Load Button -->
+                <div class="flex items-end gap-2 col-span-2">
+
+                    <!-- Load Students Button -->
+                    <button class="flex items-center gap-2 px-5 py-2 text-sm font-semibold
+        bg-sky-500 text-white border border-sky-200
+        rounded-full hover:bg-sky-100 hover:text-sky-900 transition">
+
+                        <!-- Search Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+
+                            <circle cx="11" cy="11" r="7" stroke-linecap="round" stroke-linejoin="round" />
+
+                            <line x1="16.65" y1="16.65" x2="21" y2="21" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+
+                        Load Students
+                    </button>
+
+                    <!-- Reset Button -->
+                    <button class="tool-btn text-slate-600 hover:bg-slate-50 hover:text-slate-800 
+        rounded-lg px-3 py-2 border border-slate-200 flex items-center gap-2">
+
+                        <!-- Refresh Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 4v6h6M20 20v-6h-6M5 15a7 7 0 0012 3l3-3M19 9a7 7 0 00-12-3L4 9" />
+                        </svg>
+
+                        Reset
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Smart Marks Entry Filter Bar -->
+        <!-- Container -->
+        <div class="px-6 py-5 border-b border-slate-100 bg-slate-50">
+
+            <!-- Top Controls Row -->
+            <div class="flex items-center justify-between rounded-xl px-4 py-3 mb-4 ">
+
+                <!-- LEFT SIDE -->
+                <div class="flex items-center gap-4">
+
+                    <!-- Search Wrapper -->
+                    <div class="relative w-96">
+
+                        <div class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5
+                    shadow-sm hover:border-slate-300
+                    focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20
+                    transition">
+
+                            <!-- Search Icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-400 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="7" />
+                                <line x1="16.65" y1="16.65" x2="21" y2="21" />
+                            </svg>
+
+                            <!-- Input -->
+                            <input type="text" placeholder="Search by Sibling ID, Student ID, class..."
+                                class="w-full text-sm bg-transparent focus:outline-none placeholder:text-slate-400">
+
+                            <!-- Clear Button -->
+                            <button class="ml-2 text-slate-400 hover:text-slate-600 transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+                                </svg>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT SIDE -->
+                <div class="flex items-center gap-4">
+
+
+                    <!-- Refresh Button -->
+                    <button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold
+    rounded-xl
+    bg-slate-100 text-slate-600
+    hover:bg-slate-700 hover:text-white
+    transition">
+
+                        <!-- Refresh Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4 4v6h6M20 20v-6h-6M5 15a7 7 0 0012 3l3-3M19 9a7 7 0 00-12-3L4 9" />
+                        </svg>
+
+                        Refresh
+                    </button>
+
+
+
+                    <!-- Pagination -->
+                    <div class="flex items-center gap-3 text-sm text-slate-600">
+
+                        <span>1–10 of 120</span>
+
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md border border-slate-200 hover:bg-slate-100">
+                            ‹
+                        </button>
+
+                        <button
+                            class="w-8 h-8 flex items-center justify-center rounded-md border border-slate-200 hover:bg-slate-100">
+                            ›
+                        </button>
+
+                    </div>
+                    <!-- Records Per Page -->
+                    <div class="flex items-center gap-2 text-sm text-slate-600">
+                        <span>Rows per page:</span>
+                        <select
+                            class="border border-slate-200 rounded-md px-2 py-1 focus:ring-2 focus:ring-primary outline-none">
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <table class="w-full text-left border-collapse bg-white">
+                    <!-- Table Head -->
+                    <thead>
+                        <tr
+                            class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                            <th class="px-4 py-4">Sibling ID</th>
+                            <th class="px-4 py-4">Reg No.</th>
+                            <th class="px-4 py-4">SID </th>
+                            <th class="px-4 py-4">Name</th>
+                            <th class="px-4 py-4">Father's Name</th>
+                            <th class="px-4 py-4">Mother's Name</th>
+                            <th class="px-4 py-4">Shift</th>
+                            <th class="px-4 py-4">Class & Stream</th>
+                            <th class="px-4 py-4">Section & House</th>
+                            <th class="px-4 py-4">Mobile No</th>
+                            <th class="px-4 py-4">Action</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body -->
+                    <tbody class="divide-y divide-slate-200" x-data="{ openGroup: null }">
+
+                        <!-- GROUP 1: SIB-101 (REG-001 & REG-002) -->
+                        <tr class="bg-slate-50/50 hover:bg-slate-100 transition-colors cursor-pointer"
+                            @click="openGroup === 'SIB-101' ? openGroup = null : openGroup = 'SIB-101'">
+
+                            <td class="px-4 py-4 text-sm font-bold text-indigo-600">
+                                <span class="flex items-center gap-2">
+                                    <input type="checkbox">
+                                    SIB-101
+                                    <span class="bg-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded text-[10px]">
+                                        2 Siblings
+                                    </span>
+                                </span>
+                            </td>
+
+                            <!-- Primary Student Info -->
+                            <td class="px-4 py-4 text-sm font-semibold text-blue-600">REG-001</td>
+                            <td class="px-4 py-4 text-sm font-semibold text-orange-600">SID-001</td>
+                            <td class="px-4 py-4 text-sm font-semibold text-slate-700">Amit Kumar</td>
+                            <td class="px-4 py-4 text-sm text-slate-600">Mr. Abhinav Kumar</td>
+                            <td class="px-4 py-4 text-sm text-slate-600">Mrs. Isha Devi</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">General</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">10 - Science</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">A - Red</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">+91 00000 00000</td>
+
+                            <!-- Edit Button Column -->
+                            <td class="px-4 py-4 text-sm">
+                                <button @click.stop class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium
+                   bg-indigo-50 text-indigo-600 rounded-lg
+                   hover:bg-indigo-100 transition">
+
+                                    <!-- Edit Icon -->
+                                    <!-- Edit Icon (Pencil) -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a4 4 0 01-1.414.943L7 18l1.229-3.414A4 4 0 019 13z" />
+                                    </svg>
+
+                                    Edit
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        <!-- Expanded Content for GROUP 1 -->
+                        <tr x-show="openGroup === 'SIB-101'" x-cloak
+                            class="bg-white border-l-4 border-indigo-500 transition-all">
+                            <td colspan="10" class="p-0">
+                                <div class="px-8 py-2 bg-slate-50/30">
+                                    <table class="w-full my-2 border border-slate-100 rounded-lg overflow-hidden">
+                                        <thead class="bg-slate-100/50 text-[10px] text-slate-400 uppercase">
+                                            <tr>
+                                                <th class="px-4 py-2">Reg No.</th>
+                                                <th class="px-4 py-2">SID.</th>
+                                                <th class="px-4 py-2">Student Name</th>
+                                                <th class="px-4 py-2">Father's Name</th>
+                                                <th class="px-4 py-2">Mother's Name</th>
+                                                <th class="px-4 py-2">Gender</th>
+                                                <th class="px-4 py-2">Shift</th>
+                                                <th class="px-4 py-2">Class</th>
+                                                <th class="px-4 py-2">Section</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+                                            <!-- Sibling 1 -->
+                                            <tr class="border-b border-slate-50 hover:bg-indigo-50/30">
+                                                <td class="px-4 py-3 font-medium text-blue-600">REG-002</td>
+                                                <td class="px-4 py-3 font-medium text-orange-600">SID-002</td>
+                                                <td class="px-4 py-3 text-slate-700">Aryan Kumar</td>
+                                                <td class="px-4 py-3 text-slate-700">Mr. Abhinav Kumar</td>
+                                                <td class="px-4 py-3 text-slate-700">Mrs. Isha Devi </td>
+                                                <td class="px-4 py-3"><span
+                                                        class="px-2 py-0.5 text-[10px] bg-purple-50 text-purple-600 rounded">MALE</span>
+                                                </td>
+                                                <td class="px-4 py-3 text-slate-700">General </td>
+
+                                                <td class="px-4 py-3 text-slate-600 font-medium">Class 10 - Science</td>
+                                                <td class="px-4 py-3 text-slate-600">A - Blue</td>
+
+                                            </tr>
+                                            <!-- Sibling 2 -->
+                                            <tr class="border-b border-slate-50 hover:bg-indigo-50/30">
+                                                <td class="px-4 py-3 font-medium text-blue-600">REG-003</td>
+                                                <td class="px-4 py-3 font-medium text-orange-600">SID-003</td>
+                                                <td class="px-4 py-3 text-slate-700">Ananya Kumar</td>
+                                                <td class="px-4 py-3 text-slate-700">Mr. Abhinav Kumar</td>
+                                                <td class="px-4 py-3 text-slate-700">Mrs. Isha Devi</td>
+                                                <td class="px-4 py-3">
+                                                    <span
+                                                        class="px-2 py-0.5 text-[10px] bg-pink-50 text-pink-600 rounded">
+                                                        FEMALE
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-3 text-slate-700">General</td>
+                                                <td class="px-4 py-3 text-slate-600 font-medium">Class 7 - CBSE</td>
+                                                <td class="px-4 py-3 text-slate-600">B - Green</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- GROUP 2: SIB-102 (REG-004 & REG-005) -->
+                        <tr class="bg-slate-50/50 hover:bg-slate-100 transition-colors cursor-pointer"
+                            @click="openGroup === 'SIB-102' ? openGroup = null : openGroup = 'SIB-102'">
+
+                            <td class="px-4 py-4 text-sm font-bold text-indigo-600">
+                                <span class="flex items-center gap-2">
+                                    <input type="checkbox">
+                                    SIB-102
+                                    <span class="bg-indigo-100 text-indigo-600 px-1.5 py-0.5 rounded text-[10px]">
+                                        1 Siblings
+                                    </span>
+                                </span>
+                            </td>
+
+                            <!-- Primary Student Info (REG-004) -->
+                            <td class="px-4 py-4 text-sm font-semibold text-blue-600">REG-004</td>
+                            <td class="px-4 py-4 text-sm font-semibold text-orange-600">SID-004</td>
+                            <td class="px-4 py-4 text-sm font-semibold text-slate-700">Rohan Sharma</td>
+                            <td class="px-4 py-4 text-sm text-slate-600">Mr. Rajesh Sharma</td>
+                            <td class="px-4 py-4 text-sm text-slate-600">Mrs. Sunita Sharma</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">General</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">10-Science</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">A - Yellow</td>
+                            <td class="px-4 py-4 text-sm text-slate-500">+91 98765 43210</td>
+                            <td class="px-4 py-4 text-sm">
+                                <button @click.stop class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium
+                   bg-indigo-50 text-indigo-600 rounded-lg
+                   hover:bg-indigo-100 transition">
+
+                                    <!-- Edit Icon -->
+                                    <!-- Edit Icon (Pencil) -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828a4 4 0 01-1.414.943L7 18l1.229-3.414A4 4 0 019 13z" />
+                                    </svg>
+
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Expanded Content for GROUP 2 -->
+                        <tr x-show="openGroup === 'SIB-102'" x-cloak
+                            class="bg-white border-l-4 border-indigo-500 transition-all">
+                            <td colspan="10" class="p-0">
+                                <div class="px-8 py-2 bg-slate-50/30">
+                                    <table class="w-full my-2 border border-slate-100 rounded-lg overflow-hidden">
+                                        <thead class="bg-slate-100/50 text-[10px] text-slate-400 uppercase">
+                                            <tr>
+                                                <th class="px-4 py-2">Reg No.</th>
+                                                <th class="px-4 py-2">SID.</th>
+                                                <th class="px-4 py-2">Student Name</th>
+                                                <th class="px-4 py-2">Father's Name</th>
+                                                <th class="px-4 py-2">Mother's Name</th>
+                                                <th class="px-4 py-2">Gender</th>
+                                                <th class="px-4 py-2">Shift</th>
+                                                <th class="px-4 py-2">Class</th>
+                                                <th class="px-4 py-2">Section</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-sm">
+
+                                            <!-- Sibling 1 -->
+                                            <tr class="border-b border-slate-50 hover:bg-indigo-50/30">
+                                                <td class="px-4 py-3 font-medium text-blue-600">REG-005</td>
+                                                <td class="px-4 py-3 font-medium text-orange-600">SID-005</td>
+                                                <td class="px-4 py-3 text-slate-700">Priya Sharma</td>
+                                                <td class="px-4 py-3 text-slate-700">Mr. Rajesh Sharma</td>
+                                                <td class="px-4 py-3 text-slate-700">Mrs. Sunita Sharma</td>
+                                                <td class="px-4 py-3">
+                                                    <span
+                                                        class="px-2 py-0.5 text-[10px] bg-pink-50 text-pink-600 rounded">
+                                                        FEMALE
+                                                    </span>
+                                                </td>
+                                                <td class="px-4 py-3 text-slate-700">Morning</td>
+                                                <td class="px-4 py-3 text-slate-600 font-medium">Class 6 - CBSE</td>
+                                                <td class="px-4 py-3 text-slate-600">A - Green</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Include Alpine.js via CDN for the logic to work -->
+            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
