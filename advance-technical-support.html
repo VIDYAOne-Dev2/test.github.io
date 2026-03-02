@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Technical Support | Advanced School ERP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .section-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .border-red-glow {
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.1);
+        }
+    </style>
+    <style>
+        @keyframes bounce-slow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .animate-bounce-slow {
+            animation: bounce-slow 5s ease-in-out infinite;
+        }
+    </style>
+
+</head>
+
+<body class="bg-grid">
+
+    <section class="relative min-h-[90vh] flex items-center pt-24 pb-20 overflow-hidden bg-white">
+
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 opacity-[0.03]"
+                style="background-image: radial-gradient(#1e3a8a 1.5px, transparent 1.5px); background-size: 40px 40px;">
+            </div>
+            <div
+                class="absolute top-[-10%] right-[-5%] w-[40%] h-[60%] bg-blue-50 rounded-full blur-[120px] opacity-60">
+            </div>
+            <div
+                class="absolute bottom-[-10%] left-[-5%] w-[30%] h-[50%] bg-blue-50 rounded-full blur-[100px] opacity-60">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-4">
+
+                <div class="lg:w-[65%] space-y-8 animate__animated animate__fadeIn">
+                    <div
+                        class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-600"></span>
+                        <span class="text-xs font-bold tracking-widest text-blue-900 uppercase">Trusted & Secure
+                            Technical Support</span>
+                    </div>
+
+                    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+                        Reliable Technical Support for <span class="text-blue-700">Smooth</span> School Operations
+                    </h1>
+
+                    <p
+                        class="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl border-l-4 border-yellow-400 pl-6">
+                        During <span class="text-slate-900 font-semibold">Exams, Admissions, Result Days, and Fee
+                            Collection</span>, your system handles heavy traffic.
+                        Our expert team makes sure everything runs smoothly without downtime or delays.
+                    </p>
+
+
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+                        <button
+                            class="group relative px-10 py-4 w-full sm:w-auto bg-blue-800 hover:bg-blue-900 text-white font-bold rounded shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            <span class="relative z-10 flex items-center justify-center">
+                                Schedule Priority Consultation
+                                <i data-lucide="phone-forwarded" class="ml-3 w-5 h-5"></i>
+                            </span>
+                        </button>
+
+                        <button
+                            class="px-10 py-4 w-full sm:w-auto border-2 border-blue-800 text-blue-800 font-bold rounded hover:bg-blue-50 transition-all">
+                            Talk to Technical Expert
+                        </button>
+                    </div>
+
+                    <div class="pt-10 flex flex-wrap gap-10 items-center border-t border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="clock" class="text-red-600 w-6 h-6"></i>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900">Fast Response Time</p>
+                                <p class="text-xs text-slate-500 uppercase">Quick Issue Handling</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="shield-check" class="text-green-600 w-6 h-6"></i>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900">Secure Data Protection</p>
+                                <p class="text-xs text-slate-500 uppercase">Safe & Reliable Systems</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="users" class="text-blue-600 w-6 h-6"></i>
+                            <div>
+                                <p class="text-sm font-bold text-slate-900">Dedicated Support Team</p>
+                                <p class="text-xs text-slate-500 uppercase">Personal Assistance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-[35%] relative">
+                    <div
+                        class="relative z-10 bg-white p-3 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100 transform lg:rotate-2 hover:rotate-0 transition-all duration-500">
+                        <div class="overflow-hidden rounded-xl  relative">
+                            <img src="Image\Support.jpg" alt="Institutional Growth Support"
+                                class="w-full h-full object-cover">
+
+                            <div
+                                class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-2 border border-white/20 shadow-lg">
+                                <span class="flex h-2 w-2 rounded-full bg-green-500 animate-ping"></span>
+                                <span class="text-[10px] font-bold text-slate-800 uppercase tracking-tight">Expert
+                                    Support Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-48 h-48 bg-yellow-100/40 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-12 -right-6 w-32 h-32 bg-blue-100/60 rounded-full -z-10 animate-pulse">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-y border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 section-reveal">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">When Schools Need Priority Support</h2>
+                <div class="h-1 w-96 bg-yellow-400 mb-6"></div>
+                <p class="text-slate-600">
+                    As your school grows, system usage also increases. During busy academic periods, you may need faster
+                    support and extra technical care. <br> Our team is prepared to handle these high-demand situations
+                    smoothly.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="p-8 border border-slate-100 bg-slate-50 hover:border-blue-200 transition-all group section-reveal">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-800 rounded flex items-center justify-center mb-6 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                        <i data-lucide="bar-chart-3"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Result Days with Heavy Login Traffic</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        When results are published, many parents log in at the same time. We increase system capacity
+                        and
+                        monitor performance so your portal stays fast and stable.
+                    </p>
+                </div>
+                <div
+                    class="p-8 border border-slate-100 bg-slate-50 hover:border-blue-200 transition-all group section-reveal">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-800 rounded flex items-center justify-center mb-6 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                        <i data-lucide="file-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Website Content Updates</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        On special occasions, admission announcements, result days, or important events, we help update
+                        your website
+                        content quickly. From notices and banners pages, we make sure your website stays fresh,
+                        accurate,
+                        and professionally presented.
+                    </p>
+                </div>
+                <div
+                    class="p-8 border border-slate-100 bg-slate-50 hover:border-blue-200 transition-all group section-reveal">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-800 rounded flex items-center justify-center mb-6 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                        <i data-lucide="indian-rupee"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Peak Fee Collection Periods</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        During fee deadlines, payment traffic increases. We closely monitor transactions to avoid
+                        delays,
+                        errors, or pending payment issues.
+                    </p>
+                </div>
+
+                <div
+                    class="p-8 border border-slate-100 bg-slate-50 hover:border-blue-200 transition-all group section-reveal">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-800 rounded flex items-center justify-center mb-6 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Admission Season Workload</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        New admissions bring large data entry and verification work. We provide priority help for bulk
+                        uploads, data checks, and smooth session setup.
+                    </p>
+                </div>
+
+                <div class="p-8 border border-red-50 bg-white border-l-4 border-l-red-600 shadow-sm section-reveal">
+                    <div class="w-12 h-12 bg-red-100 text-red-700 rounded flex items-center justify-center mb-6">
+                        <i data-lucide="alert-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Board Submission Deadlines</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed font-medium">
+                        When it’s time to submit data to the board, everything must be correct and on time. We carefully
+                        check your
+                        student records, prepare the required files, and support you until the submission is completed
+                        without
+                        mistakes.
+                    </p>
+                </div>
+
+                <div
+                    class="p-8 border border-slate-100 bg-slate-50 hover:border-blue-200 transition-all group section-reveal">
+                    <div
+                        class="w-12 h-12 bg-blue-100 text-blue-800 rounded flex items-center justify-center mb-6 group-hover:bg-blue-800 group-hover:text-white transition-colors">
+                        <i data-lucide="network"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Managing Multiple Campuses</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        If you operate more than one campus, system coordination becomes important. We help manage data
+                        syncing and technical operations across all branches.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <div class="section-reveal">
+                    <span class="text-yellow-400 font-bold tracking-widest uppercase text-sm">Priority Expert
+                        Support</span>
+                    <h2 class="text-4xl font-bold mt-4 mb-8">Dedicated Technical Assistance When You Need It Most</h2>
+
+                    <div class="space-y-8 grid grid-cols-2  gap-8">
+                        <div class="flex gap-4 pt-6">
+                            <i data-lucide="shield-check" class="text-green-500 flex-shrink-0 w-8 h-8"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Direct Access to Senior Experts</h4>
+                                <p class="text-slate-400 text-sm">
+                                    Your requests are handled by experienced technical specialists who understand the
+                                    system deeply. You get faster and more accurate solutions without unnecessary
+                                    delays.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="refresh-cw" class="text-green-500 flex-shrink-0 w-8 h-8"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Priority Help During Important Academic Events</h4>
+                                <p class="text-slate-400 text-sm">
+                                    During results, admissions, fee deadlines, or board submissions, your institution
+                                    receives priority attention to ensure everything runs smoothly.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="database-zap" class="text-green-500 flex-shrink-0 w-8 h-8"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Data Safety and Recovery Support</h4>
+                                <p class="text-slate-400 text-sm">
+                                    We help verify your data, prevent errors, and provide recovery support if needed,
+                                    keeping your academic and financial records secure.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="activity" class="text-green-500 flex-shrink-0 w-8 h-8"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Performance Monitoring and Optimization</h4>
+                                <p class="text-slate-400 text-sm">
+                                    We monitor system performance and improve speed during high usage so your staff and
+                                    parents experience smooth access.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="relative py-24 bg-slate-50/50 overflow-hidden">
+        <div
+            class="absolute top-0 right-0 -translate-y-12 translate-x-12 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-50">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+                <div class="lg:col-span-5 lg:sticky lg:top-24">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        Institutional Excellence
+                    </div>
+
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Benefits for <br />
+                        <span class="relative">
+                            Your Institution
+                            <span class="absolute bottom-2 left-0 w-full h-3 bg-yellow-400/30 -z-10"></span>
+                        </span>
+                    </h2>
+
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-md">
+                        Schools choose Advanced Support because it gives them peace of mind during their busiest
+                        academic periods. Your system stays stable, your team works confidently, and your management
+                        feels secure.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed max-w-md">
+                        With the right support in place, your institution can focus on education instead of technical
+                        worries.
+                        From daily operations to high-pressure academic events, you have a dependable team ensuring
+                        everything
+                        runs smoothly, securely, and without unnecessary interruptions.
+                    </p>
+
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <div
+                        class="group p-8 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300">
+                        <div
+                            class="w-12 h-12 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="monitor-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">No Disruption During Exams & Admissions</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Your portal stays smooth and accessible even when thousands of parents log in at the same
+                            time.
+                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-slate-50 flex items-center text-green-600 font-bold text-[10px] uppercase tracking-widest">
+                            <i data-lucide="check-circle-2" class="w-3 h-3 mr-2"></i> Peak Performance
+                        </div>
+                    </div>
+
+                    <div
+                        class="group p-8 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 md:translate-y-8">
+                        <div
+                            class="w-12 h-12 bg-yellow-50 text-yellow-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-yellow-500 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Faster Resolution of Critical Issues</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Important problems are handled quickly by senior experts, reducing waiting time and stress
+                            for your staff.
+                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-slate-50 flex items-center text-blue-600 font-bold text-[10px] uppercase tracking-widest">
+                            <i data-lucide="clock" class="w-3 h-3 mr-2"></i> Priority Queue
+                        </div>
+                    </div>
+
+                    <div
+                        class="group p-8 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300">
+                        <div
+                            class="w-12 h-12 bg-green-50 text-green-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="user-minus" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Reduced Internal IT Burden</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Your internal team can focus on school operations while we handle the technical side.
+                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-slate-50 flex items-center text-green-600 font-bold text-[10px] uppercase tracking-widest">
+                            <i data-lucide="trending-up" class="w-3 h-3 mr-2"></i> Efficiency Optimized
+                        </div>
+                    </div>
+
+                    <div
+                        class="group p-8 bg-white rounded-3xl border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40_rgba(0,0,0,0.08)] transition-all duration-300 md:translate-y-8">
+                        <div
+                            class="w-12 h-12 bg-blue-900 text-white rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-700 transition-colors duration-300">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Greater Confidence for Management</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            With reliable support in place, your leadership team can make decisions confidently, knowing
+                            the system will perform.
+                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-slate-50 flex items-center text-yellow-600 font-bold text-[10px] uppercase tracking-widest">
+                            <i data-lucide="award" class="w-3 h-3 mr-2"></i> Leadership Secure
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div
+            class="relative rounded-3xl overflow-hidden border border-blue-100 bg-gradient-to-br from-blue-900 to-[#0f172a] p-1 shadow-2xl">
+
+            <div class="relative bg-white rounded-[1.4rem] p-8 lg:p-16 overflow-hidden">
+
+                <div class="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+                    <i data-lucide="shield-check" class="w-64 h-64 text-blue-900"></i>
+                </div>
+                <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-yellow-50 rounded-full blur-3xl opacity-50">
+                </div>
+
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+
+                    <div class="lg:w-3/5 text-center lg:text-left">
+                        <div
+                            class="inline-flex items-center gap-2 mb-6 px-3 py-1 bg-red-50 border border-red-100 rounded text-red-700">
+                            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                            <span class="text-[11px] font-bold uppercase tracking-widest">Priority Technical Support</span>
+                        </div>
+
+                        <h2 class="text-3xl lg:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                            Keep Your Institution <br class="hidden lg:block">
+                            <span class="text-blue-800">Running Smoothly at All Times</span>
+                        </h2>
+
+                        <p class="text-lg text-slate-600 max-w-xl mb-0">
+                            During exams, admissions, result days, and fee deadlines, your institution cannot afford
+                            delays. Our experienced technical team stays available to support you quickly and ensure
+                            everything continues without disruption.
+                        </p>
+                    </div>
+
+                    <div class="lg:w-2/5 w-full flex flex-col gap-4">
+                        <button
+                            class="group relative w-full bg-blue-800 hover:bg-blue-900 text-white p-5 rounded-xl transition-all duration-300 shadow-lg hover:shadow-blue-200 hover:-translate-y-1">
+                            <div class="flex items-center justify-center gap-3">
+                                <span class="font-bold text-lg">Connect With Our Technical Team</span>
+                                <i data-lucide="calendar-check"
+                                    class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <p
+                                class="text-[10px] text-blue-200 uppercase tracking-widest mt-1 font-medium text-center">
+                                Fast & Reliable Assistance</p>
+                        </button>
+
+                        <button
+                            class="w-full border-2 border-slate-200 text-slate-700 hover:border-blue-800 hover:text-blue-800 p-5 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                            Get Support Details
+                        </button>
+
+                        <div class="flex items-center justify-center gap-6 mt-2">
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 text-green-600"></i>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase">Priority
+                                    Assistance</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <i data-lucide="check-circle-2" class="w-3 h-3 text-green-600"></i>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase">Reliable
+                                    Response</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="py-12 bg-slate-50 border-t border-slate-200 text-center">
+        <p class="text-slate-500 text-sm">Enterprise Technical Support Division | School Management Solutions India</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Intersection Observer for detailed sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
