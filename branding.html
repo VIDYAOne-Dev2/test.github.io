@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e3a8a", // Deep pink
+                        "success": "#10b981", // Green
+                        "accent": "#facc15",  // Yellow
+                        "urgency": "#ef4444", // Red
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-[#FCFCFD] antialiased">
+
+    <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
+
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-pink-50/50 blur-[120px]">
+            </div>
+            <div class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] rounded-full bg-emerald-50/50 blur-[100px]">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex gap-12 items-center">
+
+                <div class="w-[60%] space-y-8">
+                    <div
+                        class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-pink-50 border border-pink-100">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-pink-600"></span>
+                        </span>
+                        <p class="text-[10px] uppercase tracking-widest font-semibold text-pink-700">
+                            Technology + Branding = Sustainable Growth
+                        </p>
+                    </div>
+
+                    <h1 class="text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
+                        Build a Stronger School Brand. <br />
+                        <span class="text-pink-600">Increase Admissions.</span>
+                    </h1>
+
+                    <p class="max-w-lg text-sm leading-relaxed text-slate-600 font-medium">
+                        Complete branding and promotional support designed to improve your institution’s visibility,
+                        credibility, and enrollment growth.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button
+                            class="px-6 py-3 rounded-lg bg-pink-600 text-white text-xs font-bold shadow-lg shadow-pink-200 hover:bg-pink-700 transition-all active:scale-95">
+                            Request Branding Strategy
+                        </button>
+                        <button
+                            class="px-6 py-3 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-all flex items-center justify-center gap-2">
+                            Plan My Admission Campaign
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-100 flex items-center gap-8">
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Trusted by</p>
+                            <p class="text-xs font-semibold text-slate-600">50+ Institutions Pan-India</p>
+                        </div>
+                        <div class="h-8 w-[1px] bg-slate-200"></div>
+                        <div>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Results</p>
+                            <p class="text-xs font-semibold text-emerald-600">Avg. 40% Growth in Inquiries</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-[40%] relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="Image\branding.jpg" alt="Modern School Campus" class="w-full h-full object-cover">
+                        <div
+                            class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white/20 shadow-xl">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-pink-100 p-2 rounded-lg">
+                                    <svg class="w-5 h-5 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 2a1 1 0 011-1h2a1 1 0 011 1v14a1 1 0 01-1 1h-2a1 1 0 01-1-1V2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-500 uppercase">Success Rate</p>
+                                    <p class="text-sm font-bold text-slate-900">Proven Enrollment Excellence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-20 lg:py-24 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+            <div class="w-full mb-10">
+                <h2 class="text-xs uppercase tracking-[0.2em] font-semibold text-pink-600 mb-4">
+                    The Reality Schools Face
+                </h2>
+                <h3 class="text-3xl font-semibold text-slate-900 leading-tight mb-3">
+                    Why Many Schools Struggle with Visibility
+                    <span class="text-slate-500 font-medium">and how it affects admissions.</span>
+                </h3>
+                <p class="text-base text-slate-600 leading-relaxed ">
+                    Many good schools face this challenge. You may have strong academics and infrastructure,
+                    but parents do not see your value clearly. Without the right strategy and guidance,
+                    admissions suffer. This is where Strategic Consulting & Advisory makes a real difference.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">Low Admission Inquiries</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        During admission season, inquiries remain low even though your school offers quality education.
+                    </p>
+                </div>
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">Weak Online Presence</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        Parents search online but struggle to find updated and strong information about your school.
+                    </p>
+                </div>
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M7 8h4m-4 4h8m-8 4h5"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">Outdated Website Content</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        Your website and social pages do not reflect your current achievements and facilities.
+                    </p>
+                </div>
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">No Clear Marketing Plan</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        Promotions happen randomly without a clear strategy, which wastes time and budget.
+                    </p>
+                </div>
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">Inconsistent Branding</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        Your website, social media, and offline materials do not look consistent,
+                        which reduces trust in parents’ minds.
+                    </p>
+                </div>
+
+                <div
+                    class="group p-8 bg-white border border-slate-200 rounded-2xl transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-pink-600 transition-colors">
+                        <svg class="w-5 h-5 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4 class="text-base font-semibold text-slate-900 mb-3">Limited Parent Engagement</h4>
+                    <p class="text-sm leading-relaxed text-slate-600">
+                        Parents are not actively interacting with your school online,
+                        so they feel less connected before even visiting.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 px-4 sm:px-6 lg:px-8 font-sans">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="mb-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="h-px w-12 bg-blue-600"></span>
+                    <span class="text-xs font-semibold tracking-[0.2em] text-blue-600 uppercase">Service Scope</span>
+                </div>
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 tracking-tight">
+                    How We Strengthen Your <span class="text-slate-500 font-medium italic">School’s Brand</span>
+                </h2>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Through Strategic Consulting & Advisory, we work step by step to improve your visibility,
+                    admissions, branding, and parent engagement. Every action is planned with clear goals and
+                    measurable results.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Digital Presence Optimization -->
+                <div
+                    class="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                    <div
+                        class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        <span class="material-symbols-outlined text-3xl">language</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Digital Presence Optimization</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        We improve your website content, update important information, and strengthen SEO.
+                        This helps your school appear higher in search results and reach more parents online.
+                    </p>
+                    <div class="pt-6 border-t border-slate-100">
+                        <div
+                            class="flex items-center gap-2 text-xs font-semibold text-blue-600 uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-sm">search</span> Better Search Visibility
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admission Campaign Planning -->
+                <div
+                    class="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mb-8 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                        <span class="material-symbols-outlined text-3xl">ads_click</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Admission Campaign Planning</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        We create structured admission campaigns, plan digital promotions,
+                        track leads properly, and design a clear promotional calendar
+                        so your admission season runs smoothly.
+                    </p>
+                    <div class="pt-6 border-t border-slate-100">
+                        <div
+                            class="flex items-center gap-2 text-xs font-semibold text-emerald-600 uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-sm">trending_up</span> Structured Growth Plan
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Identity & Brand Design -->
+                <div
+                    class="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                    <div
+                        class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mb-8 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition-all duration-300">
+                        <span class="material-symbols-outlined text-3xl">palette</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Visual Identity & Brand Design</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        We design or refine your school logo, create professional brochures,
+                        develop digital creatives, and ensure your branding looks consistent
+                        across all platforms and materials.
+                    </p>
+                    <div class="pt-6 border-t border-slate-100">
+                        <div
+                            class="flex items-center gap-2 text-xs font-semibold text-amber-600 uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-sm">auto_awesome</span> Strong Brand Identity
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Communication & Engagement Strategy -->
+                <div
+                    class="group relative bg-white p-8 rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-2">
+                    <div
+                        class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-8 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                        <span class="material-symbols-outlined text-3xl">forum</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-slate-900 mb-3">Communication & Engagement Strategy</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                        We build a clear social media plan, create content that connects with parents,
+                        strengthen your online reputation, and manage your digital presence
+                        so families trust your school.
+                    </p>
+                    <div class="pt-6 border-t border-slate-100">
+                        <div
+                            class="flex items-center gap-2 text-xs font-semibold text-purple-600 uppercase tracking-wider">
+                            <span class="material-symbols-outlined text-sm">verified</span> Stronger Parent Trust
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="bg-white py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+
+            <div class="text-center mb-14">
+                <h2 class="text-sm font-semibold tracking-[0.3em] text-blue-600 uppercase mb-4">
+                    Our Process
+                </h2>
+                <p class="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+                    Our Institutional <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Branding
+                        Framework</span>
+                </p>
+                <div class="mt-6 h-1 w-24 bg-blue-600 mx-auto rounded-full"></div>
+                <p class="mt-6 text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                    Our Strategic Consulting & Advisory service follows a clear step-by-step method.
+                    You always know what we are doing, why we are doing it, and how it helps your school grow.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div class="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-200 -translate-y-1/2 z-0">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+
+                    <!-- Step 1 -->
+                    <div class="group">
+                        <div
+                            class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+                            <div class="flex items-center justify-between mb-8">
+                                <span
+                                    class="text-5xl font-extrabold text-blue-100 group-hover:text-blue-200 transition-colors">01</span>
+                                <div
+                                    class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md">
+                                    <span class="material-symbols-outlined">search_insights</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-4">Brand & Visibility Audit</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                We carefully review your website, social media presence,
+                                search visibility, and current market position.
+                                This helps us understand what is working and what needs improvement.
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="group">
+                        <div
+                            class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+                            <div class="flex items-center justify-between mb-8">
+                                <span
+                                    class="text-5xl font-extrabold text-indigo-100 group-hover:text-indigo-200 transition-colors">02</span>
+                                <div
+                                    class="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center shadow-md">
+                                    <span class="material-symbols-outlined">architecture</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-4">Strategic Branding Plan</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                Based on our findings, we define your school’s brand identity,
+                                improve your admission positioning, and create a clear action plan.
+                            </p>
+                            <div class="bg-indigo-50 px-4 py-2 rounded-lg inline-block">
+                                <span class="text-[10px] font-semibold uppercase tracking-wider text-indigo-700">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="group">
+                        <div
+                            class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+                            <div class="flex items-center justify-between mb-8">
+                                <span
+                                    class="text-5xl font-extrabold text-emerald-100 group-hover:text-emerald-200 transition-colors">03</span>
+                                <div
+                                    class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center shadow-md">
+                                    <span class="material-symbols-outlined">rocket_launch</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-4">Campaign Execution</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                We start structured promotional activities,
+                                improve digital communication, and launch admission campaigns
+                                according to the approved plan.
+                            </p>
+                            <div class="bg-emerald-50 px-4 py-2 rounded-lg inline-block">
+                                <span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="group">
+                        <div
+                            class="bg-white p-8 rounded-3xl border border-slate-200 shadow-lg transition-all duration-300 group-hover:-translate-y-3">
+                            <div class="flex items-center justify-between mb-8">
+                                <span
+                                    class="text-5xl font-extrabold text-purple-100 group-hover:text-purple-200 transition-colors">04</span>
+                                <div
+                                    class="w-12 h-12 bg-purple-600 text-white rounded-xl flex items-center justify-center shadow-md">
+                                    <span class="material-symbols-outlined">query_stats</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-slate-900 mb-4">Performance Tracking</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                We regularly monitor search visibility, engagement levels,
+                                and inquiry growth. You receive clear updates on progress
+                                and results.
+                            </p>
+                            <div class="bg-purple-50 px-4 py-2 rounded-lg inline-block">
+                                <span class="text-[10px] font-semibold uppercase tracking-wider text-purple-700">
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-16 md:py-24">
+
+        <div class="w-full bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 mb-20">
+            <div
+                class="p-6 md:p-8 border-b border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-50">
+                <div>
+                    <h2 class="text-3xl font-semibold text-slate-900">Measurable Outcomes</h2>
+                    <p class="text-md text-slate-600 mt-2">
+                        What your institution achieves through our Strategic Consulting & Advisory service.
+                        We focus on real, visible improvements in admissions and brand trust.
+                    </p>
+                    <p class="text-sm text-blue-600 font-medium mt-2">
+                        Designed for private schools and institutions competing in high-density education markets.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                        Results-Oriented Impact
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12">
+                <div class="lg:col-span-5 bg-slate-50 border-r border-slate-200 p-8">
+                    <div class="space-y-1">
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">trending_up</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Increased Admission Inquiries</h4>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">language</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Stronger Online Presence</h4>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-indigo-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">verified_user</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Professional Brand Perception</h4>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">palette</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Consistent Visual Identity</h4>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">groups</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Better Parent Engagement</h4>
+                        </div>
+
+                        <div
+                            class="flex items-center gap-4 p-4 rounded-xl bg-white shadow-sm border border-slate-200 mb-4">
+                            <div class="size-10 rounded-lg bg-amber-600 flex items-center justify-center text-white">
+                                <span class="material-symbols-outlined text-2xl">person_add</span>
+                            </div>
+                            <h4 class="font-semibold text-slate-900">Higher Conversion Potential</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 p-8 md:p-12">
+                    <div class="space-y-12">
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div
+                                class="absolute -left-[9px] top-0 size-4 rounded-full bg-emerald-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-emerald-600 mb-2">
+                                Growth Result
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                More parents discover your school online and send inquiries regularly
+                                through improved visibility and structured campaigns.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-blue-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">
+                                Stronger Visibility
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                Your school looks professional and appears clearly on search engines
+                                and social media platforms.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-indigo-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-indigo-600 mb-2">
+                                Parent Trust
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                Parents see your school as organized, reliable, and a safe choice
+                                for their child’s education.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-purple-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-purple-600 mb-2">
+                                Clear Brand Image
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                Your logo, website, brochures, and social media all present one
+                                clear and consistent message.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div
+                                class="absolute -left-[9px] top-0 size-4 rounded-full bg-emerald-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-emerald-600 mb-2">
+                                Active Parent Engagement
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                Better communication builds stronger relationships and keeps
+                                parents actively involved.
+                            </p>
+                        </div>
+
+                        <div class="relative pl-8 border-l-2 border-slate-200">
+                            <div class="absolute -left-[9px] top-0 size-4 rounded-full bg-amber-600 ring-4 ring-white">
+                            </div>
+                            <h5 class="text-sm font-semibold uppercase tracking-wider text-amber-600 mb-2">
+                                Higher Admissions Conversion
+                            </h5>
+                            <p class="text-lg text-slate-600 leading-relaxed">
+                                A structured follow-up system helps convert more inquiries
+                                into confirmed admissions.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="mt-20 bg-slate-900 rounded-3xl p-8 md:p-12 text-center lg:text-left flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div>
+                <h4 class="text-2xl font-semibold text-white mb-2">
+                    Ready to grow your institution with a clear strategy?
+                </h4>
+                <p class="text-slate-400">
+                    Our structured approach typically starts showing visible brand improvement within the first 45 days.
+                </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button
+                    class="px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all">
+                    Take your First Step
+                </button>
+
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
