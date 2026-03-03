@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Premium Integration - Connect Your School Systems</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1e40af", // Deep Blue for Authority
+                        "success": "#16a34a", // Green for Automation
+                        "accent": "#facc15", // Yellow for Highlights
+                        "danger": "#dc2626", // Red for Premium tag
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+        }
+
+        .workflow-arrow::after {
+            content: '→';
+            @apply absolute -right-6 top-1/2 -translate-y-1/2 text-2xl text-slate-300 hidden md:block;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-300">
+    <!-- Top Navigation Bar -->
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden bg-[#FAFBFF] px-6 py-20 md:py-32">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full overflow-hidden pointer-events-none">
+                <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl"></div>
+                <div class="absolute top-1/2 -right-24 w-72 h-72 bg-indigo-100/40 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative mx-auto max-w-7xl">
+                <div class="grid gap-16 md:grid-cols-2 md:items-center">
+
+                    <div class="flex flex-col space-y-10">
+                        <div>
+                            <div
+                                class="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 shadow-sm">
+                                <span class="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-600">
+                                    Trusted by 1500+ Schools Across India
+                                </span>
+                            </div>
+
+                            <h1 class="mt-8 text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
+                                Connect All Your School Systems into <span
+                                    class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                                    One Smooth Workflow
+                                </span>
+                            </h1>
+
+                            <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 md:text-xl">
+                                We connect your payment gateway, attendance machines, website, and communication tools
+                                so everything works together automatically without extra effort from your staff.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center gap-3 text-slate-700 font-medium">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50">
+                                    <span class="material-symbols-outlined text-sm text-blue-600">done</span>
+                                </div>
+                                One update reflects everywhere instantly
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-700 font-medium">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50">
+                                    <span class="material-symbols-outlined text-sm text-blue-600">done</span>
+                                </div>
+                                Save hours of manual work every week
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-700 font-medium">
+                                <div class="flex h-6 w-6 items-center justify-center rounded-full bg-blue-50">
+                                    <span class="material-symbols-outlined text-sm text-blue-600">done</span>
+                                </div>
+                                Clear data, fewer mistakes, better decisions
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <button
+                                class="group relative overflow-hidden rounded-full bg-slate-900 px-8 py-4 transition-all hover:bg-slate-800 active:scale-95">
+                                <span class="relative z-10 font-bold text-white">
+                                    Schedule Consultation
+                                </span>
+                            </button>
+
+                            <button
+                                class="rounded-full border border-slate-200 bg-white px-8 py-4 font-bold text-slate-700 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50">
+                                Talk to Our Integration Expert
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div
+                            class="relative rounded-[2.5rem] border border-white bg-white/60 p-4 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] backdrop-blur-xl">
+                            <div class="grid grid-cols-2 gap-4">
+
+                                <div
+                                    class="group flex flex-col items-center gap-4 rounded-3xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                                    <div
+                                        class="rounded-2xl bg-blue-50 p-4 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined text-3xl">payments</span>
+                                    </div>
+                                    <p class="text-sm font-bold tracking-wide text-slate-900">Payments</p>
+                                </div>
+
+                                <div
+                                    class="group flex flex-col items-center gap-4 rounded-3xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                                    <div
+                                        class="rounded-2xl bg-emerald-50 p-4 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined text-3xl">fingerprint</span>
+                                    </div>
+                                    <p class="text-sm font-bold tracking-wide text-slate-900">Attendance</p>
+                                </div>
+
+                                <div
+                                    class="group flex flex-col items-center gap-4 rounded-3xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                                    <div
+                                        class="rounded-2xl bg-amber-50 p-4 text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined text-3xl">language</span>
+                                    </div>
+                                    <p class="text-sm font-bold tracking-wide text-slate-900">Website</p>
+                                </div>
+
+                                <div
+                                    class="group flex flex-col items-center gap-4 rounded-3xl bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">
+                                    <div
+                                        class="rounded-2xl bg-rose-50 p-4 text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition-colors">
+                                        <span class="material-symbols-outlined text-3xl">chat_bubble</span>
+                                    </div>
+                                    <p class="text-sm font-bold tracking-wide text-slate-900">Communication</p>
+                                </div>
+
+                            </div>
+
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div
+                                    class="h-20 w-20 rounded-full bg-white shadow-lg flex items-center justify-center border border-slate-50">
+                                    <div
+                                        class="h-12 w-12 rounded-full border-2 border-dashed border-blue-400 animate-[spin_10s_linear_infinite]">
+                                    </div>
+                                    <span class="absolute material-symbols-outlined text-blue-600">sync</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- When Systems Don't Talk Section -->
+        <section class="relative overflow-hidden bg-[#FDFDFF] px-6 py-24 md:py-32" id="problems">
+            <div class="absolute top-0 right-0 -mr-24 -mt-24 h-96 w-96 rounded-full bg-slate-50 blur-3xl"></div>
+
+            <div class="relative mx-auto max-w-7xl">
+                <div class="mb-8">
+                    <h2 class="text-balance text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+                        When Your <span class="text-rose-500 italic">School Systems</span> Don’t Work Together
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-slate-600">
+                        Many schools use different systems for fees, attendance, SMS, and admissions.
+                        But these systems do not share information automatically, which creates extra work and
+                        confusion.
+                    </p>
+                </div>
+
+                <div class="grid gap-6 md:grid-cols-6 lg:grid-cols-12">
+
+                    <div
+                        class="group relative col-span-full overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-blue-500/5 md:col-span-3 lg:col-span-4">
+                        <div
+                            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 transition-colors group-hover:bg-rose-600 group-hover:text-white">
+                            <span class="material-symbols-outlined">receipt_long</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Manual Fee Confirmation</h3>
+                        <p class="mt-3 text-slate-500 leading-relaxed">
+                            Staff have to check payments manually and match them with student records again and again.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group relative col-span-full overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-blue-500/5 md:col-span-3 lg:col-span-4">
+                        <div
+                            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 transition-colors group-hover:bg-amber-600 group-hover:text-white">
+                            <span class="material-symbols-outlined">edit_note</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Attendance Entered Twice</h3>
+                        <p class="mt-3 text-slate-500 leading-relaxed">
+                            Attendance from biometric machines often needs to be entered again into the main system,
+                            which takes time and causes mistakes.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group relative col-span-full overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-blue-500/5 md:col-span-2 lg:col-span-4">
+                        <div
+                            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 transition-colors group-hover:bg-indigo-600 group-hover:text-white">
+                            <span class="material-symbols-outlined">sms_failed</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Delayed Messages to Parents</h3>
+                        <p class="mt-3 text-slate-500 leading-relaxed">
+                            Parents receive updates late because the SMS system is not connected to your main database.
+                        </p>
+                    </div>
+
+                    <div
+                        class="group relative col-span-full flex flex-col items-start justify-between overflow-hidden rounded-[2rem] border border-slate-100 bg-slate-900 p-8 text-white transition-all md:flex-row md:items-center lg:col-span-8">
+                        <div class="max-w-md">
+                            <div
+                                class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white">
+                                <span class="material-symbols-outlined">sync_disabled</span>
+                            </div>
+                            <h3 class="text-xl font-bold">Lost Admission Inquiries</h3>
+                            <p class="mt-2 text-slate-400">
+                                Admission inquiries from your website may get missed if they are not properly connected
+                                to your system.
+                            </p>
+                        </div>
+                        <div class="mt-8 md:mt-0">
+                            <span
+                                class="rounded-full border border-white/20 px-4 py-2 text-xs font-medium uppercase tracking-widest text-white/60">
+                                Needs Immediate Attention
+                            </span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group relative col-span-full overflow-hidden rounded-[2rem] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-blue-500/5 lg:col-span-4">
+                        <div
+                            class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition-colors group-hover:bg-slate-900 group-hover:text-white">
+                            <span class="material-symbols-outlined">analytics</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">No Clear Overall Report</h3>
+                        <p class="mt-3 text-slate-500 leading-relaxed">
+                            It becomes difficult to see one clear report of your school’s performance and finances.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Connected Workflow Section -->
+        <section class="relative overflow-hidden bg-white px-6 py-24 md:py-32" id="workflow">
+            <div
+                class="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:32px_32px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20">
+            </div>
+
+            <div class="relative mx-auto max-w-7xl">
+                <div class="mb-20 text-center">
+                    <span
+                        class="inline-block rounded-full bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-blue-600">
+                        What Is Integration?
+                    </span>
+                    <h2 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+                        How Everything <span class="text-blue-600">Connects Automatically</span>
+                    </h2>
+                    <p class="mt-4 text-lg text-slate-500">
+                        Integration means connecting your website, admission system, and communication tools
+                        so they share information automatically without retyping the same data.
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute top-1/2 left-0 hidden w-full -translate-y-12 px-12 md:block">
+                        <svg class="w-full" height="2" viewBox="0 0 1000 2" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 1H1000" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="8 8" />
+                        </svg>
+                    </div>
+
+                    <div class="grid gap-8 md:grid-cols-4">
+
+                        <!-- Step 1 -->
+                        <div class="group relative flex flex-col items-center text-center">
+                            <div
+                                class="relative z-10 mb-8 flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-white border border-slate-100 shadow-xl transition-all group-hover:-translate-y-2 group-hover:border-blue-200">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-3xl bg-blue-50 text-blue-600">
+                                    <span class="material-symbols-outlined text-3xl">contact_page</span>
+                                </div>
+                                <span
+                                    class="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">01</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900">Parent Sends Enquiry</h4>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-500">
+                                A parent fills the enquiry form on your school website.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="group relative flex flex-col items-center text-center">
+                            <div
+                                class="relative z-10 mb-8 flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-white border border-slate-100 shadow-xl transition-all group-hover:-translate-y-2 group-hover:border-emerald-200">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-3xl bg-emerald-50 text-emerald-600">
+                                    <span class="material-symbols-outlined text-3xl">sync</span>
+                                </div>
+                                <span
+                                    class="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">02</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900">Data Enters School System</h4>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-500">
+                                The enquiry details automatically appear in your admission or CRM system.
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="group relative flex flex-col items-center text-center">
+                            <div
+                                class="relative z-10 mb-8 flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-white border border-slate-100 shadow-xl transition-all group-hover:-translate-y-2 group-hover:border-amber-200">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-3xl bg-amber-50 text-amber-600">
+                                    <span class="material-symbols-outlined text-3xl">assignment_turned_in</span>
+                                </div>
+                                <span
+                                    class="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">03</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900">Admission Process Starts</h4>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-500">
+                                Admin can review the enquiry and convert it into an admission without typing the details
+                                again.
+                            </p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="group relative flex flex-col items-center text-center">
+                            <div
+                                class="relative z-10 mb-8 flex h-24 w-24 items-center justify-center rounded-[2.5rem] bg-slate-900 shadow-2xl transition-all group-hover:-translate-y-2 group-hover:bg-blue-600">
+                                <div
+                                    class="flex h-16 w-16 items-center justify-center rounded-3xl bg-white/10 text-white">
+                                    <span class="material-symbols-outlined text-3xl">chat</span>
+                                </div>
+                                <span
+                                    class="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-blue-500 text-[10px] font-bold text-white">04</span>
+                            </div>
+                            <h4 class="text-lg font-bold text-slate-900">Automatic Communication</h4>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-500">
+                                The parent receives updates by SMS or WhatsApp automatically.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Systems We Connect -->
+        <section class="relative overflow-hidden bg-white px-6 py-24 md:py-32" id="systems">
+            <div class="absolute -top-24 right-0 h-96 w-96 rounded-full bg-blue-50/50 blur-3xl"></div>
+
+            <div class="relative mx-auto max-w-7xl">
+                <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                    <div>
+                        <div
+                            class="mb-4 inline-flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-blue-700">
+                            <span class="material-symbols-outlined text-sm">hub</span> What We Can Connect
+                        </div>
+                        <h2 class="text-4xl font-bold tracking-tight text-slate-900 md:text-5xl">
+                            Systems We Can <span class="text-blue-600">Connect for Your Institutions</span>
+                        </h2>
+                        <p class="mt-4 text-lg text-slate-600">
+                            We connect your existing tools so they work together smoothly.
+                            No need to replace your systems. We simply link them so information moves automatically.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+                    <!-- Payment Systems -->
+                    <div
+                        class="group relative rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5">
+                        <div
+                            class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-white shadow-lg transition-transform group-hover:scale-110">
+                            <span class="material-symbols-outlined">account_balance_wallet</span>
+                        </div>
+                        <h3 class="mb-6 text-xl font-bold text-slate-900">Payment Systems</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Razorpay</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Paytm</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Other Payment Gateways</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Communication Systems -->
+                    <div
+                        class="group relative rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5">
+                        <div
+                            class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg transition-transform group-hover:scale-110">
+                            <span class="material-symbols-outlined">campaign</span>
+                        </div>
+                        <h3 class="mb-6 text-xl font-bold text-slate-900">Communication Systems</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">SMS Gateway</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">WhatsApp Notifications</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Attendance Devices -->
+                    <div
+                        class="group relative rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5">
+                        <div
+                            class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-500 text-white shadow-lg transition-transform group-hover:scale-110">
+                            <span class="material-symbols-outlined">badge</span>
+                        </div>
+                        <h3 class="mb-6 text-xl font-bold text-slate-900">Attendance Devices</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Biometric Machines</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">RFID Systems</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Website & Internal Systems -->
+                    <div
+                        class="group relative rounded-3xl border border-slate-100 bg-white p-8 transition-all hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-500/5">
+                        <div
+                            class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-slate-900 shadow-lg transition-transform group-hover:scale-110">
+                            <span class="material-symbols-outlined">developer_board</span>
+                        </div>
+                        <h3 class="mb-6 text-xl font-bold text-slate-900">Website & School System</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Online Admission Forms</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">Newsletter</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600">
+                                <span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+                                <span class="text-sm font-semibold">ERP Connections</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="mt-16 text-center">
+                    <p class="text-sm font-medium text-slate-400">
+                        Not sure if your system can be connected?
+                        <a href="#" class="text-blue-600 underline underline-offset-4 hover:text-blue-700">
+                            Talk to us and we will guide you.
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
