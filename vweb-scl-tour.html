@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Tour — VIDYAOne School Website Builder</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Fraunces"', 'serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        ink: '#1F2430',
+                        paper: '#FFFFFF',
+                        canvas: '#FCFAF6',
+                        slate: { soft: '#6B7280' },
+                        rose: { 50: '#FFF1F0', 100: '#FFE1DE', 300: '#FFB3AC', 500: '#F2756A', 600: '#E15B4F' },
+                        mint: { 50: '#EEFBF3', 100: '#D8F6E3', 300: '#9CE6B8', 500: '#3FAE6E', 600: '#2F8F58' },
+                        sun: { 50: '#FFFAEB', 100: '#FEF0C7', 300: '#FDD971', 500: '#E6A817', 600: '#C68A0C' },
+                        sky: { 50: '#EFF8FF', 100: '#D7ECFF', 300: '#9AC9F5', 500: '#3C8FD9', 600: '#2A71B3' },
+                    },
+                    boxShadow: {
+                        card: '0 1px 2px rgba(31,36,48,0.04), 0 12px 28px -12px rgba(31,36,48,0.12)',
+                        cardHover: '0 1px 2px rgba(31,36,48,0.06), 0 24px 40px -16px rgba(31,36,48,0.18)',
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+</head>
+
+<body class="bg-canvas text-ink font-body antialiased">
+
+    <!-- ============ 1. HERO SECTION ============ -->
+    <section class="relative overflow-hidden">
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br from-sky-50 via-canvas to-mint-50"></div>
+        <div class="absolute -top-24 -right-24 w-[28rem] h-[28rem] rounded-full bg-rose-100/60 blur-3xl -z-10"></div>
+        <div class="absolute -bottom-32 -left-16 w-[24rem] h-[24rem] rounded-full bg-sun-100/70 blur-3xl -z-10"></div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-20 lg:pt-20 lg:pb-28 grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
+
+            <div>
+
+                <div
+                    class="inline-flex items-center gap-2 rounded-full bg-sky-100 text-sky-600 text-xs font-semibold px-3.5 py-1.5 my-3">
+                    <span class="h-1.5 w-1.5 rounded-full bg-sky-500"></span>
+                    Step-by-step product tour videos
+                </div>
+
+                <h1
+                    class="font-display text-[2.6rem] sm:text-5xl lg:text-[3.4rem] leading-[1.07] font-semibold tracking-tight text-ink">
+                    See how easy it is to manage your
+                    <span class="relative inline-block">
+                        <span class="relative z-10">school website</span>
+                        <span class="absolute left-0 right-0 bottom-1.5 h-3 bg-rose-200/70 -z-0"></span>
+                    </span>
+                </h1>
+
+                <p class="mt-6 text-lg text-ink/65 leading-relaxed max-w-xl">
+                    Take a guided tour of VIDYAOne School Website and learn how to update pages, manage content, collect
+                    enquiries, and keep your website fresh without technical complexity.
+                </p>
+
+
+                <div class="mt-9 flex flex-wrap items-center gap-3.5">
+                    <button onclick="openVideo('nECFGyNbJaE')"
+                        class="group inline-flex items-center gap-2.5 rounded-full bg-ink text-paper font-semibold px-6 py-3.5 hover:bg-ink/85 transition-colors">
+                        <span class="flex h-7 w-7 items-center justify-center rounded-full bg-paper/15">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="h-4 w-4">
+                                <path d="M12 2l2.2 5.8L20 10l-5.8 2.2L12 18l-2.2-5.8L4 10l5.8-2.2L12 2z" />
+                            </svg>
+                        </span>
+                        Start 15-Day Free Trial
+                    </button>
+                    <a href="#trial"
+                        class="inline-flex items-center gap-2 rounded-full border-2 border-ink/12 bg-paper font-semibold px-6 py-3.5 hover:border-ink/25 transition-colors">
+                        Website Templates
+                    </a>
+
+                </div>
+
+                <div class="mt-12 grid grid-cols-3 gap-6 max-w-md">
+                    <div class="border-l-2 border-rose-300 pl-4">
+                        <div class="font-display text-3xl font-semibold">19+</div>
+                        <div class="text-sm text-ink/55 mt-0.5">Tutorial Videos</div>
+                    </div>
+                    <div class="border-l-2 border-mint-300 pl-4">
+                        <div class="font-display text-3xl font-semibold">40+</div>
+                        <div class="text-sm text-ink/55 mt-0.5">Website Pages</div>
+                    </div>
+                    <div class="border-l-2 border-sun-300 pl-4">
+                        <div class="font-display text-3xl font-semibold">10<span class="text-xl">m</span></div>
+                        <div class="text-sm text-ink/55 mt-0.5">Setup Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: featured video -->
+            <div class="relative">
+                <button onclick="openVideo('nECFGyNbJaE')"
+                    class="relative block w-full text-left rounded-3xl overflow-hidden shadow-cardHover bg-ink aspect-video group cursor-pointer">
+                    <img src="https://img.youtube.com/vi/nECFGyNbJaE/maxresdefault.jpg"
+                        alt="VIDYAOne dashboard overview preview"
+                        class="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-70 transition-opacity" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"></div>
+
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span
+                            class="h-20 w-20 rounded-full bg-paper/95 flex items-center justify-center shadow-card group-hover:scale-105 transition-transform">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1F2430"
+                                class="h-7 w-7 ml-1">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 right-0 p-6 flex items-center justify-between">
+                        <div>
+                            <span
+                                class="inline-block bg-paper/90 text-ink text-[11px] font-semibold uppercase tracking-wide rounded-full px-2.5 py-1 mb-2">Getting
+                                Started</span>
+                            <p class="text-paper font-display text-lg font-medium">Choose the Best Template for Your
+                                Website</p>
+                        </div>
+                    </div>
+                </button>
+
+                <div
+                    class="absolute -left-6 -bottom-6 hidden sm:flex items-center gap-3 bg-paper rounded-2xl shadow-card px-4 py-3.5">
+                    <div class="h-9 w-9 rounded-full bg-mint-100 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#2F8F58"
+                            stroke-width="2" class="h-4.5 w-4.5">
+                            <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-semibold leading-tight">No coding needed</p>
+                        <p class="text-xs text-ink/50 leading-tight">Built for school staff</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 2. QUICK TOUR ============ -->
+    <section id="quick-tour" class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
+            <div>
+                <span class="text-xs font-semibold uppercase tracking-[0.14em] text-sun-600">Start Here</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-2">
+                    Watch These Videos to Get Started Fast
+                </h2>
+                <p class="text-ink/60 mt-3">
+                    New to VIDYAOne School Website? Start with these selected videos to understand the basics of website
+                    setup, content updates, and daily management.
+                </p>
+            </div>
+        </div>
+
+
+        <div id="quick-tour-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- ============ 3. TOUR ROADMAP ============ -->
+    <section id="roadmap" class="bg-ink/[0.025] border-y border-ink/[0.06] py-20 lg:py-24">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+
+            <div class="mb-12 max-w-4xl">
+                <span class="text-xs font-semibold uppercase tracking-[0.14em] text-mint-600">Complete Video
+                    Guide</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-2">
+                    A Complete Walkthrough of VIDYAOne School Website
+                </h2>
+                <p class="text-ink/60 mt-3">
+                    Explore each feature through guided videos and learn how to confidently manage your school website.
+                </p>
+            </div>
+
+
+            <!-- Tabs -->
+            <div class="flex flex-wrap gap-2 mb-10" role="tablist">
+                <button onclick="vTabSwitch('getting-started')" data-tab-btn="getting-started"
+                    class="tab-btn is-active inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border-2 transition-colors">
+                    <span class="h-2 w-2 rounded-full bg-rose-500"></span> Getting Started
+                </button>
+                <button onclick="vTabSwitch('content')" data-tab-btn="content"
+                    class="tab-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border-2 transition-colors">
+                    <span class="h-2 w-2 rounded-full bg-sky-500"></span> Content
+                </button>
+
+                <button onclick="vTabSwitch('pages')" data-tab-btn="pages"
+                    class="tab-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border-2 transition-colors">
+                    <span class="h-2 w-2 rounded-full bg-sun-500"></span> Pages
+                </button>
+                <button onclick="vTabSwitch('seo')" data-tab-btn="seo"
+                    class="tab-btn inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold border-2 transition-colors">
+                    <span class="h-2 w-2 rounded-full bg-rose-500"></span> SEO & Social
+                </button>
+            </div>
+            <!-- ===== Panel: Getting Started ===== -->
+            <div data-tab-panel="getting-started" class="tab-panel">
+                <div class="grid sm:grid-cols-3 gap-5">
+                    <!-- About -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('pUh-QwWjSOU')">
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/pUh-QwWjSOU/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">About
+                                School</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Create a Professional About Us Page for Your School
+                                Website</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('xlDn597ITUc')">
+
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/xlDn597ITUc/hqdefault.jpg"
+                                class="w-full h-full object-cover" alt="Choose the Best Template for Your Website"
+                                loading="lazy" />
+
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20 transition-colors">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="https://youtu.be/xlDn597ITUc" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">
+                                Management Message
+                            </span>
+
+                            <h4 class="font-semibold text-sm mt-2.5 leading-snug">
+                                Upload Management Messages on Your School Website
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('WYsmEOv5tJM')">
+
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/WYsmEOv5tJM/hqdefault.jpg"
+                                class="w-full h-full object-cover" alt="Choose the Best Template for Your Website"
+                                loading="lazy" />
+
+                            <div
+                                class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20 transition-colors">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="https://youtu.be/WYsmEOv5tJM" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">
+                                Admission
+                            </span>
+
+                            <h4 class="font-semibold text-sm mt-2.5 leading-snug">
+                                Add Admission Details on Your School Website
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-tab-panel="content" class="tab-panel hidden">
+                <div class="grid sm:grid-cols-3 gap-5">
+
+                    <!-- School Timing -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('-cFfcyjln9Y')">
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/-cFfcyjln9Y/hqdefault.jpg"
+                                class="w-full h-full object-cover" alt="Homepage Setup" loading="lazy" />
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">School
+                                Timing</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Manage School Timings and Period Schedule Online
+                            </h4>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- School Events   -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('bjylUtE7mCE')">
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/bjylUtE7mCE/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">School
+                                Event</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Manage School Events and Calendar on Your School
+                                Website</h4>
+                        </div>
+                    </div>
+
+                    <!-- testimonial -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('pUh-QwWjSOU')">
+                        <div class="relative aspect-video bg-sky-100">
+                            <img src="https://img.youtube.com/vi/pUh-QwWjSOU/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1">Testimonial</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Add Testimonials and Achievements on Your School
+                                Website</h4>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+            <!-- ===== Panel: Pages ===== -->
+            <div data-tab-panel="pages" class="tab-panel hidden">
+                <div class="grid sm:grid-cols-3 gap-5">
+
+                    <!-- Enable Pages -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('ZnDh5dzvsDk')">
+                        <div class="relative aspect-video bg-yellow-100">
+                            <img src="https://img.youtube.com/vi/ZnDh5dzvsDk/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C68A0C"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-700 rounded-full px-2.5 py-1">Settings</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Enable or Disable Pages on Your Website</h4>
+                        </div>
+                    </div>
+
+                    <!-- Active Pages -->
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('CrhHJuhClEw')">
+                        <div class="relative aspect-video bg-yellow-100">
+                            <img src="https://img.youtube.com/vi/CrhHJuhClEw/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C68A0C"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-yellow-100 text-yellow-700 rounded-full px-2.5 py-1">Settings</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Manage Active and Inactive Pages on Your Website
+                            </h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== Panel: SEO ===== -->
+            <div data-tab-panel="seo" class="tab-panel hidden">
+                <div class="grid sm:grid-cols-3 gap-5">
+
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('OFMdtqSBnA8')">
+                        <div class="relative aspect-video bg-rose-100">
+                            <img src="https://img.youtube.com/vi/OFMdtqSBnA8/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E15B4F"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-rose-100 text-rose-600 rounded-full px-2.5 py-1">SEO</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Meta Titles & Descriptions</h4>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer"
+                        onclick="openVideo('Bld-Ke1cdZg')">
+                        <div class="relative aspect-video bg-rose-100">
+                            <img src="https://img.youtube.com/vi/Bld-Ke1cdZg/hqdefault.jpg"
+                                class="w-full h-full object-cover">
+                            <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20">
+                                <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E15B4F"
+                                        class="h-4 w-4 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <span
+                                class="inline-block text-[11px] font-semibold uppercase tracking-wide bg-rose-100 text-rose-600 rounded-full px-2.5 py-1">SEO</span>
+                            <h4 class="font-semibold text-sm mt-2.5">Connect Facebook, Instagram, YouTube & LinkedIn to
+                                Your School Website</h4>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- ============ MANAGE SCHOOL MEDIAS ============ -->
+    <section id="manage-medias" class="relative overflow-hidden py-20 lg:py-28">
+
+        <!-- ambient pastel field -->
+        <div class="absolute inset-0 -z-10 bg-gradient-to-b from-mint-50/70 via-canvas to-canvas"></div>
+        <div class="absolute top-10 right-0 w-[26rem] h-[26rem] rounded-full bg-sky-100/60 blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 -left-20 w-[22rem] h-[22rem] rounded-full bg-sun-100/60 blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+            <!-- ===== Section header ===== -->
+            <div class="grid gap-12 items-end mb-8">
+                <div>
+
+                    <h2 class="font-display text-4xl sm:text-[2.75rem] leading-[1.1] font-semibold tracking-tight">
+                        Display your school’s
+                        <span class="relative inline-block">
+                            <span class="relative z-10">photos, videos & achievements</span>
+                            <span class="absolute left-0 right-0 bottom-1.5 h-3 bg-mint-200/70 -z-0"></span>
+                        </span>
+                    </h2>
+
+                    <p class="mt-5 text-lg text-ink/60 leading-relaxed">
+                        See how galleries, videos, and downloadable resources work together to create a modern digital
+                        experience for parents and students.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- ===== Primary duo: Website Gallery + Media Gallery ===== -->
+            <div class="grid lg:grid-cols-2 gap-7 mb-7">
+
+                <!-- Website Gallery — featured card -->
+                <article class="group relative rounded-3xl overflow-hidden bg-ink shadow-glow cursor-pointer"
+                    onclick="openVideo('l0H6gLLvqSw')">
+                    <div class="relative aspect-[16/10]">
+                        <img src="https://img.youtube.com/vi/l0H6gLLvqSw/maxresdefault.jpg"
+                            alt="Upload Images and Videos on School Website Gallery"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-65 group-hover:scale-[1.03] transition-all duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/5"></div>
+
+                        <!-- play -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span
+                                class="h-[4.5rem] w-[4.5rem] rounded-full bg-paper/95 flex items-center justify-center shadow-card group-hover:scale-105 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#E15B4F"
+                                    class="h-7 w-7 ml-1">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- top badges -->
+                        <div class="absolute top-5 left-5 flex items-center gap-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 bg-paper/95 text-ink text-[11px] font-semibold uppercase tracking-wide rounded-full px-3 py-1.5">
+                                <span class="h-1.5 w-1.5 rounded-full bg-rose-500"></span> Website Gallery
+                            </span>
+                        </div>
+                        <span
+                            class="absolute top-5 right-5 text-[11px] font-semibold bg-ink/50 text-paper rounded-full px-2.5 py-1.5 backdrop-blur">2:30</span>
+
+                        <!-- bottom content -->
+                        <div class="absolute bottom-0 left-0 right-0 p-7">
+                            <h3 class="text-paper font-display text-2xl font-medium leading-snug">Upload Images and
+                                Videos on the School Website Gallery</h3>
+                            <p class="text-paper/70 text-sm mt-2 max-w-md">Build a public-facing photo & video gallery
+                                that appears across every page of your school's site.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Media Gallery — featured card -->
+                <article class="group relative rounded-3xl overflow-hidden bg-ink shadow-glow cursor-pointer"
+                    onclick="openVideo('8rENKcXpo4Q')">
+                    <div class="relative aspect-[16/10]">
+                        <img src="https://img.youtube.com/vi/8rENKcXpo4Q/maxresdefault.jpg"
+                            alt="Upload Images and Videos in School Media Gallery"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-65 group-hover:scale-[1.03] transition-all duration-500" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/5"></div>
+
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span
+                                class="h-[4.5rem] w-[4.5rem] rounded-full bg-paper/95 flex items-center justify-center shadow-card group-hover:scale-105 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2F8F58"
+                                    class="h-7 w-7 ml-1">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                        <div class="absolute top-5 left-5 flex items-center gap-2">
+                            <span
+                                class="inline-flex items-center gap-1.5 bg-paper/95 text-ink text-[11px] font-semibold uppercase tracking-wide rounded-full px-3 py-1.5">
+                                <span class="h-1.5 w-1.5 rounded-full bg-mint-500"></span> Media Gallery
+                            </span>
+                        </div>
+                        <span
+                            class="absolute top-5 right-5 text-[11px] font-semibold bg-ink/50 text-paper rounded-full px-2.5 py-1.5 backdrop-blur">1:50</span>
+
+                        <div class="absolute bottom-0 left-0 right-0 p-7">
+                            <h3 class="text-paper font-display text-2xl font-medium leading-snug">Upload Images and
+                                Videos in the School Media Gallery</h3>
+                            <p class="text-paper/70 text-sm mt-2 max-w-md">A dedicated media library to store and
+                                organize files separately from your public gallery pages.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ===== Secondary duo: PDF Upload + Image Compression ===== -->
+            <div class="grid lg:grid-cols-2 gap-7 mb-16">
+
+                <!-- PDF Documents -->
+                <article
+                    class="group rounded-3xl bg-white border border-ink/[0.06] shadow-card hover:shadow-cardHover transition-shadow p-2 cursor-pointer"
+                    onclick="openVideo('b-06r1fW6e8')">
+                    <div class="flex flex-col sm:flex-row gap-0 sm:gap-0 items-stretch">
+                        <div class="relative sm:w-2/5 rounded-2xl overflow-hidden aspect-video sm:aspect-auto shrink-0">
+                            <img src="https://img.youtube.com/vi/b-06r1fW6e8/hqdefault.jpg"
+                                alt="Upload PDFs and Documents on Your Website"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div
+                                class="absolute inset-0 bg-sky-900/20 group-hover:bg-sky-900/10 transition-colors flex items-center justify-center">
+                                <span
+                                    class="h-12 w-12 rounded-full bg-paper/95 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#2A71B3"
+                                        class="h-4.5 w-4.5 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-center">
+                            <span
+                                class="inline-flex items-center gap-1.5 w-fit text-[11px] font-semibold uppercase tracking-wide bg-sky-100 text-sky-600 rounded-full px-2.5 py-1 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.2" class="h-3 w-3">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <path d="M14 2v6h6" />
+                                </svg>
+                                Documents
+                            </span>
+                            <h3 class="font-display font-semibold text-lg leading-snug">Upload PDFs & Documents</h3>
+                            <p class="text-sm text-ink/55 mt-1.5">Share prospectuses, fee structures, and circulars as
+                                downloadable files.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Image Compression -->
+                <article
+                    class="group rounded-3xl bg-white border border-ink/[0.06] shadow-card hover:shadow-cardHover transition-shadow p-2 cursor-pointer"
+                    onclick="openVideo('tAoZqfwjQ8U')">
+                    <div class="flex flex-col sm:flex-row gap-0 items-stretch">
+                        <div class="relative sm:w-2/5 rounded-2xl overflow-hidden aspect-video sm:aspect-auto shrink-0">
+                            <img src="https://img.youtube.com/vi/tAoZqfwjQ8U/hqdefault.jpg"
+                                alt="Compress Images for Faster School Website Speed"
+                                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                            <div
+                                class="absolute inset-0 bg-sun-900/20 group-hover:bg-sun-900/10 transition-colors flex items-center justify-center">
+                                <span
+                                    class="h-12 w-12 rounded-full bg-paper/95 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#C68A0C"
+                                        class="h-4.5 w-4.5 ml-0.5">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6 flex-1 flex flex-col justify-center">
+                            <span
+                                class="inline-flex items-center gap-1.5 w-fit text-[11px] font-semibold uppercase tracking-wide bg-sun-100 text-sun-600 rounded-full px-2.5 py-1 mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.2" class="h-3 w-3">
+                                    <path d="M13 2 3 14h7l-1 8 10-12h-7z" />
+                                </svg>
+                                Performance
+                            </span>
+                            <h3 class="font-display font-semibold text-lg leading-snug">Compress Images for Speed</h3>
+                            <p class="text-sm text-ink/55 mt-1.5">Automatically optimize uploads so every page loads
+                                fast on mobile.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto rounded-3xl bg-white border border-ink/[0.06] shadow-card p-8 sm:p-10">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+                <div>
+                    <span class="text-xs font-semibold uppercase tracking-[0.14em] text-sky-600">
+                        Support & Assistance
+                    </span>
+                    <h3 class="font-display text-2xl font-semibold tracking-tight mt-1.5">
+                        Need help managing your school website?
+                    </h3>
+                </div>
+                <p class="text-sm text-ink/55">
+                    Our team is here to help you with setup, content updates, and any product-related questions.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-5">
+
+                <!-- Call -->
+                <a href="tel:+917080137444"
+                    class="flex items-center gap-4 rounded-2xl bg-rose-50 border border-rose-100 p-5 hover:shadow-card transition-shadow">
+                    <span class="h-11 w-11 shrink-0 rounded-xl bg-rose-500 text-paper flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="h-5 w-5">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-rose-600">Call Us</p>
+                        <p class="font-semibold mt-0.5">+91 70801 37444</p>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:support@vidyaone.com"
+                    class="flex items-center gap-4 rounded-2xl bg-sky-50 border border-sky-100 p-5 hover:shadow-card transition-shadow">
+                    <span class="h-11 w-11 shrink-0 rounded-xl bg-sky-500 text-paper flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="h-5 w-5">
+                            <path d="M22 6 12 13 2 6" />
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                        </svg>
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-sky-600">Email Support</p>
+                        <p class="font-semibold mt-0.5">support@vidyaone.com</p>
+                    </div>
+                </a>
+
+                <!-- Tutorials -->
+                <a href="https://www.youtube.com/@vidyaone" target="_blank" rel="noopener"
+                    class="flex items-center gap-4 rounded-2xl bg-mint-50 border border-mint-100 p-5 hover:shadow-card transition-shadow">
+                    <span class="h-11 w-11 shrink-0 rounded-xl bg-mint-500 text-paper flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" class="h-5 w-5">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </span>
+                    <div>
+                        <p class="text-xs font-semibold uppercase tracking-wide text-mint-600">Video Tutorials</p>
+                        <p class="font-semibold mt-0.5">Watch more helpful guides</p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============ VIDEO MODAL ============ -->
+    <div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-8">
+        <div class="absolute inset-0 bg-ink/70 backdrop-blur-sm" onclick="closeVideo()"></div>
+        <div class="relative w-full max-w-3xl">
+            <button onclick="closeVideo()" aria-label="Close video"
+                class="absolute -top-12 right-0 h-9 w-9 rounded-full bg-paper/15 hover:bg-paper/25 flex items-center justify-center transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white"
+                    stroke-width="2.2" class="h-5 w-5">
+                    <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="rounded-2xl overflow-hidden shadow-cardHover bg-ink aspect-video">
+                <iframe id="video-frame" class="w-full h-full" src="" title="Tutorial video" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== Video data sourced from VIDYAOne product config =====
+        const videos = {
+            "template-selection": { title: "Choose the Best Template for Your Website", yt: "nECFGyNbJaE", category: "Getting Started", color: "rose" },
+            "homepage-management": { title: "School Website Homepage Setup & Customization", yt: "zdyyEF3OkxI", category: "Homepage & Branding", color: "sky" },
+            "hero-section-images": { title: "How to Upload Hero Section Images on Your School Website", yt: "ejVtwlm6yC4", category: "Homepage & Branding", color: "sky" },
+            "about-us-management": { title: "Create a Professional About Us Page for Your School Website", yt: "pUh-QwWjSOU", category: "Homepage & Branding", color: "sky" },
+            "admission-management": { title: "Add Admission Details on Your School Website", yt: "WYsmEOv5tJM", category: "Admissions & Information", color: "sun" },
+            "school-timings": { title: "Manage School Timings and Period Schedule Online", yt: "-cFfcyjln9Y", category: "Admissions & Information", color: "sun" },
+            "school-uniform": { title: "Publish School Uniform Details on Your Website", yt: "oQA5AcpBauQ", category: "Admissions & Information", color: "sun" },
+            "management-message": { title: "Upload Management Messages on Your School Website", yt: "xlDn597ITUc", category: "School Profiles", color: "mint" },
+            "staff-management": { title: "Add Staff Details on Your School Website", yt: "WiKd40ymxEw", category: "School Profiles", color: "mint" },
+            "events-calendar": { title: "Manage School Events and Calendar on Your School Website", yt: "bjylUtE7mCE", category: "Engagement", color: "rose" },
+            "testimonials-achievements": { title: "Add Testimonials and Achievements on Your School Website", yt: "NV0OF5a6w2w", category: "Engagement", color: "rose" },
+            "gallery-management": { title: "Upload Images and Videos on School Website Gallery", yt: "l0H6gLLvqSw", category: "Gallery", color: "mint" },
+            "media-gallery-management": { title: "Upload Images and Videos in School Media Gallery", yt: "8rENKcXpo4Q", category: "Gallery", color: "mint" },
+            "pdf-document-upload": { title: "Upload PDFs and Documents on Your Website", yt: "b-06r1fW6e8", category: "Gallery", color: "mint" },
+            "image-compression": { title: "Compress Images for Faster School Website Speed", yt: "tAoZqfwjQ8U", category: "Gallery", color: "mint" },
+            "enable-disable-pages": { title: "Enable or Disable Pages on Your Website", yt: "ZnDh5dzvsDk", category: "Page Management", color: "sun" },
+            "active-inactive-pages": { title: "Manage Active and Inactive Pages on Your Website", yt: "CrhHJuhClEw", category: "Page Management", color: "sun" },
+            "meta-tags": { title: "Meta Titles & Meta Descriptions for Your School Website", yt: "OFMdtqSBnA8", category: "SEO & Social", color: "rose" },
+            "social-media-links": { title: "Connect Facebook, Instagram, YouTube & LinkedIn to Your School Website", yt: "Bld-Ke1cdZg", category: "SEO & Social", color: "rose" },
+        };
+
+        const colorMap = {
+            rose: { badge: "bg-rose-100 text-rose-600", play: "#E15B4F", icon: "bg-rose-100" },
+            sky: { badge: "bg-sky-100 text-sky-600", play: "#2A71B3", icon: "bg-sky-100" },
+            mint: { badge: "bg-mint-100 text-mint-600", play: "#2F8F58", icon: "bg-mint-100" },
+            sun: { badge: "bg-sun-100 text-sun-600", play: "#C68A0C", icon: "bg-sun-100" },
+        };
+
+        function thumb(id, quality) { return `https://img.youtube.com/vi/${id}/${quality || 'mqdefault'}.jpg`; }
+
+        // ---- Quick Tour cards (curated best-first selection) ----
+        const quickTourIds = ["template-selection", "homepage-management", "hero-section-images", "gallery-management", "enable-disable-pages", "meta-tags"];
+        const quickGrid = document.getElementById('quick-tour-grid');
+        quickTourIds.forEach(id => {
+            const v = videos[id]; const c = colorMap[v.color];
+            quickGrid.insertAdjacentHTML('beforeend', `
+      <article class="group rounded-2xl bg-white border border-ink/[0.06] shadow-card hover:shadow-cardHover transition-shadow overflow-hidden cursor-pointer" onclick="openVideo('${v.yt}')">
+        <div class="relative aspect-video ${c.icon} overflow-hidden">
+          <img src="${thumb(v.yt, 'hqdefault')}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${v.title}" loading="lazy" />
+          <div class="absolute inset-0 bg-ink/10 group-hover:bg-ink/25 transition-colors flex items-center justify-center">
+            <span class="h-12 w-12 rounded-full bg-paper/95 flex items-center justify-center opacity-90 group-hover:scale-110 transition-transform">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${c.play}" class="h-4.5 w-4.5 ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wide ${c.badge} rounded-full px-2.5 py-1">${v.category}</span>
+          <h3 class="font-display font-semibold text-lg mt-3 leading-snug">${v.title}</h3>
+        </div>
+      </article>
+    `);
+        });
+
+        // ---- Helper to render a compact list-row card ----
+        function rowCard(id) {
+            const v = videos[id]; const c = colorMap[v.color];
+            return `
+      <li class="bg-white rounded-xl border border-ink/[0.06] shadow-card p-4 flex items-center gap-3.5 hover:shadow-cardHover transition-shadow cursor-pointer" onclick="openVideo('${v.yt}')">
+        <span class="relative h-12 w-16 shrink-0 rounded-lg overflow-hidden ${c.icon}">
+          <img src="${thumb(v.yt)}" class="w-full h-full object-cover" alt="${v.title}" loading="lazy" />
+          <span class="absolute inset-0 flex items-center justify-center bg-ink/20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="h-3.5 w-3.5 ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+        <span class="text-sm font-medium leading-snug">${v.title}</span>
+      </li>`;
+        }
+
+        // ---- Helper to render a full tile card (Getting Started / Pages / SEO) ----
+        function tileCard(id) {
+            const v = videos[id]; const c = colorMap[v.color];
+            return `
+      <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer" onclick="openVideo('${v.yt}')">
+        <div class="relative aspect-video ${c.icon}">
+          <img src="${thumb(v.yt, 'hqdefault')}" class="w-full h-full object-cover" alt="${v.title}" loading="lazy" />
+          <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20 transition-colors">
+            <span class="h-11 w-11 rounded-full bg-paper/95 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${c.play}" class="h-4 w-4 ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="p-5">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wide ${c.badge} rounded-full px-2.5 py-1">${v.category}</span>
+          <h4 class="font-semibold text-sm mt-2.5 leading-snug">${v.title}</h4>
+        </div>
+      </div>`;
+        }
+
+        // ---- Helper for masonry gallery cards ----
+        function galleryCard(id, square) {
+            const v = videos[id]; const c = colorMap[v.color];
+            return `
+      <div class="bg-white rounded-2xl border border-ink/[0.06] shadow-card overflow-hidden hover:shadow-cardHover transition-shadow cursor-pointer" onclick="openVideo('${v.yt}')">
+        <div class="relative ${square ? 'aspect-square' : 'aspect-video'} ${c.icon}">
+          <img src="${thumb(v.yt, 'hqdefault')}" class="w-full h-full object-cover" alt="${v.title}" loading="lazy" />
+          <div class="absolute inset-0 flex items-center justify-center bg-ink/10 hover:bg-ink/20 transition-colors">
+            <span class="h-10 w-10 rounded-full bg-paper/95 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="${c.play}" class="h-3.5 w-3.5 ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="p-4"><h4 class="font-semibold text-sm leading-snug">${v.title}</h4></div>
+      </div>`;
+        }
+
+        // ---- Populate panels ----
+        document.getElementById('panel-getting-started').insertAdjacentHTML('beforeend', tileCard('template-selection'));
+
+        document.getElementById('group-homepage-branding').innerHTML = ["homepage-management", "hero-section-images", "about-us-management"].map(rowCard).join('');
+        document.getElementById('group-admissions').innerHTML = ["admission-management", "school-timings", "school-uniform"].map(rowCard).join('');
+        document.getElementById('group-profiles').innerHTML = ["management-message", "staff-management"].map(rowCard).join('');
+        document.getElementById('group-engagement').innerHTML = ["events-calendar", "testimonials-achievements"].map(rowCard).join('');
+
+        document.getElementById('panel-gallery').innerHTML =
+            galleryCard('gallery-management', true) +
+            galleryCard('media-gallery-management', false) +
+            galleryCard('pdf-document-upload', false) +
+            galleryCard('image-compression', true);
+
+        document.getElementById('panel-pages').innerHTML = ["enable-disable-pages", "active-inactive-pages"].map(id => tileCard(id)).join('');
+        document.getElementById('panel-seo').innerHTML = ["meta-tags", "social-media-links"].map(id => tileCard(id)).join('');
+
+        // ---- Tabs ----
+        function vTabSwitch(name) {
+            document.querySelectorAll('[data-tab-panel]').forEach(p => p.classList.toggle('hidden', p.getAttribute('data-tab-panel') !== name));
+            document.querySelectorAll('[data-tab-btn]').forEach(b => b.classList.toggle('is-active', b.getAttribute('data-tab-btn') === name));
+        }
+
+        // ---- Video modal ----
+        function openVideo(ytId) {
+            document.getElementById('video-frame').src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+            const modal = document.getElementById('video-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+        }
+        function closeVideo() {
+            document.getElementById('video-frame').src = '';
+            const modal = document.getElementById('video-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+    .tab-btn { @apply border-ink/10 bg-white text-ink/60; }
+    .tab-btn.is-active { @apply border-ink bg-ink text-paper; }
+    .tab-btn.is-active span { @apply bg-paper; }
+  }
+</style>
+
+</body>
+
+</html>
