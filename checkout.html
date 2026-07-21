@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout · SaaS Cart & Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/1.0.1/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --red-50: #FCEBEB;
+            --red-100: #F7C1C1;
+            --red-200: #F09595;
+            --red-600: #A32D2D;
+            --red-800: #791F1F;
+            --blue-50: #E6F1FB;
+            --blue-100: #B5D4F4;
+            --blue-200: #85B7EB;
+            --blue-600: #185FA5;
+            --blue-800: #0C447C;
+            --green-50: #EAF3DE;
+            --green-100: #C0DD97;
+            --green-200: #97C459;
+            --green-600: #3B6D11;
+            --green-800: #27500A;
+            --amber-50: #FAEEDA;
+            --amber-100: #FAC775;
+            --amber-200: #EF9F27;
+            --amber-600: #854F0B;
+            --amber-800: #633806;
+            --ink: #25262B;
+            --ink-soft: #5B5D66;
+            --ink-mute: #8B8D96;
+            --line: #E7E5DE;
+            --line-strong: #D3D1C7;
+            --page: #FAF9F5;
+            --card: #FFFFFF;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --font-head: 'Poppins', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font-family: var(--font-body);
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-head);
+            margin: 0;
+            color: var(--ink);
+        }
+
+        p {
+            margin: 0;
+        }
+
+        button {
+            font-family: var(--font-body);
+            cursor: pointer;
+        }
+
+        select {
+            font-family: var(--font-body);
+        }
+
+        .wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px 80px;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: var(--card);
+            position: sticky;
+            top: 0;
+            z-index: 40;
+        }
+
+        .topbar-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .brand .mark {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--blue-600);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+
+        .steps {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--ink-mute);
+        }
+
+        .steps .step {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .steps .step.active {
+            background: var(--blue-50);
+            color: var(--blue-800);
+            font-weight: 600;
+        }
+
+        .steps .sep {
+            color: var(--line-strong);
+        }
+
+        .demo-bar {
+            background: var(--amber-50);
+            border-bottom: 1px solid var(--amber-100);
+        }
+
+        .demo-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--amber-800);
+        }
+
+        .demo-inner b {
+            font-weight: 600;
+        }
+
+        .demo-inner select {
+            border: 1px solid var(--amber-100);
+            background: #fff;
+            border-radius: 6px;
+            padding: 5px 8px;
+            font-size: 13px;
+            font-family: var(--font-body);
+            color: var(--ink);
+        }
+
+        .view {
+            display: none;
+            padding-top: 28px;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        .page-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .page-head h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .page-head .sub {
+            font-size: 14px;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width:860px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+        }
+
+        .card-pad {
+            padding: 20px;
+        }
+
+        .cart-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 44px 1fr auto;
+            gap: 14px;
+            padding: 20px;
+            border-bottom: 1px solid var(--line);
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .icon-product {
+            background: var(--blue-50);
+            color: var(--blue-600);
+        }
+
+        .icon-addon {
+            background: var(--red-50);
+            color: var(--red-600);
+        }
+
+        .icon-template {
+            background: var(--green-50);
+            color: var(--green-600);
+        }
+
+        .icon-plugin {
+            background: var(--amber-50);
+            color: var(--amber-600);
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .item-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .tag-product {
+            background: var(--blue-50);
+            color: var(--blue-800);
+        }
+
+        .tag-addon {
+            background: var(--red-50);
+            color: var(--red-800);
+        }
+
+        .tag-template {
+            background: var(--green-50);
+            color: var(--green-800);
+        }
+
+        .tag-plugin {
+            background: var(--amber-50);
+            color: var(--amber-800);
+        }
+
+        .item-desc {
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin-top: 4px;
+            max-width: 460px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 10px 0 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            max-width: 440px;
+        }
+
+        .feature-list li {
+            font-size: 12.5px;
+            color: var(--ink-soft);
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        .feature-list li i {
+            color: var(--green-600);
+            font-size: 14px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .institute-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 14px;
+            flex-wrap: wrap;
+        }
+
+        .institute-row select {
+            border: 1px solid var(--line-strong);
+            border-radius: 7px;
+            padding: 8px 10px;
+            font-size: 13px;
+            background: #fff;
+            min-width: 180px;
+        }
+
+        .institute-row select.empty {
+            border-color: var(--red-200);
+            background: var(--red-50);
+        }
+
+        .btn-sm {
+            padding: 7px 12px;
+            font-size: 12.5px;
+            border-radius: 7px;
+        }
+
+        .cart-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+        }
+
+        .link-btn {
+            border: none;
+            background: none;
+            color: var(--blue-600);
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .link-btn.danger {
+            color: var(--red-600);
+        }
+
+        .link-btn:hover {
+            text-decoration: underline;
+        }
+
+        .icon-btn {
+            border: 1px solid var(--line-strong);
+            background: #fff;
+            color: var(--ink-mute);
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-btn:hover {
+            color: var(--red-600);
+            border-color: var(--red-200);
+            background: var(--red-50);
+        }
+
+        .empty-cart {
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--ink-soft);
+        }
+
+        .empty-cart i {
+            font-size: 34px;
+            color: var(--ink-mute);
+        }
+
+        .empty-cart h3 {
+            margin: 14px 0 6px;
+            font-size: 16px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 18px;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            border: 1px solid var(--line-strong);
+            color: var(--ink);
+        }
+
+        .btn-secondary:hover {
+            background: var(--page);
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn[disabled] {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+        .add-items-card {
+            margin-top: 16px;
+        }
+
+        .add-items-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .cat-tabs {
+            display: flex;
+            gap: 6px;
+            padding: 14px 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .cat-tab {
+            border: 1px solid var(--line-strong);
+            background: #fff;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .cat-tab.on {
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 12px;
+            padding: 16px 20px 20px;
+        }
+
+        .cat-item {
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px;
+            position: relative;
+        }
+
+        .cat-item .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .cat-item .name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .cat-item .price {
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin-top: 4px;
+        }
+
+        .cat-item .desc {
+            font-size: 12px;
+            color: var(--ink-mute);
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .add-mini {
+            border: 1px solid var(--line-strong);
+            background: #fff;
+            border-radius: 6px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .add-mini.added {
+            background: var(--green-50);
+            border-color: var(--green-100);
+            color: var(--green-800);
+        }
+
+        .summary-card {
+            position: sticky;
+            top: 90px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 6px 0;
+            color: var(--ink-soft);
+        }
+
+        .summary-row.total {
+            border-top: 1px solid var(--line);
+            margin-top: 10px;
+            padding-top: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .summary-row .val {
+            color: var(--ink);
+            font-weight: 500;
+        }
+
+        .summary-row.total .val {
+            color: var(--ink);
+        }
+
+        .discount-val {
+            color: var(--green-800) !important;
+        }
+
+        .coupon-box {
+            margin: 14px 0;
+        }
+
+        .coupon-input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .coupon-input-row input {
+            flex: 1;
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            padding: 9px 12px;
+            font-size: 13px;
+            font-family: var(--font-body);
+        }
+
+        .coupon-applied {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--green-50);
+            border: 1px solid var(--green-100);
+            border-radius: 8px;
+            padding: 9px 12px;
+            font-size: 13px;
+            color: var(--green-800);
+            font-weight: 600;
+        }
+
+        .coupon-applied button {
+            border: none;
+            background: none;
+            color: var(--green-800);
+        }
+
+        .coupon-error {
+            color: var(--red-600);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .coupon-hint {
+            font-size: 11px;
+            color: var(--ink-mute);
+            margin-top: 6px;
+        }
+
+        .institute-banner {
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .institute-banner.warn {
+            background: var(--red-50);
+            border: 1px solid var(--red-100);
+        }
+
+        .institute-banner .txt strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 3px;
+            font-family: var(--font-head);
+            color: var(--red-800);
+        }
+
+        .institute-banner .txt span {
+            font-size: 13px;
+            color: var(--ink-soft);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title i {
+            font-size: 16px;
+            color: var(--ink-mute);
+        }
+
+        .order-line {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .order-line:last-child {
+            border-bottom: none;
+        }
+
+        .order-line-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .order-line .n {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .order-line .price {
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .plan-change-box {
+            background: var(--amber-50);
+            border: 1px solid var(--amber-100);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+
+        .plan-change-box .pc-title {
+            font-weight: 700;
+            color: var(--amber-800);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 6px;
+            font-size: 12px;
+        }
+
+        .plan-change-box .pc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            color: var(--amber-800);
+        }
+
+        .plan-change-box .pc-row span:first-child {
+            color: var(--ink-soft);
+        }
+
+        .pay-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pay-method {
+            border: 1px solid var(--line-strong);
+            border-radius: 8px;
+            padding: 12px;
+            flex: 1;
+            min-width: 110px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pay-method i {
+            font-size: 20px;
+        }
+
+        .pay-method.on {
+            border: 2px solid var(--blue-600);
+            background: var(--blue-50);
+            color: var(--blue-800);
+        }
+
+        .terms-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--ink-soft);
+            margin: 16px 0;
+        }
+
+        .terms-row input {
+            margin-top: 3px;
+        }
+
+        .trust-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--ink-mute);
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .block-reason {
+            font-size: 12px;
+            color: var(--red-600);
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .preview-card {
+            margin-top: 20px;
+        }
+
+        .preview-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .receipt-block {
+            background: var(--page);
+            border: 1px dashed var(--line-strong);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        .receipt-block .r {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+
+        .success-panel {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .success-panel i {
+            font-size: 44px;
+            color: var(--green-600);
+            background: var(--green-50);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .success-panel h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .success-panel p {
+            color: var(--ink-soft);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--ink);
+            color: #fff;
+            padding: 11px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            display: none;
+            z-index: 80;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast.show {
+            display: flex;
+        }
+
+        .badge-info {
+            font-size: 12px;
+            color: var(--blue-800);
+            background: var(--blue-50);
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="demo-bar">
+        <div class="demo-inner">
+            <span><b>Prototype control</b> (not part of the real UI) — simulate institute state:</span>
+            <select id="scenarioSelect" onchange="setScenario(this.value)">
+                <option value="none">No institute created yet</option>
+                <option value="fresh">Institute(s) exist, product not activated</option>
+                <option value="inuse">Institute exists, product already in use</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="wrap">
+
+        <div class="view active" id="view-cart">
+            <div class="page-head">
+                <div>
+                    <h1>Your cart</h1>
+                    <div class="sub">Add products, add-ons, templates and plugins, then assign the institute for each
+                        item.</div>
+                </div>
+                <button class="btn btn-secondary" onclick="openCatalog()"><i class="ti ti-plus"></i> Add items</button>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="card">
+                        <div class="cart-list" id="cartList"></div>
+                    </div>
+
+                    <div class="card add-items-card" id="catalogCard" style="display:none;">
+                        <div class="add-items-head">
+                            <h3 style="font-size:15px;">Browse catalog</h3>
+                            <button class="link-btn" onclick="closeCatalog()"><i class="ti ti-x"></i> Close</button>
+                        </div>
+                        <div class="cat-tabs" id="catTabs"></div>
+                        <div class="catalog-grid" id="catalogGrid"></div>
+                    </div>
+                </div>
+
+                <div class="card card-pad summary-card">
+                    <h3 style="font-size:15px;margin-bottom:14px;">Order summary</h3>
+                    <div id="cartSummaryRows"></div>
+                    <div class="coupon-box" id="cartCouponBox"></div>
+                    <button class="btn btn-primary btn-block" id="checkoutBtn" onclick="goCheckout()">Proceed to
+                        checkout <i class="ti ti-arrow-right"></i></button>
+                    <div class="block-reason" id="cartBlockReason"></div>
+                    <div class="trust-line"><i class="ti ti-lock" style="font-size:13px"></i> Prices include applicable
+                        taxes at checkout</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view" id="view-checkout">
+            <div class="page-head">
+                <div>
+                    <h1>Checkout & review</h1>
+                    <div class="sub"><button class="link-btn" onclick="goCart()"><i class="ti ti-arrow-left"></i> Edit
+                            cart</button></div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div id="noInstituteBanner"></div>
+
+                    <div class="card card-pad" style="margin-bottom:18px;">
+                        <div class="section-title"><i class="ti ti-receipt-2"></i> Order items</div>
+                        <div id="checkoutOrderLines"></div>
+                    </div>
+
+
+
+                    <div class="card card-pad preview-card">
+                        <div class="preview-head">
+                            <div class="section-title" style="margin-bottom:0;"><i class="ti ti-eye"></i> Order preview
+                            </div>
+                            <span class="badge-info">Auto-updates</span>
+                        </div>
+                        <div class="receipt-block" id="previewReceipt"></div>
+                    </div>
+                </div>
+
+                <div class="card card-pad summary-card">
+                    <h3 style="font-size:15px;margin-bottom:14px;">Price details</h3>
+                    <div id="checkoutSummaryRows"></div>
+                    <div class="coupon-box" id="checkoutCouponBox"></div>
+                    <div class="terms-row">
+                        <input type="checkbox" id="termsCheck" onchange="renderPayButton()">
+                        <label for="termsCheck">I agree to the terms of service and understand this plan renews
+                            automatically unless cancelled before the renewal date.</label>
+                    </div>
+                    <button class="btn btn-primary btn-block" id="payBtn" onclick="doPay()">Pay & activate</button>
+                    <div class="block-reason" id="blockReason"></div>
+                    <div class="trust-line"><i class="ti ti-shield-check" style="font-size:13px"></i> Secured checkout ·
+                        refundable within 7 days</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="view" id="view-success">
+            <div class="card success-panel">
+                <i class="ti ti-circle-check"></i>
+                <h2 id="successTitle">Payment successful</h2>
+                <p id="successSub">Your product has been activated. A receipt has been sent to your billing email.</p>
+                <button class="btn btn-secondary" onclick="restart()">Back to cart</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const CATALOG = [
+            {
+                id: 'p1', cat: 'product', name: 'School website', tag: 'Product', price: 12000,
+                desc: 'Full school website with admissions, gallery and blog modules.',
+                features: ['Custom domain connection & hosting', 'Admissions, gallery and blog pages', 'Mobile responsive design', 'Free SSL certificate']
+            }, {
+                id: 'p13',
+                cat: 'product',
+                name: 'Pre School Website',
+                tag: 'Product',
+                price: 12000,
+                desc: 'Modern preschool website with admissions, activities, events, and parent engagement features.',
+                features: [
+                    'Custom domain connection & hosting',
+                    'Admissions, events & activity pages',
+                    'Photo gallery, announcements & contact forms',
+                    'Mobile responsive design with free SSL certificate'
+                ]
+            },
+            {
+                id: 'p2', cat: 'product', name: 'Fee management', tag: 'Product', price: 9000,
+                desc: 'Collect and track student fees online with automated reminders.',
+                features: ['Online fee collection', 'Automated payment reminders', 'Downloadable fee receipts']
+            },
+            {
+                id: 'p3', cat: 'product', name: 'Attendance tracker', tag: 'Product', price: 6000,
+                desc: 'Biometric and manual attendance with parent notifications.',
+                features: ['Biometric & manual attendance', 'Real-time parent notifications', 'Monthly attendance reports']
+            },
+            {
+                id: 'a1', cat: 'addon', name: 'SMS notifications', tag: 'Add-on', price: 1500,
+                desc: 'Send automated SMS alerts to parents and staff.',
+                features: ['1,000 SMS credits / month', 'Delivery reports']
+            },
+            {
+                id: 'a2', cat: 'addon', name: 'Extra storage 50GB', tag: 'Add-on', price: 1000,
+                desc: 'Additional cloud storage for documents and media.',
+                features: ['+50GB cloud storage', 'Automatic backup']
+            },
+            {
+                id: 'a3', cat: 'addon', name: 'Priority support', tag: 'Add-on', price: 2500,
+                desc: '24x5 priority chat and phone support.',
+                features: ['24x5 chat & phone support', 'Dedicated account manager']
+            },
+            {
+                id: 't1', cat: 'template', name: 'Premium website template', tag: 'Template', price: 2000,
+                desc: 'Premium responsive website theme built for schools.',
+                features: ['Fully responsive premium theme', 'Lifetime design updates', '1 free installation']
+            },
+            {
+                id: 't2', cat: 'template', name: 'Minimal admissions template', tag: 'Template', price: 1800,
+                desc: 'Clean, conversion-focused admissions landing template.',
+                features: ['Conversion-focused layout', 'Lifetime design updates']
+            },
+            {
+                id: 'pl1', cat: 'plugin', name: 'Online exam plugin', tag: 'Plugin', price: 3000,
+                desc: 'Conduct and auto-grade online exams within the portal.',
+                features: ['Auto-graded online exams', 'Question bank & analytics']
+            },
+            {
+                id: 'pl2', cat: 'plugin', name: 'Payment gateway plugin', tag: 'Plugin', price: 1200,
+                desc: 'Accept card, UPI and netbanking payments on your site.',
+                features: ['Card, UPI & netbanking support', 'Automated payment receipts']
+            },
+        ];
+
+        const CATEGORY_META = {
+            product: { icon: 'ti-package', iconClass: 'icon-product', tagClass: 'tag-product' },
+            addon: { icon: 'ti-puzzle', iconClass: 'icon-addon', tagClass: 'tag-addon' },
+            template: { icon: 'ti-layout', iconClass: 'icon-template', tagClass: 'tag-template' },
+            plugin: { icon: 'ti-plug', iconClass: 'icon-plugin', tagClass: 'tag-plugin' },
+        };
+
+        const COUPONS = {
+            'SAVE10': { type: 'percent', value: 10, label: '10% off' },
+            'FLAT500': { type: 'flat', value: 500, label: '₹500 off' },
+        };
+
+        let institutes = [];
+        let activeSubs = {};
+        let cart = [];
+        let activeCat = 'all';
+        let coupon = null;
+        let couponError = '';
+        let couponInputDraft = '';
+        let payMethod = 'card';
+        let scenario = 'none';
+        let lineSeq = 1;
+
+        function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+        function findCatalog(id) { return CATALOG.find(c => c.id === id); }
+        function subKey(pid, inst) { return pid + '|' + inst; }
+
+        function itemLinePrice(item) {
+            const c = findCatalog(item.pid);
+            return { net: c.price };
+        }
+
+        function cartTotals() {
+            let subtotal = 0;
+            cart.forEach(it => { subtotal += itemLinePrice(it).net; });
+            let couponDiscount = 0;
+            if (coupon) {
+                couponDiscount = coupon.type === 'percent' ? subtotal * coupon.value / 100 : Math.min(coupon.value, subtotal);
+            }
+            const taxable = subtotal - couponDiscount;
+            const tax = taxable * 0.18;
+            const total = taxable + tax;
+            return { subtotal, couponDiscount, tax, total };
+        }
+
+        function featureListHTML(c) {
+            return `<ul class="feature-list">${c.features.map(f => `<li><i class="ti ti-circle-check"></i>${f}</li>`).join('')}</ul>`;
+        }
+
+        function instituteControlsHTML(item) {
+            if (institutes.length === 0) {
+                return `
+            <button class="btn btn-secondary btn-sm" onclick="createInstitute()">
+                <i class="ti ti-building-plus" style="font-size:14px"></i>
+                Create Institute
+            </button>`;
+            }
+
+            const emptyCls = item.institute ? '' : 'empty';
+            const otherInstitutesAvailable = institutes.filter(
+                n => !cart
+                    .filter(i => i.pid === item.pid)
+                    .map(i => i.institute)
+                    .includes(n)
+            );
+
+            return `
+        <select class="${emptyCls}" onchange="setInstitute('${item.lineId}', this.value)">
+            <option value="">Select institute</option>
+            ${institutes.map(n => `
+                <option value="${n}" ${item.institute === n ? 'selected' : ''}>
+                    ${n}
+                </option>
+            `).join('')}
+        </select>
+
+        ${!item.institute ? `
+            <button
+                class="btn btn-secondary btn-sm"
+                onclick="addForAnotherInstitute('${item.pid}')"
+                ${otherInstitutesAvailable.length === 0 ? 'disabled title="Every institute already has this"' : ''}>
+                <i class="ti ti-copy" style="font-size:14px"></i>
+                Activate for Another Institute
+            </button>
+        ` : ''}
+    `;
+        }
+        function renderCartList() {
+            const list = document.getElementById('cartList');
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="empty-cart">
+      <i class="ti ti-shopping-cart-off"></i>
+      <h3>Your cart is empty</h3>
+      <p style="font-size:13px;">Add a product to get started.</p>
+      <div style="margin-top:16px;"><button class="btn btn-primary" onclick="openCatalog()">Browse catalog</button></div>
+    </div>`;
+                return;
+            }
+            list.innerHTML = cart.map(item => {
+                const c = findCatalog(item.pid);
+                const meta = CATEGORY_META[c.cat];
+                const p = itemLinePrice(item);
+                return `<div class="cart-item">
+      <div class="item-icon ${meta.iconClass}"><i class="ti ${meta.icon}"></i></div>
+      <div>
+        <div><span class="item-name">${c.name}</span><span class="item-tag ${meta.tagClass}">${c.tag}</span></div>
+        <div class="item-desc">${c.desc}</div>
+        ${featureListHTML(c)}
+        <div class="institute-row">${instituteControlsHTML(item)}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+        <button class="icon-btn" title="Remove" onclick="removeItem('${item.lineId}')"><i class="ti ti-trash" style="font-size:15px"></i></button>
+        <div class="item-price">${fmt(p.net)}<span style="display:block;font-size:11px;color:var(--ink-mute);font-weight:400;">/ year</span></div>
+      </div>
+    </div>`;
+            }).join('') + `<div class="cart-actions">
+      <button class="link-btn danger" onclick="clearCart()"><i class="ti ti-trash" style="font-size:14px"></i> Clear cart</button>
+      <button class="link-btn" onclick="openCatalog()"><i class="ti ti-plus" style="font-size:14px"></i> Add more items</button>
+    </div>`;
+        }
+
+        function setInstitute(lineId, val) {
+            const item = cart.find(i => i.lineId === lineId);
+            if (item) { item.institute = val; renderAll(); }
+        }
+        function removeItem(lineId) {
+            cart = cart.filter(i => i.lineId !== lineId);
+            showToast('Item removed from cart');
+            renderAll();
+        }
+        function clearCart() {
+            cart = [];
+            showToast('Cart cleared');
+            renderAll();
+        }
+
+        function renderCatalog() {
+            const tabs = ['all', 'product', 'addon', 'template', 'plugin'];
+            const labels = { all: 'All', product: 'Products', addon: 'Add-ons', template: 'Premium templates', plugin: 'Premium plugins' };
+            document.getElementById('catTabs').innerHTML = tabs.map(t =>
+                `<button class="cat-tab ${activeCat === t ? 'on' : ''}" onclick="setCat('${t}')">${labels[t]}</button>`
+            ).join('');
+
+            const items = CATALOG.filter(c => activeCat === 'all' || c.cat === activeCat);
+            document.getElementById('catalogGrid').innerHTML = items.map(c => {
+                const inCart = cart.some(i => i.pid === c.id);
+                const meta = CATEGORY_META[c.cat];
+                return `<div class="cat-item">
+      <div class="top">
+        <div>
+          <span class="item-tag ${meta.tagClass}">${c.tag}</span>
+          <div class="name" style="margin-top:6px;">${c.name}</div>
+          <div class="price">${fmt(c.price)} / yr</div>
+        </div>
+        <button class="add-mini ${inCart ? 'added' : ''}" title="${inCart ? 'Added' : 'Add to cart'}" onclick="toggleItem('${c.id}')">
+          <i class="ti ${inCart ? 'ti-check' : 'ti-plus'}" style="font-size:15px"></i>
+        </button>
+      </div>
+      <div class="desc">${c.desc}</div>
+    </div>`;
+            }).join('');
+        }
+        function setCat(c) { activeCat = c; renderCatalog(); }
+        function toggleItem(pid) {
+            const exists = cart.find(i => i.pid === pid);
+            if (exists) { cart = cart.filter(i => i.pid !== pid); showToast('Removed from cart'); }
+            else {
+                const defaultInst = institutes.length === 1 ? institutes[0] : '';
+                cart.push({ lineId: 'l' + (lineSeq++), pid, institute: defaultInst });
+                showToast('Added to cart');
+            }
+            renderAll();
+        }
+        function openCatalog() { document.getElementById('catalogCard').style.display = 'block'; renderCatalog(); }
+        function closeCatalog() { document.getElementById('catalogCard').style.display = 'none'; }
+
+        function renderCouponBox(targetId) {
+            const box = document.getElementById(targetId);
+            if (coupon) {
+                box.innerHTML = `<div class="coupon-applied"><span><i class="ti ti-discount-2" style="font-size:14px;vertical-align:-2px;margin-right:4px;"></i>${coupon.code} applied — ${coupon.label}</span><button onclick="removeCoupon()"><i class="ti ti-x" style="font-size:14px"></i></button></div>`;
+            } else {
+                box.innerHTML = `<div class="coupon-input-row">
+      <input type="text" placeholder="Enter coupon code" id="couponInput_${targetId}" value="${couponInputDraft}" oninput="couponInputDraft=this.value.toUpperCase()">
+      <button class="btn btn-secondary" onclick="applyCoupon('${targetId}')">Apply</button>
+    </div>
+    ${couponError ? `<div class="coupon-error">${couponError}</div>` : ''}
+    <div class="coupon-hint">Try SAVE10 or FLAT500</div>`;
+            }
+        }
+        function applyCoupon(targetId) {
+            const input = document.getElementById('couponInput_' + targetId);
+            const code = (input.value || '').trim().toUpperCase();
+            if (!code) { couponError = 'Enter a coupon code.'; renderAll(); return; }
+            const found = COUPONS[code];
+            if (!found) { couponError = 'This coupon is invalid or expired.'; renderAll(); return; }
+            coupon = { code, ...found };
+            couponError = '';
+            couponInputDraft = '';
+            showToast('Coupon applied');
+            renderAll();
+        }
+        function removeCoupon() { coupon = null; showToast('Coupon removed'); renderAll(); }
+
+        function renderSummaryRows(targetId) {
+            const t = cartTotals();
+            const el = document.getElementById(targetId);
+            let rows = `<div class="summary-row"><span>Subtotal</span><span class="val">${fmt(t.subtotal)}</span></div>`;
+            if (t.couponDiscount > 0) rows += `<div class="summary-row"><span>Coupon (${coupon.code})</span><span class="val discount-val">-${fmt(t.couponDiscount)}</span></div>`;
+            rows += `<div class="summary-row"><span>Tax (GST 18%)</span><span class="val">${fmt(t.tax)}</span></div>`;
+            rows += `<div class="summary-row total"><span>Total</span><span class="val">${fmt(t.total)}</span></div>`;
+            el.innerHTML = rows;
+        }
+
+        function renderNoInstituteBanner() {
+            const el = document.getElementById('noInstituteBanner');
+            if (institutes.length === 0) {
+                el.innerHTML = `<div class="institute-banner warn">
+      <div class="txt"><strong>No institute found</strong><span>Create an institute first, then assign it to each item below to continue.</span></div>
+      <button class="btn btn-primary" onclick="createInstitute()"><i class="ti ti-building-plus"></i> Create institute</button>
+    </div>`;
+            } else {
+                el.innerHTML = '';
+            }
+        }
+
+        function addForAnotherInstitute(pid) {
+            const usedByThisProduct = cart.filter(i => i.pid === pid).map(i => i.institute);
+            const available = institutes.filter(n => !usedByThisProduct.includes(n));
+            if (available.length === 0) { showToast('This product is already assigned to every institute'); return; }
+            cart.push({ lineId: 'l' + (lineSeq++), pid, institute: available[0] });
+            showToast('Added a new activation — choose the institute');
+            renderAll();
+        }
+
+        function renderOrderLines() {
+            const el = document.getElementById('checkoutOrderLines');
+            if (cart.length === 0) { el.innerHTML = '<div class="order-line"><span>Your cart is empty.</span></div>'; return; }
+            el.innerHTML = cart.map(item => {
+                const c = findCatalog(item.pid);
+                const p = itemLinePrice(item);
+                const activeSub = item.institute ? activeSubs[subKey(item.pid, item.institute)] : null;
+                return `<div class="order-line">
+      <div class="order-line-top">
+        <div>
+          <div class="n">${c.name}</div>
+          ${featureListHTML(c)}
+        </div>
+        <div class="price">${fmt(p.net)}<span style="display:block;font-size:11px;color:var(--ink-mute);font-weight:400;text-align:right;">/ year</span></div>
+      </div>
+      <div class="institute-row">${instituteControlsHTML(item)}</div>
+      ${activeSub ? `
+      <div class="plan-change-box">
+        <div class="pc-title"><i class="ti ti-info-circle"></i> Already active for ${item.institute}</div>
+        <div class="pc-row"><span>Current plan</span><span>Active · renews ${activeSub.expires}</span></div>
+        <div class="pc-row"><span>This order</span><span>Extends the current plan</span></div>
+      </div>` : ''}
+    </div>`;
+            }).join('');
+        }
+
+        function renderPreview() {
+            const t = cartTotals();
+            const el = document.getElementById('previewReceipt');
+            const instList = [...new Set(cart.map(i => i.institute).filter(Boolean))];
+            el.innerHTML = `
+    <div class="r"><span>Institute(s)</span><span>${instList.length ? instList.join(', ') : '—'}</span></div>
+    <div class="r"><span>Items</span><span>${cart.length}</span></div>
+    <div class="r"><span>Payment method</span><span style="text-transform:capitalize;">${payMethod}</span></div>
+    <div class="r"><span>Coupon</span><span>${coupon ? coupon.code : 'None'}</span></div>
+    <div class="r" style="font-weight:700;border-top:1px solid var(--line-strong);margin-top:6px;padding-top:8px;"><span>Amount payable</span><span>${fmt(t.total)}</span></div>
+  `;
+        }
+
+        function selectPay(el, m) {
+            document.querySelectorAll('.pay-method').forEach(x => x.classList.remove('on'));
+            el.classList.add('on');
+            payMethod = m;
+            renderPreview();
+        }
+
+        function cartBlockReason() {
+            if (cart.length === 0) return 'Add an item to your cart to continue.';
+            if (institutes.length === 0) return 'Create an institute to continue.';
+            if (cart.some(i => !i.institute)) return 'Select an institute for every item.';
+            return '';
+        }
+        function checkoutBlockReason() {
+            const base = cartBlockReason();
+            if (base) return base;
+            if (!document.getElementById('termsCheck')?.checked) return 'Accept the terms to continue.';
+            return '';
+        }
+
+        function renderPayButton() {
+            const cReason = cartBlockReason();
+            document.getElementById('checkoutBtn').disabled = !!cReason;
+            document.getElementById('cartBlockReason').innerText = cReason;
+
+            const btn = document.getElementById('payBtn');
+            const reason = checkoutBlockReason();
+            btn.disabled = !!reason;
+            document.getElementById('blockReason').innerText = reason;
+        }
+
+        function goCheckout() {
+            if (cartBlockReason()) { showToast(cartBlockReason()); return; }
+            switchView('checkout');
+        }
+        function goCart() { switchView('cart'); }
+        function switchView(name) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + name).classList.add('active');
+            document.getElementById('stepCart').classList.toggle('active', name === 'cart');
+            document.getElementById('stepCheckout').classList.toggle('active', name === 'checkout');
+            document.getElementById('stepDone').classList.toggle('active', name === 'success');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function doPay() {
+            const btn = document.getElementById('payBtn');
+            if (btn.disabled) return;
+            btn.innerHTML = '<i class="ti ti-loader-2"></i> Processing…';
+            setTimeout(() => {
+                const instList = [...new Set(cart.map(i => i.institute).filter(Boolean))];
+                document.getElementById('successTitle').innerText = scenario === 'inuse' ? 'Plan updated' : 'Payment successful';
+                document.getElementById('successSub').innerText = `Activated for ${instList.join(', ') || 'your institute'}. A receipt has been sent to your billing email.`;
+                switchView('success');
+                btn.innerHTML = 'Pay & activate';
+            }, 900);
+        }
+
+        function restart() {
+            switchView('cart');
+        }
+
+        function createInstitute() {
+            showToast('Redirecting to institute creation');
+        }
+
+        function setScenario(v) {
+            scenario = v;
+            if (v === 'none') {
+                institutes = [];
+                activeSubs = {};
+            } else if (v === 'fresh') {
+                institutes = ['Sunrise School', 'Greenwood Academy'];
+                activeSubs = {};
+            } else if (v === 'inuse') {
+                institutes = ['Sunrise School', 'Greenwood Academy'];
+                activeSubs = { [subKey('p1', 'Sunrise School')]: { expires: '14 Mar 2027' } };
+            }
+            cart.forEach(item => {
+                if (item.institute && !institutes.includes(item.institute)) item.institute = '';
+            });
+            if (cart.length === 0) {
+                const defaultInst = institutes.length === 1 ? institutes[0] : (institutes.includes('Sunrise School') ? 'Sunrise School' : '');
+                cart.push({ lineId: 'l' + (lineSeq++), pid: 'p1', institute: v === 'inuse' ? 'Sunrise School' : defaultInst });
+                cart.push({ lineId: 'l' + (lineSeq++), pid: 't1', institute: defaultInst });
+            }
+            renderAll();
+        }
+
+        let toastTimer;
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerHTML = `<i class="ti ti-info-circle" style="font-size:14px"></i> ${msg}`;
+            t.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+        }
+
+        function renderAll() {
+            renderCartList();
+            renderSummaryRows('cartSummaryRows');
+            renderCouponBox('cartCouponBox');
+            renderNoInstituteBanner();
+            renderOrderLines();
+            renderSummaryRows('checkoutSummaryRows');
+            renderCouponBox('checkoutCouponBox');
+            renderPreview();
+            renderPayButton();
+            if (document.getElementById('catalogCard').style.display !== 'none') renderCatalog();
+        }
+
+        setScenario('none');
+    </script>
+</body>
+
+</html>
