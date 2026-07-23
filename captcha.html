@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form with Google reCAPTCHA</title>
+
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f3f6fb, #eef3ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            transition: .3s;
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79,70,229,.15);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .captcha {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #4f46e5;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        @media (max-width:480px) {
+            .form-container{
+                padding:25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Contact Us</h2>
+    <p>Fill out the form below and complete the verification.</p>
+
+    <form action="submit.php" method="POST" id="contactForm">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your full name"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Email Address</label>
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label>Message</label>
+            <textarea
+                name="message"
+                placeholder="Write your message..."
+                required></textarea>
+        </div>
+
+        <!-- Google reCAPTCHA -->
+        <div class="captcha">
+            <div class="g-recaptcha"
+                 data-sitekey="6LcN8WAtAAAAAKjtlxZtBFhZczaTw8rJi-edOyA4">
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+
+    </form>
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e){
+
+    var response = grecaptcha.getResponse();
+
+    if(response.length === 0){
+        e.preventDefault();
+        alert("Please complete the Google reCAPTCHA.");
+    }
+
+});
+</script>
+
+</body>
+</html>
