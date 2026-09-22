@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Class & Shift Configuration</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Premium SaaS Color Palette */
+  --bg-app: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F1F5F9;
+  
+  --border-light: #E2E8F0;
+  --border-focus: #CBD5E1;
+  
+  --text-main: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  
+  --primary: #0F172A; 
+  --primary-hover: #1E293B;
+  --accent: #2563EB; 
+  
+  --success-bg: #ECFDF5;
+  --success-text: #065F46;
+  --success-border: #A7F3D0;
+  
+  --danger-bg: #FEF2F2;
+  --danger-text: #991B1B;
+
+  /* Refined Shadows */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.025);
+  --shadow-dropdown: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
+  
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 6px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+  background: var(--bg-app); color: var(--text-main); 
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+  font-size: 13px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; outline: none; border: none; cursor: pointer; background: transparent; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 32px 32px 80px; }
+
+/* Header Area */
+.page-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border-light); }
+.header-title h1 { font-size: 22px; font-weight: 700; color: var(--text-main); letter-spacing: -0.03em; margin-bottom: 4px; }
+.header-title p { color: var(--text-secondary); font-size: 14px; }
+
+/* Session Dropdown */
+.session-selector { display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+.label-sm { font-size: 11px; font-weight: 700; color: var(--text-tertiary); letter-spacing: 0.06em; text-transform: uppercase; }
+.custom-select { position: relative; }
+.select-trigger { 
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--bg-card); border: 1px solid var(--border-light); 
+  padding: 8px 14px; border-radius: var(--radius-md); box-shadow: var(--shadow-xs);
+  font-weight: 600; color: var(--text-main); min-width: 160px; transition: all 0.2s;
+}
+.select-trigger:hover { border-color: var(--border-focus); }
+
+/* Grid & Cards */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.card { 
+  background: var(--bg-card); border: 1px solid var(--border-light); 
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; transition: border-color 0.2s;
+}
+.card.senior { grid-column: 1 / -1; }
+.card.disabled { opacity: 0.5; background: #F8FAFC; filter: grayscale(100%); }
+.card.disabled .card-body { pointer-events: none; }
+
+/* Card Header */
+.card-header { 
+  padding: 12px 16px; border-bottom: 1px solid var(--border-light);
+  display: flex; align-items: center; gap: 12px; background: #FFFFFF;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.card-title { font-size: 15px; font-weight: 700; color: var(--text-main); flex-grow: 1; letter-spacing: -0.01em; }
+.card-actions { display: flex; align-items: center; gap: 12px; }
+
+/* Badges */
+.badge { 
+  display: inline-flex; align-items: center; padding: 2px 8px; 
+  border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.badge-active { background: var(--success-bg); color: var(--success-text); box-shadow: inset 0 0 0 1px var(--success-border); }
+.badge-inactive { background: var(--bg-subtle); color: var(--text-secondary); box-shadow: inset 0 0 0 1px var(--border-light); }
+
+/* iOS-style Toggle */
+.toggle { 
+  width: 36px; height: 20px; border-radius: 20px; background: #CBD5E1; 
+  padding: 2px; transition: background 0.2s; position: relative;
+}
+.toggle.on { background: var(--success-text); }
+.toggle span { 
+  display: block; width: 16px; height: 16px; border-radius: 50%; background: #FFF; 
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15); transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.toggle.on span { transform: translateX(16px); }
+
+/* Card Body (Adjusted Spacing) */
+.card-body { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.field-group { display: flex; flex-direction: column; gap: 8px; }
+.field-label { font-size: 12px; font-weight: 600; color: var(--text-tertiary); display: flex; align-items: center; gap: 6px; }
+
+/* Segmented Control */
+.segmented { 
+  display: inline-flex; background: var(--bg-subtle); padding: 3px; 
+  border-radius: var(--radius-md); border: 1px solid var(--border-light); width: fit-content;
+}
+.seg-btn { 
+  padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--text-secondary); 
+  border-radius: var(--radius-sm); transition: all 0.15s;
+}
+.seg-btn.active { background: var(--bg-card); color: var(--text-main); font-weight: 600; box-shadow: var(--shadow-xs); }
+.seg-btn:hover:not(.active) { color: var(--text-main); }
+
+/* Pill Lists */
+.pill-list { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pill { 
+  display: inline-flex; align-items: center; height: 26px; padding: 0 10px; 
+  border-radius: 14px; font-size: 12px; font-weight: 600;
+  background: var(--bg-subtle); color: var(--text-secondary);
+}
+
+/* Elegant Color Coded Pills (No borders, soft backgrounds) */
+.pill.red { background: #FEF2F2; color: #991B1B; }
+.pill.green { background: #F0FDF4; color: #166534; }
+.pill.blue { background: #EFF6FF; color: #1E40AF; }
+.pill.yellow { background: #FEFCE8; color: #854D0E; }
+
+/* Dropdown Wrapper & Add Buttons */
+.dropdown-wrapper { position: relative; display: inline-block; }
+.btn-add { 
+  display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 10px; 
+  border-radius: 14px; font-size: 12px; font-weight: 600; color: var(--text-tertiary); 
+  border: 1px dashed var(--border-focus); transition: all 0.2s; background: transparent;
+}
+.btn-add:hover, .dropdown-wrapper.open .btn-add { 
+  border-style: solid; border-color: var(--border-focus); background: var(--bg-subtle); color: var(--text-main); 
+}
+.btn-add svg { width: 12px; height: 12px; }
+
+/* 🔥 Enhanced "+ Add Stream" Button */
+.btn-add-stream {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; 
+  border-radius: var(--radius-md); font-size: 12px; font-weight: 600; 
+  background: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE;
+  transition: all 0.2s; box-shadow: var(--shadow-xs);
+}
+.btn-add-stream:hover, .dropdown-wrapper.open .btn-add-stream { 
+  background: #DBEAFE; border-color: #93C5FD; transform: translateY(-1px);
+}
+.btn-add-stream svg { width: 14px; height: 14px; stroke-width: 2.5px; }
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute; left: 0; top: calc(100% + 6px); z-index: 50;
+  background: var(--bg-card); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); box-shadow: var(--shadow-dropdown);
+  min-width: 140px; padding: 6px; display: none; flex-direction: column;
+}
+.dropdown-wrapper.right .dropdown-menu { left: auto; right: 0; }
+.dropdown-wrapper.open .dropdown-menu { display: flex; animation: slideDown 0.15s ease-out forwards; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.dropdown-item {
+  padding: 6px 10px; font-size: 12px; font-weight: 500; color: var(--text-secondary);
+  border-radius: 4px; text-align: left; transition: all 0.1s;
+}
+.dropdown-item:hover { background: var(--bg-subtle); color: var(--text-main); font-weight: 600; }
+.dropdown-empty { padding: 8px; font-size: 12px; color: var(--text-tertiary); text-align: center; font-style: italic; }
+
+/* Senior Classes Layout */
+.stream-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.stream-card { 
+  background: #FAFAF9; border: 1px solid var(--border-light); 
+  border-radius: var(--radius-md); padding: 14px;
+  display: flex; flex-direction: column; gap: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1);
+}
+.stream-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-light); padding-bottom: 8px; }
+.stream-name { font-size: 13px; font-weight: 700; color: var(--text-main); display: flex; align-items: center; gap: 6px; }
+
+/* Colored line indicator for streams */
+.stream-color-line { width: 3px; height: 14px; border-radius: 2px; }
+.color-science { background: #3B82F6; }
+.color-commerce { background: #10B981; }
+.color-arts { background: #8B5CF6; }
+.color-humanities { background: #F59E0B; }
+
+.btn-remove { 
+  font-size: 11px; font-weight: 600; color: var(--text-tertiary); 
+  transition: all 0.2s; padding: 4px 6px; border-radius: 4px;
+}
+.btn-remove:hover { color: var(--danger-text); background: var(--danger-bg); }
+
+/* Global Actions Bar */
+.page-actions { 
+  margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-light);
+  display: flex; justify-content: flex-end; gap: 12px;
+}
+.btn { 
+  display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px;
+  border-radius: var(--radius-md); font-size: 13px; font-weight: 600; transition: all 0.2s;
+  box-shadow: var(--shadow-xs);
+}
+.btn-outline { background: var(--bg-card); border: 1px solid var(--border-focus); color: var(--text-secondary); }
+.btn-outline:hover { background: var(--bg-subtle); color: var(--text-main); border-color: #94A3B8; }
+.btn-primary { background: var(--primary); border: 1px solid var(--primary); color: #FFF; }
+.btn-primary:hover { background: var(--primary-hover); box-shadow: var(--shadow-sm); }
+
+/* Toast Notification */
+.toast {
+  position: fixed; bottom: 32px; right: 32px; z-index: 100;
+  background: var(--text-main); color: #FFF; padding: 12px 16px;
+  border-radius: var(--radius-md); box-shadow: var(--shadow-dropdown);
+  display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 13px;
+  opacity: 0; transform: translateY(16px); pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* Responsive Adjustments */
+@media(max-width: 992px) { .stream-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media(max-width: 768px) {
+  .grid, .stream-grid { grid-template-columns: 1fr; }
+  .page-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <header class="page-header">
+    <div class="header-title">
+      <h1>Class &amp; Shift Setup</h1>
+      <p>Configure classes, sections, houses, and streams for the academic year.</p>
+    </div>
+
+    <div class="session-selector">
+      <span class="label-sm">Academic Session</span>
+      <div class="dropdown-wrapper right">
+        <button class="select-trigger" onclick="toggleDropdown(this)">
+          <span id="sessionValue">2025–2026</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item" onclick="setSession('2025–2026')">2025–2026</button>
+          <button class="dropdown-item" onclick="setSession('2026–2027')">2026–2027</button>
+          <button class="dropdown-item" onclick="setSession('2027–2028')">2027–2028</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid" id="classGrid"></main>
+
+  <footer class="page-actions">
+    <button class="btn btn-outline" onclick="resetDemo()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+      Discard Changes
+    </button>
+    <button class="btn btn-primary" onclick="save()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+      Save Structure
+    </button>
+  </footer>
+</div>
+
+<div class="toast" id="toast">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A7F3D0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+  Changes saved successfully
+</div>
+
+<script>
+// Master Data
+const masterSections = ['Section A','Section B','Section C','Section D','Section E'];
+const masterHouses = ['Red House','Green House','Blue House','Yellow House'];
+const masterStreams = ['Science','Commerce','Humanities','Arts'];
+
+// Initial State Data
+const normalClasses = [
+  { name: 'Nursery', sections: ['Section A','Section B'] },
+  { name: 'LKG', sections: ['Section A','Section B'] },
+  { name: 'UKG', sections: ['Section A','Section B'] },
+  { name: 'Class 1', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 2', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 3', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 4', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 5', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 6', sections: ['Section A','Section B'] },
+  { name: 'Class 7', sections: ['Section A','Section B'] },
+  { name: 'Class 8', sections: ['Section A','Section B'] },
+  { name: 'Class 9', sections: ['Section A','Section B','Section C'] },
+  { name: 'Class 10', sections: ['Section A','Section B','Section C'] }
+];
+
+const seniorClasses = {
+  'Class 11': {
+    streams:[
+      {name:'Science', shifts:['Morning'], sections:['Section A','Section B'], houses:['Red House','Green House']},
+      {name:'Commerce', shifts:['Morning'], sections:['Section A'], houses:['Red House','Blue House']}
+    ]
+  },
+  'Class 12': {
+    streams:[
+      {name:'Science', shifts:['Morning'], sections:['Section A','Section B'], houses:['Red House','Green House']},
+      {name:'Commerce', shifts:['Morning'], sections:['Section A'], houses:['Red House']}
+    ]
+  }
+};
+
+let enabled = {};
+let classHouses = {};
+
+// Populate defaults
+normalClasses.forEach(cls => {
+  enabled[cls.name] = true;
+  classHouses[cls.name] = ['Red House', 'Green House']; 
+});
+enabled['Class 11'] = true;
+enabled['Class 12'] = true;
+
+// Event Listeners for Dropdowns
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-wrapper')) {
+    document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
+  }
+});
+
+function toggleDropdown(btn) {
+  const wrapper = btn.closest('.dropdown-wrapper');
+  const isOpen = wrapper.classList.contains('open');
+  document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) wrapper.classList.add('open');
+}
+
+function setSession(val) {
+  document.getElementById('sessionValue').textContent = val;
+  document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
+}
+
+function toggleClass(name) {
+  enabled[name] = !enabled[name];
+  render();
+}
+
+// Icons & Styling Helpers
+const iconPlus = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`;
+
+function getPillClass(text) {
+  const t = text.toLowerCase();
+  if (t.includes('red')) return 'red';
+  if (t.includes('green')) return 'green';
+  if (t.includes('blue')) return 'blue';
+  if (t.includes('yellow')) return 'yellow';
+  return '';
+}
+
+function getStreamColorClass(name) {
+  const t = name.toLowerCase();
+  if (t.includes('science')) return 'color-science';
+  if (t.includes('commerce')) return 'color-commerce';
+  if (t.includes('humanities')) return 'color-humanities';
+  if (t.includes('arts')) return 'color-arts';
+  return '';
+}
+
+// State Mutation Actions
+function addSection(className, section, streamIndex = null) {
+  if(streamIndex === null) {
+    const cls = normalClasses.find(x => x.name === className);
+    if (!cls.sections.includes(section)) cls.sections.push(section);
+    cls.sections.sort();
+  } else {
+    const s = seniorClasses[className].streams[streamIndex];
+    if (!s.sections.includes(section)) s.sections.push(section);
+    s.sections.sort();
+  }
+  render();
+}
+
+function addHouse(className, house, streamIndex = null) {
+  if(streamIndex === null) {
+    if (!classHouses[className].includes(house)) classHouses[className].push(house);
+  } else {
+    const s = seniorClasses[className].streams[streamIndex];
+    if (!s.houses.includes(house)) s.houses.push(house);
+  }
+  render();
+}
+
+function addStream(className, streamName) {
+  seniorClasses[className].streams.push({ name: streamName, shifts: ['Morning'], sections: ['Section A'], houses: ['Red House']});
+  render();
+}
+
+function removeStream(className, i) {
+  seniorClasses[className].streams.splice(i, 1);
+  render();
+}
+
+function selectShift(className, i, shift) {
+  const s = seniorClasses[className].streams[i];
+  if (!s.shifts.includes(shift)) s.shifts.push(shift);
+  else s.shifts = s.shifts.filter(x => x !== shift);
+  if(s.shifts.length === 0) s.shifts = ['Morning']; 
+  render();
+}
+
+// Utility: Build Dropdown Items
+function generateDropdown(options, onClickStr) {
+  if (options.length === 0) return `<div class="dropdown-empty">All options added</div>`;
+  return options.map(opt => `<button class="dropdown-item" onclick="${onClickStr.replace('__VAL__', opt)}">${opt}</button>`).join('');
+}
+
+// UI Renderers
+function renderNormal(cls) {
+  const name = cls.name;
+  const sections = cls.sections;
+  const houses = classHouses[name];
+  const isActive = enabled[name];
+  
+  const availSections = masterSections.filter(s => !sections.includes(s));
+  const availHouses = masterHouses.filter(h => !houses.includes(h));
+
+  return `
+  <div class="card ${!isActive ? 'disabled' : ''}">
+    <div class="card-header">
+      <button class="toggle ${isActive ? 'on' : ''}" onclick="toggleClass('${name}')"><span></span></button>
+      <div class="card-title">${name}</div>
+      <div class="card-actions">
+        <span class="badge ${isActive ? 'badge-active' : 'badge-inactive'}">${isActive ? 'Active' : 'Inactive'}</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field-group">
+        <div class="field-label">Shifts</div>
+        <div class="segmented">
+          <button class="seg-btn active">Morning</button>
+          <button class="seg-btn">Afternoon</button>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Sections</div>
+        <div class="pill-list">
+          ${sections.map(s => `<span class="pill">${s}</span>`).join('')}
+          <div class="dropdown-wrapper">
+            <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
+            <div class="dropdown-menu">
+              ${generateDropdown(availSections, `addSection('${name}', '__VAL__')`)}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field-label">Houses</div>
+        <div class="pill-list">
+          ${houses.map(h => `<span class="pill ${getPillClass(h)}">${h}</span>`).join('')}
+          <div class="dropdown-wrapper">
+            <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
+            <div class="dropdown-menu">
+              ${generateDropdown(availHouses, `addHouse('${name}', '__VAL__')`)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderSenior(name) {
+  const d = seniorClasses[name];
+  const isActive = enabled[name];
+  const activeStreams = d.streams.map(s => s.name);
+  const availStreams = masterStreams.filter(s => !activeStreams.includes(s));
+
+  return `
+  <div class="card senior ${!isActive ? 'disabled' : ''}">
+    <div class="card-header">
+      <button class="toggle ${isActive ? 'on' : ''}" onclick="toggleClass('${name}')"><span></span></button>
+      <div class="card-title">${name}</div>
+      <div class="card-actions">
+        <span class="badge ${isActive ? 'badge-active' : 'badge-inactive'}">${isActive ? 'Active' : 'Inactive'}</span>
+        
+        <div class="dropdown-wrapper right">
+          <button class="btn-add-stream" onclick="toggleDropdown(this)">
+            ${iconPlus} Add Stream
+          </button>
+          <div class="dropdown-menu">
+            ${generateDropdown(availStreams, `addStream('${name}', '__VAL__')`)}
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="card-body">
+      <div class="stream-grid">
+        ${d.streams.map((s, i) => {
+          const availSecs = masterSections.filter(x => !s.sections.includes(x));
+          const availHs = masterHouses.filter(x => !s.houses.includes(x));
+          
+          return `
+          <div class="stream-card">
+            <div class="stream-head">
+              <div class="stream-name">
+                <div class="stream-color-line ${getStreamColorClass(s.name)}"></div>
+                ${s.name}
+              </div>
+              <button class="btn-remove" onclick="removeStream('${name}', ${i})">Remove</button>
+            </div>
+            
+            <div class="field-group">
+              <div class="field-label">Shifts</div>
+              <div class="segmented">
+                ${['Morning','Evening'].map(x => `
+                  <button class="seg-btn ${s.shifts.includes(x) ? 'active' : ''}" onclick="selectShift('${name}', ${i}, '${x}')">${x}</button>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="field-group">
+              <div class="field-label">Sections</div>
+              <div class="pill-list">
+                ${s.sections.map(sec => `<span class="pill">${sec}</span>`).join('')}
+                <div class="dropdown-wrapper">
+                  <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
+                  <div class="dropdown-menu">
+                    ${generateDropdown(availSecs, `addSection('${name}', '__VAL__', ${i})`)}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="field-group">
+              <div class="field-label">Houses</div>
+              <div class="pill-list">
+                ${s.houses.map(h => `<span class="pill ${getPillClass(h)}">${h}</span>`).join('')}
+                <div class="dropdown-wrapper">
+                  <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
+                  <div class="dropdown-menu">
+                    ${generateDropdown(availHs, `addHouse('${name}', '__VAL__', ${i})`)}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`
+        }).join('')}
+        
+        ${d.streams.length === 0 ? `<div style="grid-column: 1/-1; padding: 16px; text-align: center; color: var(--text-tertiary); font-style: italic; border: 1px dashed var(--border-light); border-radius: var(--radius-md);">No streams configured. Click "Add Stream" to begin.</div>` : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function render() {
+  document.getElementById('classGrid').innerHTML =
+    normalClasses.map(cls => renderNormal(cls)).join('') +
+    renderSenior('Class 11') + 
+    renderSenior('Class 12');
+}
+
+function save() {
+  const t = document.getElementById('toast'); 
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function resetDemo() { location.reload(); }
+
+// Init
+render();
+</script>
+</body>
+</html>
