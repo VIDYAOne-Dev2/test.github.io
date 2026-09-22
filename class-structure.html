@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Class &amp; Shift Structure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F3F9FB;
+      --surface: #FFFFFF;
+      --surface-alt: #EEF6F9;
+      --border: #DCE7EC;
+      --text: #17262F;
+      --text-muted: #5C7180;
+      --brand: #1E7EA6;
+      --brand-dark: #145C79;
+      --brand-light: #DEF0F7;
+      --success: #2E8B5C;
+      --success-light: #E2F4EA;
+      --amber: #B4790E;
+      --amber-light: #FBF0D8;
+      --danger: #C0392B;
+      --danger-light: #FBEAE8;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 2px rgba(20, 45, 60, .06);
+      --shadow-md: 0 10px 28px rgba(20, 45, 60, .10);
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0F1720;
+        --surface: #17222B;
+        --surface-alt: #1D2932;
+        --border: #2B3844;
+        --text: #EAF1F5;
+        --text-muted: #93A5B2;
+        --brand-light: #173242;
+        --success-light: #163326;
+        --amber-light: #332A12;
+        --danger-light: #3A1D19;
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0F1720;
+      --surface: #17222B;
+      --surface-alt: #1D2932;
+      --border: #2B3844;
+      --text: #EAF1F5;
+      --text-muted: #93A5B2;
+      --brand-light: #173242;
+      --success-light: #163326;
+      --amber-light: #332A12;
+      --danger-light: #3A1D19;
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    .font-display {
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .screen {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 20px 150px;
+    }
+
+    .screen__intro {
+      margin: 0 0 20px;
+    }
+
+    .screen__intro h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .screen__intro p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Toolbar - flat, no gradient */
+    .toolbar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--brand);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .toolbar__row {
+      display: flex;
+      align-items: flex-end;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    /* Session dropdown */
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown__btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 11px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      min-width: 190px;
+      justify-content: space-between;
+    }
+
+    .dropdown__btn:hover {
+      border-color: var(--brand);
+    }
+
+    .dropdown__btn svg {
+      flex: none;
+      transition: transform .15s ease;
+      color: var(--text-muted);
+    }
+
+    .dropdown.is-open .dropdown__btn svg {
+      transform: rotate(180deg);
+    }
+
+    .dropdown__panel {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 220px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: 6px;
+      z-index: 40;
+      display: none;
+    }
+
+    .dropdown.is-open .dropdown__panel {
+      display: block;
+    }
+
+    .dropdown__option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+      background: none;
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 14.5px;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .dropdown__option:hover {
+      background: var(--surface-alt);
+    }
+
+    .dropdown__option.is-selected {
+      color: var(--brand-dark);
+      font-weight: 600;
+    }
+
+    .dropdown__option svg {
+      color: var(--brand);
+    }
+
+    /* Shift tabs */
+    .shift-group {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .shift-tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .shift-tab {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .shift-tab.is-active {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+
+    .shift-tab-add {
+      border: 1px dashed var(--brand);
+      background: transparent;
+      color: var(--brand-dark);
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .shift-tab-add:hover {
+      background: var(--brand-light);
+    }
+
+    .shift-input {
+      border: 1px solid var(--brand);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--surface);
+      width: 140px;
+      outline: none;
+    }
+
+    /* Banner - no filled box, just an accent rule */
+    .banner {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border-left: 3px solid var(--brand);
+      padding: 10px 0 10px 14px;
+      margin-top: 16px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .banner svg {
+      flex: none;
+      color: var(--brand);
+      margin-top: 2px;
+    }
+
+    .banner strong {
+      color: var(--text);
+    }
+
+    /* Class list */
+    .class-list {
+      margin-top: 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: visible;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .class-row {
+      border-bottom: 1px solid var(--border);
+      border-left: 3px solid var(--success);
+    }
+
+    .class-row.is-off {
+      border-left-color: var(--border);
+    }
+
+    .class-row:first-child {
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+    }
+
+    .class-row:last-child {
+      border-bottom: none;
+      border-bottom-left-radius: var(--radius-lg);
+      border-bottom-right-radius: var(--radius-lg);
+    }
+
+    .class-row__head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 15px 18px;
+    }
+
+    .switch {
+      width: 42px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--border);
+      border: none;
+      position: relative;
+      cursor: pointer;
+      flex: none;
+      padding: 0;
+      transition: background .18s ease;
+    }
+
+    .switch[aria-checked="true"] {
+      background: var(--success);
+    }
+
+    .switch__thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+      transition: transform .18s ease;
+    }
+
+    .switch[aria-checked="true"] .switch__thumb {
+      transform: translateX(18px);
+    }
+
+    .class-row__title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      cursor: pointer;
+      min-width: 120px;
+    }
+
+    .class-row__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15.5px;
+    }
+
+    .class-row__summary {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      cursor: pointer;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .summary-pill {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--brand-dark);
+      background: var(--brand-light);
+      padding: 5px 11px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .summary-pill--amber {
+      color: var(--amber);
+      background: var(--amber-light);
+    }
+
+    .chevron {
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 6px;
+      display: flex;
+      flex: none;
+    }
+
+    .chevron svg {
+      transition: transform .18s ease;
+    }
+
+    .chevron.is-open svg {
+      transform: rotate(180deg);
+    }
+
+    .class-row__body {
+      padding: 4px 18px 20px 74px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .group__label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .group--streams .group__label {
+      margin-bottom: 10px;
+    }
+
+    .group__chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 6px 6px 13px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .chip__remove {
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .chip__remove:hover {
+      background: var(--danger-light);
+      color: var(--danger);
+    }
+
+    .map-wrap {
+      position: relative;
+      display: inline-flex;
+    }
+
+    .add-btn {
+      border: 1px solid var(--brand);
+      background: transparent;
+      color: var(--brand-dark);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background: var(--brand-light);
+    }
+
+    .add-btn--amber {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .add-btn--amber:hover {
+      background: var(--amber-light);
+    }
+
+    .map-panel {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      min-width: 170px;
+      max-height: 230px;
+      overflow-y: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: 6px;
+      z-index: 35;
+    }
+
+    .map-panel .dropdown__option {
+      font-size: 13.5px;
+      padding: 8px 10px;
+    }
+
+    .map-panel__empty {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      padding: 8px 10px;
+      max-width: 190px;
+    }
+
+    .empty-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .stream-row {
+      border-left: 3px solid var(--amber);
+      padding: 10px 0 10px 14px;
+      margin-bottom: 6px;
+    }
+
+    .stream-row:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .stream-row__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+
+    .stream-row__name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .text-btn {
+      border: none;
+      background: none;
+      font-size: 12.5px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 6px;
+      color: var(--text-muted);
+    }
+
+    .text-btn--danger:hover {
+      color: var(--danger);
+    }
+
+    /* Action bar */
+    .action-bar {
+      position: sticky;
+      bottom: 0;
+      margin-top: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .apply-all {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      max-width: 400px;
+    }
+
+    .apply-all input {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--brand);
+      flex: none;
+      cursor: pointer;
+    }
+
+    .apply-all strong {
+      font-size: 13.5px;
+      font-weight: 600;
+      display: block;
+    }
+
+    .apply-all small {
+      display: block;
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .action-bar__buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      font-size: 14.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-save {
+      background: var(--success);
+      border-color: var(--success);
+      color: #fff;
+    }
+
+    .btn-save:hover {
+      background: #267A50;
+    }
+
+    .btn-reset {
+      background: transparent;
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .btn-reset:hover {
+      background: var(--danger-light);
+    }
+
+    /* Modal */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 22, 30, .45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 20px;
+    }
+
+    .overlay.is-open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      max-width: 400px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .modal h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .modal p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .modal__buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    .btn-ghost {
+      background: var(--surface-alt);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      border-color: var(--danger);
+      color: #fff;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translate(-50%, 20px);
+      background: var(--success);
+      color: #fff;
+      padding: 13px 20px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+      z-index: 120;
+      max-width: 90vw;
+    }
+
+    .toast.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+      pointer-events: auto;
+    }
+
+    @media (max-width:640px) {
+      .class-row__head {
+        flex-wrap: wrap;
+      }
+
+      .class-row__summary {
+        margin-left: 56px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .class-row__body {
+        padding-left: 20px;
+      }
+
+      .action-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .action-bar__buttons {
+        justify-content: stretch;
+      }
+
+      .action-bar__buttons .btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="screen">
+    <div class="screen__intro">
+      <h1>Class &amp; Shift Structure</h1>
+      <p>Map classes to sections, houses and streams for the session, then choose which shifts each class runs in.</p>
+    </div>
+
+    <div class="toolbar" id="toolbar"></div>
+    <div class="banner" id="banner"></div>
+    <div class="class-list" id="classList"></div>
+    <div class="action-bar" id="actionBar"></div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var SESSIONS = ["2025\u201326", "2026\u201327", "2027\u201328"];
+      var MASTER_HOUSES = ["Red House", "Green House", "Blue House", "Yellow House"];
+      var MASTER_STREAMS = ["Science", "Commerce", "Humanities", "Arts"];
+      var MASTER_SECTIONS = ["Section A", "Section B", "Section C", "Section D", "Section E"];
+      // for (var li = 0; li < 26; li++) {MASTER_SECTIONS.push(String.fromCharCode(65 + li));}
+
+      function lettersUpTo(n) {
+        var out = [];
+        for (var i = 0; i < n; i++) {out.push(MASTER_SECTIONS[i]);}
+        return out;
+      }
+
+      function makeClass(o) {
+        return {
+          id: o.name.toLowerCase().replace(/\s+/g, "-"),
+          name: o.name,
+          sections: o.sections || [],
+          houses: o.houses ? MASTER_HOUSES.slice() : [],
+          streams: o.streams || [],
+          streamsCapable: !!o.streamsCapable,
+          enabled: {"Morning": o.morning, "Afternoon": o.afternoon, "Evening": o.evening}
+        };
+      }
+
+      function initialData() {
+        var srStreams = function (i) {
+          if (i == 2) {
+            return [
+              {name: "Science", sections: ["Section A", "Section B"]},
+              {name: "Commerce", sections: ["Section A"]},
+            
+            ];
+          } else {
+            return [
+              {name: "Science", sections: ["Section A", "Section B"]},
+              {name: "Commerce", sections: ["Section A"]},
+              {name: "Humanities", sections: ["Section A"]}
+            ];
+          }
+        };
+        return {
+          session: SESSIONS[0],
+          shifts: ["Morning", "Afternoon", "Evening"],
+          classes: [
+            makeClass({name: "Nursery", sections: lettersUpTo(2), houses: false, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "LKG", sections: lettersUpTo(2), houses: false, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "UKG", sections: lettersUpTo(2), houses: false, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 1", sections: lettersUpTo(3), houses: false, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 2", sections: lettersUpTo(3), houses: false, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 3", sections: lettersUpTo(3), houses: true, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 4", sections: lettersUpTo(3), houses: true, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 5", sections: lettersUpTo(3), houses: true, streamsCapable: false, morning: true, afternoon: true, evening: false}),
+            makeClass({name: "Class 6", sections: lettersUpTo(2), houses: true, streamsCapable: false, morning: true, afternoon: false, evening: false}),
+            makeClass({name: "Class 7", sections: lettersUpTo(2), houses: true, streamsCapable: false, morning: true, afternoon: false, evening: false}),
+            makeClass({name: "Class 8", sections: lettersUpTo(2), houses: true, streamsCapable: false, morning: true, afternoon: false, evening: false}),
+            makeClass({name: "Class 9", sections: lettersUpTo(3), houses: true, streamsCapable: true, morning: true, afternoon: false, evening: false}),
+            makeClass({name: "Class 10", sections: lettersUpTo(3), houses: true, streamsCapable: true, morning: true, afternoon: false, evening: false}),
+            makeClass({name: "Class 11", sections: [], houses: true, streamsCapable: true, streams: srStreams(2), morning: true, afternoon: false, evening: true}),
+            makeClass({name: "Class 12", sections: [], houses: true, streamsCapable: true, streams: srStreams(), morning: true, afternoon: false, evening: true})
+          ]
+        };
+      }
+
+      var state = initialData();
+      state.activeShift = "Morning";
+      var savedSnapshot = JSON.parse(JSON.stringify({session: state.session, shifts: state.shifts, classes: state.classes}));
+
+      var expandedIds = new Set();
+      var sessionOpen = false;
+      var addingShift = false;
+      var openMapDropdown = null; // "type::classId::streamIdx"
+      var applyAllChecked = false;
+      var editGen = 0;
+
+      var toolbarEl = document.getElementById("toolbar");
+      var bannerEl = document.getElementById("banner");
+      var listEl = document.getElementById("classList");
+      var actionBarEl = document.getElementById("actionBar");
+      var overlayEl = document.getElementById("overlay");
+      var modalEl = document.getElementById("modal");
+      var toastEl = document.getElementById("toast");
+      var toastTimer = null;
+
+      function esc(s) {
+        return String(s).replace(/[&<>"]/g, function (c) {
+          return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c];
+        });
+      }
+      function dropdownKey(type, classId, streamIdx) {
+        return type + "::" + classId + "::" + (streamIdx === null || streamIdx === undefined ? "" : streamIdx);
+      }
+
+      function chevronSvg() {
+        return '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      }
+      function checkSvg() {
+        return '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3 6-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      }
+      function resetSvg() {
+        return '<svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M13.4 8A5.4 5.4 0 1 1 11.7 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M13.4 2.6V6.2H9.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      }
+      function infoSvg() {
+        return '<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="6.6" r="1" fill="currentColor"/></svg>';
+      }
+
+      function renderToolbar() {
+        var opts = SESSIONS.map(function (s) {
+          var sel = s === state.session;
+          return '<button class="dropdown__option' + (sel ? ' is-selected' : '') + '" data-action="pick-session" data-value="' + esc(s) + '">' +
+            '<span>' + esc(s) + '</span>' + (sel ? checkSvg() : '') + '</button>';
+        }).join("");
+
+        var tabs = state.shifts.map(function (sh) {
+          var active = sh === state.activeShift;
+          return '<button class="shift-tab' + (active ? ' is-active' : '') + '" data-action="pick-shift" data-value="' + esc(sh) + '">' + esc(sh) + '</button>';
+        }).join("");
+
+        var addShiftHtml = addingShift
+          ? '<input class="shift-input" id="shiftInput" data-role="shift-input" placeholder="Shift name" autofocus />'
+          : '<button class="shift-tab-add" data-action="start-add-shift">+ Add Shift</button>';
+
+        toolbarEl.innerHTML =
+          '<div class="toolbar__row">' +
+          '<div>' +
+          '<span class="field-label">Academic Session</span>' +
+          '<div class="dropdown' + (sessionOpen ? ' is-open' : '') + '" id="sessionDropdown">' +
+          '<button class="dropdown__btn" data-action="toggle-session"><span>' + esc(state.session) + '</span>' + chevronSvg() + '</button>' +
+          '<div class="dropdown__panel">' + opts + '</div>' +
+          '</div>' +
+          '</div>' +
+          '<div class="shift-group">' +
+          '<span class="field-label">Shift</span>' +
+          '<div class="shift-tabs">' + tabs + addShiftHtml + '</div>' +
+          '</div>' +
+          '</div>';
+
+        if (addingShift) {
+          var input = document.getElementById("shiftInput");
+          if (input) input.focus();
+        }
+      }
+
+      function renderBanner() {
+        bannerEl.innerHTML = infoSvg() +
+          '<div><strong>Sections, houses and streams are shared across every shift</strong> in ' + esc(state.session) + '. ' +
+          'The switch on each class below only turns that class on or off for the <strong>' + esc(state.activeShift) + '</strong> shift you\u2019re viewing.</div>';
+      }
+
+      function mapTrigger(label, type, classId, streamIdx, available, amber) {
+        var sIdx = (streamIdx === undefined) ? null : streamIdx;
+        var key = dropdownKey(type, classId, sIdx);
+        var isOpen = openMapDropdown === key;
+        var disabled = available.length === 0;
+        var btn = '<button class="add-btn' + (amber ? ' add-btn--amber' : '') + '" data-action="toggle-map" data-type="' + type + '" data-class-id="' + classId + '"' +
+          (sIdx !== null ? ' data-stream-idx="' + sIdx + '"' : '') +
+          (disabled ? ' disabled' : '') + '>+ Add ' + esc(label) + '</button>';
+        var panel = '';
+        if (isOpen) {
+          var opts = available.length
+            ? available.map(function (m) {
+              return '<button class="dropdown__option" data-action="pick-map" data-type="' + type + '" data-class-id="' + classId + '"' +
+                (sIdx !== null ? ' data-stream-idx="' + sIdx + '"' : '') +
+                ' data-value="' + esc(m) + '">' + esc(m) + '</button>';
+            }).join("")
+            : '<div class="map-panel__empty">All ' + esc(label.toLowerCase()) + 's already mapped</div>';
+          panel = '<div class="map-panel">' + opts + '</div>';
+        }
+        return '<span class="map-wrap" data-map-key="' + key + '">' + btn + panel + '</span>';
+      }
+
+      function chipGroup(label, chips, type, classId, masterList, streamIdx, amber) {
+        var sIdx = (streamIdx === undefined) ? null : streamIdx;
+        var available = masterList.filter(function (m) {return chips.indexOf(m) === -1;});
+        var chipHtml = chips.map(function (c, i) {
+          return '<span class="chip"><span>' + esc(c) + '</span>' +
+            '<button class="chip__remove" data-action="remove-chip" data-type="' + type + '" data-class-id="' + classId + '"' +
+            (sIdx !== null ? ' data-stream-idx="' + sIdx + '"' : '') +
+            ' data-chip-idx="' + i + '" aria-label="Remove mapping for ' + esc(c) + '">&times;</button></span>';
+        }).join("");
+
+        var singular = label.replace(/s$/, "");
+        return '<div class="group">' +
+          '<div class="group__label">' + esc(label) + '</div>' +
+          '<div class="group__chips">' + chipHtml + mapTrigger(singular, type, classId, sIdx, available, amber) + '</div>' +
+          '</div>';
+      }
+
+      function streamsGroup(cls) {
+        var mappedNames = cls.streams.map(function (s) {return s.name;});
+        var available = MASTER_STREAMS.filter(function (m) {return mappedNames.indexOf(m) === -1;});
+
+        var rows = cls.streams.map(function (s, si) {
+          return '<div class="stream-row">' +
+            '<div class="stream-row__head">' +
+            '<span class="stream-row__name">' + esc(s.name) + '</span>' +
+            '<button class="text-btn text-btn--danger" data-action="remove-stream" data-class-id="' + cls.id + '" data-stream-idx="' + si + '">Remove Stream</button>' +
+            '</div>' +
+            chipGroup("Sections", s.sections, "stream-section", cls.id, MASTER_SECTIONS, si, true) +
+            '</div>';
+        }).join("");
+
+        return '<div class="group group--streams">' +
+          '<div class="group__label">Streams</div>' +
+          rows +
+          '<div class="group__chips">' + mapTrigger("Stream", "stream", cls.id, null, available, true) + '</div>' +
+          '</div>';
+      }
+
+      function classRowBody(cls) {
+        var hasDirectSections = !(cls.streamsCapable && cls.streams.length > 0);
+        var parts = [];
+        if (hasDirectSections) {
+          parts.push(chipGroup("Sections", cls.sections, "section", cls.id, MASTER_SECTIONS, null, false));
+        } else {
+          parts.push('<div class="empty-note">Sections for ' + esc(cls.name) + ' are mapped inside each stream below.</div>');
+        }
+        parts.push(chipGroup("Houses", cls.houses, "house", cls.id, MASTER_HOUSES, null, false));
+        if (cls.streamsCapable) {
+          parts.push(streamsGroup(cls));
+        }
+        return '<div class="class-row__body">' + parts.join("") + '</div>';
+      }
+
+      function classRow(cls) {
+        var on = !!cls.enabled[state.activeShift];
+        var expanded = expandedIds.has(cls.id);
+        var sectionsCount = cls.sections.length;
+        var housesCount = cls.houses.length;
+        var streamsCount = cls.streams.length;
+
+        var pills = "";
+        if (sectionsCount) pills += '<span class="summary-pill">' + sectionsCount + ' section' + (sectionsCount > 1 ? 's' : '') + '</span>';
+        if (housesCount) pills += '<span class="summary-pill">' + housesCount + ' house' + (housesCount > 1 ? 's' : '') + '</span>';
+        if (cls.streamsCapable && streamsCount) pills += '<span class="summary-pill summary-pill--amber">' + streamsCount + ' stream' + (streamsCount > 1 ? 's' : '') + '</span>';
+
+        return '<div class="class-row' + (on ? '' : ' is-off') + '" data-class-id="' + cls.id + '">' +
+          '<div class="class-row__head">' +
+          '<button class="switch" role="switch" aria-checked="' + on + '" data-action="toggle-class" data-class-id="' + cls.id + '" aria-label="Turn ' + esc(cls.name) + (on ? ' off ' : ' on ') + 'for ' + esc(state.activeShift) + '"><span class="switch__thumb"></span></button>' +
+          '<div class="class-row__title" data-action="expand" data-class-id="' + cls.id + '">' +
+          '<span class="class-row__name">' + esc(cls.name) + '</span>' +
+          '</div>' +
+          '<div class="class-row__summary" data-action="expand" data-class-id="' + cls.id + '">' + pills + '</div>' +
+          '<button class="chevron' + (expanded ? ' is-open' : '') + '" data-action="expand" data-class-id="' + cls.id + '" aria-label="' + (expanded ? 'Collapse' : 'Expand') + ' ' + esc(cls.name) + '">' + chevronSvg() + '</button>' +
+          '</div>' +
+          (expanded ? classRowBody(cls) : '') +
+          '</div>';
+      }
+
+      function renderList() {
+        listEl.innerHTML = state.classes.map(classRow).join("");
+      }
+
+      function renderActionBar() {
+        var help = applyAllChecked
+          ? ("Saving will copy " + esc(state.activeShift) + "\u2019s active classes to every other shift.")
+          : "Each shift keeps its own selection of active classes.";
+        actionBarEl.innerHTML =
+          '<label class="apply-all">' +
+          '<input type="checkbox" id="applyAllCheckbox"' + (applyAllChecked ? ' checked' : '') + ' />' +
+          '<span><strong>Use the same classes for every shift</strong><small>' + help + '</small></span>' +
+          '</label>' +
+          '<div class="action-bar__buttons">' +
+          '<button class="btn btn-reset" id="resetBtn">' + resetSvg() + ' Reset</button>' +
+          '<button class="btn btn-save" id="saveBtn">' + checkSvg() + ' Save Structure</button>' +
+          '</div>';
+        document.getElementById("applyAllCheckbox").addEventListener("change", function (e) {
+          applyAllChecked = e.target.checked;
+          renderActionBar();
+        });
+        document.getElementById("resetBtn").addEventListener("click", onResetClick);
+        document.getElementById("saveBtn").addEventListener("click", onSaveClick);
+      }
+
+      function renderAll() {
+        renderToolbar();
+        renderBanner();
+        renderList();
+        renderActionBar();
+      }
+
+      function findClass(id) {
+        for (var i = 0; i < state.classes.length; i++) {if (state.classes[i].id === id) return state.classes[i];}
+        return null;
+      }
+      function chipArrayFor(cls, type, streamIdx) {
+        if (type === "section") return cls.sections;
+        if (type === "house") return cls.houses;
+        if (type === "stream-section") return cls.streams[streamIdx].sections;
+        return null;
+      }
+
+      function showModal(opts) {
+        modalEl.innerHTML =
+          '<h3>' + esc(opts.title) + '</h3>' +
+          '<p>' + opts.body + '</p>' +
+          '<div class="modal__buttons">' +
+          '<button class="btn btn-ghost" data-action="modal-cancel">Cancel</button>' +
+          '<button class="btn ' + (opts.danger ? 'btn-danger' : 'btn-save') + '" data-action="modal-confirm">' + esc(opts.confirmLabel) + '</button>' +
+          '</div>';
+        overlayEl.classList.add("is-open");
+        modalEl._onConfirm = opts.onConfirm;
+      }
+      function closeModal() {
+        overlayEl.classList.remove("is-open");
+        modalEl._onConfirm = null;
+      }
+      function showToast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add("is-visible");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {toastEl.classList.remove("is-visible");}, 3200);
+      }
+
+      function onSaveClick() {
+        if (applyAllChecked) {
+          var refShift = state.activeShift;
+          state.classes.forEach(function (c) {
+            state.shifts.forEach(function (sh) {c.enabled[sh] = c.enabled[refShift];});
+          });
+        }
+        savedSnapshot = JSON.parse(JSON.stringify({session: state.session, shifts: state.shifts, classes: state.classes}));
+        renderList();
+        showToast(applyAllChecked
+          ? "Saved \u2014 the same classes now apply to every shift."
+          : "Saved \u2014 this shift\u2019s structure has been saved.");
+      }
+
+      function onResetClick() {
+        showModal({
+          title: "Reset unsaved changes?",
+          body: "This restores the class, section, house and stream structure to what was last saved and discards anything changed since then.",
+          confirmLabel: "Reset",
+          danger: true,
+          onConfirm: function () {
+            var snap = JSON.parse(JSON.stringify(savedSnapshot));
+            state.session = snap.session;
+            state.shifts = snap.shifts;
+            state.classes = snap.classes;
+            if (state.shifts.indexOf(state.activeShift) === -1) state.activeShift = state.shifts[0];
+            expandedIds.clear(); openMapDropdown = null;
+            renderAll();
+            showToast("Structure reset to the last saved version.");
+          }
+        });
+      }
+
+      // Event delegation
+      document.addEventListener("click", function (e) {
+        var t = e.target.closest("[data-action]");
+
+        if (sessionOpen && !e.target.closest("#sessionDropdown")) {
+          sessionOpen = false; renderToolbar();
+        }
+        if (openMapDropdown && !e.target.closest(".map-wrap")) {
+          openMapDropdown = null; renderList();
+        }
+
+        if (!t) return;
+        var action = t.getAttribute("data-action");
+
+        if (action === "toggle-session") {sessionOpen = !sessionOpen; renderToolbar(); return;}
+        if (action === "pick-session") {
+          state.session = t.getAttribute("data-value");
+          sessionOpen = false;
+          renderToolbar(); renderBanner();
+          return;
+        }
+        if (action === "pick-shift") {
+          state.activeShift = t.getAttribute("data-value");
+          openMapDropdown = null;
+          renderToolbar(); renderBanner(); renderList(); renderActionBar();
+          return;
+        }
+        if (action === "start-add-shift") {addingShift = true; editGen++; renderToolbar(); return;}
+        if (action === "expand") {
+          var id = t.getAttribute("data-class-id");
+          if (expandedIds.has(id)) expandedIds.delete(id); else expandedIds.add(id);
+          openMapDropdown = null;
+          renderList();
+          return;
+        }
+        if (action === "toggle-class") {
+          var cid = t.getAttribute("data-class-id");
+          findClass(cid).enabled[state.activeShift] = !findClass(cid).enabled[state.activeShift];
+          renderList();
+          return;
+        }
+        if (action === "toggle-map") {
+          var type = t.getAttribute("data-type");
+          var classId = t.getAttribute("data-class-id");
+          var streamIdx = t.getAttribute("data-stream-idx") !== null ? parseInt(t.getAttribute("data-stream-idx"), 10) : null;
+          var key = dropdownKey(type, classId, streamIdx);
+          openMapDropdown = (openMapDropdown === key) ? null : key;
+          expandedIds.add(classId);
+          renderList();
+          return;
+        }
+        if (action === "pick-map") {
+          var type2 = t.getAttribute("data-type");
+          var classId2 = t.getAttribute("data-class-id");
+          var streamIdx2 = t.getAttribute("data-stream-idx") !== null ? parseInt(t.getAttribute("data-stream-idx"), 10) : null;
+          var value = t.getAttribute("data-value");
+          var cls4 = findClass(classId2);
+          if (type2 === "section") cls4.sections.push(value);
+          else if (type2 === "house") cls4.houses.push(value);
+          else if (type2 === "stream-section") cls4.streams[streamIdx2].sections.push(value);
+          else if (type2 === "stream") cls4.streams.push({name: value, sections: []});
+          openMapDropdown = null;
+          renderList();
+          return;
+        }
+        if (action === "remove-chip") {
+          var type3 = t.getAttribute("data-type");
+          var classId3 = t.getAttribute("data-class-id");
+          var streamIdx3 = t.getAttribute("data-stream-idx") !== null ? parseInt(t.getAttribute("data-stream-idx"), 10) : null;
+          var idx = parseInt(t.getAttribute("data-chip-idx"), 10);
+          var cls2 = findClass(classId3);
+          var arr = chipArrayFor(cls2, type3, streamIdx3);
+          var chipName = arr[idx];
+          var label = type3 === "house" ? "house" : "section";
+          var scopeText = streamIdx3 !== null ? ('the ' + esc(cls2.streams[streamIdx3].name) + ' stream of ' + esc(cls2.name)) : esc(cls2.name);
+          showModal({
+            title: "Remove mapping for " + chipName + "?",
+            body: "This removes the <strong>" + esc(chipName) + "</strong> mapping from " + scopeText + " in every shift &mdash; " + state.shifts.map(esc).join(", ") + " &mdash; for " + esc(state.session) + ". You can map it again anytime.",
+            confirmLabel: "Remove " + label,
+            danger: true,
+            onConfirm: function () {arr.splice(idx, 1); renderList();}
+          });
+          return;
+        }
+        if (action === "remove-stream") {
+          var classId4 = t.getAttribute("data-class-id");
+          var streamIdx4 = parseInt(t.getAttribute("data-stream-idx"), 10);
+          var cls3 = findClass(classId4);
+          var streamName = cls3.streams[streamIdx4].name;
+          showModal({
+            title: "Remove " + streamName + " mapping?",
+            body: "This removes the <strong>" + esc(streamName) + "</strong> stream mapping and its sections from " + esc(cls3.name) + " in every shift &mdash; " + state.shifts.map(esc).join(", ") + " &mdash; for " + esc(state.session) + ".",
+            confirmLabel: "Remove stream",
+            danger: true,
+            onConfirm: function () {cls3.streams.splice(streamIdx4, 1); renderList();}
+          });
+          return;
+        }
+        if (action === "modal-cancel") {closeModal(); return;}
+        if (action === "modal-confirm") {
+          var cb = modalEl._onConfirm;
+          closeModal();
+          if (cb) cb();
+          return;
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        var role = e.target.getAttribute && e.target.getAttribute("data-role");
+        if (!role) return;
+        if (role === "shift-input") {
+          if (e.key === "Enter") {
+            var name = e.target.value.trim();
+            if (name && state.shifts.indexOf(name) === -1) {
+              state.shifts.push(name);
+              state.classes.forEach(function (c) {c.enabled[name] = false;});
+              state.activeShift = name;
+            }
+            addingShift = false; editGen++; renderToolbar(); renderBanner(); renderList(); renderActionBar();
+          } else if (e.key === "Escape") {
+            addingShift = false; editGen++; renderToolbar();
+          }
+        }
+      });
+
+      document.addEventListener("focusout", function (e) {
+        var role = e.target.getAttribute && e.target.getAttribute("data-role");
+        if (role !== "shift-input") return;
+        var gen = editGen;
+        setTimeout(function () {
+          if (gen !== editGen) return;
+          if (addingShift) {addingShift = false; renderToolbar();}
+        }, 120);
+      });
+
+      overlayEl.addEventListener("click", function (e) {if (e.target === overlayEl) closeModal();});
+
+      renderAll();
+    })();
+  </script>
+</body>
+
+</html>
