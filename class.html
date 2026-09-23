@@ -103,7 +103,7 @@ button:focus-visible,
 /* Grid & Cards */
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: start; }
 .card {
-  position: relative; overflow: hidden;
+  position: relative; z-index: 1;
   background: var(--bg-card); border: 1px solid var(--border-light);
   border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);
   display: flex; flex-direction: column;
@@ -111,6 +111,7 @@ button:focus-visible,
 }
 .card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   background: linear-gradient(90deg, #94A3B8, #CBD5E1);
 }
 .card:hover { border-color: var(--border-focus); box-shadow: var(--shadow-md); transform: translateY(-2px); }
@@ -127,6 +128,7 @@ button:focus-visible,
 .card-header {
   padding: 15px 18px 14px; border-bottom: 1px solid var(--border-light);
   display: flex; align-items: center; gap: 12px; background: #FFFFFF;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
 .card.senior .card-header { background: linear-gradient(180deg, #F5F9FF 0%, #FFFFFF 100%); }
 .card-title { font-size: 15px; font-weight: 700; color: var(--text-main); flex-grow: 1; letter-spacing: -0.01em; }
@@ -171,13 +173,14 @@ button:focus-visible,
   padding: 4px 12px; font-size: 12px; font-weight: 500; color: var(--text-secondary);
   border-radius: var(--radius-sm); transition: color 0.15s var(--ease), background 0.15s var(--ease), box-shadow 0.15s var(--ease);
 }
-.seg-btn.active { background: var(--primary); color: #FFF; font-weight: 600; box-shadow: var(--shadow-xs); }
+.seg-btn.active { background: #DCFCE7; color: #166534; font-weight: 700; box-shadow: inset 0 0 0 1px #A7F3D0; }
 .seg-btn:hover:not(.active) { color: var(--text-main); }
 
 /* Pill Lists */
-.pill-list { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.pill-list { display: flex; flex-wrap: wrap; gap: 10px 8px; align-items: center; margin-top: 2px; }
 .pill {
-  display: inline-flex; align-items: center; height: 27px; padding: 0 11px;
+  position: relative;
+  display: inline-flex; align-items: center; height: 27px; padding: 0 12px;
   border-radius: 14px; font-size: 12px; font-weight: 600;
   background: var(--bg-subtle); color: var(--text-secondary);
   box-shadow: inset 0 0 0 1px var(--border-light);
@@ -189,6 +192,17 @@ button:focus-visible,
 .pill.green { background: #F0FDF4; color: #166534; box-shadow: inset 0 0 0 1px #BBF7D0; }
 .pill.blue { background: #EFF6FF; color: #1E40AF; box-shadow: inset 0 0 0 1px #BFDBFE; }
 .pill.yellow { background: #FEFCE8; color: #854D0E; box-shadow: inset 0 0 0 1px #FEF08A; }
+
+/* Small remove control pinned to the top-right corner of a pill */
+.pill-remove {
+  position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; z-index: 2;
+  border-radius: 50%; background: #FFFFFF; color: var(--text-tertiary);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.22), inset 0 0 0 1px var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease), transform 0.15s var(--ease);
+}
+.pill-remove svg { width: 8px; height: 8px; }
+.pill-remove:hover { background: var(--danger-bg); color: var(--danger-text); transform: scale(1.12); }
 
 /* Dropdown Wrapper & Add Buttons */
 .dropdown-wrapper { position: relative; display: inline-block; }
@@ -237,7 +251,7 @@ button:focus-visible,
 /* Senior Classes Layout */
 .stream-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .stream-card {
-  position: relative;
+  position: relative; z-index: 1;
   background: #FBFBFA; border: 1px solid var(--border-light); border-left: 3px solid var(--border-light);
   border-radius: var(--radius-md); padding: 14px;
   display: flex; flex-direction: column; gap: 12px;
@@ -400,11 +414,13 @@ const seniorClasses = {
 
 let enabled = {};
 let classHouses = {};
+let classShifts = {};
 
 // Populate defaults
 normalClasses.forEach(cls => {
   enabled[cls.name] = true;
-  classHouses[cls.name] = ['Red House', 'Green House']; 
+  classHouses[cls.name] = ['Red House', 'Green House'];
+  classShifts[cls.name] = ['Morning'];
 });
 enabled['Class 11'] = true;
 enabled['Class 12'] = true;
@@ -412,20 +428,37 @@ enabled['Class 12'] = true;
 // Event Listeners for Dropdowns
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.dropdown-wrapper')) {
-    document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
+    closeAllDropdowns();
   }
 });
+
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown-wrapper.open').forEach(el => {
+    el.classList.remove('open');
+    const card = el.closest('.card');
+    if (card) card.style.zIndex = '';
+    const streamCard = el.closest('.stream-card');
+    if (streamCard) streamCard.style.zIndex = '';
+  });
+}
 
 function toggleDropdown(btn) {
   const wrapper = btn.closest('.dropdown-wrapper');
   const isOpen = wrapper.classList.contains('open');
-  document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) wrapper.classList.add('open');
+  closeAllDropdowns();
+  if (!isOpen) {
+    wrapper.classList.add('open');
+    // Lift the card above sibling cards so the dropdown never renders underneath the next row
+    const card = wrapper.closest('.card');
+    if (card) card.style.zIndex = '50';
+    const streamCard = wrapper.closest('.stream-card');
+    if (streamCard) streamCard.style.zIndex = '30';
+  }
 }
 
 function setSession(val) {
   document.getElementById('sessionValue').textContent = val;
-  document.querySelectorAll('.dropdown-wrapper.open').forEach(el => el.classList.remove('open'));
+  closeAllDropdowns();
 }
 
 function toggleClass(name) {
@@ -435,6 +468,7 @@ function toggleClass(name) {
 
 // Icons & Styling Helpers
 const iconPlus = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>`;
+const iconX = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
 
 function getPillClass(text) {
   const t = text.toLowerCase();
@@ -468,6 +502,27 @@ function addSection(className, section, streamIndex = null) {
   render();
 }
 
+function removeSection(className, section, streamIndex = null) {
+  if (streamIndex === null) {
+    const cls = normalClasses.find(x => x.name === className);
+    cls.sections = cls.sections.filter(s => s !== section);
+  } else {
+    const s = seniorClasses[className].streams[streamIndex];
+    s.sections = s.sections.filter(x => x !== section);
+  }
+  render();
+}
+
+function removeHouse(className, house, streamIndex = null) {
+  if (streamIndex === null) {
+    classHouses[className] = classHouses[className].filter(h => h !== house);
+  } else {
+    const s = seniorClasses[className].streams[streamIndex];
+    s.houses = s.houses.filter(x => x !== house);
+  }
+  render();
+}
+
 function addHouse(className, house, streamIndex = null) {
   if(streamIndex === null) {
     if (!classHouses[className].includes(house)) classHouses[className].push(house);
@@ -488,11 +543,12 @@ function removeStream(className, i) {
   render();
 }
 
-function selectShift(className, i, shift) {
-  const s = seniorClasses[className].streams[i];
-  if (!s.shifts.includes(shift)) s.shifts.push(shift);
-  else s.shifts = s.shifts.filter(x => x !== shift);
-  if(s.shifts.length === 0) s.shifts = ['Morning']; 
+function selectShift(className, streamIndex, shift) {
+  const arr = streamIndex === null ? classShifts[className] : seniorClasses[className].streams[streamIndex].shifts;
+  const idx = arr.indexOf(shift);
+  if (idx === -1) arr.push(shift);
+  else arr.splice(idx, 1);
+  if (arr.length === 0) arr.push('Morning');
   render();
 }
 
@@ -525,14 +581,15 @@ function renderNormal(cls) {
       <div class="field-group">
         <div class="field-label">Shifts</div>
         <div class="segmented">
-          <button class="seg-btn active">Morning</button>
-          <button class="seg-btn">Afternoon</button>
+          ${['Morning','Afternoon'].map(x => `
+            <button class="seg-btn ${classShifts[name].includes(x) ? 'active' : ''}" onclick="selectShift('${name}', null, '${x}')">${x}</button>
+          `).join('')}
         </div>
       </div>
       <div class="field-group">
         <div class="field-label">Sections</div>
         <div class="pill-list">
-          ${sections.map(s => `<span class="pill">${s}</span>`).join('')}
+          ${sections.map(s => `<span class="pill">${s}<button class="pill-remove" onclick="event.stopPropagation(); removeSection('${name}', '${s}')" aria-label="Remove ${s}">${iconX}</button></span>`).join('')}
           <div class="dropdown-wrapper">
             <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
             <div class="dropdown-menu">
@@ -544,7 +601,7 @@ function renderNormal(cls) {
       <div class="field-group">
         <div class="field-label">Houses</div>
         <div class="pill-list">
-          ${houses.map(h => `<span class="pill ${getPillClass(h)}">${h}</span>`).join('')}
+          ${houses.map(h => `<span class="pill ${getPillClass(h)}">${h}<button class="pill-remove" onclick="event.stopPropagation(); removeHouse('${name}', '${h}')" aria-label="Remove ${h}">${iconX}</button></span>`).join('')}
           <div class="dropdown-wrapper">
             <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
             <div class="dropdown-menu">
@@ -611,7 +668,7 @@ function renderSenior(name) {
             <div class="field-group">
               <div class="field-label">Sections</div>
               <div class="pill-list">
-                ${s.sections.map(sec => `<span class="pill">${sec}</span>`).join('')}
+                ${s.sections.map(sec => `<span class="pill">${sec}<button class="pill-remove" onclick="event.stopPropagation(); removeSection('${name}', '${sec}', ${i})" aria-label="Remove ${sec}">${iconX}</button></span>`).join('')}
                 <div class="dropdown-wrapper">
                   <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
                   <div class="dropdown-menu">
@@ -624,7 +681,7 @@ function renderSenior(name) {
             <div class="field-group">
               <div class="field-label">Houses</div>
               <div class="pill-list">
-                ${s.houses.map(h => `<span class="pill ${getPillClass(h)}">${h}</span>`).join('')}
+                ${s.houses.map(h => `<span class="pill ${getPillClass(h)}">${h}<button class="pill-remove" onclick="event.stopPropagation(); removeHouse('${name}', '${h}', ${i})" aria-label="Remove ${h}">${iconX}</button></span>`).join('')}
                 <div class="dropdown-wrapper">
                   <button class="btn-add" onclick="toggleDropdown(this)">${iconPlus} Add</button>
                   <div class="dropdown-menu">
