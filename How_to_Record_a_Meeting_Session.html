@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>How to Record a Meeting Session</title>
+<style>
+  :root{
+    --primary:#2563EB;--primary-dark:#1D4ED8;--primary-soft:#EFF4FF;
+    --ink:#0F172A;--text:#334155;--muted:#64748B;
+    --bg:#F8FAFC;--card:#FFFFFF;--line:#E2E8F0;--danger:#DC2626;
+    --shadow:0 1px 2px rgba(15,23,42,.04),0 4px 16px rgba(15,23,42,.05);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Plus Jakarta Sans","Segoe UI",Inter,Arial,sans-serif;font-size:15.5px;line-height:1.6}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  header{background:#fff;border-bottom:1px solid var(--line);padding:56px 0 44px}
+  .eyebrow{display:inline-block;color:var(--primary);background:var(--primary-soft);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:16px}
+  header h1{margin:0 0 12px;color:var(--ink);font-size:2.5rem;line-height:1.15;letter-spacing:-.02em}
+  header p{margin:0;color:var(--muted);font-size:1.1rem;max-width:620px}
+
+  nav{background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+  nav .wrap{display:flex;gap:6px;padding-top:10px;padding-bottom:10px;overflow-x:auto}
+  nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:.9rem;padding:7px 14px;border-radius:8px;white-space:nowrap}
+  nav a:hover{background:var(--primary-soft);color:var(--primary)}
+
+  main{padding:36px 0 56px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:34px;margin-bottom:28px}
+  h2{margin:0 0 6px;color:var(--ink);font-size:1.55rem;letter-spacing:-.01em}
+  .sub{margin:0 0 26px;color:var(--muted)}
+  .badge{display:inline-block;background:var(--primary-soft);color:var(--primary);font-weight:700;font-size:.74rem;letter-spacing:.08em;padding:4px 11px;border-radius:999px;margin-bottom:12px}
+
+  /* steps */
+  .step{display:grid;grid-template-columns:40px 1fr;column-gap:18px;padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+  .num{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 5px var(--primary-soft)}
+  .body{min-width:0}
+  .step h3{margin:6px 0 6px;color:var(--ink);font-size:1.1rem}
+  .step p{margin:0 0 14px}
+  svg{width:100%;max-width:580px;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+
+  kbd{display:inline-block;background:#fff;color:var(--ink);border:1px solid #CBD5E1;border-bottom-width:2px;border-radius:6px;padding:0 8px;font-family:inherit;font-weight:700;font-size:.88em;line-height:1.5}
+
+  ul{margin:8px 0 0 22px;padding:0}
+  li{margin-bottom:6px}
+  table{width:100%;border-collapse:separate;border-spacing:0;margin-top:14px;font-size:.95rem;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#F1F5F9;color:var(--ink);font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
+  tr:last-child td{border-bottom:0}
+
+  .note,.tip{padding:14px 18px;border-radius:10px;margin:18px 0 0;border:1px solid}
+  .note{background:#FFFBEB;border-color:#FDE68A;color:#78350F}
+  .tip{background:#ECFDF5;border-color:#A7F3D0;color:#065F46}
+
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 24px 36px}
+
+  @media (max-width:640px){
+    header h1{font-size:1.9rem}
+    section{padding:22px 18px}
+    .step{grid-template-columns:34px 1fr;column-gap:12px}
+    .num{width:34px;height:34px;font-size:.9rem}
+  }
+  @media print{nav{display:none}body{background:#fff}section{box-shadow:none;break-inside:avoid-page}}
+
+
+  /* ---- v3 refinements ---- */
+  .wrap{width:90%;max-width:none;padding:0;margin:0 auto}
+  header{padding:22px 0 20px;background:linear-gradient(180deg,#fff,#F5F8FF)}
+  .hero{display:flex;align-items:center;gap:16px}
+  .hero-ico{flex:0 0 50px;height:50px;border-radius:14px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(37,99,235,.28)}
+  .hero-ico svg{width:26px;height:26px;border:0;border-radius:0;background:none}
+  header h1{margin:0 0 2px;font-size:1.85rem;font-weight:800}
+  header p{max-width:none;font-size:1rem;color:var(--muted);margin:0}
+  header p b{color:var(--ink)}
+  .eyebrow{margin:0 0 6px;padding:3px 10px;font-size:.7rem}
+  nav .wrap{padding-top:8px;padding-bottom:8px}
+  nav a{display:inline-flex;align-items:center;gap:7px;padding:6px 12px}
+  main{padding:22px 0 36px}
+  section{padding:24px 28px;margin-bottom:20px}
+  .sub{margin:0 0 18px}
+  .step{padding-bottom:20px;margin-bottom:20px;column-gap:16px}
+  .step h3{margin:6px 0 4px;font-weight:700}
+  .step p{margin:0 0 10px}
+  svg{max-width:760px}
+  h2{display:flex;align-items:center;gap:12px;font-weight:800}
+  .tile{flex:0 0 38px;height:38px;border-radius:11px;background:var(--primary-soft);color:var(--primary);display:inline-flex;align-items:center;justify-content:center}
+  .tile svg,.i svg,nav svg,.callout svg,.note svg,.tip svg{width:20px;height:20px;border:0;border-radius:0;background:none;max-width:none}
+  nav svg{width:16px;height:16px}
+  .badge{margin-bottom:8px}
+  mark,.hi{background:linear-gradient(transparent 55%,#FDE68A 55%);color:var(--ink);font-weight:700;padding:0 2px}
+  .checklist{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+  .checklist li{display:flex;gap:10px;align-items:flex-start;margin:0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#FAFBFF}
+  .checklist .i{flex:0 0 28px;height:28px;border-radius:8px;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center}
+  .checklist .i svg{width:16px;height:16px}
+  .callout,.note,.tip{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;margin-top:14px}
+  .callout{background:#FEF2F2;border:1px solid #FECACA;color:#7F1D1D;border-radius:10px}
+  .callout svg,.note svg,.tip svg{flex:0 0 20px;margin-top:2px}
+  @media (max-width:760px){.checklist{grid-template-columns:1fr}.wrap{width:94%}header h1{font-size:1.4rem}.hero-ico{display:none}}
+
+  /* svg helpers */
+  .f{fill:#F1F5F9;stroke:#CBD5E1}.w{fill:#fff;stroke:#CBD5E1}.d{fill:#1E293B}.hl{fill:none;stroke:#DC2626;stroke-width:3}
+  .t{font:12px "Segoe UI",Arial,sans-serif;fill:#334155}.tb{font:bold 12px "Segoe UI",Arial,sans-serif;fill:#0F172A}.tr{font:bold 12px "Segoe UI",Arial,sans-serif;fill:#DC2626}.tw{font:bold 12px "Segoe UI",Arial,sans-serif;fill:#fff}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute;border:0"><defs><symbol id="i-rec" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="3"/><path d="M22 8l-6 4 6 4z"/></symbol><symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3 6l1 1 2-2M3 12l1 1 2-2M3 18l1 1 2-2"/></symbol><symbol id="i-win" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></symbol><symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z"/><circle cx="12" cy="13" r="3.5"/></symbol><symbol id="i-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></symbol><symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 005 5L21 13l-8 8-4-4 8-8z" transform="scale(.9) translate(1 0)"/><path d="M3 21l3-3"/></symbol><symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></symbol><symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></symbol><symbol id="i-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9a4 4 0 010 6"/></symbol><symbol id="i-disk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h12l4 4v12a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M7 3v6h8V3M7 21v-7h10v7"/></symbol><symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.5a6.5 6.5 0 013.5 5.5"/></symbol><symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></symbol><symbol id="i-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></symbol><symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.7 10.5l6.6-3M8.7 13.5l6.6 3"/></symbol><symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 21V5"/></symbol></defs></svg>
+
+<header><div class="wrap">
+  <div class="hero">
+    <div class="hero-ico"><svg><use href="#i-rec"/></svg></div>
+    <div>
+      <span class="eyebrow">Team Guide</span>
+      <h1>How to Record a Meeting Session</h1>
+      <p><b>Please record all your training and discussion sessions</b> so that you never miss any instructions or guidance. Steps for Windows 10 and Windows 11 below.</p>
+    </div>
+  </div>
+</div></header>
+
+<nav><div class="wrap">
+  <a href="#before"><svg><use href="#i-list"/></svg>Before You Start</a>
+  <a href="#win10"><svg><use href="#i-win"/></svg>Windows 10</a>
+  <a href="#win11"><svg><use href="#i-cam"/></svg>Windows 11</a>
+  <a href="#after"><svg><use href="#i-folder"/></svg>After Recording</a>
+  <a href="#trouble"><svg><use href="#i-tool"/></svg>Troubleshooting</a>
+</div></nav>
+
+<main><div class="wrap">
+
+<section id="before">
+  <h2><span class="tile"><svg><use href="#i-list"/></svg></span>Before You Start</h2>
+  <p class="sub">Quick checklist to get a clean recording.</p>
+  <ul class="checklist"><li><span class="i"><svg><use href="#i-users"/></svg></span><div><mark>Inform participants</mark> that the meeting is being recorded and get their consent, as per company policy.</div></li><li><span class="i"><svg><use href="#i-mic"/></svg></span><div>Join the meeting first and check that your <mark>microphone and speakers</mark> work.</div></li><li><span class="i"><svg><use href="#i-alert"/></svg></span><div>Close private tabs, chats and notifications that you do not want captured.</div></li><li><span class="i"><svg><use href="#i-disk"/></svg></span><div>Keep enough <mark>free disk space</mark> (about 100&ndash;200 MB per 10 minutes).</div></li></ul>
+  <table>
+    <tr><th>Your Windows version</th><th>Tool to use</th><th>Shortcut</th></tr>
+    <tr><td>Windows 10</td><td>Xbox Game Bar</td><td><kbd>Win</kbd> + <kbd>G</kbd></td></tr>
+    <tr><td>Windows 11</td><td>Snipping Tool</td><td><kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd></td></tr>
+  </table>
+  <div class="callout"><svg><use href="#i-alert"/></svg><div><b>Important:</b> record <mark>every training and discussion session</mark>. Recordings are your reference for instructions and guidelines shared in the meeting.</div></div>
+  <div class="note"><svg><use href="#i-bulb"/></svg><div><b>Not sure which Windows you have?</b> Press <kbd>Win</kbd> + <kbd>R</kbd>, type <b>winver</b> and press Enter.</div></div>
+</section>
+
+<section id="win10">
+  <span class="badge">WINDOWS 10</span>
+  <h2><span class="tile"><svg><use href="#i-win"/></svg></span>Record a Meeting using Xbox Game Bar</h2>
+  <p class="sub">Game Bar records the <mark>active app window</mark> (for example Teams, Zoom or your browser), not the whole desktop.</p>
+
+  <div class="step"><div class="num">1</div><div class="body">
+    <h3>Turn on Xbox Game Bar (first time only)</h3>
+    <p>Open <b>Settings &rsaquo; Gaming &rsaquo; Xbox Game Bar</b> and switch the toggle to <b>On</b>.</p>
+    <svg viewBox="0 0 560 120"><rect class="f" width="560" height="120" rx="8"/><rect class="w" x="20" y="14" width="520" height="92"/>
+      <text class="tb" x="34" y="38">Settings  &rsaquo;  Gaming  &rsaquo;  Xbox Game Bar</text>
+      <text class="t" x="34" y="72">Enable Xbox Game Bar for things like recording game clips</text>
+      <rect x="450" y="56" width="56" height="26" rx="13" fill="#2563EB"/><circle cx="493" cy="69" r="9" fill="#fff"/>
+      <rect class="hl" x="444" y="52" width="68" height="34"/><text class="tr" x="458" y="46">Turn ON</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="body">
+    <h3>Join your meeting and click on its window</h3>
+    <p>Make sure the meeting window is <mark>active</mark> (click anywhere inside it). Game Bar will not record File Explorer or the desktop.</p>
+    <svg viewBox="0 0 560 120"><rect class="f" width="560" height="120" rx="8"/><rect class="w" x="20" y="14" width="520" height="92"/><rect x="20" y="14" width="520" height="22" fill="#DDE3EC"/>
+      <text class="tb" x="30" y="30">Your meeting window (Teams / Zoom / Meet)</text>
+      <text class="t" x="34" y="72">Click inside this window first, then press Win + G</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="body">
+    <h3>Open Game Bar</h3>
+    <p>Press <kbd>Win</kbd> + <kbd>G</kbd> together. The Game Bar overlay appears on screen.</p>
+    <svg viewBox="0 0 560 90"><rect class="f" width="560" height="90" rx="8"/>
+      <rect class="w" x="195" y="22" width="80" height="34" rx="6"/><text class="tb" x="235" y="44" text-anchor="middle">Win</text>
+      <text class="tb" x="292" y="45" font-size="16">+</text>
+      <rect class="w" x="312" y="22" width="60" height="34" rx="6"/><text class="tb" x="342" y="44" text-anchor="middle">G</text>
+      <text class="t" x="280" y="78" text-anchor="middle">Opens the Xbox Game Bar overlay</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div class="body">
+    <h3>Check your microphone, then start recording</h3>
+    <p>In the <b>Capture</b> widget, click the <mark>microphone</mark> icon if you want your voice recorded, then click the round <b>Start recording</b> button. Shortcut: <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd>.</p>
+    <svg viewBox="0 0 560 160"><rect class="f" width="560" height="160" rx="8"/><rect x="20" y="14" width="520" height="132" fill="#C9D3E0"/>
+      <rect class="d" x="30" y="22" width="500" height="24" rx="3"/><text class="tw" x="42" y="39">Xbox Game Bar</text><text class="tw" x="170" y="39">Audio</text><text class="tw" x="240" y="39">Capture</text><text class="tw" x="320" y="39">Performance</text>
+      <rect class="hl" x="234" y="26" width="62" height="20"/>
+      <rect x="40" y="58" width="190" height="78" fill="#2B2B2B"/><text class="tw" x="50" y="76">Capture</text>
+      <rect x="50" y="86" width="44" height="40" fill="#444"/><circle cx="72" cy="106" r="11" fill="#D92D20" stroke="#fff"/>
+      <rect class="hl" x="47" y="83" width="50" height="46"/>
+      <rect x="110" y="94" width="40" height="24" fill="#444"/><text class="tw" x="119" y="110">Mic</text>
+      <text class="tr" x="250" y="82">&larr; 1. Click Capture to open the widget</text>
+      <text class="tr" x="250" y="112">&larr; 2. Click Start recording</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div class="body">
+    <h3>Continue your meeting</h3>
+    <p>A small recording bar with a timer appears. You can click away and carry on with the meeting normally.</p>
+  </div></div>
+
+  <div class="step"><div class="num">6</div><div class="body">
+    <h3>Stop recording</h3>
+    <p>Click the <b>Stop</b> button on the recording bar, or press <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> again. A &ldquo;Game clip recorded&rdquo; message appears.</p>
+    <svg viewBox="0 0 560 100"><rect class="f" width="560" height="100" rx="8"/><rect class="w" x="20" y="12" width="520" height="76"/><text class="t" x="34" y="54">Your meeting window</text>
+      <rect class="d" x="380" y="26" width="150" height="28" rx="4"/><circle cx="396" cy="40" r="6" fill="#DC2626"/><text class="tw" x="408" y="44">00:12:35</text>
+      <circle cx="476" cy="40" r="6" fill="#fff"/><rect x="500" y="34" width="12" height="12" fill="#fff"/>
+      <rect class="hl" x="495" y="30" width="22" height="20"/><text class="tr" x="495" y="22">Stop</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">7</div><div class="body">
+    <h3>Find your recording</h3>
+    <p>Open <mark>This PC &rsaquo; Videos &rsaquo; Captures</mark>. The file is saved as an MP4.</p>
+    <svg viewBox="0 0 560 90"><rect class="f" width="560" height="90" rx="8"/><rect class="w" x="20" y="12" width="520" height="66"/>
+      <text class="tb" x="34" y="36">This PC  &rsaquo;  Videos  &rsaquo;  Captures</text>
+      <rect x="34" y="46" width="230" height="24" fill="#E8F0FB" stroke="#9AA7B8"/><text class="t" x="42" y="62">Meeting - 2026-11-18.mp4</text></svg>
+  </div></div>
+</section>
+
+<section id="win11">
+  <span class="badge">WINDOWS 11</span>
+  <h2><span class="tile"><svg><use href="#i-cam"/></svg></span>Record a Meeting using Snipping Tool</h2>
+  <p class="sub">Snipping Tool records any <b>area of your screen</b> that you select.</p>
+
+  <div class="step"><div class="num">1</div><div class="body">
+    <h3>Open Snipping Tool</h3>
+    <p>Click <b>Start</b>, type <b>Snipping Tool</b> and press Enter.</p>
+    <svg viewBox="0 0 560 100"><rect class="f" width="560" height="100" rx="8"/><rect class="w" x="20" y="12" width="520" height="76"/>
+      <text class="tb" x="34" y="34">Start menu  &rsaquo;  type &ldquo;Snipping Tool&rdquo;  &rsaquo;  Enter</text>
+      <rect x="34" y="44" width="200" height="32" fill="#E8F0FB"/><rect x="42" y="50" width="20" height="20" fill="#2563EB"/><text class="t" x="72" y="65">Snipping Tool  (App)</text>
+      <rect class="hl" x="31" y="41" width="206" height="38"/></svg>
+  </div></div>
+
+  <div class="step"><div class="num">2</div><div class="body">
+    <h3>Switch to Record mode and click New</h3>
+    <p>Click the <b>camcorder (Record)</b> icon, then click <b>New</b>. Shortcut: <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>.</p>
+    <svg viewBox="0 0 560 130"><rect class="f" width="560" height="130" rx="8"/><rect class="w" x="20" y="12" width="520" height="106"/><rect x="20" y="12" width="520" height="22" fill="#E2E8F0"/><text class="tb" x="30" y="28">Snipping Tool</text>
+      <rect x="34" y="44" width="70" height="28" fill="#F4F6FA" stroke="#9AA7B8"/><text class="t" x="52" y="63">+ New</text>
+      <rect x="116" y="44" width="110" height="28" fill="#F4F6FA" stroke="#9AA7B8"/><rect x="126" y="52" width="18" height="12" fill="#555"/><text class="t" x="152" y="63">Record</text>
+      <rect class="hl" x="112" y="40" width="118" height="36"/><rect class="hl" x="30" y="40" width="78" height="36"/>
+      <text class="tr" x="34" y="96">1. Switch to Record (camcorder icon)    2. Click New</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">3</div><div class="body">
+    <h3>Select the meeting window area</h3>
+    <p>Drag your mouse to draw a box around the meeting window, then click <b>Start</b>. Recording begins after a 3-second countdown.</p>
+    <svg viewBox="0 0 560 140"><rect class="f" width="560" height="140" rx="8"/><rect x="20" y="12" width="520" height="116" fill="#C9D3E0"/>
+      <rect x="60" y="26" width="440" height="70" fill="none" stroke="#2563EB" stroke-width="2" stroke-dasharray="6 4"/>
+      <text class="tb" x="74" y="50">Drag to select the area to record</text>
+      <rect x="240" y="100" width="80" height="24" fill="#2563EB"/><text class="tw" x="258" y="117">&#9654; Start</text>
+      <rect class="hl" x="236" y="97" width="88" height="30"/></svg>
+  </div></div>
+
+  <div class="step"><div class="num">4</div><div class="body">
+    <h3>Stop recording</h3>
+    <p>When the meeting ends, click the red <b>Stop</b> button on the recording bar.</p>
+    <svg viewBox="0 0 560 100"><rect class="f" width="560" height="100" rx="8"/><rect class="w" x="20" y="12" width="520" height="76"/><text class="t" x="34" y="60">Area being recorded</text>
+      <rect class="d" x="210" y="26" width="150" height="28" rx="4"/><circle cx="226" cy="40" r="6" fill="#DC2626"/><text class="tw" x="238" y="44">00:25:10</text><rect x="334" y="34" width="12" height="12" fill="#fff"/>
+      <rect class="hl" x="329" y="30" width="22" height="20"/><text class="tr" x="329" y="22">Stop</text></svg>
+  </div></div>
+
+  <div class="step"><div class="num">5</div><div class="body">
+    <h3>Preview and save</h3>
+    <p>Review the video in the preview window, then click <b>Save</b> (disk icon). Recordings usually go to <mark>Videos &rsaquo; Screen Recordings</mark>.</p>
+    <svg viewBox="0 0 560 130"><rect class="f" width="560" height="130" rx="8"/><rect class="w" x="20" y="12" width="520" height="106"/><rect x="20" y="12" width="520" height="22" fill="#E2E8F0"/><text class="tb" x="30" y="28">Snipping Tool &ndash; Preview</text>
+      <rect x="34" y="44" width="290" height="62" fill="#222"/><polygon points="170,64 170,88 190,76" fill="#fff"/>
+      <rect x="500" y="17" width="14" height="14" rx="2" fill="#475569"/><rect x="503" y="17" width="8" height="5" fill="#fff"/><rect class="hl" x="494" y="14" width="26" height="20"/><text class="tr" x="350" y="58">Click Save (disk icon, top right)</text>
+      <text class="t" x="338" y="82" font-size="11">Saved to Videos &rsaquo; Screen Recordings</text></svg>
+  </div></div>
+</section>
+
+<section id="after">
+  <h2><span class="tile"><svg><use href="#i-folder"/></svg></span>After Recording</h2>
+  <p class="sub">Name, check and share the recording.</p>
+  <ul>
+    <li><b>Rename</b> the file clearly, e.g. <i>Sprint-Review_18Nov2026.mp4</i>.</li>
+    <li><mark>Play it once</mark> to confirm that both video and audio were captured.</li>
+    <li><mark>Share</mark> only via the approved company location (shared drive or Teams/SharePoint). Do not share on personal channels.</li>
+    <li>If the file is large, trim it or compress it before sharing.</li>
+  </ul>
+  <div class="tip"><svg><use href="#i-bulb"/></svg><div><b>Tip:</b> Test a 30-second recording before an important meeting.</div></div>
+</section>
+
+<section id="trouble">
+  <h2><span class="tile"><svg><use href="#i-tool"/></svg></span>Troubleshooting</h2>
+  <table>
+    <tr><th>Problem</th><th>What to do</th></tr>
+    <tr><td><kbd>Win</kbd> + <kbd>G</kbd> does nothing</td><td>Turn on Xbox Game Bar in Settings &rsaquo; Gaming, then try again.</td></tr>
+    <tr><td>Game Bar says &ldquo;Gaming features aren&rsquo;t available&rdquo;</td><td>Click on the meeting window first so it is the active app (not the desktop or File Explorer).</td></tr>
+    <tr><td>No audio in the recording</td><td>Check that the microphone is on in the recording tool and not muted in Windows or in the meeting app. Also check the audio options in Snipping Tool.</td></tr>
+    <tr><td>Cannot find the video</td><td>Check <b>Videos &rsaquo; Captures</b> (Windows 10) or <b>Videos &rsaquo; Screen Recordings</b> (Windows 11).</td></tr>
+    <tr><td>Recording stopped suddenly</td><td>Check free disk space and keep the laptop plugged in and awake during long meetings.</td></tr>
+  </table>
+  <div class="note"><svg><use href="#i-alert"/></svg><div><b>Note:</b> Screens in this guide are simplified illustrations. Your menus may look slightly different depending on your Windows and app version.</div></div>
+</section>
+
+</div></main>
+<footer>How to Record a Meeting Session &middot; Internal team guide</footer>
+</body>
+</html>
