@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bulk Invitations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root {
+  /* Layout idea: page title, institution picker, one invitation card per product, then a print studio with a live poster preview. */
+  --ink: #14173d;
+  --ink-soft: #5b6188;
+  --line: #e6eaf2;
+  --canvas: #ffffff;
+  --surface: #ffffff;
+  --green: #16a34a;
+  --green-deep: #12803c;
+  --green-tint: #eaf7ee;
+  --green-line: #bfe6cb;
+  --blue: #2f6fe4;
+  --blue-tint: #e8f1ff;
+  --blue-line: #c9dcfb;
+  --violet: #5b4bdb;
+  --violet-tint: #efeafe;
+  --violet-line: #d9d1fa;
+  --yellow: #a8670a;
+  --yellow-tint: #fff6dc;
+  --yellow-line: #f1dd9c;
+  --rose: #c8323f;
+  --rose-tint: #fdecee;
+  --rose-line: #f6c9ce;
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --shadow: 0 1px 2px rgba(20,23,61,.04), 0 12px 32px -14px rgba(20,23,61,.12);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--font); color: var(--ink); line-height: 1.45; -webkit-font-smoothing: antialiased;
+  background: #ffffff;
+  min-height: 100vh; padding: 32px 20px 48px;
+}
+[hidden] { display: none !important; }
+button, input, select { font: inherit; color: inherit; }
+svg { display: block; flex: none; }
+:focus-visible { outline: 3px solid rgba(22,163,74,.35); outline-offset: 2px; }
+
+.app { width: 100%; max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); }
+
+/* ---------- Title ---------- */
+.page-head { display: flex; align-items: center; gap: 16px; padding: 4px 4px 2px; }
+.page-head .badge { width: 52px; height: 52px; border-radius: 16px; background: var(--green-tint); color: var(--green-deep); display: grid; place-items: center; border: 1px solid var(--green-line); box-shadow: 4px 4px 0 -1px var(--yellow-tint), -4px -4px 0 -1px var(--blue-tint); }
+.page-head h1 { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+.page-head p { margin: 2px 0 0; font-size: 14px; color: var(--ink-soft); }
+
+/* ---------- Institution ---------- */
+.inst-card { padding: 18px 22px 0; overflow: hidden; }
+.inst-pick { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 16px; }
+.inst-pick label { font-size: 14px; font-weight: 700; }
+.req { color: #e11d48; margin-left: 3px; }
+.select-wrap { position: relative; flex: 1; min-width: 260px; max-width: 520px; }
+.select-wrap select {
+  appearance: none; -webkit-appearance: none; width: 100%; height: 44px; border-radius: 12px; border: 1.5px solid var(--line); background: #fff;
+  padding: 0 42px 0 44px; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: border-color .15s, box-shadow .15s;
+}
+.select-wrap select:hover { border-color: #cfd6e6; }
+.select-wrap select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.12); }
+.select-wrap .lead { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--green-deep); pointer-events: none; }
+.select-wrap .chev { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
+.inst-meta { margin: 0; display: grid; grid-template-columns: 1.7fr 1.2fr .6fr 1.1fr; border-top: 1px solid var(--line); margin-inline: -22px; background: #fafcfb; }
+.meta { display: flex; gap: 12px; padding: 13px 22px; align-items: center; min-width: 0; }
+.meta + .meta { border-left: 1px solid var(--line); }
+.m-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--green-tint); color: var(--green-deep); flex: none; }
+.m-red { background: var(--rose-tint); color: var(--rose); }
+.m-blue { background: var(--blue-tint); color: var(--blue); }
+.m-yellow { background: var(--yellow-tint); color: var(--yellow); }
+.meta dt { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); margin: 0 0 2px; line-height: 1.2; }
+.meta dd { margin: 0; font-size: 13.5px; font-weight: 600; line-height: 1.35; overflow-wrap: anywhere; }
+.meta dd a { color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
+.meta dd a:hover { text-decoration: underline; }
+
+/* ---------- Invitation cards ---------- */
+.invites { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.inv { overflow: hidden; display: flex; flex-direction: column; transition: transform .15s, box-shadow .15s; }
+.inv:hover { transform: translateY(-2px); box-shadow: 0 1px 2px rgba(20,23,61,.04), 0 18px 38px -14px rgba(20,23,61,.18); }
+.inv-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; min-height: 92px; border-bottom: 1px solid var(--line); background: var(--tone-bg); }
+.inv-ico { width: 44px; height: 44px; border-radius: 14px; background: #fff; border: 1px solid var(--tone-line); color: var(--tone); display: grid; place-items: center; }
+.inv-head h3 { margin: 0; font-size: 15px; font-weight: 800; line-height: 1.25; }
+.inv-head p { margin: 1px 0 0; font-size: 12.5px; color: var(--ink-soft); }
+.live { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 700; color: var(--green-deep); background: #fff; border: 1px solid var(--green-line); padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+.live i { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(22,163,74,.18); }
+.tone-green { --tone: var(--green-deep); --tone-bg: linear-gradient(180deg, #f1faf4, #fafdfb); --tone-line: var(--green-line); }
+.tone-blue { --tone: var(--blue); --tone-bg: linear-gradient(180deg, #f1f6ff, #fafcff); --tone-line: var(--blue-line); }
+.tone-violet { --tone: var(--violet); --tone-bg: linear-gradient(180deg, #f5f2ff, #fcfbff); --tone-line: var(--violet-line); }
+
+.inv-body { padding: 20px 18px 18px; display: flex; flex-direction: column; align-items: stretch; gap: 16px; }
+.qr-stage { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.qr-frame { position: relative; padding: 14px; background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 8px 22px -14px rgba(20,23,61,.25); }
+.qr-frame::before, .qr-frame::after { content: ""; position: absolute; width: 22px; height: 22px; border: 3px solid var(--tone); opacity: .85; }
+.qr-frame::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; border-top-left-radius: 18px; }
+.qr-frame::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; border-bottom-right-radius: 18px; }
+.qr-frame svg { width: 168px; height: 168px; }
+.pimg { display: block; object-fit: contain; }
+.qr-fallback { width: 168px; height: 168px; display: grid; place-items: center; text-align: center; font-size: 12px; color: var(--ink-soft); }
+.code-chip { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-soft); font-weight: 600; background: #f6f8fc; border: 1px solid var(--line); padding: 5px 12px; border-radius: 999px; }
+.code-chip b { color: var(--ink); font-size: 14px; letter-spacing: .12em; font-variant-numeric: tabular-nums; }
+
+.link-label { font-size: 12.5px; font-weight: 700; margin-bottom: 6px; display: block; }
+.link-row { display: flex; align-items: center; gap: 6px; height: 42px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 5px 0 12px; background: #fff; }
+.link-row:focus-within { border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.12); }
+.link-row input { flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font-size: 13px; font-weight: 500; color: var(--ink); text-overflow: ellipsis; }
+.icon-btn { width: 32px; height: 32px; border-radius: 9px; border: 0; background: transparent; color: var(--ink-soft); cursor: pointer; display: grid; place-items: center; transition: background .15s, color .15s; }
+.icon-btn:hover { background: var(--green-tint); color: var(--green-deep); }
+.icon-btn.done { background: var(--green-tint); color: var(--green-deep); }
+
+.btn { height: 40px; padding: 0 18px; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; border: 1.5px solid transparent; transition: transform .05s, box-shadow .15s, background .15s, opacity .15s; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: linear-gradient(180deg, #1fb457 0%, #12923f 100%); color: #fff; box-shadow: 0 10px 22px -12px rgba(18,146,63,.75), inset 0 1px 0 rgba(255,255,255,.25); }
+.btn-primary:hover { box-shadow: 0 12px 26px -12px rgba(18,146,63,.9), inset 0 1px 0 rgba(255,255,255,.25); }
+.btn-soft { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-line); }
+.btn-soft:hover { background: #dcf2e3; }
+.btn-block { width: 100%; }
+
+/* ---------- Print studio ---------- */
+.print-card { display: grid; grid-template-columns: minmax(0, 1fr) 420px; overflow: hidden; }
+.print-copy { padding: 28px 30px; display: flex; flex-direction: column; gap: 20px; }
+.print-copy .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--rose); background: var(--rose-tint); border: 1px solid var(--rose-line); padding: 5px 11px; border-radius: 999px; }
+.print-copy h2 { margin: 4px 0 6px; font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+.print-copy p { margin: 0; font-size: 14px; color: var(--ink-soft); max-width: 52ch; }
+.sec-label { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.sec-label span { font-weight: 500; font-size: 12.5px; color: var(--ink-soft); }
+.pick-list { display: flex; flex-direction: column; gap: 8px; }
+.pick { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1.5px solid var(--line); border-radius: 14px; cursor: pointer; background: #fff; transition: border-color .15s, background .15s; }
+.pick:hover { border-color: #cdd5e6; }
+.pick.on { border-color: var(--green); background: #f3fbf5; }
+.pick .p-ico { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--tone-bg); color: var(--tone); border: 1px solid var(--tone-line); }
+.pick strong { display: block; font-size: 13.5px; line-height: 1.25; }
+.pick small { display: block; font-size: 12px; color: var(--ink-soft); }
+.cb { position: absolute; opacity: 0; width: 0; height: 0; }
+.box { width: 22px; height: 22px; border-radius: 7px; border: 1.8px solid #c3cadc; background: #fff; display: grid; place-items: center; flex: none; margin-left: auto; transition: background .12s, border-color .12s; }
+.box svg { width: 14px; height: 14px; color: #fff; opacity: 0; transform: scale(.6); transition: opacity .12s, transform .12s; }
+.pick.on .box { background: var(--green); border-color: var(--green); }
+.pick.on .box svg { opacity: 1; transform: none; }
+.pick:has(.cb:focus-visible) .box { outline: 3px solid rgba(22,163,74,.35); outline-offset: 2px; }
+.print-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--line); }
+.print-actions .note { font-size: 12.5px; color: var(--ink-soft); flex: 1; min-width: 200px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; box-shadow: none; }
+
+.print-stage { background: linear-gradient(180deg, #eef4ff, #f6f9f4); border-left: 1px solid var(--line); padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.stage-cap { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); }
+.paper-wrap { position: relative; width: 100%; aspect-ratio: 794 / 1123; background: #fff; border-radius: 6px; box-shadow: 0 2px 4px rgba(20,23,61,.08), 0 22px 40px -16px rgba(20,23,61,.35); overflow: hidden; }
+.paper-wrap .poster { position: absolute; top: 0; left: 0; transform-origin: top left; }
+
+/* ---------- Poster (A4, shared by preview and print) ---------- */
+.poster { width: 794px; height: 1123px; background: #fff; color: #14173d; font-family: var(--font); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+.poster * { box-sizing: border-box; }
+.po-top { height: 12px; background: linear-gradient(90deg, #f0868f 0 25%, #f3cf6b 25% 50%, #5cc57f 50% 75%, #7aa6f0 75% 100%); flex: none; }
+.po-head { padding: 40px 56px 34px; background: linear-gradient(180deg, #f1f6ff 0%, #ffffff 100%); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; flex: none; }
+.po-mark { width: 92px; height: 92px; border-radius: 26px; background: #fff; border: 2px solid #c9dcfb; color: #2f6fe4; display: grid; place-items: center; box-shadow: 0 10px 24px -12px rgba(18,128,60,.5); }
+.po-school { margin: 6px 0 0; font-size: 42px; font-weight: 800; letter-spacing: -.02em; line-height: 1.1; }
+.po-sub { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.po-pill { font-size: 13.5px; font-weight: 700; padding: 5px 14px; border-radius: 999px; background: #e8f1ff; border: 1.5px solid #c9dcfb; color: #2f6fe4; }
+.po-pill.y { background: #fff6dc; border-color: #f1dd9c; color: #a8670a; }
+.po-body { padding: 4px 56px 0; flex: 1; display: flex; flex-direction: column; gap: 28px; min-height: 0; }
+.po-title { text-align: center; }
+.po-title h2 { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
+.po-title p { margin: 8px auto 0; font-size: 16px; color: #5b6188; max-width: 560px; line-height: 1.5; }
+.po-qrs { display: grid; gap: 14px; justify-content: center; align-content: center; flex: 1; min-height: 0; }
+.po-qr { border: 2px solid var(--tone-line); border-radius: 24px; padding: 20px 12px 18px; display: flex; flex-direction: column; align-items: center; gap: 12px; background: #fff; }
+.po-qr h4 { margin: 0; font-size: 17px; font-weight: 800; text-align: center; line-height: 1.25; min-height: 42px; display: flex; align-items: center; }
+.po-qr .qrbox { padding: 8px; border: 1px solid #e6eaf2; border-radius: 16px; background: #fff; }
+.po-qr .qrbox svg { display: block; }
+.po-code { font-size: 14px; color: #5b6188; font-weight: 600; }
+.po-code b { color: #14173d; letter-spacing: .14em; font-size: 18px; margin-left: 4px; }
+.po-link { font-size: 11px; font-weight: 600; color: var(--tone); white-space: nowrap; text-align: center; }
+.po-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.po-step { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 16px; background: var(--sb); border: 1px solid var(--sl); }
+.po-step b { width: 28px; height: 28px; border-radius: 50%; background: var(--sc); color: #fff; display: grid; place-items: center; font-size: 14px; flex: none; }
+.po-step span { font-size: 13.5px; font-weight: 600; line-height: 1.4; }
+.po-foot { margin-top: 28px; flex: none; background: #f3f8f5; border-top: 2px solid #cfe9d8; padding: 22px 56px 26px; display: grid; grid-template-columns: 1.45fr 1fr 1.3fr; gap: 18px; }
+.po-fi { display: flex; gap: 11px; align-items: flex-start; }
+.po-fi i { width: 32px; height: 32px; border-radius: 10px; background: #fff; border: 1px solid #cfe9d8; color: #12803c; display: grid; place-items: center; flex: none; }
+.po-fi small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #5b6188; }
+.po-fi div > span { display: block; font-size: 13.5px; font-weight: 700; line-height: 1.35; margin-top: 1px; }
+.po-fi.nw div > span { white-space: nowrap; }
+
+.po-by { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 8px; padding-top: 14px; border-top: 1px dashed #cfe9d8; font-size: 11.5px; font-weight: 600; color: #5b6188; }
+#printRoot { display: none; }
+
+/* ---------- Toast ---------- */
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: #fff; border: 1px solid var(--green-line); border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px rgba(20,23,61,.25); transition: opacity .2s, transform .2s; max-width: calc(100% - 32px); z-index: 10; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast .t-ico { width: 32px; height: 32px; border-radius: 10px; background: var(--green-tint); color: var(--green-deep); display: grid; place-items: center; }
+.toast strong { display: block; font-size: 13.5px; }
+.toast span { font-size: 12.5px; color: var(--ink-soft); }
+
+@media (max-width: 1060px) {
+  .invites { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .print-card { grid-template-columns: 1fr; }
+  .print-stage { border-left: 0; border-top: 1px solid var(--line); }
+  .paper-wrap { max-width: 420px; }
+  .inst-meta { grid-template-columns: 1fr 1fr; }
+  .meta:nth-child(3) { border-left: 0; }
+  .meta:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 680px) {
+  body { padding: 16px 14px 40px; }
+  .invites { grid-template-columns: 1fr; }
+  .page-head h1 { font-size: 24px; }
+  .inst-meta { grid-template-columns: 1fr; }
+  .meta + .meta { border-left: 0; border-top: 1px solid var(--line); }
+  .print-copy { padding: 22px 18px; }
+  .print-stage { padding: 18px; }
+  .print-actions .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- Print: only the poster ---------- */
+@page { size: A4 portrait; margin: 0; }
+@media print {
+  html, body { background: #fff !important; padding: 0 !important; min-height: 0; }
+  body > *:not(#printRoot) { display: none !important; }
+  #printRoot { display: block !important; }
+  #printRoot .poster { width: 210mm; height: 296.5mm; transform: none; page-break-after: avoid; break-after: avoid; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<main class="app">
+
+  <header class="page-head">
+    <div>
+      <h1>Bulk Invitations</h1>
+      <p>Invite many users at once. Share the QR code or invitation link, or print a notice for your notice board.</p>
+    </div>
+  </header>
+
+  <!-- Institution -->
+  <section class="card inst-card" aria-label="Institution">
+    <div class="inst-pick">
+      <label for="instSelect">Institution<span class="req">*</span></label>
+      <div class="select-wrap">
+        <span class="lead" id="leadIco"></span>
+        <select id="instSelect"></select>
+        <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+    <dl class="inst-meta" id="instMeta"></dl>
+  </section>
+
+  <!-- Invitations -->
+  <section class="invites" id="invites" aria-label="Invitations"></section>
+
+  <!-- Print studio -->
+  <section class="card print-card" aria-label="Print invitation notice">
+    <div class="print-copy">
+      <div>
+        <span class="eyebrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2.5"/><path d="M7 14h10v7H7z"/></svg>
+          Notice board
+        </span>
+        <h2>Print an invitation notice</h2>
+        <p>Put it on the school notice board so students and parents can scan the QR code and join. The notice carries the school logo, name, address, website and invitation code.</p>
+      </div>
+
+      <div>
+        <div class="sec-label">Include on the notice<span id="pickCount"></span></div>
+        <div class="pick-list" id="pickList"></div>
+      </div>
+
+      <div class="print-actions">
+        <button type="button" class="btn btn-primary" id="printBtn">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2.5"/><path d="M7 14h10v7H7z"/></svg>
+          Print notice
+        </button>
+        <span class="note">A4 portrait, colour or black and white. If printing is blocked in a preview, open this page in its own browser tab.</span>
+      </div>
+    </div>
+
+    <div class="print-stage">
+      <div class="stage-cap">Notice preview</div>
+      <div class="paper-wrap" id="paperWrap"><div id="previewHost"></div></div>
+    </div>
+  </section>
+</main>
+
+<div id="printRoot" aria-hidden="true"></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="t-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+  <div><strong id="toastTitle"></strong><span id="toastBody"></span></div>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var I = function (d, s) { s = s || 18; return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + d + '</svg>'; };
+  var ICON = {
+    pin: '<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/>',
+    book: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20"/>',
+    doc: '<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    win: '<path d="M3 5.5 10.5 4.4v7H3zM12 4.2 21 3v8.4h-9zM3 12.6h7.5v7L3 18.5zM12 12.6h9V21l-9-1.2z"/>',
+    web: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
+    cloud: '<path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 17.8 8.6 4.8 4.8 0 0 1 17 18z"/>',
+    copy: '<rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/>',
+    check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+    share: '<path d="M14 4h6v6"/><path d="M20 4 10.5 13.5"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
+    link: '<path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/>',
+    inst: '<path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18M4 10h16"/>',
+    ext: '<path d="M7 17 17 7M8 7h9v9"/>'
+  };
+
+  var INSTITUTIONS = [
+    { id: "lko", name: "VIDYAOne Public School, Lucknow", short: "VIDYAOne Public School", city: "Lucknow",
+      address: "24, Gomti Nagar Extension, Lucknow, Uttar Pradesh 226010", website: "www.vidyaone.edu.in", board: "UP", reg: "VOPS/UP/2011/03871",
+      logo: "icon", codes: { win: "VPS6D2F9", web: "VPW3K7QH", online: "VPO8M4TZ" } },
+    { id: "dwk", name: "VIDYAOne Public School, Dwarka", short: "VIDYAOne Public School", city: "Dwarka, New Delhi",
+      address: "Plot 14, Sector 9, Dwarka, New Delhi, Delhi 110075", website: "www.vidyaone.edu.in", board: "CBSE", reg: "VOPS/DL/2009/04512",
+      logo: "icon", codes: { win: "VDS4N8XC", web: "VDW9R2LB", online: "VDO5T6KE" } },
+    { id: "noi", name: "VIDYAOne International, Noida", short: "VIDYAOne International", city: "Noida",
+      address: "B-7, Sector 62, Noida, Uttar Pradesh 201309", website: "www.vidyaone.edu.in", board: "CBSE", reg: "VOIS/UP/2015/07204",
+      logo: "icon", codes: { win: "VNS2H5WD", web: "VNW7C3PY", online: "VNO6J9AM" } }
+  ];
+  var PRODUCTS = [
+    { key: "win", name: "School Software (Windows)", desc: "Desktop app for Windows PCs", icon: "win", img: "icon_software", tone: "blue" },
+    { key: "web", name: "School Website", desc: "School Website & Portal", icon: "web", img: "icon_school", tone: "yellow" },
+    { key: "online", name: "School Software (Online)", desc: "Browser based, no install", icon: "cloud", img: "icon_school", tone: "green" }
+  ];
+  var TONES = {
+    green: "--tone:#12803c;--tone-line:#bfe6cb;--tone-bg:linear-gradient(180deg,#f1faf4,#fafdfb)",
+    blue: "--tone:#2f6fe4;--tone-line:#c9dcfb;--tone-bg:linear-gradient(180deg,#f1f6ff,#fafcff)",
+    yellow: "--tone:#a8670a;--tone-line:#f1dd9c;--tone-bg:linear-gradient(180deg,#fff8e1,#fffdf5)",
+    red: "--tone:#c8323f;--tone-line:#f6c9ce;--tone-bg:linear-gradient(180deg,#fff1f2,#fffafa)"
+  };
+
+  var CDN = "https://cdn.vidyaone.com/Company/Website/";
+  function img(file, size, fb, extra) {
+    return '<img class="pimg" src="' + CDN + file + '.png" alt="" width="' + size + '" height="' + size + '" data-fb="' + fb + '" data-size="' + size + '"' + (extra || "") + ">";
+  }
+  function prodIcon(p, size) { return img(p.img, size, p.icon); }
+  function schoolLogo(x, size) { return img(x.logo, size, "inst"); }
+  document.addEventListener("error", function (e) {
+    var t = e.target;
+    if (!t || t.tagName !== "IMG" || t.dataset.done) return;
+    var w = document.createElement("span");
+    w.style.display = "contents";
+    w.innerHTML = t.dataset.fbText ? '<b style="font-size:12px;letter-spacing:.02em">' + t.dataset.fbText + "</b>" : I(ICON[t.dataset.fb], parseInt(t.dataset.size, 10) || 18);
+    t.replaceWith(w);
+  }, true);
+
+  var state = { inst: INSTITUTIONS[0], picked: { win: true, web: true, online: true } };
+  function linkFor(code) { return "https://vidyaone.com/invite/" + code; }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  /* ---- QR ---- */
+  function qrSvg(text, px) {
+    if (typeof qrcode !== "function") return null;
+    var q = qrcode(0, "M"); q.addData(text); q.make();
+    var n = q.getModuleCount(), d = "";
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (q.isDark(r, c)) d += "M" + c + " " + r + "h1v1h-1z";
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + n + " " + n + '" width="' + px + '" height="' + px + '" shape-rendering="crispEdges" role="img" aria-label="QR code"><path d="' + d + '" fill="#111827"/></svg>';
+  }
+  function qrOrFallback(text, px) {
+    return qrSvg(text, px) || '<div class="qr-fallback" style="width:' + px + 'px;height:' + px + 'px">QR code could not load. Check your internet connection.</div>';
+  }
+
+  /* ---- toast ---- */
+  var tt;
+  function toast(title, body) {
+    $("toastTitle").textContent = title; $("toastBody").textContent = body;
+    var t = $("toast"); t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 2800);
+  }
+  function copyText(text, btn) {
+    function ok() { toast("Link copied", "The invitation link is on your clipboard."); if (btn) { btn.classList.add("done"); btn.innerHTML = I(ICON.check, 17); setTimeout(function () { btn.classList.remove("done"); btn.innerHTML = I(ICON.copy, 17); }, 1600); } }
+    function fallback() {
+      var inp = btn && btn.closest(".link-row") && btn.closest(".link-row").querySelector("input");
+      if (inp) { inp.select(); try { document.execCommand("copy"); ok(); return; } catch (e) {} }
+      toast("Copy the link", "Select the link and press Ctrl+C.");
+    }
+    try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
+  }
+
+  /* ---- institution ---- */
+  function renderSelect() {
+    $("instSelect").innerHTML = INSTITUTIONS.map(function (x) { return '<option value="' + x.id + '">' + esc(x.name) + "</option>"; }).join("");
+  }
+  function cell(icon, label, val, tint) { return '<div class="meta"><div class="m-ico m-' + tint + '">' + I(ICON[icon]) + "</div><div><dt>" + label + "</dt><dd>" + val + "</dd></div></div>"; }
+  function renderMeta() {
+    var x = state.inst;
+    $("leadIco").innerHTML = schoolLogo(x, 24);
+    $("instMeta").innerHTML =
+      cell("pin", "Address", esc(x.address), "red") +
+      cell("globe", "Website", '<a href="https://' + esc(x.website) + '" target="_blank" rel="noopener">' + esc(x.website) + I(ICON.ext, 13) + "</a>", "blue") +
+      cell("book", "Board", esc(x.board), "yellow") +
+      cell("doc", "Reg. No", esc(x.reg), "green");
+  }
+
+  /* ---- invitation cards ---- */
+  function renderCards() {
+    var x = state.inst;
+    $("invites").innerHTML = PRODUCTS.map(function (p) {
+      var code = x.codes[p.key], link = linkFor(code);
+      return '<article class="card inv" style="' + TONES[p.tone] + '">' +
+        '<div class="inv-head"><div class="inv-ico">' + prodIcon(p, 28) + '</div><div><h3>' + p.name + "</h3><p>" + p.desc + '</p></div><span class="live"><i></i>Active</span></div>' +
+        '<div class="inv-body">' +
+          '<div class="qr-stage"><div class="qr-frame">' + qrOrFallback(link, 168) + '</div><span class="code-chip">Code <b>' + code + "</b></span></div>" +
+          "<div><span class=\"link-label\">Invitation Link</span>" +
+            '<div class="link-row"><input type="text" readonly value="' + link + '" aria-label="Invitation link for ' + p.name + '"><button type="button" class="icon-btn" data-copy="' + link + '" aria-label="Copy link">' + I(ICON.copy, 17) + "</button></div></div>" +
+          '<button type="button" class="btn btn-primary btn-block" data-share="' + link + '" data-name="' + p.name + '">' + I(ICON.link, 17) + "Share Invitation Link</button>" +
+        "</div></article>";
+    }).join("");
+  }
+  $("invites").addEventListener("click", function (e) {
+    var c = e.target.closest("[data-copy]"), s = e.target.closest("[data-share]");
+    if (c) copyText(c.getAttribute("data-copy"), c);
+    if (s) {
+      var url = s.getAttribute("data-share"), name = s.getAttribute("data-name");
+      var done = false;
+      try { if (navigator.share) { navigator.share({ title: state.inst.short + ": " + name, text: "Join " + state.inst.short + " on VIDYAOne", url: url }).catch(function () {}); done = true; } } catch (err) {}
+      if (!done) copyText(url, null);
+    }
+  });
+
+  /* ---- print studio ---- */
+  function renderPicks() {
+    var x = state.inst;
+    $("pickList").innerHTML = PRODUCTS.map(function (p) {
+      var on = state.picked[p.key];
+      return '<label class="pick' + (on ? " on" : "") + '" style="' + TONES[p.tone] + '"><input type="checkbox" class="cb" data-pick="' + p.key + '"' + (on ? " checked" : "") + '>' +
+        '<span class="p-ico">' + prodIcon(p, 22) + '</span><span><strong>' + p.name + "</strong><small>Code " + x.codes[p.key] + '</small></span>' +
+        '<span class="box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3.5 8.4 3 3 6-6.4"/></svg></span></label>';
+    }).join("");
+    var n = selectedKeys().length;
+    $("pickCount").textContent = n + " of " + PRODUCTS.length + " selected";
+    $("printBtn").disabled = n === 0;
+  }
+  function selectedKeys() { return PRODUCTS.filter(function (p) { return state.picked[p.key]; }).map(function (p) { return p.key; }); }
+  $("pickList").addEventListener("change", function (e) {
+    var k = e.target.getAttribute("data-pick"); if (!k) return;
+    state.picked[k] = e.target.checked; renderPicks(); renderPoster();
+  });
+
+  function posterHTML() {
+    var x = state.inst, keys = selectedKeys();
+    var prods = PRODUCTS.filter(function (p) { return keys.indexOf(p.key) > -1; });
+    var n = prods.length, qpx = n === 1 ? 300 : n === 2 ? 236 : 168;
+    var colW = n === 1 ? 380 : n === 2 ? 300 : 218;
+    var qrs = prods.map(function (p) {
+      var code = x.codes[p.key], link = linkFor(code);
+      return '<div class="po-qr" style="' + TONES[p.tone] + ";width:" + colW + 'px"><h4>' + p.name + '</h4><div class="qrbox">' + qrOrFallback(link, qpx) + '</div><div class="po-code">Code<b>' + code + '</b></div><div class="po-link">' + link.replace("https://", "") + "</div></div>";
+    }).join("");
+    var empty = '<div style="text-align:center;color:#5b6188;font-size:16px">Select at least one product to build the notice.</div>';
+    return '<div class="poster">' +
+      '<div class="po-top"></div>' +
+      '<div class="po-head"><div class="po-mark">' + schoolLogo(x, 64) + '</div><h1 class="po-school">' + esc(x.short) + '</h1><div class="po-sub"><span class="po-pill">' + esc(x.city) + '</span><span class="po-pill y">' + esc(x.board) + ' Board</span></div></div>' +
+      '<div class="po-body">' +
+        '<div class="po-title"><h2>Join our school online</h2><p>Parents, students and staff: scan the QR code with your phone camera, or open the link, to send a join request.</p></div>' +
+        '<div class="po-qrs" style="grid-template-columns:repeat(' + Math.max(n, 1) + ', auto)">' + (n ? qrs : empty) + "</div>" +
+        '<div class="po-steps"><div class="po-step" style="--sb:#fff1f2;--sl:#f6c9ce;--sc:#d9444f"><b>1</b><span>Scan the QR code or open the link</span></div><div class="po-step" style="--sb:#fff8e1;--sl:#f1dd9c;--sc:#c98a14"><b>2</b><span>Enter the invitation code if asked</span></div><div class="po-step" style="--sb:#f1faf4;--sl:#bfe6cb;--sc:#16a34a"><b>3</b><span>Send your join request. The school will approve it</span></div></div>' +
+      "</div>" +
+      '<div class="po-foot">' +
+        '<div class="po-fi"><i>' + I(ICON.pin, 17) + '</i><div><small>Address</small><span>' + esc(x.address) + "</span></div></div>" +
+        '<div class="po-fi nw"><i>' + I(ICON.globe, 17) + '</i><div><small>Website</small><span>' + esc(x.website) + "</span></div></div>" +
+        '<div class="po-fi nw"><i>' + I(ICON.doc, 17) + '</i><div><small>Reg. No</small><span>' + esc(x.reg) + "</span></div></div>" +
+        '<div class="po-by">Powered by ' + img("logo", 18, "inst", ' data-fb-text="VIDYAOne" style="height:18px;width:auto"') + "</div>" +
+      "</div></div>";
+  }
+  function renderPoster() {
+    var html = posterHTML();
+    $("previewHost").innerHTML = html;
+    $("printRoot").innerHTML = html;
+    scalePoster();
+  }
+  function scalePoster() {
+    var wrap = $("paperWrap"), p = wrap.querySelector(".poster");
+    if (!p) return;
+    p.style.transform = "scale(" + (wrap.clientWidth / 794) + ")";
+  }
+  window.addEventListener("resize", scalePoster);
+  if (window.ResizeObserver) new ResizeObserver(scalePoster).observe($("paperWrap"));
+
+  $("printBtn").addEventListener("click", function () {
+    renderPoster();
+    try { window.print(); } catch (e) { toast("Printing is blocked here", "Open this page in a browser tab to print."); }
+  });
+
+  /* ---- init ---- */
+  $("instSelect").addEventListener("change", function () {
+    state.inst = INSTITUTIONS.filter(function (x) { return x.id === $("instSelect").value; })[0];
+    renderAll();
+  });
+  function renderAll() { renderMeta(); renderCards(); renderPicks(); renderPoster(); }
+  renderSelect(); renderAll();
+})();
+</script>
+</body>
+</html>
