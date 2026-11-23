@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pending Requests</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: a quiet stat strip, one filter bar, then a dense table built for hundreds of rows (sort, page, bulk select). */
+  --ink: #14173d;
+  --ink-soft: #5b6188;
+  --line: #e6eaf2;
+  --green: #16a34a;
+  --green-deep: #12803c;
+  --green-tint: #eaf7ee;
+  --green-line: #bfe6cb;
+  --blue: #2f6fe4;
+  --blue-deep: #1f55b8;
+  --blue-tint: #e8f1ff;
+  --blue-line: #c9dcfb;
+  --yellow: #a8670a;
+  --yellow-tint: #fff6dc;
+  --yellow-line: #f1dd9c;
+  --rose: #c8323f;
+  --rose-tint: #fdecee;
+  --rose-line: #f6c9ce;
+  --slate: #56607f;
+  --slate-tint: #eef1f7;
+  --slate-line: #d9dfeb;
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --shadow: 0 1px 2px rgba(20,23,61,.04), 0 12px 32px -14px rgba(20,23,61,.12);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--font); color: var(--ink); background: #fff; line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100vh; padding: 32px 20px 64px; }
+[hidden] { display: none !important; }
+button, input, textarea, select { font: inherit; color: inherit; }
+svg { display: block; flex: none; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid rgba(22,163,74,.35); outline-offset: 2px; }
+.pimg { display: block; object-fit: contain; }
+.app { width: 100%; max-width: 1320px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+
+/* ---------- Title ---------- */
+.page-head { display: flex; align-items: center; gap: 14px; padding: 2px; }
+.page-head .ph-ico { width: 48px; height: 48px; border-radius: 15px; background: var(--green-tint); color: var(--green-deep); display: grid; place-items: center; border: 1px solid var(--green-line); }
+.page-head h1 { margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -.02em; }
+
+/* ---------- Filters ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.search { position: relative; flex: 1 1 260px; min-width: 220px; }
+.search svg.s-ico { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
+.search input { width: 100%; height: 40px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 36px 0 38px; font-size: 14px; font-weight: 500; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.search input::placeholder { color: #98a0bd; }
+.search input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.10); }
+.search .clear { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border: 0; border-radius: 8px; background: #f1f3f9; color: var(--ink-soft); display: grid; place-items: center; cursor: pointer; }
+.sel { position: relative; }
+.sel select { appearance: none; -webkit-appearance: none; height: 40px; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; padding: 0 34px 0 38px; font-size: 14px; font-weight: 600; cursor: pointer; min-width: 150px; transition: border-color .15s, box-shadow .15s, background .15s; }
+.sel select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.10); }
+.sel.on select { border-color: var(--green-line); background: var(--green-tint); color: var(--green-deep); }
+.sel .l-ico { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
+.sel.on .l-ico { color: var(--green-deep); }
+.sel .chev { position: absolute; right: 11px; top: 50%; transform: translateY(-50%); color: var(--ink-soft); pointer-events: none; }
+.range { display: flex; align-items: center; gap: 8px; }
+.range input { height: 40px; border: 1.5px solid var(--line); border-radius: 12px; padding: 0 10px; font-size: 13.5px; font-weight: 600; background: #fff; }
+.range input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.10); }
+.range span { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+.reset { height: 40px; border: 0; background: transparent; color: var(--ink-soft); font-weight: 700; font-size: 13.5px; padding: 0 8px; cursor: pointer; border-radius: 10px; }
+.reset:hover { color: var(--rose); }
+
+/* ---------- Buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; padding: 0 12px 0 10px; border-radius: 10px; border: 1px solid transparent; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .15s, box-shadow .15s, transform .1s, color .15s; }
+.btn:active { transform: translateY(1px); }
+.btn-approve { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-line); }
+.btn-approve:hover { background: var(--green); color: #fff; border-color: var(--green); }
+.btn-deny { background: var(--rose-tint); color: var(--rose); border-color: var(--rose-line); }
+.btn-deny:hover { background: #fadde0; }
+.btn-solid { background: linear-gradient(180deg, #22b457, #16a34a); color: #fff; box-shadow: 0 8px 18px -8px rgba(22,163,74,.7); height: 40px; padding: 0 18px 0 14px; }
+.btn-solid:hover { background: linear-gradient(180deg, #1ea84f, #12803c); }
+.btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); height: 40px; padding: 0 16px; }
+.btn-ghost:hover { background: #f4f6fb; }
+.btn-deny.lg { height: 40px; padding: 0 16px 0 13px; }
+
+/* ---------- Bulk bar ---------- */
+.bulk { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; background: var(--green-tint); border: 1px solid var(--green-line); }
+.bulk .b-count { font-weight: 800; font-size: 14px; color: var(--green-deep); }
+.bulk .b-all { border: 0; background: transparent; padding: 0; font-size: 13px; font-weight: 700; color: var(--blue-deep); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.bulk .b-sp { flex: 1; }
+.bulk .btn { background: #fff; }
+.bulk .btn-approve { background: var(--green); color: #fff; border-color: var(--green); }
+.bulk .btn-approve:hover { background: var(--green-deep); }
+.bulk .btn-deny { background: #fff; }
+.bulk .b-clear { border: 0; background: transparent; font-weight: 700; font-size: 13px; color: var(--ink-soft); cursor: pointer; padding: 6px 8px; border-radius: 8px; }
+.bulk .b-clear:hover { color: var(--rose); }
+
+/* ---------- Table ---------- */
+.tcard { border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+.twrap { overflow-x: auto; }
+table { width: 100%; min-width: 1060px; border-collapse: collapse; }
+thead th { position: sticky; top: 0; background: #fafbfe; text-align: left; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); padding: 12px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+thead th.r { text-align: right; }
+.sort { border: 0; background: transparent; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+.sort:hover, .sort.on { color: var(--ink); }
+.sort .arr { opacity: .35; transition: transform .15s, opacity .15s; }
+.sort.on .arr { opacity: 1; color: var(--green-deep); }
+.sort.on.asc .arr { transform: rotate(180deg); }
+tbody td { padding: 11px 10px; border-bottom: 1px solid #eef1f7; vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr { transition: background .12s; }
+tbody tr:hover { background: #fafbfe; }
+tbody tr.sel-row { background: #f3fbf5; }
+td.c-chk, th.c-chk { width: 46px; padding-right: 0; }
+.chk { appearance: none; -webkit-appearance: none; width: 19px; height: 19px; border: 1.8px solid #c3cbe0; border-radius: 6px; background: #fff; display: grid; place-items: center; cursor: pointer; margin: 0; transition: background .12s, border-color .12s; }
+.chk:hover { border-color: var(--green); }
+.chk:checked, .chk:indeterminate { background: var(--green); border-color: var(--green); }
+.chk:checked::after { content: ""; width: 9px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
+.chk:indeterminate::after { content: ""; width: 9px; height: 2px; background: #fff; border-radius: 2px; }
+
+.who { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.av { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-size: 14px; font-weight: 800; flex: none; background: var(--ab); color: var(--ac); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--al); }
+.av.t0 { --ab: var(--green-tint); --ac: var(--green-deep); --al: var(--green-line); }
+.av.t1 { --ab: var(--blue-tint); --ac: var(--blue-deep); --al: var(--blue-line); }
+.av.t2 { --ab: var(--yellow-tint); --ac: var(--yellow); --al: var(--yellow-line); }
+.av.t3 { --ab: var(--rose-tint); --ac: var(--rose); --al: var(--rose-line); }
+.who-t { min-width: 0; }
+.nm { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14.5px; white-space: nowrap; }
+.nm svg { color: var(--green); }
+.ln { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--ink-soft); font-weight: 500; margin-top: 1px; white-space: nowrap; }
+.ln svg { color: #8c94b3; }
+.ln a:hover { color: var(--blue); text-decoration: underline; }
+
+.chip { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 8px; font-size: 12.5px; font-weight: 700; background: var(--cb); color: var(--cc); border: 1px solid var(--cl); }
+.p-teacher { --cb: var(--blue-tint); --cc: var(--blue-deep); --cl: var(--blue-line); }
+.p-student { --cb: var(--green-tint); --cc: var(--green-deep); --cl: var(--green-line); }
+.p-accountant { --cb: var(--yellow-tint); --cc: var(--yellow); --cl: var(--yellow-line); }
+.p-administrator { --cb: #efeafd; --cc: #5b3fc4; --cl: #d8cef7; }
+.p-parent { --cb: var(--rose-tint); --cc: var(--rose); --cl: var(--rose-line); }
+.p-staff { --cb: var(--slate-tint); --cc: var(--slate); --cl: var(--slate-line); }
+
+.prod { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px 0 5px; border-radius: 12px; background: #fff; border: 1px solid var(--pl); }
+.prod .pi { width: 26px; height: 26px; border-radius: 9px; background: var(--pb); display: grid; place-items: center; flex: none; }
+.prod strong { font-size: 12.5px; font-weight: 700; white-space: nowrap; }
+.pc-blue { --pb: var(--blue-tint); --pl: var(--blue-line); }
+.pc-yellow { --pb: var(--yellow-tint); --pl: var(--yellow-line); }
+.pc-green { --pb: var(--green-tint); --pl: var(--green-line); }
+
+.dt { font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+.tm { font-size: 12px; color: var(--ink-soft); font-weight: 500; white-space: nowrap; }
+.tm .new { color: var(--green-deep); font-weight: 700; }
+
+.rsel { position: relative; display: inline-block; }
+.rsel select { appearance: none; -webkit-appearance: none; height: 36px; border: 1.5px solid var(--line); border-radius: 10px; background: #fff; padding: 0 30px 0 12px; font-size: 13.5px; font-weight: 700; cursor: pointer; min-width: 112px; }
+.rsel select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.10); }
+.rsel .chev { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-soft); }
+.acts { display: flex; gap: 8px; justify-content: flex-end; }
+
+/* ---------- Footer / pagination ---------- */
+.tfoot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-top: 1px solid var(--line); background: #fafbfe; }
+.tfoot .info { font-size: 13px; color: var(--ink-soft); font-weight: 600; }
+.tfoot .right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.psize { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+.psize select { height: 32px; border: 1.5px solid var(--line); border-radius: 9px; background: #fff; padding: 0 8px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.pager { display: flex; gap: 4px; align-items: center; }
+.pager button { min-width: 32px; height: 32px; border-radius: 9px; border: 1px solid transparent; background: transparent; font-size: 13px; font-weight: 700; color: var(--ink-soft); cursor: pointer; display: grid; place-items: center; padding: 0 8px; }
+.pager button:hover:not(:disabled) { background: #fff; border-color: var(--line); color: var(--ink); }
+.pager button.cur { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-line); }
+.pager button:disabled { opacity: .4; cursor: default; }
+.pager .dots { color: #98a0bd; font-weight: 700; padding: 0 4px; }
+
+/* ---------- Empty ---------- */
+.empty { padding: 56px 24px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.empty .e-ico { width: 60px; height: 60px; border-radius: 18px; display: grid; place-items: center; background: var(--green-tint); color: var(--green-deep); margin-bottom: 6px; }
+.empty h3 { margin: 0; font-size: 18px; font-weight: 800; }
+.empty p { margin: 0; font-size: 14px; color: var(--ink-soft); max-width: 46ch; }
+.empty .btn { margin-top: 10px; }
+
+/* ---------- Modal ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(20,23,61,.35); backdrop-filter: blur(2px); display: grid; place-items: center; padding: 20px; z-index: 20; }
+.modal { width: 100%; max-width: 460px; background: #fff; border-radius: 22px; padding: 24px; box-shadow: 0 30px 70px -20px rgba(20,23,61,.45); }
+.modal .m-ico { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 14px; border: 1px solid transparent; }
+.m-ico.acc { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-line); }
+.m-ico.rej { background: var(--rose-tint); color: var(--rose); border-color: var(--rose-line); }
+.modal h3 { margin: 0 0 6px; font-size: 19px; font-weight: 800; }
+.modal p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.sumbox { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: #fafbfd; border: 1px solid var(--line); font-size: 13.5px; font-weight: 700; }
+.sumbox small { display: block; font-weight: 600; color: var(--ink-soft); font-size: 12.5px; margin-top: 2px; }
+.field { margin-top: 14px; }
+.field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.field label span { font-weight: 500; color: var(--ink-soft); }
+.field textarea { width: 100%; min-height: 88px; resize: vertical; border: 1.5px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 14px; font-weight: 500; transition: border-color .15s, box-shadow .15s; }
+.field textarea:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 4px rgba(200,50,63,.10); }
+.m-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+/* ---------- Toast ---------- */
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px rgba(20,23,61,.25); transition: opacity .2s, transform .2s; width: max-content; max-width: calc(100vw - 32px); z-index: 30; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast .t-ico { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; }
+.toast .t-ico.acc { background: var(--green-tint); color: var(--green-deep); }
+.toast .t-ico.rej { background: var(--rose-tint); color: var(--rose); }
+.toast strong { display: block; font-size: 13.5px; }
+.toast span.b { font-size: 12.5px; color: var(--ink-soft); }
+.toast .undo { border: 0; background: #f1f3f9; color: var(--ink); font-weight: 700; font-size: 13px; padding: 7px 12px; border-radius: 9px; cursor: pointer; }
+.toast .undo:hover { background: #e6eaf2; }
+
+
+/* ---------- Retention note ---------- */
+.retain { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 14px; background: var(--yellow-tint); border: 1px solid var(--yellow-line); font-size: 13.5px; color: #6b4306; font-weight: 500; }
+.retain b { font-weight: 800; }
+.retain .ri { width: 30px; height: 30px; border-radius: 10px; background: #fff; border: 1px solid var(--yellow-line); color: var(--yellow); display: grid; place-items: center; flex: none; }
+.more { margin-left: 6px; height: 26px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--blue-line); background: var(--blue-tint); color: var(--blue-deep); font-size: 12.5px; font-weight: 800; cursor: pointer; vertical-align: middle; white-space: nowrap; }
+.more:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+td .prod { vertical-align: middle; }
+.perprod { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; min-width: 112px; border-radius: 10px; border: 1.5px dashed var(--blue-line); background: #fff; color: var(--blue-deep); font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.perprod:hover { background: var(--blue-tint); }
+.warnrm { color: var(--rose); font-weight: 700; }
+.req { color: var(--rose); }
+.ferr { margin-top: 6px; font-size: 12.5px; font-weight: 700; color: var(--rose); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-deny:disabled:hover { background: var(--rose-tint); }
+
+/* ---------- Right side panel ---------- */
+.d-over { position: fixed; inset: 0; background: rgba(20,23,61,.28); z-index: 15; display: flex; justify-content: flex-end; animation: fade .18s ease; }
+.drawer { width: 100%; max-width: 480px; height: 100%; background: #fff; display: flex; flex-direction: column; box-shadow: -24px 0 60px -20px rgba(20,23,61,.35); animation: slide .22s ease; }
+@keyframes slide { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.d-head { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.d-head h2 { margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -.01em; }
+.d-x { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--line); background: #fff; display: grid; place-items: center; cursor: pointer; color: var(--ink-soft); }
+.d-x:hover { background: var(--rose-tint); color: var(--rose); border-color: var(--rose-line); }
+.d-body { flex: 1; overflow-y: auto; padding: 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+.d-sec { border: 1px solid var(--line); border-radius: 18px; padding: 16px; background: #fff; }
+.d-k { font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.cnt { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 7px; background: var(--slate-tint); color: var(--slate); font-size: 11.5px; letter-spacing: 0; }
+.kv { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+.kv > div { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; font-weight: 600; }
+.kv svg { color: #8c94b3; margin-top: 2px; }
+.kv i { display: block; font-style: normal; font-size: 11.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; text-transform: uppercase; }
+.kv a:hover { color: var(--blue); text-decoration: underline; }
+.d-warn { margin-top: 12px; display: inline-flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 9px; background: var(--rose-tint); color: var(--rose); font-size: 12.5px; font-weight: 700; border: 1px solid var(--rose-line); }
+.inst { display: flex; gap: 12px; align-items: flex-start; }
+.inst-logo { width: 52px; height: 52px; border-radius: 16px; background: var(--green-tint); border: 1px solid var(--green-line); display: grid; place-items: center; flex: none; color: var(--green-deep); }
+.inst-t strong { font-size: 15px; font-weight: 800; display: block; margin-bottom: 3px; }
+.inst-t .ln { white-space: normal; align-items: flex-start; }
+.inst-t .ln svg { margin-top: 3px; }
+.inst-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.plist { display: flex; flex-direction: column; gap: 10px; }
+.pline { display: flex; align-items: center; gap: 10px; border: 1px solid var(--pl); border-radius: 14px; padding: 8px 8px 8px 10px; background: #fff; }
+.pline .pi { width: 36px; height: 36px; border-radius: 11px; background: var(--pb); display: grid; place-items: center; flex: none; }
+.pline strong { flex: 1; min-width: 0; font-size: 13.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pcard { border: 1px solid var(--pl); border-radius: 14px; padding: 12px; background: #fff; display: flex; flex-direction: column; gap: 8px; }
+.pcard .pc-top { display: flex; align-items: center; gap: 10px; min-height: 40px; }
+.pcard .pi { width: 36px; height: 36px; border-radius: 11px; background: var(--pb); display: grid; place-items: center; flex: none; }
+.pcard strong { font-size: 13px; font-weight: 700; line-height: 1.25; }
+.pc-l { font-size: 11.5px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; text-transform: uppercase; }
+.rsel.full { display: block; } .rsel.full select { width: 100%; min-width: 0; }
+.d-foot { display: flex; justify-content: flex-end; gap: 10px; padding: 14px 22px; border-top: 1px solid var(--line); background: #fafbfe; }
+@media (max-width: 560px) { body { padding: 20px 14px 56px; } .page-head h1 { font-size: 24px; } .sel select { min-width: 0; } .sel { flex: 1 1 140px; } .sel select { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="page-head">
+    <div class="ph-ico" id="phIco"></div>
+    <h1>Pending Requests</h1>
+  </header>
+
+  <div class="filters">
+    <div class="search">
+      <svg class="s-ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="q" placeholder="Search by name, email or phone" aria-label="Search requests" autocomplete="off">
+      <button type="button" class="clear" id="qClear" aria-label="Clear search" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="sel" id="selProduct"><span class="l-ico" data-i="layers"></span>
+      <select id="fProduct" aria-label="Filter by product"><option value="">All products</option><option value="win">School Software (Windows)</option><option value="online">School Software (Online)</option><option value="web">School Website</option></select><span class="chev" data-i="chev"></span></div>
+    <div class="sel" id="selRole"><span class="l-ico" data-i="user"></span>
+      <select id="fRole" aria-label="Filter by profile"><option value="">All profiles</option><option value="Student">Student</option><option value="Teacher">Teacher</option><option value="Parent">Parent</option><option value="Accountant">Accountant</option><option value="Administrator">Administrator</option><option value="Staff">Staff</option></select><span class="chev" data-i="chev"></span></div>
+    <div class="sel" id="selDate"><span class="l-ico" data-i="cal"></span>
+      <select id="fDate" aria-label="Filter by date"><option value="">All dates</option><option value="today">Today</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option><option value="custom">Custom range</option></select><span class="chev" data-i="chev"></span></div>
+    <div class="range" id="range" hidden>
+      <input type="date" id="dFrom" aria-label="From date"><span>to</span><input type="date" id="dTo" aria-label="To date">
+    </div>
+    <button type="button" class="reset" id="reset" hidden>Reset filters</button>
+  </div>
+
+  <div class="bulk" id="bulk" hidden></div>
+
+  <div class="retain" id="retain"></div>
+  <section class="tcard">
+    <div class="twrap">
+      <table>
+        <thead><tr>
+          <th class="c-chk"><input type="checkbox" class="chk" id="chkAll" aria-label="Select all on this page"></th>
+          <th><button type="button" class="sort" data-sort="name">Requester <span class="arr" data-i="down"></span></button></th>
+          <th>Profile</th>
+          <th>Product</th>
+          <th><button type="button" class="sort on" data-sort="at">Requested on <span class="arr" data-i="down"></span></button></th>
+          <th>Assign access</th>
+          <th class="r">Action</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div id="empty" class="empty" hidden></div>
+    <div class="tfoot" id="tfoot">
+      <div class="info" id="info"></div>
+      <div class="right">
+        <label class="psize">Rows <select id="psize"><option>10</option><option>25</option><option>50</option></select></label>
+        <div class="pager" id="pager"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="t-ico" id="tIco"></div>
+  <div><strong id="tTitle"></strong><span class="b" id="tBody"></span></div>
+  <button type="button" class="undo" id="tUndo">Undo</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var I = function (d, s) { s = s || 18; return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + d + "</svg>"; };
+  var ICON = {
+    users: '<circle cx="9" cy="8" r="3.2"/><path d="M3 19c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><path d="M16 5.2a3 3 0 0 1 0 5.6M18 14.3c1.7.6 2.8 2.2 3 4.7"/>',
+    user: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.7-3.6 3.5-5.5 7-5.5s6.3 1.9 7 5.5"/>',
+    layers: '<path d="M12 3 3 8l9 5 9-5z"/><path d="m3 12.5 9 5 9-5M3 16.5l9 5 9-5"/>',
+    cal: '<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    chev: '<path d="m6 9 6 6 6-6"/>',
+    down: '<path d="M12 5v14M6 13l6 6 6-6"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>',
+    phone: '<path d="M6.5 3.5h3l1.5 4-2 1.3a11 11 0 0 0 5.2 5.2l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z"/>',
+    check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+    x: '<path d="M6 6l12 12M18 6 6 18"/>',
+    ok: '<circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16 9.5"/>',
+    shield: '<circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8L16 9.5"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6 7 7M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/>',
+    week: '<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2"/>',
+    hourglass: '<path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9" />',
+    pin: '<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 4 5.7 4 9s-1.4 6.4-4 9c-2.6-2.6-4-5.7-4-9s1.4-6.4 4-9z"/>',
+    inbox: '<path d="M3 13l2.5-7.5A2 2 0 0 1 7.4 4h9.2a2 2 0 0 1 1.9 1.5L21 13"/><path d="M3 13v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-5.5a2.5 2.5 0 0 1-5 0z"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+    win: '<path d="M3 5.5 10.5 4.4v7H3zM12 4.2 21 3v8.4h-9zM3 12.6h7.5v7L3 18.5zM12 12.6h9V21l-9-1.2z"/>',
+    web: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
+    cloud: '<path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 17.8 8.6 4.8 4.8 0 0 1 17 18z"/>'
+  };
+  Array.prototype.forEach.call(document.querySelectorAll("[data-i]"), function (n) { n.innerHTML = I(ICON[n.getAttribute("data-i")], n.classList.contains("chev") ? 16 : n.classList.contains("arr") ? 13 : 17); });
+  $("phIco").innerHTML = I(ICON.users, 26);
+  $("retain").innerHTML = '<span class="ri">' + I(ICON.clock, 17) + "</span><span><b>Requests are kept for 90 days.</b> After that, any request you haven't approved or denied is removed.</span>";
+
+  /* ---- assets ---- */
+  var CDN = "https://cdn.vidyaone.com/Company/Website/";
+  function img(file, size, fb) { return '<img class="pimg" src="' + CDN + file + '.png" alt="" width="' + size + '" height="' + size + '" data-fb="' + fb + '" data-size="' + size + '">'; }
+  document.addEventListener("error", function (e) {
+    var t = e.target;
+    if (!t || t.tagName !== "IMG" || !t.dataset.fb) return;
+    var w = document.createElement("span");
+    w.style.display = "contents"; w.innerHTML = I(ICON[t.dataset.fb], parseInt(t.dataset.size, 10) || 18);
+    t.replaceWith(w);
+  }, true);
+
+  var PRODUCTS = {
+    win: { name: "School Software (Windows)", file: "icon_software", fb: "win", cls: "pc-blue" },
+    web: { name: "School Website", file: "icon_school", fb: "web", cls: "pc-yellow" },
+    online: { name: "School Software (Online)", file: "icon_school", fb: "cloud", cls: "pc-green" }
+  };
+  var ACCESS = ["Admin", "Operator", "Viewer"];
+  var DEFAULT_ACCESS = { Teacher: "Operator", Student: "Viewer", Parent: "Viewer", Accountant: "Operator", Administrator: "Admin", Staff: "Operator" };
+
+  /* ---- sample data (118 requests) ---- */
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  var rnd = rng(2611);
+  var FIRST = ["Ankit", "Neha", "Rohit", "Pooja", "Saurabh", "Ritu", "Amit", "Priya", "Vikas", "Sneha", "Manish", "Kavita", "Rahul", "Anjali", "Deepak", "Meena", "Sandeep", "Shweta", "Arun", "Nidhi", "Gaurav", "Swati", "Mohit", "Divya", "Harsh", "Komal", "Vivek", "Ishita", "Pankaj", "Ruchi"];
+  var LAST = ["Maurya", "Sharma", "Verma", "Singh", "Tiwari", "Gupta", "Yadav", "Mishra", "Pandey", "Srivastava", "Agarwal", "Chauhan", "Dubey", "Kumar", "Saxena"];
+  var PROFILES = ["Teacher", "Teacher", "Student", "Student", "Student", "Parent", "Parent", "Accountant", "Administrator", "Staff"];
+  var PKEYS = ["win", "online", "web"];
+  var INST = { name: "VIDYAOne Public School", address: "24, Gomti Nagar Extension, Lucknow, Uttar Pradesh 226010", website: "www.vidyaone.edu.in", board: "CBSE", reg: "2130456" };
+  var KEEP_DAYS = 90;
+  var now = new Date(), sod = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var items = [];
+  for (var n = 0; n < 118; n++) {
+    var fn = FIRST[Math.floor(rnd() * FIRST.length)], ln = LAST[Math.floor(rnd() * LAST.length)];
+    var back = rnd() < .14 ? 0 : Math.floor(rnd() * 86);
+    var at = new Date(sod.getTime() - back * 86400000 + (8 + Math.floor(rnd() * 11)) * 3600000 + Math.floor(rnd() * 60) * 60000);
+    if (at > now) at = new Date(now.getTime() - Math.floor(rnd() * 3 + 1) * 3600000);
+    var pr = PROFILES[Math.floor(rnd() * PROFILES.length)];
+    var cnt = rnd() < .6 ? 1 : rnd() < .7 ? 2 : 3, pool = PKEYS.slice(), prods = [], roles = {};
+    while (prods.length < cnt) prods.push(pool.splice(Math.floor(rnd() * pool.length), 1)[0]);
+    prods.forEach(function (k) { roles[k] = DEFAULT_ACCESS[pr]; });
+    items.push({ id: n + 1, name: fn + " " + ln, email: (fn + "." + ln).toLowerCase() + "@vsps.edu.in", phone: "+91 9" + (100000000 + Math.floor(rnd() * 899999999)), profile: pr, products: prods, roles: roles, at: at, tone: n % 4 });
+  }
+
+  /* ---- helpers ---- */
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function fmtD(d) { return pad(d.getDate()) + " " + MON[d.getMonth()] + " " + d.getFullYear(); }
+  function fmtT(d) { var h = d.getHours(), ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return pad(h) + ":" + pad(d.getMinutes()) + " " + ap; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function initials(n) { var p = n.split(" "); return (p[0][0] + (p[1] ? p[1][0] : "")).toUpperCase(); }
+  function ageDays(d) { return Math.round((sod - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 86400000); }
+  function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+
+  /* ---- state ---- */
+  var S = { q: "", product: "", role: "", date: "", from: "", to: "", sort: "at", dir: "desc", page: 1, size: 10 };
+  var picked = {};            // id -> true
+  var last = null, toastTimer;
+
+  function matches(r) {
+    if (S.q) { var h = (r.name + " " + r.email + " " + r.phone).toLowerCase(); if (h.indexOf(S.q.toLowerCase()) < 0) return false; }
+    if (S.product && r.products.indexOf(S.product) < 0) return false;
+    if (S.role && r.profile !== S.role) return false;
+    var a = ageDays(r.at);
+    if (S.date === "today" && a !== 0) return false;
+    if (S.date === "7" && a > 6) return false;
+    if (S.date === "30" && a > 29) return false;
+    if (S.date === "custom") {
+      var k = r.at.getFullYear() + "-" + pad(r.at.getMonth() + 1) + "-" + pad(r.at.getDate());
+      if (S.from && k < S.from) return false;
+      if (S.to && k > S.to) return false;
+    }
+    return true;
+  }
+  function filtered() {
+    var f = items.filter(matches), m = S.dir === "asc" ? 1 : -1;
+    f.sort(function (a, b) {
+      var c = S.sort === "name" ? a.name.localeCompare(b.name) : a.at - b.at;
+      return (c || a.id - b.id) * m;
+    });
+    return f;
+  }
+  function anyFilter() { return !!(S.q || S.product || S.role || S.date); }
+
+  /* ---- render ---- */
+  function pageNums(cur, tot) {
+    var out = [], add = function (n) { out.push(n); };
+    if (tot <= 7) { for (var i = 1; i <= tot; i++) add(i); return out; }
+    add(1);
+    if (cur > 3) add("…");
+    for (var j = Math.max(2, cur - 1); j <= Math.min(tot - 1, cur + 1); j++) add(j);
+    if (cur < tot - 2) add("…");
+    add(tot); return out;
+  }
+  function accessOpts(cur) { return ACCESS.map(function (x) { return '<option' + (x === cur ? " selected" : "") + ">" + x + "</option>"; }).join(""); }
+  function row(r) {
+    var P = PRODUCTS[r.products[0]], on = picked[r.id], a = ageDays(r.at), left = KEEP_DAYS - a, more = r.products.length - 1;
+    return '<tr data-id="' + r.id + '"' + (on ? ' class="sel-row"' : "") + '>' +
+      '<td class="c-chk"><input type="checkbox" class="chk" data-pick="' + r.id + '" ' + (on ? "checked" : "") + ' aria-label="Select ' + esc(r.name) + '"></td>' +
+      '<td><div class="who"><span class="av t' + r.tone + '">' + initials(r.name) + '</span><div class="who-t"><div class="nm"><span>' + esc(r.name) + '</span>' + I(ICON.shield, 15) + '</div>' +
+        '<div class="ln">' + I(ICON.mail, 13) + '<a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></div>' +
+        '<div class="ln">' + I(ICON.phone, 13) + '<a href="tel:' + r.phone.replace(/\s/g, "") + '">' + esc(r.phone) + '</a></div></div></div></td>' +
+      '<td><span class="chip p-' + r.profile.toLowerCase() + '">' + r.profile + '</span></td>' +
+      '<td style="white-space:nowrap"><span class="prod ' + P.cls + '"><span class="pi">' + img(P.file, 20, P.fb) + '</span><strong>' + P.name + '</strong></span>' + (more ? '<button type="button" class="more" data-open="' + r.id + '" title="View all products">+' + more + ' more</button>' : "") + '</td>' +
+      '<td><div class="dt">' + fmtD(r.at) + '</div><div class="tm">' + fmtT(r.at) + (a === 0 ? ' · <span class="new">Today</span>' : a === 1 ? " · Yesterday" : " · " + a + " days ago") + '</div>' + (left <= 7 ? '<div class="tm warnrm">Removes in ' + plural(Math.max(left, 0), "day") + '</div>' : "") + '</td>' +
+      '<td><span class="rsel"><select data-role="' + r.id + '" aria-label="Access for ' + esc(r.name) + ' on ' + P.name + '">' + accessOpts(r.roles[r.products[0]]) + '</select><span class="chev">' + I(ICON.chev, 15) + '</span></span></td>' +
+      '<td><div class="acts"><button type="button" class="btn btn-approve" data-act="approve" data-id="' + r.id + '">' + I(ICON.check, 16) + 'Approve</button><button type="button" class="btn btn-deny" data-act="deny" data-id="' + r.id + '">' + I(ICON.x, 16) + 'Deny</button></div></td></tr>';
+  }
+  function render() {
+    var f = filtered(), total = f.length, pages = Math.max(1, Math.ceil(total / S.size));
+    if (S.page > pages) S.page = pages;
+    var start = (S.page - 1) * S.size, slice = f.slice(start, start + S.size);
+    $("rows").innerHTML = slice.map(row).join("");
+
+    var empty = $("empty");
+    $("rows").closest(".twrap").hidden = total === 0;
+    $("tfoot").hidden = total === 0;
+    empty.hidden = total !== 0;
+    if (total === 0) {
+      empty.innerHTML = '<div class="e-ico">' + I(items.length ? ICON.search : ICON.inbox, 28) + '</div>' + (items.length
+        ? '<h3>No requests match</h3><p>Try a different search or clear the filters to see all pending requests.</p><button type="button" class="btn btn-ghost" id="emptyClear">Clear filters</button>'
+        : '<h3>You are all caught up</h3><p>There are no pending requests right now. New requests will appear here.</p>');
+    }
+    $("info").textContent = total ? "Showing " + (start + 1) + "–" + (start + slice.length) + " of " + total + (anyFilter() ? " matching requests" : " requests") : "";
+    $("pager").innerHTML = '<button type="button" data-pg="prev" aria-label="Previous page"' + (S.page === 1 ? " disabled" : "") + '>' + I('<path d="m15 6-6 6 6 6"/>', 16) + '</button>' +
+      pageNums(S.page, pages).map(function (p) { return p === "…" ? '<span class="dots">…</span>' : '<button type="button" data-pg="' + p + '"' + (p === S.page ? ' class="cur" aria-current="page"' : "") + '>' + p + '</button>'; }).join("") +
+      '<button type="button" data-pg="next" aria-label="Next page"' + (S.page === pages ? " disabled" : "") + '>' + I('<path d="m9 6 6 6-6 6"/>', 16) + '</button>';
+
+    // header checkbox
+    var onPage = slice.filter(function (r) { return picked[r.id]; }).length, ca = $("chkAll");
+    ca.checked = slice.length > 0 && onPage === slice.length;
+    ca.indeterminate = onPage > 0 && onPage < slice.length;
+
+    // sort + filter UI
+    Array.prototype.forEach.call(document.querySelectorAll(".sort"), function (b) {
+      var on = b.getAttribute("data-sort") === S.sort; b.classList.toggle("on", on); b.classList.toggle("asc", on && S.dir === "asc");
+    });
+    $("selProduct").classList.toggle("on", !!S.product); $("selRole").classList.toggle("on", !!S.role); $("selDate").classList.toggle("on", !!S.date);
+    $("range").hidden = S.date !== "custom";
+    $("reset").hidden = !anyFilter();
+    $("qClear").hidden = !S.q;
+    renderBulk(f, slice);
+  }
+  function renderBulk(f, slice) {
+    var ids = Object.keys(picked), n = ids.length, b = $("bulk");
+    if (!n) { b.hidden = true; return; }
+    var allOnPage = slice.length && slice.every(function (r) { return picked[r.id]; });
+    var more = allOnPage && f.length > slice.length && n < f.length;
+    b.hidden = false;
+    b.innerHTML = '<span class="b-count">' + plural(n, "request") + ' selected</span>' +
+      (more ? '<button type="button" class="b-all" id="selAll">Select all ' + f.length + ' matching requests</button>' : "") +
+      '<span class="b-sp"></span>' +
+      '<button type="button" class="btn btn-approve" data-bulk="approve">' + I(ICON.check, 16) + 'Approve selected (' + n + ')</button>' +
+      '<button type="button" class="btn btn-deny" data-bulk="deny">' + I(ICON.x, 16) + 'Deny selected (' + n + ')</button>' +
+      '<button type="button" class="b-clear" id="selClear">Clear selection</button>';
+  }
+
+  /* ---- filter + sort events ---- */
+  function resetPage() { S.page = 1; render(); }
+  var qT; $("q").addEventListener("input", function (e) { clearTimeout(qT); var v = e.target.value.trim(); qT = setTimeout(function () { S.q = v; resetPage(); }, 120); });
+  $("qClear").addEventListener("click", function () { $("q").value = ""; S.q = ""; resetPage(); $("q").focus(); });
+  $("fProduct").addEventListener("change", function (e) { S.product = e.target.value; resetPage(); });
+  $("fRole").addEventListener("change", function (e) { S.role = e.target.value; resetPage(); });
+  $("fDate").addEventListener("change", function (e) { S.date = e.target.value; resetPage(); });
+  $("dFrom").addEventListener("change", function (e) { S.from = e.target.value; resetPage(); });
+  $("dTo").addEventListener("change", function (e) { S.to = e.target.value; resetPage(); });
+  $("psize").addEventListener("change", function (e) { S.size = +e.target.value; resetPage(); });
+  function clearFilters() { S.q = S.product = S.role = S.date = S.from = S.to = ""; $("q").value = ""; $("fProduct").value = $("fRole").value = $("fDate").value = ""; $("dFrom").value = $("dTo").value = ""; resetPage(); }
+  $("reset").addEventListener("click", clearFilters);
+  $("empty").addEventListener("click", function (e) { if (e.target.closest("#emptyClear")) clearFilters(); });
+  document.querySelector("thead").addEventListener("click", function (e) {
+    var s = e.target.closest("[data-sort]"); if (!s) return;
+    var k = s.getAttribute("data-sort");
+    if (S.sort === k) S.dir = S.dir === "asc" ? "desc" : "asc"; else { S.sort = k; S.dir = k === "name" ? "asc" : "desc"; }
+    resetPage();
+  });
+  $("pager").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pg]"); if (!b || b.disabled) return;
+    var v = b.getAttribute("data-pg");
+    S.page = v === "prev" ? S.page - 1 : v === "next" ? S.page + 1 : +v; render();
+    document.querySelector(".tcard").scrollIntoView({ block: "start", behavior: "smooth" });
+  });
+
+  /* ---- selection ---- */
+  function pageSlice() { var f = filtered(), st = (S.page - 1) * S.size; return f.slice(st, st + S.size); }
+  $("chkAll").addEventListener("change", function (e) {
+    pageSlice().forEach(function (r) { if (e.target.checked) picked[r.id] = true; else delete picked[r.id]; }); render();
+  });
+  $("rows").addEventListener("change", function (e) {
+    var t = e.target;
+    if (t.hasAttribute("data-pick")) { var id = t.getAttribute("data-pick"); if (t.checked) picked[id] = true; else delete picked[id]; render(); }
+    else if (t.hasAttribute("data-role")) { var r = byId(+t.getAttribute("data-role")); if (r) r.roles[r.products[0]] = t.value; }
+  });
+  $("bulk").addEventListener("click", function (e) {
+    if (e.target.closest("#selClear")) { picked = {}; render(); return; }
+    if (e.target.closest("#selAll")) { filtered().forEach(function (r) { picked[r.id] = true; }); render(); return; }
+    var b = e.target.closest("[data-bulk]"); if (!b) return;
+    var list = items.filter(function (r) { return picked[r.id]; });
+    if (list.length) openModal(b.getAttribute("data-bulk"), list, b);
+  });
+  function byId(id) { return items.filter(function (r) { return r.id === id; })[0]; }
+
+  /* ---- row actions ---- */
+  $("rows").addEventListener("click", function (e) {
+    var o = e.target.closest("[data-open]"); if (o) { openDrawer(+o.getAttribute("data-open"), o); return; }
+    var b = e.target.closest("[data-act]"); if (!b) return;
+    var r = byId(+b.getAttribute("data-id")); if (!r) return;
+    if (b.getAttribute("data-act") === "approve") finish("approve", [r], ""); else openModal("deny", [r], b);
+  });
+
+
+  /* ---- right side panel ---- */
+  var drawer = null, dOpener = null, dId = null;
+  function openDrawer(id, from) {
+    var r = byId(id); if (!r) return;
+    closeDrawer(true); dOpener = from; dId = id;
+    var a = ageDays(r.at), left = KEEP_DAYS - a;
+    var o = document.createElement("div"); o.className = "d-over";
+    o.innerHTML = '<aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="dT">' +
+      '<div class="d-head"><div><h2 id="dT">Request details</h2></div><button type="button" class="d-x" data-d="close" aria-label="Close panel">' + I(ICON.x, 18) + '</button></div>' +
+      '<div class="d-body">' +
+        '<section class="d-sec"><div class="who"><span class="av t' + r.tone + '" style="width:52px;height:52px;font-size:17px">' + initials(r.name) + '</span><div class="who-t"><div class="nm" style="font-size:16px">' + esc(r.name) + I(ICON.shield, 16) + '</div><span class="chip p-' + r.profile.toLowerCase() + '" style="margin-top:4px">' + r.profile + '</span></div></div>' +
+          '<div class="kv"><div>' + I(ICON.mail, 16) + '<span><i>Email</i><a href="mailto:' + esc(r.email) + '">' + esc(r.email) + '</a></span></div>' +
+          '<div>' + I(ICON.phone, 16) + '<span><i>Phone</i><a href="tel:' + r.phone.replace(/\s/g, "") + '">' + esc(r.phone) + '</a></span></div>' +
+          '<div>' + I(ICON.clock, 16) + '<span><i>Requested on</i>' + fmtD(r.at) + ', ' + fmtT(r.at) + '</span></div></div>' +
+          (left <= 7 ? '<div class="d-warn">' + I(ICON.clock, 15) + 'Removes in ' + plural(Math.max(left, 0), "day") + '</div>' : "") + '</section>' +
+        '<section class="d-sec"><div class="d-k">Institute</div><div class="inst"><span class="inst-logo">' + img("icon", 34, "inst") + '</span><div class="inst-t"><strong>' + INST.name + '</strong><div class="ln">' + I(ICON.pin, 13) + '<span style="white-space:normal">' + INST.address + '</span></div><div class="ln">' + I(ICON.globe, 13) + '<a href="https://' + INST.website + '" target="_blank" rel="noopener">' + INST.website + '</a></div></div></div>' +
+          '<div class="inst-chips"><span class="chip p-teacher">Board: ' + INST.board + '</span><span class="chip p-staff">Reg. No: ' + INST.reg + '</span></div></section>' +
+        '<section class="d-sec"><div class="d-k">Products and access <span class="cnt">' + r.products.length + '</span></div><div class="plist">' +
+          r.products.map(function (k) { var P = PRODUCTS[k]; return '<div class="pline ' + P.cls + '"><span class="pi">' + img(P.file, 24, P.fb) + '</span><strong>' + P.name + '</strong><span class="rsel"><select id="dr-' + k + '" data-drole="' + k + '">' + accessOpts(r.roles[k]) + '</select><span class="chev">' + I(ICON.chev, 15) + '</span></span></div>'; }).join("") +
+        '</div></section>' +
+      '</div>' +
+      '<div class="d-foot"><button type="button" class="btn btn-deny lg" data-d="deny">' + I(ICON.x, 16) + 'Deny</button><button type="button" class="btn btn-solid" data-d="approve">' + I(ICON.check, 16) + 'Approve</button></div></aside>';
+    document.body.appendChild(o); drawer = o; document.body.style.overflow = "hidden";
+    o.addEventListener("click", function (e) {
+      if (e.target === o || e.target.closest('[data-d="close"]')) { closeDrawer(); return; }
+      var dr = e.target.closest("[data-d]"); if (!dr) return;
+      var it = byId(dId); if (!it) return;
+      if (dr.getAttribute("data-d") === "approve") finish("approve", [it], "");
+      else if (dr.getAttribute("data-d") === "deny") openModal("deny", [it], dr);
+    });
+    o.addEventListener("change", function (e) { var k = e.target.getAttribute("data-drole"); var it = byId(dId); if (k && it) { it.roles[k] = e.target.value; render(); } });
+    setTimeout(function () { var c = o.querySelector(".d-x"); if (c) c.focus(); }, 30);
+  }
+  function closeDrawer(quiet) {
+    if (!drawer) return; drawer.remove(); drawer = null; document.body.style.overflow = "";
+    if (!quiet && dOpener && document.body.contains(dOpener)) dOpener.focus();
+  }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal) closeDrawer(); });
+
+  /* ---- modal ---- */
+  var modal = null, opener = null;
+  function openModal(mode, list, from) {
+    closeModal(); opener = from;
+    var acc = mode === "approve", one = list.length === 1, o = document.createElement("div");
+    o.className = "overlay";
+    var sum = one
+      ? '<div class="sumbox">' + esc(list[0].name) + '<small>' + list[0].profile + " · " + list[0].products.map(function (k) { return PRODUCTS[k].name + (acc ? " (" + list[0].roles[k] + ")" : ""); }).join(", ") + "</small></div>"
+      : '<div class="sumbox">' + plural(list.length, "request") + '<small>' + (acc ? "Each person gets the access shown in their row." : "They will be told their request was not approved.") + "</small></div>";
+    o.innerHTML = '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mT"><div class="m-ico ' + (acc ? "acc" : "rej") + '">' + I(acc ? ICON.check : ICON.x, 24) + '</div>' +
+      '<h3 id="mT">' + (acc ? "Approve " : "Deny ") + (one ? "this request?" : plural(list.length, "request") + "?") + '</h3>' +
+      '<p>' + (acc ? "They will get access to the products they asked for." : "Tell them why. The reason is required and is shared with the requester.") + '</p>' + sum +
+      (acc ? "" : '<div class="field"><label for="reason">Reason <b class="req">*</b></label><textarea id="reason" placeholder="For example: Please send your request from your school email." maxlength="300"></textarea><div class="ferr" id="rErr" hidden>Please write a reason to deny.</div></div>') +
+      '<div class="m-actions"><button type="button" class="btn btn-ghost" data-m="cancel">Cancel</button>' +
+      (acc ? '<button type="button" class="btn btn-solid" data-m="ok">' + I(ICON.check, 16) + 'Approve</button>' : '<button type="button" class="btn btn-deny lg" data-m="ok" id="denyOk" disabled>' + I(ICON.x, 16) + 'Deny</button>') + '</div></div>';
+    document.body.appendChild(o); modal = o;
+    o.addEventListener("click", function (e) {
+      if (e.target === o || e.target.closest('[data-m="cancel"]')) { closeModal(); return; }
+      if (e.target.closest('[data-m="ok"]')) {
+        var rs = $("reason") ? $("reason").value.trim() : "";
+        if (!acc && !rs) { $("rErr").hidden = false; $("reason").focus(); return; }
+        closeModal(true); finish(mode, list, rs);
+      }
+    });
+    if (!acc) o.querySelector("#reason").addEventListener("input", function (e) { var ok = !!e.target.value.trim(); $("denyOk").disabled = !ok; $("rErr").hidden = true; });
+    setTimeout(function () { var f = o.querySelector("textarea") || o.querySelector('[data-m="ok"]'); if (f) f.focus(); }, 30);
+  }
+  function closeModal(keep) { if (modal) { modal.remove(); modal = null; if (!keep && opener && document.body.contains(opener)) opener.focus(); } }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeModal(); });
+
+  function finish(mode, list, reason) {
+    var ids = {}; list.forEach(function (r) { ids[r.id] = 1; delete picked[r.id]; });
+    items = items.filter(function (r) { return !ids[r.id]; });
+    last = list; closeDrawer(true);
+    render();
+    var acc = mode === "approve";
+    toast(acc, (acc ? "Approved " : "Denied ") + (list.length === 1 ? "request" : plural(list.length, "request")), list.length === 1 ? list[0].name : "Selected requests updated");
+  }
+  function toast(acc, title, body) {
+    $("tIco").className = "t-ico " + (acc ? "acc" : "rej"); $("tIco").innerHTML = I(acc ? ICON.check : ICON.x, 18);
+    $("tTitle").textContent = title; $("tBody").textContent = body;
+    var t = $("toast"); t.classList.add("show"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); last = null; }, 6000);
+  }
+  $("tUndo").addEventListener("click", function () {
+    if (!last) return;
+    items = items.concat(last); last = null;
+    $("toast").classList.remove("show"); render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
