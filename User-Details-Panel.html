@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Details Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: profile card on top, then one block per institution. The institution name is the heading, products sit in a grid under it, and each block owns its Edit button and three-dot menu. */
+  --ink: #14173d;
+  --ink-soft: #5b6188;
+  --line: #e6eaf2;
+  --green: #16a34a;
+  --green-deep: #12803c;
+  --green-tint: #eaf7ee;
+  --green-line: #bfe6cb;
+  --blue: #2f6fe4;
+  --blue-deep: #1f55b8;
+  --blue-tint: #e8f1ff;
+  --blue-line: #c9dcfb;
+  --yellow: #a8670a;
+  --yellow-tint: #fff6dc;
+  --yellow-line: #f1dd9c;
+  --rose: #c8323f;
+  --rose-tint: #fdecee;
+  --rose-line: #f6c9ce;
+  --slate: #56607f;
+  --slate-tint: #eef1f7;
+  --slate-line: #d9dfeb;
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --shadow: 0 1px 2px rgba(20,23,61,.04), 0 12px 32px -14px rgba(20,23,61,.12);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font-family: var(--font); color: var(--ink); background: #fff; line-height: 1.45; -webkit-font-smoothing: antialiased; min-height: 100vh; padding: 32px 16px 64px; }
+[hidden] { display: none !important; }
+button, input, select { font: inherit; color: inherit; }
+svg { display: block; flex: none; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid rgba(22,163,74,.35); outline-offset: 2px; }
+.pimg { display: block; object-fit: contain; }
+.stage { width: 100%; max-width: 540px; margin: 0 auto; transition: max-width .2s; }
+.stage.wide { max-width: 820px; }
+
+/* ---------- Panel shell ---------- */
+.panel { border: 1px solid var(--line); border-radius: 22px; background: #fff; box-shadow: var(--shadow); overflow: hidden; }
+.p-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #f5f7fb; border-bottom: 1px solid var(--line); }
+.p-bar h2 { margin: 0; font-size: 14px; font-weight: 800; color: var(--ink-soft); letter-spacing: .02em; }
+.p-tools { display: flex; gap: 6px; }
+.tool { width: 32px; height: 32px; border-radius: 10px; border: 0; background: transparent; color: var(--ink-soft); display: grid; place-items: center; cursor: pointer; transition: background .15s, color .15s; }
+.tool:hover { background: #e9edf5; color: var(--ink); }
+.tool.x:hover { background: var(--rose-tint); color: var(--rose); }
+.p-body { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+
+/* ---------- Profile ---------- */
+.profile { display: flex; gap: 16px; align-items: center; padding: 16px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(180deg, #fff, #fafbfe); }
+.big-av { width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font-size: 28px; font-weight: 800; background: var(--green-tint); color: var(--green-deep); border: 3px solid #fff; box-shadow: 0 0 0 1.5px var(--green-line); flex: none; }
+.pf-t { min-width: 0; flex: 1; }
+.pf-t h3 { margin: 0; font-size: 21px; font-weight: 800; letter-spacing: -.01em; }
+.pf-mail { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: var(--ink-soft); font-weight: 500; margin-top: 2px; min-width: 0; }
+.pf-mail a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pf-mail a:hover { color: var(--blue); text-decoration: underline; }
+.pf-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 10px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 11px 0 9px; border-radius: 99px; font-size: 12.5px; font-weight: 700; background: var(--pb); color: var(--pc); border: 1px solid var(--pl); white-space: nowrap; }
+.pill i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.s-active { --pb: var(--green-tint); --pc: var(--green-deep); --pl: var(--green-line); }
+.s-invited { --pb: var(--blue-tint); --pc: var(--blue-deep); --pl: var(--blue-line); }
+.s-suspended { --pb: var(--yellow-tint); --pc: var(--yellow); --pl: var(--yellow-line); }
+.login { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
+.login b { display: block; color: var(--ink); font-size: 13px; font-weight: 700; }
+
+/* ---------- Section title ---------- */
+.sec-h { display: flex; align-items: center; justify-content: space-between; padding: 0 2px; }
+.sec-h h4 { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-soft); display: flex; align-items: center; gap: 8px; }
+.cnt { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 7px; background: var(--slate-tint); color: var(--slate); font-size: 11.5px; letter-spacing: 0; }
+
+/* ---------- Institution block ---------- */
+.insts { display: flex; flex-direction: column; gap: 14px; }
+.inst { border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 1px 2px rgba(20,23,61,.03); transition: border-color .15s; }
+.inst.is-suspended { border-color: var(--yellow-line); }
+.i-head { display: flex; align-items: center; gap: 6px; padding: 8px 12px 8px 8px; background: #fff; border-bottom: 1px solid transparent; border-radius: 18px 18px 0 0; transition: border-color .2s, border-radius .2s; }
+.inst:not(.open) .i-head { border-radius: 18px; }
+.inst.open .i-head { border-bottom-color: var(--line); }
+.inst.is-suspended .i-head { background: var(--yellow-tint); }
+.inst.is-suspended.open .i-head { border-bottom-color: var(--yellow-line); }
+.i-toggle { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; border: 0; background: transparent; padding: 6px 8px 6px 6px; border-radius: 12px; cursor: pointer; text-align: left; }
+.i-toggle:hover { background: rgba(20,23,61,.04); }
+.i-chev { width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; color: var(--ink-soft); flex: none; transform: rotate(-90deg); transition: transform .2s; }
+.inst.open .i-chev { transform: rotate(0); }
+.i-logo { width: 44px; height: 44px; border-radius: 13px; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; flex: none; color: var(--green-deep); }
+.i-t { display: block; min-width: 0; flex: 1; }
+.i-t h5 { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0; font-size: 16.5px; font-weight: 800; letter-spacing: -.01em; line-height: 1.25; }
+.i-addr { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--ink-soft); font-weight: 500; min-width: 0; margin-top: 2px; }
+.i-addr svg { color: #8c94b3; }
+.i-addr-t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.i-count { font-size: 12px; font-weight: 700; color: var(--slate); background: var(--slate-tint); padding: 3px 10px; border-radius: 99px; white-space: nowrap; }
+.acc { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .25s ease, visibility .25s; }
+.inst.open .acc { grid-template-rows: 1fr; visibility: visible; }
+.acc-in { overflow: hidden; min-height: 0; }
+.i-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.i-row .i-label { margin: 0; }
+.linkbtn { border: 0; background: transparent; padding: 4px 8px; border-radius: 8px; font-size: 12.5px; font-weight: 700; color: var(--blue-deep); cursor: pointer; }
+.linkbtn:hover { background: var(--blue-tint); }
+.i-acts { display: flex; align-items: center; gap: 8px; flex: none; position: relative; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 34px; padding: 0 12px 0 10px; border-radius: 10px; border: 1px solid transparent; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; transition: background .15s, box-shadow .15s, transform .1s, color .15s; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn-edit { background: var(--blue-tint); color: var(--blue-deep); border-color: var(--blue-line); }
+.btn-edit:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.btn-solid { background: linear-gradient(180deg, #22b457, #16a34a); color: #fff; box-shadow: 0 8px 18px -8px rgba(22,163,74,.7); height: 38px; padding: 0 16px 0 12px; }
+.btn-solid:hover { background: linear-gradient(180deg, #1ea84f, #12803c); }
+.btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); height: 38px; padding: 0 16px; }
+.btn-ghost:hover { background: #f4f6fb; }
+.btn-rose { background: var(--rose-tint); color: var(--rose); border-color: var(--rose-line); height: 38px; padding: 0 16px 0 12px; }
+.btn-rose:hover { background: #fadde0; }
+.btn-amber { background: var(--yellow-tint); color: var(--yellow); border-color: var(--yellow-line); height: 38px; padding: 0 16px 0 12px; }
+.btn-amber:hover { background: #ffedb8; }
+.kebab { width: 34px; padding: 0; background: #fff; color: var(--ink-soft); border-color: var(--line); }
+.kebab:hover, .kebab[aria-expanded="true"] { background: #f1f3f9; color: var(--ink); }
+
+.menu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 210px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 6px; box-shadow: 0 18px 40px -12px rgba(20,23,61,.28); z-index: 10; }
+.menu button { display: flex; align-items: center; gap: 10px; width: 100%; border: 0; background: transparent; padding: 9px 10px; border-radius: 9px; font-size: 13.5px; font-weight: 700; cursor: pointer; text-align: left; }
+.menu button .mi { width: 28px; height: 28px; border-radius: 9px; display: grid; place-items: center; flex: none; }
+.menu button small { display: block; font-size: 11.5px; font-weight: 500; color: var(--ink-soft); }
+.menu .m-amber .mi { background: var(--yellow-tint); color: var(--yellow); }
+.menu .m-green .mi { background: var(--green-tint); color: var(--green-deep); }
+.menu .m-rose { color: var(--rose); }
+.menu .m-rose .mi { background: var(--rose-tint); color: var(--rose); }
+.menu button:hover { background: #f4f6fb; }
+.menu .m-rose:hover { background: var(--rose-tint); }
+.menu hr { border: 0; border-top: 1px solid var(--line); margin: 5px 4px; }
+
+.i-body { padding: 14px; background: #f3f5f9; border-radius: 0 0 18px 18px; }
+.i-label { display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 10px; }
+.note { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding: 8px 11px; border-radius: 11px; background: var(--yellow-tint); border: 1px solid var(--yellow-line); color: #6b4306; font-size: 12.5px; font-weight: 600; }
+
+/* ---------- Product grid ---------- */
+.pgrid { display: flex; flex-direction: column; gap: 10px; }
+.pt { border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px 10px 10px; background: #fff; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.inst.is-suspended .pt { opacity: .6; }
+.pi { width: 40px; height: 40px; border-radius: 12px; background: var(--pb); display: grid; place-items: center; flex: none; }
+.pt-t { flex: 1; min-width: 0; }
+.pt-t strong { font-size: 14px; font-weight: 800; line-height: 1.25; }
+.k { font-size: 10.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 3px; }
+.role { display: inline-flex; align-items: center; height: 26px; padding: 0 11px; border-radius: 8px; font-size: 12.5px; font-weight: 700; background: var(--rb); color: var(--rc); border: 1px solid var(--rl); }
+.r-admin { --rb: var(--yellow-tint); --rc: var(--yellow); --rl: var(--yellow-line); }
+.r-operator { --rb: var(--green-tint); --rc: var(--green-deep); --rl: var(--green-line); }
+.r-viewer { --rb: var(--blue-tint); --rc: var(--blue-deep); --rl: var(--blue-line); }
+.when { font-size: 12.5px; font-weight: 700; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.when svg { color: #8c94b3; }
+.pc-blue { --pb: var(--blue-tint); --pl: var(--blue-line); }
+.pc-yellow { --pb: var(--yellow-tint); --pl: var(--yellow-line); }
+.pc-green { --pb: var(--green-tint); --pl: var(--green-line); }
+
+/* ---------- Edit mode ---------- */
+.ed { display: flex; flex-direction: column; gap: 10px; }
+.er { display: grid; grid-template-columns: auto auto minmax(0, 1fr) 130px; gap: 12px; align-items: center; padding: 10px 12px; border-radius: 14px; border: 1px solid var(--line); background: #fff; transition: background .15s, border-color .15s; }
+.er.on { background: var(--green-tint); border-color: var(--green-line); }
+.er strong { display: block; font-size: 13.5px; font-weight: 800; line-height: 1.25; }
+.er small { display: block; font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+.rsel { position: relative; display: block; }
+.rsel select { appearance: none; -webkit-appearance: none; width: 100%; height: 38px; border: 1.5px solid var(--line); border-radius: 11px; background: #fff; padding: 0 30px 0 11px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+.rsel select:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 4px rgba(22,163,74,.10); }
+.rsel select:disabled { background: #f7f8fc; color: #98a0bd; cursor: not-allowed; }
+.rsel.bad select { border-color: var(--rose); box-shadow: 0 0 0 4px rgba(200,50,63,.08); }
+.rsel .chev { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-soft); }
+.chk { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border: 1.8px solid #c3cbe0; border-radius: 6px; background: #fff; display: grid; place-items: center; cursor: pointer; margin: 0; transition: background .12s, border-color .12s; }
+.chk:hover { border-color: var(--green); }
+.chk:checked { background: var(--green); border-color: var(--green); }
+.chk:checked::after { content: ""; width: 9px; height: 5px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
+.ferr { margin-top: 8px; font-size: 12.5px; font-weight: 700; color: var(--rose); }
+.ed-foot { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.tag-new { display: inline-block; margin-left: 6px; font-size: 10.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--blue-deep); background: var(--blue-tint); border: 1px solid var(--blue-line); border-radius: 6px; padding: 1px 6px; vertical-align: middle; }
+
+/* ---------- Empty ---------- */
+.empty { border: 1.5px dashed #c9d3e6; border-radius: 18px; background: #fafbfe; padding: 36px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+.empty .e-ico { width: 54px; height: 54px; border-radius: 16px; display: grid; place-items: center; background: var(--slate-tint); color: var(--slate); margin-bottom: 4px; }
+.empty h3 { margin: 0; font-size: 16px; font-weight: 800; }
+.empty p { margin: 0; font-size: 13.5px; color: var(--ink-soft); max-width: 36ch; }
+
+.reopen { display: flex; justify-content: center; padding: 40px 0; }
+
+/* ---------- Modal ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(20,23,61,.35); backdrop-filter: blur(2px); display: grid; place-items: center; padding: 20px; z-index: 20; overflow-y: auto; }
+.modal { width: 100%; max-width: 440px; background: #fff; border-radius: 22px; padding: 24px; box-shadow: 0 30px 70px -20px rgba(20,23,61,.45); }
+.m-ico { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; margin-bottom: 14px; border: 1px solid transparent; }
+.m-ico.rose { background: var(--rose-tint); color: var(--rose); border-color: var(--rose-line); }
+.m-ico.amber { background: var(--yellow-tint); color: var(--yellow); border-color: var(--yellow-line); }
+.m-ico.green { background: var(--green-tint); color: var(--green-deep); border-color: var(--green-line); }
+.modal h3 { margin: 0 0 6px; font-size: 19px; font-weight: 800; }
+.modal p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+.sumbox { margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: #fafbfd; border: 1px solid var(--line); font-size: 13.5px; font-weight: 700; }
+.sumbox small { display: block; font-weight: 600; color: var(--ink-soft); font-size: 12.5px; margin-top: 2px; }
+.m-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+/* ---------- Toast ---------- */
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px 10px 14px; display: flex; align-items: center; gap: 12px; box-shadow: 0 18px 40px -12px rgba(20,23,61,.25); transition: opacity .2s, transform .2s; width: max-content; max-width: calc(100vw - 32px); z-index: 30; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast .t-ico { width: 32px; height: 32px; border-radius: 10px; display: grid; place-items: center; }
+.t-ico.green { background: var(--green-tint); color: var(--green-deep); } .t-ico.amber { background: var(--yellow-tint); color: var(--yellow); } .t-ico.rose { background: var(--rose-tint); color: var(--rose); }
+.toast strong { display: block; font-size: 13.5px; }
+.toast span.b { font-size: 12.5px; color: var(--ink-soft); }
+.toast .undo { border: 0; background: #f1f3f9; color: var(--ink); font-weight: 700; font-size: 13px; padding: 7px 12px; border-radius: 9px; cursor: pointer; }
+.toast .undo:hover { background: #e6eaf2; }
+
+@media (max-width: 520px) {
+  body { padding: 16px 10px 56px; }
+  .profile { flex-direction: column; align-items: flex-start; }
+  .i-count { display: none; }
+  .er { grid-template-columns: auto auto minmax(0, 1fr); } .er .rsel { grid-column: 1 / -1; }
+  .p-tools .hide-sm { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <section class="panel" id="panel" aria-label="User details">
+    <div class="p-bar">
+      <h2>User Details</h2>
+      <div class="p-tools">
+        <button type="button" class="tool hide-sm" id="tOpen" aria-label="Open in new page" title="Open in new page"></button>
+        <button type="button" class="tool hide-sm" id="tExpand" aria-label="Expand panel" title="Expand panel"></button>
+        <button type="button" class="tool x" id="tClose" aria-label="Close panel" title="Close"></button>
+      </div>
+    </div>
+    <div class="p-body" id="body"></div>
+  </section>
+  <div class="reopen" id="reopen" hidden><button type="button" class="btn btn-ghost" id="reopenBtn">Open user details</button></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="t-ico" id="tIco"></div>
+  <div><strong id="tTitle"></strong><span class="b" id="tBody"></span></div>
+  <button type="button" class="undo" id="tUndo">Undo</button>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var I = function (d, s) { s = s || 18; return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + d + "</svg>"; };
+  var ICON = {
+    mail: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/>',
+    cal: '<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    pin: '<path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+    check: '<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+    x: '<path d="M6 6l12 12M18 6 6 18"/>',
+    edit: '<path d="M4 20h4L19 9a2.1 2.1 0 0 0-3-3L5 17z"/><path d="m14 7 3 3"/>',
+    dots: '<circle cx="12" cy="5.5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="18.5" r="1.4" fill="currentColor"/>',
+    pause: '<circle cx="12" cy="12" r="9"/><path d="M10 9v6M14 9v6"/>',
+    play: '<circle cx="12" cy="12" r="9"/><path d="m10.5 9 4.5 3-4.5 3z"/>',
+    userminus: '<circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.7-3.6 3.2-5.5 6.5-5.5 1.2 0 2.3.2 3.2.7M15.5 17h6"/>',
+    ext: '<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4"/>',
+    expand: '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+    shrink: '<path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/>',
+    chev: '<path d="m6 9 6 6 6-6"/>',
+    inst: '<path d="M3 9.5 12 4l9 5.5"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18M4 10h16"/>',
+    win: '<path d="M3 5.5 10.5 4.4v7H3zM12 4.2 21 3v8.4h-9zM3 12.6h7.5v7L3 18.5zM12 12.6h9V21l-9-1.2z"/>',
+    web: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/>',
+    cloud: '<path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 17.8 8.6 4.8 4.8 0 0 1 17 18z"/>',
+    info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>'
+  };
+  $("tOpen").innerHTML = I(ICON.ext, 18); $("tExpand").innerHTML = I(ICON.expand, 18); $("tClose").innerHTML = I(ICON.x, 18);
+
+  var CDN = "https://cdn.vidyaone.com/Company/Website/";
+  function img(file, size, fb) { return '<img class="pimg" src="' + CDN + file + '.png" alt="" width="' + size + '" height="' + size + '" data-fb="' + fb + '" data-size="' + size + '">'; }
+  document.addEventListener("error", function (e) {
+    var t = e.target; if (!t || t.tagName !== "IMG" || !t.dataset.fb) return;
+    var w = document.createElement("span"); w.style.display = "contents"; w.innerHTML = I(ICON[t.dataset.fb], parseInt(t.dataset.size, 10) || 18); t.replaceWith(w);
+  }, true);
+
+  var PRODUCTS = {
+    win: { name: "School Software (Windows)", desc: "Install on a school computer", file: "icon_software", fb: "win", cls: "pc-blue" },
+    online: { name: "School Software (Online)", desc: "Use it in any web browser", file: "icon_school", fb: "cloud", cls: "pc-green" },
+    web: { name: "School Website", desc: "School website and portal", file: "icon_school", fb: "web", cls: "pc-yellow" }
+  };
+  var PKEYS = ["win", "online", "web"];
+  var ROLES = ["Admin", "Operator", "Viewer"];
+
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function fmtD(d) { return pad(d.getDate()) + " " + MON[d.getMonth()] + " " + d.getFullYear(); }
+  function fmtDT(d) { var h = d.getHours(), ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return fmtD(d) + " " + pad(h) + ":" + pad(d.getMinutes()) + " " + ap; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+  function roleCls(r) { return "r-" + r.toLowerCase(); }
+
+  /* ---- data ---- */
+  var user = { name: "Ankit Maurya", email: "ankitmaurya@gmail.com", status: "Active", last: new Date(2026, 10, 21, 5, 30) };
+  var insts = [
+    { id: 1, name: "VIDYAOne Public School", address: "Gomti Nagar Extension, Lucknow", suspended: false,
+      products: [{ k: "online", role: "Admin", status: "active", date: new Date(2025, 5, 3) }, { k: "web", role: "Operator", status: "active", date: new Date(2025, 5, 3) }, { k: "win", role: "Viewer", status: "active", date: new Date(2025, 8, 14) }] },
+    { id: 2, name: "Delhi Public School", address: "Civil Lines, Gorakhpur", suspended: false,
+      products: [{ k: "web", role: "Admin", status: "active", date: new Date(2026, 10, 18) }] },
+    { id: 3, name: "Green Valley School", address: "Sector 62, Noida", suspended: false,
+      products: [{ k: "online", role: "Viewer", status: "active", date: new Date(2024, 4, 12) }, { k: "web", role: "Admin", status: "active", date: new Date(2024, 4, 12) }] }
+  ];
+  var opened = { 1: true }, openMenu = null, last = null, toastTimer, modal = null, opener = null;
+  function byId(id) { return insts.filter(function (x) { return x.id === id; })[0]; }
+  function state(x) { if (x.suspended) return "suspended"; return x.products.every(function (p) { return p.status === "invited"; }) ? "invited" : "active"; }
+  var SLAB = { active: "Active", invited: "Invited", suspended: "Suspended" };
+  function pill(s, label) { return '<span class="pill s-' + s + '"><i></i>' + (label || SLAB[s]) + "</span>"; }
+  function roleOpts(cur, ph) { return (ph ? '<option value="">Select role</option>' : "") + ROLES.map(function (x) { return '<option' + (x === cur ? " selected" : "") + ">" + x + "</option>"; }).join(""); }
+
+  /* ---- render ---- */
+  function productTile(p) {
+    var P = PRODUCTS[p.k];
+    return '<div class="pt ' + P.cls + '"><span class="pi">' + img(P.file, 24, P.fb) + '</span><div class="pt-t"><strong>' + P.name + '</strong></div><span class="role ' + roleCls(p.role) + '">' + p.role + "</span></div>";
+  }
+  function instBlock(x) {
+    
+    var sus = x.suspended;
+    var menu = openMenu === x.id ? '<div class="menu" role="menu">' +
+      (sus ? '<button type="button" role="menuitem" class="m-green" data-a="unsuspend" data-id="' + x.id + '"><span class="mi">' + I(ICON.play, 16) + "</span><span>Reactivate user<small>Give access back</small></span></button>"
+           : '<button type="button" role="menuitem" class="m-amber" data-a="suspend" data-id="' + x.id + '"><span class="mi">' + I(ICON.pause, 16) + "</span><span>Suspend user<small>Pause access for now</small></span></button>") +
+      '<hr><button type="button" role="menuitem" class="m-rose" data-a="remove" data-id="' + x.id + '"><span class="mi">' + I(ICON.userminus, 16) + "</span><span>Remove access<small>Take away all products</small></span></button></div>" : "";
+    var open = !!opened[x.id], n = x.products.length;
+    return '<article class="inst' + (sus ? " is-suspended" : "") + (open ? " open" : "") + '" data-id="' + x.id + '"><div class="i-head">' +
+      '<button type="button" class="i-toggle" data-a="toggle" data-id="' + x.id + '" aria-expanded="' + open + '" aria-controls="acc-' + x.id + '"><span class="i-chev">' + I(ICON.chev, 18) + '</span><span class="i-logo">' + img("icon", 30, "inst") + '</span>' +
+      '<span class="i-t"><h5>' + esc(x.name) + '</h5><span class="i-addr">' + I(ICON.pin, 13) + '<span class="i-addr-t">' + esc(x.address) + "</span></span></span></button>" +
+      '<div class="i-acts"><span class="i-count">' + plural(n, "product") + '</span><button type="button" class="btn kebab" data-a="menu" data-id="' + x.id + '" aria-haspopup="menu" aria-expanded="' + (openMenu === x.id) + '" aria-label="More actions for ' + esc(x.name) + '">' + I(ICON.dots, 18) + "</button>" + menu + "</div></div>" +
+      '<div class="acc" id="acc-' + x.id + '" role="region" aria-label="Products at ' + esc(x.name) + '"><div class="acc-in"><div class="i-body">' + (sus ? '<div class="note">' + I(ICON.pause, 15) + "Access is paused. Reactivate to let " + esc(user.name.split(" ")[0]) + " use these products again.</div>" : "") +
+      '<div class="i-row"><div class="i-label">Products and roles</div><a class="btn btn-edit" data-a="edit" data-id="' + x.id + '" href="add-user.html?institution=' + x.id + '&email=' + encodeURIComponent(user.email) + '" aria-label="Edit access at ' + esc(x.name) + ' on the Add User page">' + I(ICON.edit, 15) + "Edit access</a></div>" +
+      '<div class="pgrid">' + x.products.map(productTile).join("") + "</div></div></div></div></article>";
+  }
+  function render() {
+    var ini = user.name.charAt(0).toUpperCase();
+    $("body").innerHTML =
+      '<section class="profile"><div class="big-av" aria-hidden="true">' + ini + '</div><div class="pf-t"><h3>' + esc(user.name) + '</h3><div class="pf-mail">' + I(ICON.mail, 15) + '<a href="mailto:' + esc(user.email) + '">' + esc(user.email) + "</a></div>" +
+        '<div class="pf-meta">' + pill("active", user.status) + '<div class="login">' + I(ICON.clock, 16) + '<div>Last login<b>' + fmtDT(user.last) + "</b></div></div></div></div></section>" +
+      '<div class="sec-h"><h4>Institutions <span class="cnt">' + insts.length + "</span></h4>" + (insts.length > 1 ? '<button type="button" class="linkbtn" data-a="all">' + (insts.every(function (x) { return opened[x.id]; }) ? "Collapse all" : "Expand all") + "</button>" : "") + "</div>" +
+      (insts.length ? '<div class="insts">' + insts.map(instBlock).join("") + "</div>"
+        : '<div class="empty"><div class="e-ico">' + I(ICON.inst, 26) + "</div><h3>No institutions</h3><p>" + esc(user.name) + " does not have access to any institution right now.</p></div>");
+  }
+
+  /* ---- events ---- */
+  $("body").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-a]");
+    if (!b) { if (openMenu !== null && !e.target.closest(".menu")) { openMenu = null; render(); } return; }
+    var a = b.getAttribute("data-a"), id = +b.getAttribute("data-id"), x = byId(id);
+    if (a === "menu") { openMenu = openMenu === id ? null : id; render(); var k = document.querySelector('.inst[data-id="' + id + '"] .kebab'); if (k && openMenu) { var f = document.querySelector('.inst[data-id="' + id + '"] .menu button'); if (f) f.focus(); } return; }
+    if (a === "all") { var every = insts.every(function (z) { return opened[z.id]; }); insts.forEach(function (z) { opened[z.id] = !every; }); openMenu = null; render(); return; }
+    if (a === "toggle") {
+      var art = b.closest(".inst"), now = !art.classList.contains("open");
+      art.classList.toggle("open", now); b.setAttribute("aria-expanded", now); opened[id] = now; if (openMenu !== null) { openMenu = null; var mm = document.querySelector(".menu"); if (mm) mm.remove(); }
+      return;
+    }
+    openMenu = null;
+    if (a === "edit") {
+      /* Demo only: in your app, remove this block and let the link go to the Add User page. */
+      e.preventDefault(); toast("green", "Opens the Add User page", "Add or revoke products for " + x.name + ".", false); return;
+    }
+    if (a === "suspend") return confirmSuspend(x, b);
+    if (a === "unsuspend") { x.suspended = false; render(); toast("green", "User reactivated", user.name + " can use " + x.name + " again.", false); return; }
+    if (a === "remove") return confirmRemove(x, b);
+  });
+  document.addEventListener("click", function (e) { if (openMenu !== null && !e.target.closest(".i-acts")) { openMenu = null; render(); } });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (modal) closeModal(); else if (openMenu !== null) { var id = openMenu; openMenu = null; render(); var k = document.querySelector('.inst[data-id="' + id + '"] .kebab'); if (k) k.focus(); }
+  });
+
+  /* ---- confirm dialogs ---- */
+  function dialog(opts, from) {
+    closeModal(); opener = from;
+    var o = document.createElement("div"); o.className = "overlay";
+    o.innerHTML = '<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mT"><div class="m-ico ' + opts.tone + '">' + I(ICON[opts.icon], 24) + '</div><h3 id="mT">' + opts.title + "</h3><p>" + opts.text + '</p><div class="sumbox">' + opts.sum + '</div><div class="m-actions"><button type="button" class="btn btn-ghost" data-m="cancel">Cancel</button><button type="button" class="btn ' + opts.btn + '" data-m="ok">' + I(ICON[opts.icon], 16) + opts.ok + "</button></div></div>";
+    document.body.appendChild(o); modal = o;
+    o.addEventListener("click", function (e) {
+      if (e.target === o || e.target.closest('[data-m="cancel"]')) { closeModal(); return; }
+      if (e.target.closest('[data-m="ok"]')) { closeModal(true); opts.run(); }
+    });
+    setTimeout(function () { var f = o.querySelector('[data-m="ok"]'); if (f) f.focus(); }, 30);
+  }
+  function closeModal(keep) { if (modal) { modal.remove(); modal = null; if (!keep && opener && document.body.contains(opener)) opener.focus(); } }
+  function summary(x) { return esc(x.name) + "<small>" + x.products.map(function (p) { return PRODUCTS[p.k].name + " (" + p.role + ")"; }).join(", ") + "</small>"; }
+  function confirmSuspend(x, from) {
+    dialog({ tone: "amber", icon: "pause", title: "Suspend this user?", text: esc(user.name) + " will not be able to use any product at this institution until you reactivate them.", sum: summary(x), btn: "btn-amber", ok: "Suspend",
+      run: function () { x.suspended = true; render(); toast("amber", "User suspended", "Only at " + x.name + ". Other institutions are not affected.", false); } }, from);
+  }
+  function confirmRemove(x, from) {
+    dialog({ tone: "rose", icon: "userminus", title: "Remove access?", text: esc(user.name) + " will lose access to every product at this institution. Other institutions are not affected.", sum: summary(x), btn: "btn-rose", ok: "Remove access",
+      run: function () { var i = insts.indexOf(x); insts.splice(i, 1); last = { x: x, i: i }; render(); toast("rose", "Access removed", "From " + x.name, true); } }, from);
+  }
+
+  /* ---- toast ---- */
+  function toast(tone, title, body, undo) {
+    var ic = tone === "green" ? ICON.check : tone === "amber" ? ICON.pause : ICON.userminus;
+    $("tIco").className = "t-ico " + tone; $("tIco").innerHTML = I(ic, 18);
+    $("tTitle").textContent = title; $("tBody").textContent = body; $("tUndo").hidden = !undo;
+    var t = $("toast"); t.classList.add("show"); clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); last = null; }, 6000);
+  }
+  $("tUndo").addEventListener("click", function () { if (!last) return; insts.splice(last.i, 0, last.x); last = null; $("toast").classList.remove("show"); render(); });
+
+  /* ---- panel chrome ---- */
+  var wide = false;
+  $("tExpand").addEventListener("click", function () { wide = !wide; $("stage").classList.toggle("wide", wide); $("tExpand").innerHTML = I(wide ? ICON.shrink : ICON.expand, 18); $("tExpand").setAttribute("aria-label", wide ? "Shrink panel" : "Expand panel"); });
+  $("tClose").addEventListener("click", function () { $("panel").hidden = true; $("reopen").hidden = false; $("reopenBtn").focus(); });
+  $("reopenBtn").addEventListener("click", function () { $("panel").hidden = false; $("reopen").hidden = true; });
+
+  render();
+})();
+</script>
+</body>
+</html>
