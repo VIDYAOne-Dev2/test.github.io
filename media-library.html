@@ -535,9 +535,9 @@ td.n { color: var(--text); white-space: nowrap; font-weight: 500; }
   function renderOver() {
     var tot = total(), by = { image: 0, audio: 0, doc: 0, other: 0 }, cnt = { image: 0, audio: 0, doc: 0, other: 0 }, un = [], inUse = 0, unSize = 0;
     files.forEach(function (f) { by[f.c] += f.s; cnt[f.c]++; if (unused(f)) { un.push(f); unSize += f.s; } else inUse++; });
-    var pct = function (b) { return Math.max(0.6, b / QUOTA * 100).toFixed(2) + "%"; };
+    var pct = function (b) { return (tot ? b / tot * 100 : 0).toFixed(2) + "%"; };
     $("over").innerHTML =
-      '<div class="storage"><div class="lbl">Storage used</div><div class="big"><b>' + size(tot) + "</b><span>of " + size(QUOTA) + " · " + Math.round(tot / QUOTA * 100) + "% used · " + plural(files.length, "file") + '</span></div>' +
+      '<div class="storage"><div class="lbl">Storage used</div><div class="big"><b>' + size(tot) + "</b><span>used across " + plural(files.length, "file") + '</span></div>' +
       '<div class="bar" role="img" aria-label="Storage by file type">' + Object.keys(CATS).map(function (k) { return '<i class="c-' + k + '" style="width:' + pct(by[k]) + '" title="' + CATS[k] + '"></i>'; }).join("") + "</div>" +
       '<div class="legend">' + Object.keys(CATS).map(function (k) { return '<div class="lg c-' + k + '"><b>' + CATS[k] + "</b><span>" + plural(cnt[k], "file") + " · " + size(by[k]) + "</span></div>"; }).join("") + "</div></div>" +
       '<div class="usage"><div class="ub in"><span class="ic">' + I(P.check, 22) + '</span><div class="t"><b>' + inUse + "</b><span>Files in use on your website</span></div></div>" +
